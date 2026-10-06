@@ -1,1 +1,10 @@
-[]
+[
+  {
+    "name": "twin-packs-open",
+    "repository": "volter-ai/twin-packs-open",
+    "scope": "@volter",
+    "official": true,
+    "protocol": "3",
+    "workflow": "release.yml"
+  }
+]
