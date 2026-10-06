@@ -45,6 +45,19 @@ export type Release = {
   assessedAt?: string;
 };
 export type CatalogRelease = Release & {
+  packageMetadata: null | {
+    description: string | null;
+    license: string;
+    engines: Record<string, string>;
+    peerDependencies: Record<string, string>;
+    repositoryDirectory: string | null;
+    bugs: string | null;
+    sourceCommit: string | null;
+    readmeUrl: string | null;
+    licenseUrl: string | null;
+    packageUrl: string;
+    issuesUrl: string | null;
+  };
   revoked: { reason: string } | null;
   selectable: boolean;
   default: boolean;

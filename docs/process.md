@@ -42,6 +42,19 @@ recommendation is moderated separately from a submission and selects a package, 
 version is offered. Prereleases require an explicit version. A World pins package and version; a catalog update
 does not change that pin. Removing a recommendation is not uninstalling a running World.
 
+## Release information for users
+
+Each assessed release exposes its artifact's description, license, Node requirements, kernel peer requirements,
+source directory and issue tracker beside its integrity, provenance and measured behavior. README and license links
+point to the source commit verified by npm provenance. They describe that version, not the publisher's current branch.
+Historical assessments without these retained fields show them as unavailable; current registry metadata does not
+fill missing historical evidence. A provenance link establishes source and build identity, not vendor fidelity.
+
+Publishers describe useful workflows, setup and throwaway credential requirements, companion services, supported
+SDK/API versions and explicit limitations in the package README. Model replies, simulated email/search and partial
+interfaces are labeled. Declared gaps remain in the coverage denominator. No publisher badge or aggregate grade
+substitutes for the exact release's supported operations, replay results and scope of browser measurements.
+
 ## Submission
 
 A release PR adds exactly one `submissions/<id>.json`, with no executable files or index edits:
