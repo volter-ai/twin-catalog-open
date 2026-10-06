@@ -55,6 +55,8 @@ SDK/API versions and explicit limitations in the package README. Model replies, 
 interfaces are labeled. Declared gaps remain in the coverage denominator. No publisher badge or aggregate grade
 substitutes for the exact release's supported operations, replay results and scope of browser measurements.
 
+The served HTTP customer journey uses a fresh client connection per step and retains the vendor Host, request body, manual redirects and ten-second deadline. This isolates the measurement from earlier process-wide Bun connection reuse; it adds no retry or response substitution. Chromium replay and admission requirements remain separate and unchanged.
+
 ## Submission
 
 A release PR adds exactly one `submissions/<id>.json`, with no executable files or index edits:
