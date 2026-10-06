@@ -35,7 +35,14 @@ for (const group of ['dependencies', 'optionalDependencies', 'peerDependencies',
 // The standard's client cases and the pack's declared SDK examples need their pinned development clients too.
 // This installs data only; candidate scripts never execute in the networked preparation phase.
 const standardManifest = read('/opt/catalog/node_modules/@volter/twin-standard/package.json');
-const dependencies = { ...standardManifest.devDependencies, ...pack.devDependencies, ...policy.tools, [s.package]: s.version };
+// Evaluator client cases run against the released standard's clients. The candidate's development manifest
+// supplies additional clients; it cannot replace one used by that evaluator. Retain collisions as conditions,
+// rather than claiming these cases measured the candidate's different SDK range.
+const clientDependencyChoices = Object.entries(pack.devDependencies ?? {}).flatMap(([name, candidate]) => {
+  const evaluator = standardManifest.devDependencies?.[name];
+  return evaluator && evaluator !== candidate ? [{ name, candidate, evaluator, selected: evaluator }] : [];
+});
+const dependencies = { ...pack.devDependencies, ...standardManifest.devDependencies, ...policy.tools, [s.package]: s.version };
 requireThat(!Object.hasOwn(policy.tools, s.package), 'submission collides with evaluator tooling');
 write('/work/package.json', { name: 'catalog-assessment', private: true, dependencies });
 await installationMetadata(s, policy.registry);
@@ -83,5 +90,5 @@ const packageMetadata = {
   repositoryDirectory: typeof pack.repository === 'object' ? pack.repository.directory ?? null : null,
   bugs: typeof pack.bugs === 'string' ? pack.bugs : pack.bugs?.url ?? null,
 };
-write('/work/prepared.json', { schemaVersion: 1, submission: s, integrity: s.integrity, provenance, packageMetadata, dependencyLockSha256: digest(readFileSync('/work/package-lock.json', 'utf8')), clientSdkLocks, tools: policy.tools });
+write('/work/prepared.json', { schemaVersion: 1, submission: s, integrity: s.integrity, provenance, packageMetadata, dependencyLockSha256: digest(readFileSync('/work/package-lock.json', 'utf8')), clientSdkLocks, clientDependencyChoices, tools: policy.tools });
 write('/work/world.json', { id: 'catalog-assessment', network: { egress: [] }, services: [] });
