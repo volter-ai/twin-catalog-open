@@ -7,16 +7,13 @@ import { x } from 'tar';
 import semver from 'semver';
 import { verify as verifyBundle } from 'sigstore';
 import { read, write, requireThat, digest } from '../lib/model.mjs';
-import { metadata, installationMetadata, registryURL, verifyArtifact, verifiedProvenance } from '../lib/registry.mjs';
+import { metadata, installationMetadata, registryURL, artifactBytes, verifiedProvenance } from '../lib/registry.mjs';
 
 const input = read('/input/input.json');
 const { submission: s, source, policy } = input;
 const doc = await metadata(s.package, s.version, policy.registry, fetch, {});
 requireThat(doc.dist?.attestations?.url, 'npm provenance required; this version has no attestation');
-const tarResponse = await fetch(registryURL(doc.dist.tarball, policy.registry), { redirect: 'error' });
-requireThat(tarResponse.ok, `tarball: HTTP ${tarResponse.status}`);
-const bytes = Buffer.from(await tarResponse.arrayBuffer());
-verifyArtifact(bytes, s, doc);
+const bytes = await artifactBytes(doc, s, policy.registry);
 writeFileSync('/work/artifact.tgz', bytes);
 mkdirSync('/work/unpacked', { recursive: true });
 await x({ file: '/work/artifact.tgz', cwd: '/work/unpacked', strict: true, filter: (path, entry) => {
