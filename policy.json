@@ -2,9 +2,9 @@
   "schemaVersion": 1,
   "registry": "https://registry.npmjs.org",
   "tools": {
-    "@volter/world-core": "3.0.69",
-    "@volter/world-runtime": "3.0.69",
-    "@volter/twin-standard": "1.0.61",
+    "@volter/world-core": "3.0.72",
+    "@volter/world-runtime": "3.0.72",
+    "@volter/twin-standard": "1.0.64",
     "playwright": "1.63.0"
   },
   "bun": "1.3.11",
