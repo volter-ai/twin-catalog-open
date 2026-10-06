@@ -156,6 +156,8 @@ artifact digest is independently recomputed. Private-source publication without 
 
 Resend client conformance uses its official Node SDK at the demanded application's exact 6.6.0 pin: a single send and readback, a batch and individual readbacks, and the documented missing-required-field refusal. Mail remains synthetic. Passing these cases establishes those operations, not live delivery or complete SDK coverage.
 
+The released standard owns the development SDK versions used by its client cases. Candidate development dependencies supply additional clients but cannot override an evaluator-owned version. Preparation retains `clientDependencyChoices` for differing requested ranges and the resolved dependency lock. These cases measure the selected evaluator client; they do not establish compatibility with every SDK range in the candidate manifest.
+
 The versioned `@volter/twin-standard` owns the checks and machine-readable assessment API. The catalog invokes it;
 it does not implement another Protocol 3 grader or journey engine. Evaluation occurs inside a task-owned World.
 
