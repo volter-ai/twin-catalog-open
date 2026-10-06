@@ -77,5 +77,14 @@ const provenance = await verifiedProvenance(await response.json(), source, bytes
 // Keep a vendor-named package directory for the standard's public directory API; preserve the installed artifact.
 mkdirSync('/work/packs', { recursive: true });
 cpSync(join('/work/node_modules', s.package), join('/work/packs', s.vendor), { recursive: true });
-write('/work/prepared.json', { schemaVersion: 1, submission: s, integrity: s.integrity, provenance, dependencyLockSha256: digest(readFileSync('/work/package-lock.json', 'utf8')), clientSdkLocks, tools: policy.tools });
+// Retain listing facts from these exact bytes, never the registry's moving latest metadata.
+const packageMetadata = {
+  description: typeof pack.description === 'string' ? pack.description : null,
+  license: pack.license,
+  engines: pack.engines ?? {},
+  peerDependencies: pack.peerDependencies ?? {},
+  repositoryDirectory: typeof pack.repository === 'object' ? pack.repository.directory ?? null : null,
+  bugs: typeof pack.bugs === 'string' ? pack.bugs : pack.bugs?.url ?? null,
+};
+write('/work/prepared.json', { schemaVersion: 1, submission: s, integrity: s.integrity, provenance, packageMetadata, dependencyLockSha256: digest(readFileSync('/work/package-lock.json', 'utf8')), clientSdkLocks, tools: policy.tools });
 write('/work/world.json', { id: 'catalog-assessment', network: { egress: [] }, services: [] });
