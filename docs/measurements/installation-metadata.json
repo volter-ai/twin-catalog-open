@@ -1,0 +1,14 @@
+{
+  "mode": "GitHub Actions preparation failure and exact-version confirmation",
+  "sourceCommit": "6b1eeacaf7f629db2985d213f52fdcf0013dc045",
+  "assessmentBase": "31af65e30b619cf47fd3387c6de97611effe56c0",
+  "workflowRun": 37350037621,
+  "failedAttempt": 1,
+  "successfulAttempt": 2,
+  "command": "node bin/twin-catalog.mjs assess-pr --out assessment/report.json; npm install --ignore-scripts --no-audit --no-fund --registry https://registry.npmjs.org",
+  "concurrentWork": "exact-version metadata and artifact preparation within the same credential-free container; no candidate evaluation before the failure",
+  "observation": "Exact-version metadata and tarball were available, but npm install received 404 for the package installation metadata; the same unchanged submission passed on retry. This is an endpoint-visibility observation, not a latency benchmark.",
+  "retainedDiagnostics": "https://github.com/volter-ai/twin-catalog-rollout-test/actions/runs/37350037621",
+  "confirmationPolicySource": "registry-confirmation.json",
+  "reproduce": "After a new immutable public test release, compare its exact-version endpoint with GET of the package endpoint using Accept: application/vnd.npm.install-v1+json; retain both responses and source/run identity. Do not republish an accepted version."
+}
