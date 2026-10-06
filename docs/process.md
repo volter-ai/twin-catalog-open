@@ -154,6 +154,8 @@ artifact digest is independently recomputed. Private-source publication without 
 
 ## Evaluation and reports
 
+Resend client conformance uses its official Node SDK at the demanded application's exact 6.6.0 pin: a single send and readback, a batch and individual readbacks, and the documented missing-required-field refusal. Mail remains synthetic. Passing these cases establishes those operations, not live delivery or complete SDK coverage.
+
 The versioned `@volter/twin-standard` owns the checks and machine-readable assessment API. The catalog invokes it;
 it does not implement another Protocol 3 grader or journey engine. Evaluation occurs inside a task-owned World.
 
