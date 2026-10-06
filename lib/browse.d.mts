@@ -19,6 +19,9 @@ export type Measurements = {
   browser: {
     measured: true;
     target: string;
+    responseObservation?: string;
+    applicationOriginCorsCoverage?: unknown | null;
+    cookieJarCoverage?: unknown | null;
     version: string;
     answered?: number;
     failures?: unknown[];
