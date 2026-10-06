@@ -55,7 +55,7 @@ SDK/API versions and explicit limitations in the package README. Model replies, 
 interfaces are labeled. Declared gaps remain in the coverage denominator. No publisher badge or aggregate grade
 substitutes for the exact release's supported operations, replay results and scope of browser measurements.
 
-The served HTTP customer journey uses a fresh client connection per step and retains the vendor Host, request body, manual redirects and ten-second deadline. This isolates the measurement from earlier process-wide Bun connection reuse; it adds no retry or response substitution. Chromium replay and admission requirements remain separate and unchanged.
+The served HTTP customer journey uses the SDK harness's Node HTTP transport with a fresh connection per step. It retains the vendor Host, request body and manual redirects, and its ten-second deadline includes receiving the full response body. Expiry aborts the owned request; it adds no retry or response substitution. Chromium replay and admission requirements remain separate and unchanged.
 
 ## Submission
 
