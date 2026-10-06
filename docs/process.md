@@ -117,7 +117,7 @@ moderation or publication credentials, no Docker socket and no host project moun
 Dependencies are resolved once into a recorded lock; evaluation reuses that installation with network disabled.
 Before dependency installation, preparation confirms the candidate's exact version and integrity in npm's
 installation metadata as well as its exact-version metadata. These registry views may propagate separately.
-Only HTTP 404 or an otherwise valid package document without that version is retried, using the existing measured
+Tarball downloads also confirm availability and integrity before extraction. Only HTTP 404 or an otherwise valid package document without that version is retried, using the existing measured
 registry confirmation window. HTTP errors, malformed identities and conflicting integrity fail immediately.
 Confirmation performs reads only; it never uploads, grants readiness or retries candidate installation scripts.
 Input data is readable by the container's unprivileged user. Setup and preparation failures produce a failed JSON
@@ -160,12 +160,18 @@ It reports failures, answered steps, response replay equality, and served/gap co
 every declared gap retained in the denominator; declared support and exercised coverage are separate fields.
 An empty journey or missing response trace cannot establish replay. Unsupported instrumentation is `null`/not measured,
 never zero or 100%. Quick assessment does not claim browser DOM coverage, real-vendor parity, line coverage, or complete
-state-transition coverage. Those require their own instruments. HTTP-only journeys also replay twice through Chromium's fetch, cookie jar and HTTP response behavior, using the same
-walker and operation observer. Mixed or non-HTTP wires report browser measurement as unavailable. This target measures
-no DOM interactions or real-vendor parity. World and JavaScript clocks are frozen; Chromium's process wall time follows
-World time through libfaketime, at one-second native precision. Monotonic timers retain elapsed machine time. Verification
-checks both native `Expires` and `Max-Age` across a World clock advance; no expiry headers are rewritten. The exact
-Chromium version, clock precision and browser replay results are reported.
+state-transition coverage. Those require their own instruments. HTTP-only journeys replay twice through Chromium at
+each request's own origin, using the same walker and operation observer. These are authored HTTP transcripts across
+API, console and checkout hosts: the transport retains authored headers (including different actors' cookies) and
+observes the actual HTTP status, headers and body, including redirects and Set-Cookie. It executes each step once.
+The report labels this scope; it does not claim JavaScript visibility of those headers, application-origin CORS,
+native cookie-jar, DOM interaction or real-vendor parity coverage. Those fields remain unmeasured. Mixed or non-HTTP
+wires report browser measurement as unavailable. A separate strict browser-fetch fixture verifies native cookie
+handling and expiry, CORS refusals, and credential modes without granting any pack those measurements.
+World and JavaScript clocks are frozen; Chromium's process wall time follows World time through libfaketime,
+at one-second native precision. Monotonic timers retain elapsed machine time. The fixture checks native Expires
+and Max-Age across a World clock advance without rewriting expiry headers. Reports retain the exact Chromium version,
+clock precision and journey replay results.
 
 Admission adds form checks for every unit and full deterministic conformance. A failure in any required check blocks
 readiness; a grade percentage is informational, not a threshold. Missing optional coverage is shown explicitly.
