@@ -47,7 +47,7 @@ does not change that pin. Removing a recommendation is not uninstalling a runnin
 Each assessed release exposes its artifact's description, license, Node requirements, kernel peer requirements,
 source directory and issue tracker beside its integrity, provenance and measured behavior. README and license links
 point to the source commit verified by npm provenance. They describe that version, not the publisher's current branch.
-The JSON-only reader also projects installed customer scope, pinned SDK dependencies, actual CLI/kernel/runtime versions, clock conditions, retention and teardown when the bound report measured them. An older report exposes `consumer: null`; it cannot acquire a passing workflow from publisher trust or a later test.
+The JSON-only reader also projects installed customer scope, pinned SDK dependencies, actual CLI/kernel/runtime versions, app-local dependency identity, clock conditions, retention and teardown when the bound report measured them. An older report without a customer workflow exposes `consumer: null`; one without app-local dependency evidence exposes `application: null`. Neither acquires newer installation evidence from publisher trust or a later test.
 
 Historical assessments without these retained fields show them as unavailable; current registry metadata does not
 fill missing historical evidence. A provenance link establishes source and build identity, not vendor fidelity.
@@ -120,6 +120,10 @@ never the contributor's head. Source-registration and maintenance PRs do not exe
 extraction, dependency installation and evaluation occur in disposable containers with no repository, npm, cloud,
 moderation or publication credentials, no Docker socket and no host project mounts. Install scripts are disabled.
 Dependencies are resolved once into a recorded lock; evaluation reuses that installation with network disabled.
+The customer app has its own candidate, CLI-matching kernel and SDK installation in a separate owned volume,
+outside the evaluator's dependency tree. Both volumes survive preparation and offline evaluation; temporary
+container files do not hold prepared inputs. The controller retains both dependency locks and verifies cleanup
+of every volume it created. This proves an app-local installation rather than ancestor dependency resolution.
 Before dependency installation, preparation confirms the candidate's exact version and integrity in npm's
 installation metadata as well as its exact-version metadata. These registry views may propagate separately.
 Tarball downloads also confirm availability and integrity before extraction. Only HTTP 404 or an otherwise valid package document without that version is retried, using the existing measured

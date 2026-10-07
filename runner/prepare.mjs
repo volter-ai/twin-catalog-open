@@ -82,23 +82,25 @@ const provenance = await verifiedProvenance(await response.json(), source, bytes
 mkdirSync('/work/packs', { recursive: true });
 cpSync(join('/work/node_modules', s.package), join('/work/packs', s.vendor), { recursive: true });
 const { prepareConsumerApp } = await import(evaluatorRequire.resolve('@volter/twin-standard'));
-const appDir = '/work/customer-app';
-const consumerFixture = prepareConsumerApp(join('/work/packs', s.vendor), appDir);
-const appInstall = spawnSync('npm', ['install', '--ignore-scripts', '--no-audit', '--no-fund', '--registry', policy.registry], { cwd: appDir, encoding: 'utf8', maxBuffer: 16 * 1024 * 1024 });
-requireThat(appInstall.status === 0, `customer SDK preparation failed: ${appInstall.stderr}`);
-const consumerLock = read(join(appDir, 'package-lock.json'));
-for (const [path, entry] of Object.entries(consumerLock.packages ?? {})) {
-  if (!path) continue;
-  requireThat(!entry.link && entry.resolved && entry.integrity, `${path}: customer dependency is not a locked registry artifact`);
-  registryURL(entry.resolved, policy.registry);
-}
-// Other dependencies can own the flattened volter shortcut; use the exact product's declared entry.
 const productRoot = '/work/node_modules/@volter/world';
 const product = read(join(productRoot, 'package.json'));
 requireThat(product.name === '@volter/world' && product.version === policy.tools['@volter/world'], 'customer CLI differs from the product pin');
 requireThat(typeof product.bin?.volter === 'string', 'product has no declared volter entry');
 const cli = realpathSync(join(productRoot, product.bin.volter));
 requireThat(!relative(realpathSync(productRoot), cli).startsWith('..'), 'CLI entry is outside the installed product');
+// Keep the app outside /work's evaluator dependency tree.
+const appDir = '/customer/app';
+const consumerFixture = prepareConsumerApp(join('/work/packs', s.vendor), appDir, { cli });
+const appInstall = spawnSync('npm', ['install', '--ignore-scripts', '--no-audit', '--no-fund', '--registry', policy.registry], { cwd: appDir, encoding: 'utf8', maxBuffer: 16 * 1024 * 1024 });
+requireThat(appInstall.status === 0, `customer SDK preparation failed: ${appInstall.stderr}`);
+const consumerLock = read(join(appDir, 'package-lock.json'));
+requireThat(consumerLock.packages[`node_modules/${s.package}`]?.integrity === s.integrity, 'customer candidate differs from the admitted artifact');
+requireThat(consumerLock.packages['node_modules/@volter/world-core']?.version === policy.tools['@volter/world-core'], 'customer kernel differs from the CLI pin');
+for (const [path, entry] of Object.entries(consumerLock.packages ?? {})) {
+  if (!path) continue;
+  requireThat(!entry.link && entry.resolved && entry.integrity, `${path}: customer dependency is not a locked registry artifact`);
+  registryURL(entry.resolved, policy.registry);
+}
 const consumer = { appDir, cli, artifactIntegrity: s.integrity };
 // Retain listing facts from these exact bytes, never the registry's moving latest metadata.
 const packageMetadata = {

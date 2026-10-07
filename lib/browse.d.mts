@@ -14,6 +14,12 @@ export type Measurements = {
     fixture: string | null;
     sdkDependencies: Record<string, string> | null;
     tools: Record<string, string> | null;
+    application: null | {
+      appLocal: boolean;
+      candidate: { package: string; version: string; integrity: string };
+      kernel: { package: string; version: string };
+      dependencyLockSha256: string;
+    };
     clock: Record<string, unknown> | null;
     retainedReadback: boolean | null;
     retentionNotApplicable: string | null;

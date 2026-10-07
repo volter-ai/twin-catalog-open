@@ -18,6 +18,7 @@ const bytes = Buffer.from('synthetic immutable artifact');
 const submitted = (changes = {}) => ({ schemaVersion: 1, source: 'outside', vendor: 'stripe', package: '@outside/payments', version: '1.2.3', integrity: integrityOf(bytes), ...changes });
 const index = () => ({ sources: [source, official], vendors: [], recommendations: {}, revocations: [] });
 const sha = 'a'.repeat(40), at = '2026-10-04T00:00:00Z';
+const assessmentTools = read(join(import.meta.dirname, '..', 'policy.json')).tools;
 
 test('GitHub reads recover one transport failure without retrying refusals or writes', async () => {
   const failure = new TypeError('fetch failed', { cause: { code: 'UND_ERR_SOCKET' } });
@@ -48,7 +49,7 @@ test('GitHub reads recover one transport failure without retrying refusals or wr
 
 test('preparation refusal retains a failed envelope, diagnostics and owned cleanup', () => {
   const root = mkdtempSync(join(tmpdir(), 'catalog-preparation-refusal-'));
-  const input = { policy: { requireProvenance: true, tools: {} }, submission: submitted() };
+  const input = { policy: { requireProvenance: true, tools: assessmentTools }, submission: submitted() };
   const calls = [];
   const report = evaluate(root, input, join(root, 'report.json'), { spawn: (command, args) => {
     assert.equal(command, 'docker'); calls.push(args);
@@ -68,23 +69,31 @@ test('preparation refusal retains a failed envelope, diagnostics and owned clean
   assert.deepEqual(read(join(root, 'report.json')), report);
   assert.ok(read(join(root, 'report.json.logs.json')).some((log) => log.status === 1));
   assert.equal(calls.at(-1)[0], 'volume'); assert.equal(calls.at(-1)[1], 'rm');
+  const created = calls.filter(args => args[0] === 'volume' && args[1] === 'create').map(args => args.at(-1));
+  assert.equal(created.length, 2);
+  assert.deepEqual(calls.filter(args => args[0] === 'volume' && args[1] === 'rm').map(args => args.at(-1)), created);
 });
 
 test('uncertain teardown overwrites a successful candidate report with changes-needed', () => {
   const root = mkdtempSync(join(tmpdir(), 'catalog-teardown-refusal-'));
-  const input = { policy: { requireProvenance: true, tools: {} }, submission: submitted() };
+  const input = { policy: { requireProvenance: true, tools: assessmentTools }, submission: submitted() };
   const lock = JSON.stringify({ packages: {} });
+  const removed = [];
   const report = evaluate(root, input, join(root, 'report.json'), { spawn: (_command, args) => {
     if (args[0] === 'build') writeFileSync(args[args.indexOf('--iidfile') + 1], `sha256:${'b'.repeat(64)}`);
-    if (args[0] === 'volume' && args[1] === 'rm') return { status: 1, stdout: '', stderr: 'volume still referenced' };
+    if (args[0] === 'volume' && args[1] === 'rm') {
+      removed.push(args.at(-1));
+      return { status: removed.length === 1 ? 1 : 0, stdout: '', stderr: removed.length === 1 ? 'volume still referenced' : '' };
+    }
     const script = args.at(-1);
-    const stdout = script.includes('prepared.json') ? JSON.stringify({ integrity: input.submission.integrity, dependencyLockSha256: digest(lock) }) : script.includes('package-lock.json') ? lock : script.includes('report.json') ? JSON.stringify({ schemaVersion: 1, package: input.submission.package, version: input.submission.version, integrity: input.submission.integrity, ready: true }) : '';
+    const stdout = script.includes('prepared.json') ? JSON.stringify({ integrity: input.submission.integrity, dependencyLockSha256: digest(lock), consumerDependencyLockSha256: digest(lock), consumer: { appDir: '/customer/app' } }) : script.includes('package-lock.json') ? lock : script.includes('report.json') ? JSON.stringify({ schemaVersion: 1, package: input.submission.package, version: input.submission.version, integrity: input.submission.integrity, ready: true }) : '';
     return { status: 0, stdout, stderr: '' };
   } });
   assert.equal(report.status, 'changes-needed'); assert.equal(report.report, null);
   assert.match(report.error, /teardown could not be verified/);
   assert.equal(read(join(root, 'report.json')).status, 'changes-needed');
-  assert.equal(read(join(root, 'report.json.logs.json')).at(-1).status, 1);
+  assert.equal(removed.length, 2);
+  assert.ok(read(join(root, 'report.json.logs.json')).some(log => log.command === 'volume' && log.status === 1));
 });
 
 test('arbitrary package names and multiple independent publishers retain distinct identities', () => {
