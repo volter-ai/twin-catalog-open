@@ -7,9 +7,10 @@ requireThat(Boolean(process.env.VOLTER_WORLD), 'evaluation must run inside a Wor
 const { submission: s } = read('/input/input.json');
 const requireFromPack = createRequire('/work/package.json');
 const { assessPack } = await import(requireFromPack.resolve('@volter/twin-standard'));
-const assessment = await assessPack(join('/work/packs', s.vendor), { browser: true });
+const prepared = read('/work/prepared.json');
+const assessment = await assessPack(join('/work/packs', s.vendor), { browser: true, consumer: prepared.consumer });
 requireThat(assessment.package === s.package && assessment.version === s.version && assessment.vendor === s.vendor, 'assessment returned a different artifact identity');
-const report = { ...assessment, integrity: s.integrity, prepared: read('/work/prepared.json') };
+const report = { ...assessment, integrity: s.integrity, prepared };
 report.comparison = compareReports(report, existsSync('/input/baseline.json') ? read('/input/baseline.json') : null);
 write('/work/report.json', report);
 process.exit(report.ready ? 0 : 1);

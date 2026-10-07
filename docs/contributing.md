@@ -5,7 +5,7 @@ not scripts from a platform checkout. Read the [process](process.md) for identit
 
 ## Build a pack
 
-Install Bun at the catalog policy's version and the public `@volter/world-core`, `@volter/world-runtime` and
+Install Bun at the catalog policy's version and the public `@volter/world`, `@volter/world-core`, `@volter/world-runtime` and
 `@volter/twin-standard` versions in `policy.json`. Install TypeScript and its Node/Bun types as development dependencies.
 Keep the package directory named for the vendor; its npm package name is independent.
 
@@ -14,7 +14,9 @@ bunx --bun twin-standard create stripe --init stripe --package @example/payments
 ```
 
 The generated files contain explicit fill markers. Author the vendored spec and its provenance, demand, manifest,
-stored resource states, decision table, handlers and customer journey in the standard's required order. The package
+stored resource states, decision table, handlers and customer journey in the standard's required order. Start the
+outline from the vendor quickstart and pinned SDK's ordinary default requests, app environment and issued identity.
+Walk that customer entry while building; reducing its requested fields to match the twin does not establish compatibility. The package
 README describes its vendor surface, refusals and limits. Declare your own public GitHub repository and license in
 package.json. Complete source requirements before derivation:
 
@@ -34,7 +36,27 @@ LICENSE. A build and `npm pack --dry-run` must show those paths; no platform-spe
 
 ## Assess before submitting
 
-Walk the life's journeys while implementing. For the final assessment, run the released standard through a World:
+Package the customer entry in `journeys/first-use.json`. It has `schemaVersion: 1`, the upstream `source`, an
+`about` describing its scope, and a `files` map of relative paths to text. Include `package.json` with exact registry
+SDK dependencies, `.env.example` with the names the app reads, and its unchanged client script with result
+assertions. `run` is an argument array such as `["node", "workflow.mjs"]`. For stored workflows,
+`retention: { "readback": ["node", "readback.mjs"] }` inspects prior state without creating it again. A stateless
+workflow instead declares `retention: { "none": "<why no stored vendor resource is created>" }`. Use SDKs to create
+stored data and existing vendor doors for synthetic setup; do not use scenario success in place of a stored write.
+The standard owns CLI lifecycle and teardown, so the scripts do not start or stop infrastructure themselves. For a timed workflow, `clock: { "at": "<ISO instant>", "advanceAfterRun": "10s" }` freezes time before the client runs, then advances and inspects the due result before retention is measured. The duration is the journey’s chosen synthetic wait, not a vendor timing guarantee.
+
+Walk the life's journeys and this first-use journey while implementing. For final qualification, build and pack
+first, install that tarball in a fresh directory without development links, and run the released standard against
+the installed package. Keep the archive inventory and lockfile. Prepare a new customer app beside that installation:
+
+```sh
+twin-standard prepare-consumer <installed pack dir> --app <new app dir> --cli <absolute installed volter executable> --integrity <packed SHA-512 integrity> --out prepared-consumer.json
+npm install --prefix <new app dir> --ignore-scripts --no-audit --no-fund
+```
+
+This preparation writes fixture files only; SDK dependency installation precedes offline execution. The product
+CLI must resolve the installed candidate through that app's parent dependency directory. For the final assessment,
+run the released standard through a World:
 
 Create `assessment.world.config.json`:
 
@@ -43,15 +65,16 @@ Create `assessment.world.config.json`:
 ```
 
 ```sh
-volter-world run assessment.world.config.json --root . --env-out /tmp/new-assessment.env --owner pack-assessment -- bunx --bun twin-standard assess stripe --browser --out assessment.json
+volter-world run assessment.world.config.json --root . --env-out /tmp/new-assessment.env --owner pack-assessment -- twin-standard assess <installed pack dir> --prepared-consumer prepared-consumer.json --browser --out assessment.json
 ```
 
-The assessment config has no vendor services; the standard creates fresh in-memory World state for each journey.
+The outer assessment config has no vendor services; the standard creates fresh in-memory state for journey replay
+and uses the product CLI to own a separate app World for the installed customer workflow.
 For an HTTP browser target, use Linux, install Playwright at the catalog policy version and its Chromium binary,
 and install `libfaketime` (Debian/Ubuntu: `sudo apt-get install libfaketime`). The browser process uses the World
 clock for native cookie expiry, at one-second precision; JavaScript time retains millisecond precision. Authors on
 other platforms can omit `--browser` for in-process assessment; catalog Actions supplies the browser target. The report
-separates declared served/gap counts, operations actually exercised, deterministic replay, conformance and Chromium
+separates declared served/gap counts, operations actually exercised, deterministic replay, conformance, installed customer workflow and Chromium
 results. It does not measure DOM interactions, line coverage, real-vendor parity or every possible state transition.
 
 Local assessment helps authors; it does not replace the independent catalog assessment of the published tarball.

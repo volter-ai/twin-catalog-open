@@ -81,6 +81,18 @@ const provenance = await verifiedProvenance(await response.json(), source, bytes
 // Keep a vendor-named package directory for the standard's public directory API; preserve the installed artifact.
 mkdirSync('/work/packs', { recursive: true });
 cpSync(join('/work/node_modules', s.package), join('/work/packs', s.vendor), { recursive: true });
+const { prepareConsumerApp } = await import(evaluatorRequire.resolve('@volter/twin-standard'));
+const appDir = '/work/customer-app';
+const consumerFixture = prepareConsumerApp(join('/work/packs', s.vendor), appDir);
+const appInstall = spawnSync('npm', ['install', '--ignore-scripts', '--no-audit', '--no-fund', '--registry', policy.registry], { cwd: appDir, encoding: 'utf8', maxBuffer: 16 * 1024 * 1024 });
+requireThat(appInstall.status === 0, `customer SDK preparation failed: ${appInstall.stderr}`);
+const consumerLock = read(join(appDir, 'package-lock.json'));
+for (const [path, entry] of Object.entries(consumerLock.packages ?? {})) {
+  if (!path) continue;
+  requireThat(!entry.link && entry.resolved && entry.integrity, `${path}: customer dependency is not a locked registry artifact`);
+  registryURL(entry.resolved, policy.registry);
+}
+const consumer = { appDir, cli: '/work/node_modules/.bin/volter', artifactIntegrity: s.integrity };
 // Retain listing facts from these exact bytes, never the registry's moving latest metadata.
 const packageMetadata = {
   description: typeof pack.description === 'string' ? pack.description : null,
@@ -90,5 +102,5 @@ const packageMetadata = {
   repositoryDirectory: typeof pack.repository === 'object' ? pack.repository.directory ?? null : null,
   bugs: typeof pack.bugs === 'string' ? pack.bugs : pack.bugs?.url ?? null,
 };
-write('/work/prepared.json', { schemaVersion: 1, submission: s, integrity: s.integrity, provenance, packageMetadata, dependencyLockSha256: digest(readFileSync('/work/package-lock.json', 'utf8')), clientSdkLocks, clientDependencyChoices, tools: policy.tools });
+write('/work/prepared.json', { schemaVersion: 1, submission: s, integrity: s.integrity, provenance, packageMetadata, dependencyLockSha256: digest(readFileSync('/work/package-lock.json', 'utf8')), clientSdkLocks, clientDependencyChoices, tools: policy.tools, consumer, consumerFixture, consumerDependencyLockSha256: digest(readFileSync(join(appDir, 'package-lock.json'), 'utf8')) });
 write('/work/world.json', { id: 'catalog-assessment', network: { egress: [] }, services: [] });

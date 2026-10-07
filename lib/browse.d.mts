@@ -7,6 +7,19 @@ export type Coverage = {
 };
 export type Replay = { equal: boolean; runs: number; firstSha256: string; secondSha256: string };
 export type Measurements = {
+  consumer: null | {
+    measured: boolean;
+    passed: boolean;
+    scope: string | null;
+    fixture: string | null;
+    sdkDependencies: Record<string, string> | null;
+    tools: Record<string, string> | null;
+    clock: Record<string, unknown> | null;
+    retainedReadback: boolean | null;
+    retentionNotApplicable: string | null;
+    teardownVerified: boolean | null;
+    failures: string[] | null;
+  };
   scope: string | null;
   surface: { total: number; served: number; gap: number } | null;
   operationCoverage: Coverage | null;
