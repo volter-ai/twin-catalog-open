@@ -1,6 +1,6 @@
 // No credentials enter this container. This phase downloads data; scripts are disabled.
-import { readFileSync, writeFileSync, mkdirSync, cpSync } from 'node:fs';
-import { join } from 'node:path';
+import { readFileSync, writeFileSync, mkdirSync, cpSync, realpathSync } from 'node:fs';
+import { join, relative } from 'node:path';
 import { spawnSync } from 'node:child_process';
 import { createRequire } from 'node:module';
 import { x } from 'tar';
@@ -92,7 +92,14 @@ for (const [path, entry] of Object.entries(consumerLock.packages ?? {})) {
   requireThat(!entry.link && entry.resolved && entry.integrity, `${path}: customer dependency is not a locked registry artifact`);
   registryURL(entry.resolved, policy.registry);
 }
-const consumer = { appDir, cli: '/work/node_modules/.bin/volter', artifactIntegrity: s.integrity };
+// Other dependencies can own the flattened volter shortcut; use the exact product's declared entry.
+const productRoot = '/work/node_modules/@volter/world';
+const product = read(join(productRoot, 'package.json'));
+requireThat(product.name === '@volter/world' && product.version === policy.tools['@volter/world'], 'customer CLI differs from the product pin');
+requireThat(typeof product.bin?.volter === 'string', 'product has no declared volter entry');
+const cli = realpathSync(join(productRoot, product.bin.volter));
+requireThat(!relative(realpathSync(productRoot), cli).startsWith('..'), 'CLI entry is outside the installed product');
+const consumer = { appDir, cli, artifactIntegrity: s.integrity };
 // Retain listing facts from these exact bytes, never the registry's moving latest metadata.
 const packageMetadata = {
   description: typeof pack.description === 'string' ? pack.description : null,
