@@ -80,6 +80,14 @@ gh workflow run publish.yml --repo "$catalog_repository" --ref main
 
 The workflow verifies admission and protection, then reuses a published version only when source and digest match. It cannot overwrite a conflicting identity. Retain the new receipt and compare registry integrity before calling the upload confirmed. No platform build, candidate test or hosted deployment is part of this job.
 
+The product site is an independent consumer. Its configured operator scheduler runs the site-only
+`apps/www/scripts/refresh.py` command documented in the World website's publishing instructions.
+It installs an exact released index in a disposable directory, retains registry integrity, builds
+and uploads the product site, and confirms the production snapshot. A site refresh does not
+rebuild or release the platform, change an admission, or replace a user's World pin. Hosting
+custody stays with that site operator; this catalog receives no hosting credential. Inspect the
+site publisher's retained receipt and failure logs when the npm snapshot is newer than the site.
+
 ## Recommend, reject or revoke
 
 A moderator rejects a PR with a concrete reason. An unmerged readiness success adds no release to the index.
