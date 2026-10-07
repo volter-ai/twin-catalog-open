@@ -1,0 +1,8 @@
+{
+  "schemaVersion": 1,
+  "source": "twin-packs-open",
+  "vendor": "linear",
+  "package": "@volter/twin-linear",
+  "version": "3.0.4",
+  "integrity": "sha512-OHqIROUZYb5mlceMPRrjDNpycvRahII+2xh/B461bUREXFY7pKszUy3AwlQmAG+0bdYb3qFWf5JmRYhJn1uavw=="
+}
