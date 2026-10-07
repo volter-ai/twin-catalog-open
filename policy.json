@@ -2,10 +2,11 @@
   "schemaVersion": 1,
   "registry": "https://registry.npmjs.org",
   "tools": {
-    "@volter/world-core": "3.0.98",
-    "@volter/world-runtime": "3.0.98",
-    "@volter/twin-standard": "1.0.90",
-    "playwright": "1.63.0"
+    "@volter/world-core": "3.0.100",
+    "@volter/world-runtime": "3.0.100",
+    "@volter/twin-standard": "1.0.92",
+    "playwright": "1.63.0",
+    "@volter/world": "3.0.100"
   },
   "bun": "1.4.2",
   "nodeImage": "node:24-bookworm-slim",

@@ -47,6 +47,8 @@ does not change that pin. Removing a recommendation is not uninstalling a runnin
 Each assessed release exposes its artifact's description, license, Node requirements, kernel peer requirements,
 source directory and issue tracker beside its integrity, provenance and measured behavior. README and license links
 point to the source commit verified by npm provenance. They describe that version, not the publisher's current branch.
+The JSON-only reader also projects installed customer scope, pinned SDK dependencies, actual CLI/kernel/runtime versions, clock conditions, retention and teardown when the bound report measured them. An older report exposes `consumer: null`; it cannot acquire a passing workflow from publisher trust or a later test.
+
 Historical assessments without these retained fields show them as unavailable; current registry metadata does not
 fill missing historical evidence. A provenance link establishes source and build identity, not vendor fidelity.
 
@@ -81,7 +83,8 @@ An already admitted package/version cannot acquire different bytes or a differen
 
 The catalog evaluates only the tarball fetched at the declared integrity. Package source in the contributor's
 repository and evidence supplied in the PR are context, never substitutes for running that artifact. A submission
-cannot select its own evaluator, thresholds, registry, commands or privileges.
+cannot select its own evaluator, thresholds, registry or privileges. A pack's customer fixture supplies its
+unchanged client invocation; the pinned standard owns initialization, lifecycle, assertions and readiness.
 
 ## State and invalidation
 
@@ -143,7 +146,8 @@ routing, not the isolation boundary: the container enforces the evaluation netwo
 The trusted controller owns success/failure, hashes and run identity. Candidate output is untrusted data; bounded
 report parsing never executes it or interpolates it into a shell. It can explain results but cannot confer merge or
 publication authority. The trusted summary renderer escapes contributor strings and neutralizes mentions. Raw logs
-and JSON evidence are downloadable artifacts. There is no execution of arbitrary contributor-supplied test commands.
+and JSON evidence are downloadable artifacts. A packaged first-use fixture executes only in the offline assessment
+container under the same unprivileged boundary as the candidate pack; it has no controller or admission authority.
 Conformance and journey checks are the versioned standard's own entrypoints. Like any in-process plugin check, they
 measure cooperative pack behavior, not a proof that malicious executable code cannot deceive a test; moderator
 source review remains part of admission.
@@ -160,6 +164,21 @@ The released standard owns the development SDK versions used by its client cases
 
 The versioned `@volter/twin-standard` owns the checks and machine-readable assessment API. The catalog invokes it;
 it does not implement another Protocol 3 grader or journey engine. Evaluation occurs inside a task-owned World.
+
+Installed customer readiness is separate from the HTTP journey replay. The released standard materializes the
+pack's `journeys/first-use.json` in a new application directory; versioned standard fixtures cover older immutable
+artifacts that predate this format. Preparation installs the fixture's exact SDK versions with scripts disabled,
+retains its resolved dependency lock and recipe digest, and pins the product CLI alongside the kernel and runtime.
+Evaluation calls normal `volter world init` and checks that its service uses the exact candidate package/version,
+then runs the unchanged client and its result assertions. A stored workflow must retain its state through `down`
+and `up`; its readback may add no mutations. Timed workflows settle the declared result under an explicit frozen/advanced World clock before the retention baseline, so runtime scheduling delay is not a test input. A stateless workflow names why this does not apply. Final stopped
+status is required. Missing or failing consumer evidence means changes needed, even when source form and replay pass.
+These walks establish the advertised workflow at the recorded SDK and tool versions; they do not establish every
+SDK method, complete vendor parity or production delivery. Historical reports keep their original scope.
+
+The Linux runner installs native PostgreSQL tools without a distribution-owned cluster for customer workflows
+that declare that backing. Each World starts and stops its own database through the runtime; the container image
+and the tool/SDK locks identify the execution conditions.
 
 Quick assessment walks the packaged customer journey twice from fresh state with the same clock and World draws.
 It reports failures, answered steps, response replay equality, and served/gap counts over the entire declared surface. Actual operation coverage comes from kernel dispatch, with
