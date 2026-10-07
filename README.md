@@ -4,6 +4,20 @@ The catalog admits and distributes twin packages from independent publishers. It
 people decide what merges. The platform and pack repositories have their own release cycles. The
 [process contract](docs/process.md) defines the boundaries, states and acceptance cases.
 
+## Use a twin
+
+Browse the [public catalog](https://world.volter.ai/twins), choose an exact release, and follow its
+**Setup** tab. Its **Overview** contains that artifact's workflows and limits; **Evidence** keeps
+admission and measurements separate. Local Worlds need no Volter account or cloud subscription.
+[Getting started](https://world-docs.volter.ai/docs/getting-started) runs an unchanged SDK against
+a local twin, and the [cookbook](https://world-docs.volter.ai/cookbook/README) supplies more workflows.
+
+For a twin defect, use the selected release's **Report an issue** or source repository link.
+For CLI, catalog, website or documentation problems, [open an issue here](https://github.com/volter-ai/twin-catalog-open/issues/new)
+and name the component. Include exact versions, the command and error, and a minimal synthetic
+example; leave out credentials and real records. The [recovery guide](https://world-docs.volter.ai/docs/guides/recover-a-failed-call)
+helps identify the component. Reporting a problem does not require a paid Volter account.
+
 ## Submit a release
 
 Register a source with a pull request adding one entry to `sources.json`:
