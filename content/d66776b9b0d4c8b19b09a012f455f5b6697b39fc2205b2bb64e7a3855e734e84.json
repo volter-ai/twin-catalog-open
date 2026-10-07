@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "release": {
+    "schemaVersion": 1,
+    "source": "twin-packs-open",
+    "vendor": "linear",
+    "package": "@volter/twin-linear",
+    "version": "3.0.4",
+    "integrity": "sha512-OHqIROUZYb5mlceMPRrjDNpycvRahII+2xh/B461bUREXFY7pKszUy3AwlQmAG+0bdYb3qFWf5JmRYhJn1uavw=="
+  },
+  "packageMetadata": {
+    "description": "Protocol 3 Linear twin for the official SDK viewer, team and issue workflow and the documented issue-filing integration.",
+    "license": "Apache-2.0",
+    "engines": {
+      "node": ">=22.3"
+    },
+    "peerDependencies": {
+      "@volter/world-core": "^3.0.105"
+    },
+    "repositoryDirectory": "linear",
+    "bugs": null
+  },
+  "readme": {
+    "path": "package/README.md",
+    "markdown": "# @volter/twin-linear\n\nA Protocol 3 Linear twin for a workspace’s issue-filing integration and the Linear SDK\ninstalled by Twin ([demand](./journeys/demand.json)). It serves Linear’s GraphQL endpoint,\nOAuth authorization-code installation, token refresh and configured client-credentials grants,\nworkspace/team/project discovery,\nworkflow states, issue creation/update/archive, labels and comments. The customer life and\npublished-example journey define the modeled scope ([decisions](./journeys/decisions.json)).\n\nResources are read back with declared GraphQL refresh queries, including archived issues.\nMutation deployment uses the vendored schema to adopt the resource returned by Linear.\nRefresh-token retries preserve the returned pair during Linear’s documented 30-minute grace.\nThe executor budget stays below the documented API-key request quota.\n\nThe World’s doors represent settings/UI actions Linear’s API does not expose:\n`POST /_twin/workspaces`, `POST /_twin/workspaces/{urlKey}/people`,\n`POST /_twin/app-credentials` and `POST /_twin/api-keys`. The local credential door\n`POST /_twin/local-credentials` uses those same settings actions to make an idempotent synthetic\nstarter workspace/owner, issue its personal key and register a World OAuth client. It supplies\n`LINEAR_API_KEY`, `LINEAR_CLIENT_ID` and `LINEAR_CLIENT_SECRET`; the personal key names a stored\nowner and is retained across stop/resume. Teams and projects are created through the\nvendor API. The authorize screen uses the registered callback and carries its state back.\n\nThe published relation, logical, date, label, comment, estimate and project-lead filters are served.\nOther GraphQL fields, private-team access management, webhook configuration, PKCE and OAuth\nrevocation are outside this modeled scope and are refused. The SDK’s default\nviewer, team and issue selections are modeled for the official SDK 86.0.0's create/update/read flow\nin [the installed customer entry](./journeys/first-use.json). This does not claim every SDK method.\nNo webhook subscription is made by this life;\nthere is no invented webhook delivery. Release assessments are retained by\n[the independent catalog](https://github.com/volter-ai/twin-catalog-open).\n\nInstall the selected release in your app with `npm install --save-dev @volter/twin-linear@3.0.3`.\nThe app keeps its real `@linear/sdk`; the packaged customer entry pins 86.0.0.\nFor local setup, use the app folder’s `volter world init`, review the detected vendors,\nand keep Linear when the app needs it. Start with `volter world up`, run the app or seed\nthrough `volter world run -- <command>`, and stop with `volter world down`. The World’s\n`GET /twin` describes identity, time, and the available doors.\n\nThe workspace door takes `{ \"name\": \"Example\", \"urlKey\": \"example\", \"owner\": { \"name\": \"Ada\", \"email\": \"ada@example.invalid\", \"password\": \"example-password\" } }`.\nThe people door takes `{ \"name\", \"email\", \"password\" }`; the key door takes `{ \"email\", \"label\" }`.\nThe app door takes `{ \"name\", \"redirect_uris\": [\"https://app.example/callback\"] }`;\nits optional `client_credentials: { workspace: \"example\", teamIds: [...] }` represents\nthe settings toggle and the app user’s configured team access. All credentials are synthetic.\n\nProfiles, public-team settings, empty optional-feature state, issue relations and counts are stored\nin their vendor response shapes and preserved by the declared refresh queries. `isMe` is resolved\nfor the current caller. Creator counts include archived issues; team counts exclude them unless\n`includeArchived: true` is requested. The kernel maintains these counters on recorded writes.\nThe starter leaves cycles, triage, integrations, sharing and automation unconfigured. Its inactive\nnumeric settings, avatar colors, invitation hashes, app actor email addresses and branch naming are\nexplicitly synthetic choices where upstream documentation does not declare production defaults.\nMutations for those additional features remain outside scope; absent feature state does not claim\nthat their behavior is implemented.\n"
+  }
+}

@@ -63,6 +63,10 @@ node bin/twin-catalog.mjs build --out /tmp/new-catalog-output
 The build requires committed admission records and a new output directory. It generates data without importing packs.
 The website and hosted runtime consume this artifact independently; publishing it does not deploy either.
 
+Maintainers use `node bin/twin-catalog.mjs capture-content` to retain the exact artifacts' manifests and READMEs
+in a maintenance change. The distributed reader exposes them as release documentation, separate from assessment
+measurements. See [release information](docs/process.md#release-information-for-users).
+
 For discovery, use the JSON-only reader against an installed index:
 
 ```sh
