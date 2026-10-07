@@ -35,6 +35,7 @@
     "lib",
     "runner",
     "docs",
-    "evidence"
+    "evidence",
+    "content"
   ]
 }

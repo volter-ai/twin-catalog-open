@@ -11,6 +11,7 @@ import { persistEvidence } from '../lib/evidence.mjs';
 import { propose } from '../lib/propose.mjs';
 import { browse } from '../lib/browse.mjs';
 import { register } from '../lib/register.mjs';
+import { captureContent } from '../lib/content.mjs';
 
 const [command, ...args] = process.argv.slice(2);
 const arg = (name, fallback) => { const at = args.indexOf(`--${name}`); if (at < 0) return fallback; requireThat(args[at + 1] && !args[at + 1].startsWith('--'), `--${name} needs a value`); return args[at + 1]; };
@@ -63,6 +64,7 @@ try {
       break;
     }
     case 'build': result = build(root, resolve(arg('out', 'dist'))); break;
+    case 'capture-content': result = await captureContent(root, builtIndex(root), policy().registry); break;
     case 'publish': {
       const client = github();
       const policyClient = process.env.CATALOG_READ_TOKEN ? new GitHub(client.repository, process.env.CATALOG_READ_TOKEN) : client;
@@ -73,7 +75,7 @@ try {
       result = await publish(output, policy().registry);
       break;
     }
-    default: throw new Error('usage: twin-catalog register --source <id> --source-repository <owner/repo> --scope <@scope> [--out <sources.json>] | submit --source <id> --vendor <vendor> --package <@scope/name> --version <exact> | browse [--root <installed-index>] [--vendor <vendor>] [--package <@scope/name>] | assess-pr --pr <number> | check | defaults | build --out <new-directory> | publish | configure [--apply] | propose --from <submission-directory> --send');
+    default: throw new Error('usage: twin-catalog register --source <id> --source-repository <owner/repo> --scope <@scope> [--out <sources.json>] | submit --source <id> --vendor <vendor> --package <@scope/name> --version <exact> | browse [--root <installed-index>] [--vendor <vendor>] [--package <@scope/name>] | capture-content | assess-pr --pr <number> | check | defaults | build --out <new-directory> | publish | configure [--apply] | propose --from <submission-directory> --send');
   }
   console.log(JSON.stringify(result, null, 2));
 } catch (error) { console.error(`twin-catalog: ${error.message ?? error}`); process.exitCode = 1; }

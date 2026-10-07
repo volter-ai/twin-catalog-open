@@ -61,6 +61,17 @@ Untrusted-account submissions need genuine current-head non-author human moderat
 
 ## Recover index publication
 
+To retain workflow documentation for recorded releases, run the data-only capture in a catalog checkout:
+
+```sh
+node bin/twin-catalog.mjs capture-content
+```
+
+It reads immutable tarballs at their recorded integrity and writes `content/<release-id>.json`.
+Existing receipts are reused. Commit them through the maintainer maintenance path before publishing;
+this neither assesses a candidate nor changes an admission record. The publisher includes the receipts
+in the index and binds their hashes to its snapshot. A missing README remains missing.
+
 Retry current protected main after resolving the recorded cause:
 
 ```sh

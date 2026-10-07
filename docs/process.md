@@ -52,6 +52,16 @@ The JSON-only reader also projects installed customer scope, pinned SDK dependen
 Historical assessments without these retained fields show them as unavailable; current registry metadata does not
 fill missing historical evidence. A provenance link establishes source and build identity, not vendor fidelity.
 
+Maintainers can retain release documentation with `twin-catalog capture-content`. This reads each recorded
+package/version's tarball from the policy registry, verifies its recorded SHA-512 integrity, and captures its
+manifest listing facts and README as data in `content/`. It never installs, imports or executes a pack. The
+published snapshot binds those receipts by SHA-256; its reader checks both the receipt and release identity.
+Consumers can display that version's README without fetching a publisher's current branch. Missing README
+content stays unavailable. Artifact facts can supply older listings, but never supply missing assessment,
+customer, browser or provenance evidence. Capture is an explicit maintenance action, not a test trigger.
+New assessments retain the same README from the already unpacked artifact during preparation; the reader can
+use that existing checksum-bound report directly. No additional assessment or documentation workflow runs.
+
 Publishers describe useful workflows, setup and throwaway credential requirements, companion services, supported
 SDK/API versions and explicit limitations in the package README. Model replies, simulated email/search and partial
 interfaces are labeled. Declared gaps remain in the coverage denominator. No publisher badge or aggregate grade

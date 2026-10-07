@@ -1,5 +1,5 @@
 // No credentials enter this container. This phase downloads data; scripts are disabled.
-import { readFileSync, writeFileSync, mkdirSync, cpSync, realpathSync } from 'node:fs';
+import { readFileSync, writeFileSync, mkdirSync, cpSync, realpathSync, readdirSync } from 'node:fs';
 import { join, relative } from 'node:path';
 import { spawnSync } from 'node:child_process';
 import { createRequire } from 'node:module';
@@ -103,6 +103,10 @@ for (const [path, entry] of Object.entries(consumerLock.packages ?? {})) {
 }
 const consumer = { appDir, cli, artifactIntegrity: s.integrity };
 // Retain listing facts from these exact bytes, never the registry's moving latest metadata.
+const readmeNames = readdirSync('/work/unpacked/package').filter(name => /^readme(?:\.md|\.markdown|\.txt)?$/i.test(name));
+requireThat(readmeNames.length <= 1, 'artifact has ambiguous READMEs');
+const readme = readmeNames.length ? { path: `package/${readmeNames[0]}`,
+  markdown: readFileSync(join('/work/unpacked/package', readmeNames[0]), 'utf8') } : null;
 const packageMetadata = {
   description: typeof pack.description === 'string' ? pack.description : null,
   license: pack.license,
@@ -111,5 +115,5 @@ const packageMetadata = {
   repositoryDirectory: typeof pack.repository === 'object' ? pack.repository.directory ?? null : null,
   bugs: typeof pack.bugs === 'string' ? pack.bugs : pack.bugs?.url ?? null,
 };
-write('/work/prepared.json', { schemaVersion: 1, submission: s, integrity: s.integrity, provenance, packageMetadata, dependencyLockSha256: digest(readFileSync('/work/package-lock.json', 'utf8')), clientSdkLocks, clientDependencyChoices, tools: policy.tools, consumer, consumerFixture, consumerDependencyLockSha256: digest(readFileSync(join(appDir, 'package-lock.json'), 'utf8')) });
+write('/work/prepared.json', { schemaVersion: 1, submission: s, integrity: s.integrity, provenance, packageMetadata, readme, dependencyLockSha256: digest(readFileSync('/work/package-lock.json', 'utf8')), clientSdkLocks, clientDependencyChoices, tools: policy.tools, consumer, consumerFixture, consumerDependencyLockSha256: digest(readFileSync(join(appDir, 'package-lock.json'), 'utf8')) });
 write('/work/world.json', { id: 'catalog-assessment', network: { egress: [] }, services: [] });

@@ -69,7 +69,7 @@ export type Release = {
 export type CatalogRelease = Release & {
   packageMetadata: null | {
     description: string | null;
-    license: string;
+    license: string | null;
     engines: Record<string, string>;
     peerDependencies: Record<string, string>;
     repositoryDirectory: string | null;
@@ -80,6 +80,8 @@ export type CatalogRelease = Release & {
     packageUrl: string;
     issuesUrl: string | null;
   };
+  documentation: null | { markdown: string | null; path: string | null; receiptPath: string;
+    receiptSha256: string; artifactIntegrity: string };
   revoked: { reason: string } | null;
   selectable: boolean;
   default: boolean;
