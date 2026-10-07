@@ -16,7 +16,10 @@ bunx --bun twin-standard create stripe --init stripe --package @example/payments
 The generated files contain explicit fill markers. Author the vendored spec and its provenance, demand, manifest,
 stored resource states, decision table, handlers and customer journey in the standard's required order. Start the
 outline from the vendor quickstart and pinned SDK's ordinary default requests, app environment and issued identity.
-Walk that customer entry while building; reducing its requested fields to match the twin does not establish compatibility. The package
+Write the executable customer entry as `journeys/first-use.json` at this outline stage, before implementing
+resource semantics; its format is below. Walk it through `runConsumerWorkflow` while building, using a new
+prepared app for each walk. Fix the pack or shared mechanism when an ordinary SDK call fails; keep the SDK
+request unchanged. Source coverage reports describe source journeys and do not establish installed readiness. The package
 README describes its vendor surface, refusals and limits. Declare your own public GitHub repository and license in
 package.json. Complete source requirements before derivation:
 
@@ -34,9 +37,9 @@ consumers while retaining the TypeScript source the pinned standard reads. Use T
 bin at their compiled entrypoints. A `files` list includes `src`, `dist`, `generated`, `spec`, `journeys`, README and
 LICENSE. A build and `npm pack --dry-run` must show those paths; no platform-specific prepack script is required.
 
-## Assess before submitting
+## Customer entry and release qualification
 
-Package the customer entry in `journeys/first-use.json`. It has `schemaVersion: 1`, the upstream `source`, an
+Author the customer entry with the outline, then package it in `journeys/first-use.json`. It has `schemaVersion: 1`, the upstream `source`, an
 `about` describing its scope, and a `files` map of relative paths to text. Include `package.json` with exact registry
 SDK dependencies, `.env.example` with the names the app reads, and its unchanged client script with result
 assertions. `run` is an argument array such as `["node", "workflow.mjs"]`. For stored workflows,
@@ -54,8 +57,9 @@ twin-standard prepare-consumer <installed pack dir> --app <new app dir> --cli <a
 npm install --prefix <new app dir> --ignore-scripts --no-audit --no-fund
 ```
 
-This preparation writes fixture files only; SDK dependency installation precedes offline execution. The product
-CLI must resolve the installed candidate through that app's parent dependency directory. For the final assessment,
+This preparation writes fixture files only; SDK dependency installation precedes offline execution. Select `--cli` from the installed `@volter/world` package's declared `bin.volter`, rather than the shared
+`node_modules/.bin/volter`: another package may claim that shortcut. The runner invokes compiled JavaScript
+through Node and records the actual entrypoint, command and Node version. The product CLI must resolve the installed candidate through that app's parent dependency directory. For the final assessment,
 run the released standard through a World:
 
 Create `assessment.world.config.json`:
