@@ -230,9 +230,9 @@ historical records. Consumers read `recommendations.json` and `revocations.json`
 release is different from offering it as an install default: pending, rejected, revoked and prerelease versions are
 never automatic selections. A missing or failing assessment is never inferred from a publisher badge.
 
-A future catalog page groups implementations under a vendor, attributes the repository and publisher, and links to
-the immutable version and admission PR/evidence. It can display readiness, support counts, journey failures and replay
-results separately. A contributor sees the PR check, one updated feedback comment, and downloadable workflow artifacts.
+The public catalog groups implementations under a vendor, attributes the repository and publisher, and links to
+the immutable version and admission PR/evidence. It displays release documentation and Setup separately from
+support counts, installed-customer journeys and replay results. A contributor sees the PR check, one updated feedback comment, and downloadable workflow artifacts.
 Readiness checks bind the report digest, workflow run ID and attempt in their external receipt. GitHub may replace
 the display URL and attach a manually dispatched check to an older PR check suite; that display association is not
 the report's source. After authorized merge, publication fetches the exact recorded workflow attempt and requires
