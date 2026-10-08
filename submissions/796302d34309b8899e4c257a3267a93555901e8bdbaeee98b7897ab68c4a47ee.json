@@ -1,0 +1,8 @@
+{
+  "schemaVersion": 1,
+  "source": "twin-packs-open",
+  "vendor": "slack",
+  "package": "@volter/twin-slack",
+  "version": "3.0.6",
+  "integrity": "sha512-pt8JcQ3XxyAaES8CexV30mA2czw9MF4KMc5eMpa85bn68BZTCldPb+9pxqx1LVjpzqMnLja8SNWiARHjb1MZHQ=="
+}

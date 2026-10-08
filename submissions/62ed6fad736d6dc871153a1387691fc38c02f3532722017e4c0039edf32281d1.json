@@ -1,0 +1,8 @@
+{
+  "schemaVersion": 1,
+  "source": "twin-packs-open",
+  "vendor": "supabase",
+  "package": "@volter/twin-supabase",
+  "version": "1.0.4",
+  "integrity": "sha512-nABAOt9JIS+e5KsG0HtcgdQiKx3BLkD1vp3v3OdsiPC9aCHRCJGf+FX92YWeCWj/hJISmBQkZtRu+Iw2Hmks4A=="
+}
