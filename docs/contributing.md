@@ -8,9 +8,11 @@ not scripts from a platform checkout. Read the [process](process.md) for identit
 Install Bun at the catalog policy's version and the public `@volter/world`, `@volter/world-core`, `@volter/world-runtime` and
 `@volter/twin-standard` versions in `policy.json`. Install TypeScript and its Node/Bun types as development dependencies.
 Keep the package directory named for the vendor; its npm package name is independent.
+Run the installed standard from the repository root. The explicit local path refuses if
+installation is incomplete; it does not download a package by the `twin-standard` command name.
 
 ```sh
-bunx --bun twin-standard create stripe --init stripe --package @example/payments
+bun ./node_modules/.bin/twin-standard create stripe --init stripe --package @example/payments
 ```
 
 The generated files contain explicit fill markers. Author the vendored spec and its provenance, demand, manifest,
@@ -24,10 +26,10 @@ README describes its vendor surface, refusals and limits. Declare your own publi
 package.json. Complete source requirements before derivation:
 
 ```sh
-bunx --bun twin-standard check-sources stripe
-bunx --bun twin-standard derive stripe
-bunx --bun twin-standard create stripe --index
-bunx --bun twin-standard facts stripe
+bun ./node_modules/.bin/twin-standard check-sources stripe
+bun ./node_modules/.bin/twin-standard derive stripe
+bun ./node_modules/.bin/twin-standard create stripe --index
+bun ./node_modules/.bin/twin-standard facts stripe
 ```
 
 The command has the same handler-map and kernel contract as Volter's own wrapper. The generated facts belong in the
