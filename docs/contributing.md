@@ -10,7 +10,7 @@ Install Bun at the catalog policy's version and the public `@volter/world`, `@vo
 Keep the package directory named for the vendor; its npm package name is independent.
 
 ```sh
-bunx --bun twin-standard create stripe --init stripe --package @example/payments
+bunx --bun @volter/twin-standard create stripe --init stripe --package @example/payments
 ```
 
 The generated files contain explicit fill markers. Author the vendored spec and its provenance, demand, manifest,
@@ -24,10 +24,10 @@ README describes its vendor surface, refusals and limits. Declare your own publi
 package.json. Complete source requirements before derivation:
 
 ```sh
-bunx --bun twin-standard check-sources stripe
-bunx --bun twin-standard derive stripe
-bunx --bun twin-standard create stripe --index
-bunx --bun twin-standard facts stripe
+bunx --bun @volter/twin-standard check-sources stripe
+bunx --bun @volter/twin-standard derive stripe
+bunx --bun @volter/twin-standard create stripe --index
+bunx --bun @volter/twin-standard facts stripe
 ```
 
 The command has the same handler-map and kernel contract as Volter's own wrapper. The generated facts belong in the
