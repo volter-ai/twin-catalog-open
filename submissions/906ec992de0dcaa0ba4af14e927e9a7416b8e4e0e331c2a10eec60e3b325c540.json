@@ -1,0 +1,8 @@
+{
+  "schemaVersion": 1,
+  "source": "twin-packs-open",
+  "vendor": "openai",
+  "package": "@volter/twin-openai",
+  "version": "3.0.3",
+  "integrity": "sha512-mESE509bpr3Ecpur+NEq/7s78qUa8aI4W0DV/M3EGkWNBKBNi6cH7CZ/+/rY9OmAtG9dsReAzVOww9uXxeqkKQ=="
+}
