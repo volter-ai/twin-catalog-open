@@ -1,0 +1,8 @@
+{
+  "schemaVersion": 1,
+  "source": "twin-packs-open",
+  "vendor": "stripe",
+  "package": "@volter/twin-stripe",
+  "version": "3.0.5",
+  "integrity": "sha512-U4ZR5HgTWuyA6/25CasCHrPsu7v95+meu2FFoo2xtTvDoBRiXdZBeIfQwqm+FHwAw7j8167ltaE/LbQs3rHm/A=="
+}
