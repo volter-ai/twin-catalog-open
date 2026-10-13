@@ -116,6 +116,13 @@ admissions still need human review. Every path needs current-head readiness. Pub
 The repository's installation command checks/configures these rules explicitly; merely committing a workflow is not
 evidence that they are enabled. No credentials or repository settings are changed by an ordinary build.
 
+Use the intended GitHub account explicitly for the submission push and the maintainer's merge action.
+If GitHub requires an approval, its last-push rule requires a permitted reviewer who did not make the most recent
+reviewable push. An account that authored the PR cannot approve its own PR. The trusted-account/internal exception
+removes separate human moderation; it does not turn self-approval into a review or override required readiness.
+Correct the submitting account and obtain the applicable maintainer approval without weakening the branch rules
+or copying a successful check onto another commit. A changed head receives its own readiness receipt.
+
 An assessment binds the PR number and head SHA, base SHA, source registration, submission, policy, evaluator package
 versions, container image identity, artifact integrity and resolved dependency lock. Evidence from an earlier head
 does not satisfy a new one. A base update requires updating the branch and a new readiness run. Jobs cancel superseded
