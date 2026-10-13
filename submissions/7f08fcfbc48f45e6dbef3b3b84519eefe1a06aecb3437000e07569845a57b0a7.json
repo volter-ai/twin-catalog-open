@@ -1,0 +1,8 @@
+{
+  "schemaVersion": 1,
+  "source": "twin-packs-open",
+  "vendor": "anthropic",
+  "package": "@volter/twin-anthropic",
+  "version": "1.0.5",
+  "integrity": "sha512-eJjLOjbI7eTYrGCOGyKr+ppqLt+2SSvPBkCLhYP2OAy5Y9vz2lXjeWysPRLaeEFfjrlKQ6AwQ/sJD+mEJ3/V8A=="
+}
