@@ -18,6 +18,14 @@ and name the component. Include exact versions, the command and error, and a min
 example; leave out credentials and real records. The [recovery guide](https://world-docs.volter.ai/docs/guides/recover-a-failed-call)
 helps identify the component. Reporting a problem does not require a paid Volter account.
 
+## Twin your product
+
+[The contributor guide](docs/contributing.md) takes a twin from choosing the vendor to its admission here, written for
+an AI agent working from public repositories and the released tools alone: the demand, the spec, citations and rate
+limits, the journeys, the contributor's own checks (`twin-standard walk`, `conform`), a kernel proposal when the
+standard lacks a mechanism ([proposals/kernel](proposals/kernel/README.md)), and the registration, publication and
+submission below.
+
 ## Submit a release
 
 Register a source with a pull request adding one entry to `sources.json`:
@@ -155,7 +163,6 @@ only on the target catalogs. Existing scoped `CATALOG_PR_TOKEN` configuration re
 use their own GitHub accounts/forks, never Volter's App key. Source visibility exposes Git history and remains an
 explicit owner decision.
 
-[Build in your own repository](docs/contributing.md) uses the released tools.
 
 Browser pages are separate work. JSON reports distinguish quick replay from full admission conformance; unmeasured
 DOM, line and state coverage remain explicit. Readiness artifacts are evidence, not a fidelity guarantee.
