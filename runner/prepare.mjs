@@ -77,7 +77,7 @@ const audit = npm(['audit', 'signatures', '--json']);
 writeFileSync('/work/signatures.json', audit);
 const response = await fetch(registryURL(doc.dist.attestations.url, policy.registry), { redirect: 'error' });
 requireThat(response.ok, `attestation: HTTP ${response.status}`);
-const provenance = await verifiedProvenance(await response.json(), source, bytes, verifyBundle);
+const provenance = await verifiedProvenance(await response.json(), source, bytes, verifyBundle, { ref: policy.provenanceRefs?.[source.repository] });
 // Keep a vendor-named package directory for the standard's public directory API; preserve the installed artifact.
 mkdirSync('/work/packs', { recursive: true });
 cpSync(join('/work/node_modules', s.package), join('/work/packs', s.vendor), { recursive: true });

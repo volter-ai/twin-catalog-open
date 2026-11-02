@@ -142,12 +142,15 @@ node bin/twin-catalog.mjs prepare-publication --out <new-prepared-directory>
 ```
 
 Run the approved pinned-rule and custody-value keys sweep over that archive and obtain the manager's permission
-naming its digest. A registered `policy.publicationAuthorities` account stages the byte-bound archive and receipt;
-the manual registered `publish.yml` uploads only those exact bytes with npm provenance within its one-minute job
-ceiling. It installs nothing, runs no qualification and performs no registry propagation wait. Main never publishes.
+naming its digest and reviewed source. Explicitly advance the separate `publish` branch to that exact source;
+main integration never advances it. A registered `policy.publicationAuthorities` account stages the byte-bound
+archive and receipt at `prepared-catalog-<version>`. The manual registered `publish.yml` runs only from `publish`
+at the prepared SHA and uploads only those bytes with npm provenance within its one-minute job ceiling.
+It installs nothing, runs no qualification and performs no registry propagation wait. Main never publishes.
 `confirm-publication` performs the measured bounded registry reads outside CI. A timeout or uncertain result needs
-confirmation before retry, never another upload of accepted immutable bytes. The complete commands, sweep receipt
-format, current-head requirements and recovery paths are in [operations](docs/operations.md).
+confirmation without another upload. A durable intent written before npm prevents retries across workflow runs;
+per-attempt outcome receipts retain accepted or uncertain results. The complete commands, sweep receipt format,
+branch bindings and recovery paths are in [operations](docs/operations.md).
 
 Website delivery is independent: it selects a released snapshot and exposes its own source/catalog/deployment receipt.
 Nothing here deploys it or changes an existing World's pins. Source repositories must be public for npm provenance;

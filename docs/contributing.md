@@ -264,6 +264,9 @@ npm publish <exact-reviewed-archive.tgz> --ignore-scripts --access public --prov
 ```
 
 The artifact's repository URL matches the registered repository; the signing workflow filename matches registration.
+Volter's registered public pack source also requires `refs/heads/publish`: its workflow executes from that branch
+at the exact reviewed preparation commit. Main never advances or dispatches it. The catalog's original assessment
+policy binds any source-specific publication ref; an independent publisher follows its registered policy.
 Publishing does not admit a release. After source registration has merged, use the catalog CLI from a catalog fork:
 
 ```sh

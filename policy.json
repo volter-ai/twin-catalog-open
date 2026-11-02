@@ -13,6 +13,9 @@
   "bun": "1.4.2",
   "nodeImage": "node:24-bookworm-slim",
   "requireProvenance": true,
+  "provenanceRefs": {
+    "volter-ai/twin-packs-open": "refs/heads/publish"
+  },
   "reviewBypassUsers": [
     "yueranyuan"
   ],

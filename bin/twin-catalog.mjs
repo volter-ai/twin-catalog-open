@@ -63,7 +63,7 @@ try {
       result = await recordAssessment(read(resolve(arg('report'))), github());
       break;
     }
-    case 'configure': result = await configure(github(), args.includes('--apply'), policy().reviewBypassUsers ?? []); break;
+    case 'configure': result = await configure(github(), args.includes('--apply')); break;
     case 'propose': {
       requireThat(args.includes('--send'), 'propose opens GitHub PRs; pass --send for this explicit publisher action');
       result = await propose(github(), resolve(arg('from', args.includes('--reassess') ? 'reassessments' : 'submissions')), args.includes('--reassess'));
@@ -82,10 +82,17 @@ try {
       result = await stagePublication(root, resolve(arg('from')), arg('tag'), resolve(arg('sweep')), github());
       break;
     }
-    case 'upload-prepared': result = await uploadPrepared(root, arg('tag'), arg('sha256'), github()); break;
-    case 'confirm-publication': result = await confirmPublication(read(resolve(arg('receipt'))), policy().registry); break;
-    case 'publish': throw new Error('Direct publication is retired. Prepare, review and keys-sweep the exact archive outside CI, then use stage-publication and the registered publish.yml workflow with manager permission.');
-    default: throw new Error('usage: twin-catalog register --source <id> --source-repository <owner/repo> --scope <@scope> [--out <sources.json>] | submit --source <id> --vendor <vendor> --package <@scope/name> --version <exact> | browse [--root <installed-index>] [--vendor <vendor>] [--package <@scope/name>] | capture-content | assess-pr --pr <number> | record-assessment --report <file> --send | check | defaults | build --out <new-directory> | prepare-publication --out <new-directory> | stage-publication --from <prepared-directory> --tag <unique-tag> --sweep <receipt> --send | confirm-publication --receipt <prepared-publication.json> | configure [--apply] | propose --from <submission-directory> --send');
+    case 'upload-prepared': result = await uploadPrepared(root, arg('tag'), arg('sha256'), github(), undefined, undefined, { expectedSourceCommit: arg('source-commit') }); break;
+    case 'confirm-publication': {
+      result = await confirmPublication(read(resolve(arg('receipt'))), policy().registry);
+      if (args.includes('--out')) {
+        const file = resolve(arg('out'));
+        requireThat(!existsSync(file), 'confirmation output must be a new file; retain earlier readbacks');
+        write(file, result);
+      }
+      break;
+    }
+    default: throw new Error('usage: twin-catalog register --source <id> --source-repository <owner/repo> --scope <@scope> [--out <sources.json>] | submit --source <id> --vendor <vendor> --package <@scope/name> --version <exact> | browse [--root <installed-index>] [--vendor <vendor>] [--package <@scope/name>] | capture-content | assess-pr --pr <number> | record-assessment --report <file> --send | check | defaults | build --out <new-directory> | prepare-publication --out <new-directory> | stage-publication --from <prepared-directory> --tag prepared-catalog-<version> --sweep <receipt> --send | confirm-publication --receipt <staged-publication.json> [--out <new-confirmation.json>] | configure [--apply] | propose --from <submission-directory> --send');
   }
   console.log(JSON.stringify(result, null, 2));
 } catch (error) { console.error(`twin-catalog: ${error.message ?? error}`); process.exitCode = 1; }

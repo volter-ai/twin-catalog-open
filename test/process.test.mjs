@@ -6,9 +6,9 @@ import { join } from 'node:path';
 import { execFileSync } from 'node:child_process';
 import { admit, classify, compareReports, defaults, digest, read, stable, submissionId, validateIndex, validateSubmission, write } from '../lib/model.mjs';
 import { integrityOf, verifyArtifact, metadata, registryURL } from '../lib/registry.mjs';
-import { build, builtIndex, publish, reviewSatisfied, internalAdmission, verifyAdmission } from '../lib/publication.mjs';
+import { build, builtIndex, reviewSatisfied, internalAdmission, verifyAdmission } from '../lib/publication.mjs';
 import { assessPullRequest, configure } from '../lib/automation.mjs';
-import { GitHub, summary } from '../lib/github.mjs';
+import { GitHub } from '../lib/github.mjs';
 import { propose } from '../lib/propose.mjs';
 import { evaluate } from '../lib/runner.mjs';
 
@@ -180,64 +180,24 @@ test('index generation admits committed data without platform source, a hosted b
   const output = read(join(root, 'output-a/vendors/stripe.json'));
   assert.equal(output.packages[0].name, '@outside/payments'); assert.equal(output.packages[0].versions[0].submission, submissionId(s));
 });
-test('publishing retries matching source identity and refuses a conflicting version', async () => {
-  const { root } = fixture(), out = join(root, 'output'); build(root, out);
-  const pkg = read(join(out, 'package.json'));
-  const noExecution = () => { throw new Error('must not publish again'); };
-  const same = await publish(out, 'https://registry.npmjs.org', async () => ({ ok: true, json: async () => ({ ...pkg, dist: { integrity: integrityOf(bytes) } }) }), noExecution);
-  assert.equal(same.existing, true);
-  await assert.rejects(publish(out, 'https://registry.npmjs.org', async () => ({ ok: true, json: async () => ({ ...pkg, catalog: {} }) }), noExecution), /conflicts/);
-});
 function confirmationClock() {
   let elapsed = 0;
   const waits = [];
   return { waits, options: { windowMs: 100, intervalMs: 60, now: () => elapsed, sleep: async (ms) => { waits.push(ms); elapsed += ms; } } };
 }
-test('registry confirmation waits for visibility without uploading twice', async () => {
-  const { root } = fixture(), out = join(root, 'output'); build(root, out);
-  const pkg = read(join(out, 'package.json')), clock = confirmationClock();
-  let reads = 0, uploads = 0;
-  const result = await publish(out, 'https://registry.npmjs.org', async () => ++reads < 3
-    ? { ok: false, status: 404 }
-    : { ok: true, json: async () => ({ ...pkg, dist: { integrity: integrityOf(bytes) } }) }, () => { uploads++; return { status: 0 }; }, clock.options);
-  assert.equal(result.published, true); assert.equal(uploads, 1); assert.deepEqual(clock.waits, [60]);
-});
-test('unconfirmed upload exhausts its read window and never uploads again', async () => {
-  const { root } = fixture(), out = join(root, 'output'); build(root, out);
-  const clock = confirmationClock(); let uploads = 0;
-  await assert.rejects(publish(out, 'https://registry.npmjs.org', async () => ({ ok: false, status: 404 }), () => { uploads++; return { status: 0 }; }, clock.options), /upload is unverified/);
-  assert.equal(uploads, 1); assert.deepEqual(clock.waits, [60, 40]);
-});
-test('registry confirmation refuses other HTTP errors without waiting', async () => {
-  const { root } = fixture(), out = join(root, 'output'); build(root, out);
-  for (const status of [403, 503]) {
-    const clock = confirmationClock(); let reads = 0, uploads = 0;
-    await assert.rejects(publish(out, 'https://registry.npmjs.org', async () => ({ ok: false, status: ++reads === 1 ? 404 : status }), () => { uploads++; return { status: 0 }; }, clock.options), new RegExp(`confirmation failed: HTTP ${status}`));
-    assert.equal(uploads, 1); assert.deepEqual(clock.waits, []);
-  }
-});
-test('eventually visible registry identity must still match the admitted source', async () => {
-  const { root } = fixture(), out = join(root, 'output'); build(root, out);
-  const pkg = read(join(out, 'package.json')), clock = confirmationClock(); let reads = 0, uploads = 0;
-  await assert.rejects(publish(out, 'https://registry.npmjs.org', async () => ++reads < 3
-    ? { ok: false, status: 404 }
-    : { ok: true, json: async () => ({ ...pkg, catalog: {}, dist: { integrity: integrityOf(bytes) } }) }, () => { uploads++; return { status: 0 }; }, clock.options), /published registry identity differs/);
-  assert.equal(uploads, 1); assert.deepEqual(clock.waits, [60]);
-});
-test('readiness on a stale head is cancelled and cannot leave successful feedback', async () => {
+test('operator readiness on a stale head is superseded without posting a CI check', async () => {
   const { root, git } = fixture(), head = 'c'.repeat(40), base = git('rev-parse', 'HEAD'), s = submitted();
   const filename = `submissions/${submissionId(s)}.json`, calls = [];
   let lookups = 0;
   const github = { repository: 'catalog/index', call: async (path, method, body) => {
     calls.push({ path, method, body });
     if (path === 'pulls/1') return { state: 'open', changed_files: 1, head: { sha: ++lookups === 1 ? head : 'd'.repeat(40) }, base: { sha: base } };
-    if (path === 'check-runs' && method === 'POST') return { id: 7 };
     return {};
   }, pages: async () => [{ filename, status: 'added' }], content: async () => JSON.stringify(s) };
   const result = await assessPullRequest(root, github, 1, join(root, 'report.json'), async (_root, input) => ({ input, inputSha256: digest(input), status: 'ready' }));
   assert.equal(result.status, 'superseded');
-  assert.equal(calls.find((c) => c.path === 'check-runs/7').body.conclusion, 'cancelled');
-  assert.ok(!calls.some((c) => c.path.startsWith('issues/')));
+  assert.equal(result.workflow, null); assert.equal(result.receipt.kind, 'operator');
+  assert.ok(calls.every(c => !c.method || c.method === 'GET'));
 });
 test('evaluation failure produces changes-needed, not successful readiness', async () => {
   const { root, git } = fixture(), base = git('rev-parse', 'HEAD'), s = submitted(), calls = [];
@@ -245,20 +205,19 @@ test('evaluation failure produces changes-needed, not successful readiness', asy
   const github = { repository: 'catalog/index', call: async (path, method, body) => {
     calls.push({ path, method, body });
     if (path === 'pulls/1') return { state: 'open', changed_files: 1, head: { sha }, base: { sha: base } };
-    if (path === 'check-runs') return { id: 1 };
     return {};
   }, pages: async (path) => path.includes('/files') ? [{ filename, status: 'added' }] : [], content: async () => JSON.stringify(s) };
   const result = await assessPullRequest(root, github, 1, join(root, 'report.json'), async () => { throw new Error('replay diverged'); });
   assert.equal(result.status, 'changes-needed');
-  assert.equal(calls.find((c) => c.path === 'check-runs/1').body.conclusion, 'failure');
+  assert.equal(result.workflow, null); assert.equal(result.receipt.kind, 'operator');
+  assert.ok(calls.every(c => !c.method || c.method === 'GET'));
 });
 test('operator configuration is read-only unless apply is explicit', async () => {
   let calls = 0; const g = { call: async () => { calls++; return { errors: [] }; } };
   assert.equal((await configure(g)).applied, false); assert.equal(calls, 0);
   await configure(g, true); assert.equal(calls, 3);
-  const desired = await configure(g, false, ['maintainer']);
-  assert.deepEqual(desired.protection.required_pull_request_reviews.bypass_pull_request_allowances.users, ['maintainer']);
-  await assert.rejects(configure(g, true, ['outside/team']), /invalid internal maintainer/);
+  const desired = await configure(g);
+  assert.equal(desired.protection.required_pull_request_reviews, null);
   assert.equal(calls, 3);
 });
 
@@ -340,11 +299,6 @@ test('publication admits internal maintainer merges but external artifacts still
   check.conclusion = 'cancelled';
   await assert.rejects(verifyAdmission(root, github), /no reviewed current-head admission/);
 });
-test('summary preserves missing measurements and escapes contributor markup and mentions', () => {
-  const body = summary({ status: 'changes-needed', error: '<script>@moderators</script>', input: { head: sha }, report: { quick: { surface: null, answered: 1, failures: [], replay: { equal: false } }, gates: [], conformance: [] } });
-  assert.ok(!body.includes('<script>')); assert.ok(!body.includes('@moderators')); assert.match(body, /not measured/); assert.match(body, /not approval/);
-});
-
 test('a package cannot migrate vendors by changing its version', () => {
   const i = admit(index(), submitted(), sha, at);
   assert.throws(() => admit(i, submitted({ version: '2.0.0', vendor: 'github' }), sha, at), /vendor and source/);

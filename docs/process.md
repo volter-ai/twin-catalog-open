@@ -173,6 +173,10 @@ source review remains part of admission.
 Provenance verification checks the registry signature/attestation using npm's verifier, cryptographically verifies the exact downloaded Sigstore bundle, and checks the attested
 repository/workflow against the registered source. A certificate-shaped string alone is not verification. The
 artifact digest is independently recomputed. Private-source publication without provenance cannot claim readiness.
+For repositories named in the assessment policy's `provenanceRefs`, the certificate identity, SLSA workflow ref and
+resolved Git dependency must all name that exact branch, with one immutable source commit. Volter's public packs
+use `refs/heads/publish`. The policy is bound to the original assessment input; historical reports keep their
+original branch identity and remain verified under their original policy.
 
 ## Evaluation and reports
 
@@ -256,15 +260,22 @@ an existing World's declared dependency; the catalog cannot remotely uninstall c
 Main is autonomous integration and the admission ledger. It never publishes. `prepare-publication --out <new-folder>`
 runs explicitly outside CI after review, verifies admission and authenticated evidence, builds the index and packs
 one exact archive. The operator keys-sweeps that archive and obtains the manager's permission naming its digest.
-`stage-publication --from <folder> --tag <unique-tag> --send` retains the archive and byte-bound preparation receipt in
-a separate GitHub release. This data-only upload does not publish npm. Publication custody stays outside assessment.
+Publication is a separate explicit action through `publish`, advanced to that exact reviewed source only after
+permission. Main integration never advances or dispatches publication. `stage-publication --from <folder>
+--tag prepared-catalog-<version> --sweep <receipt> --send` retains the archive and byte-bound preparation receipt in
+a separate GitHub release. One deterministic stage tag per immutable version prevents a new tag from bypassing
+upload recovery. This data-only upload does not publish npm. Publication custody stays outside assessment.
 
-The manual registered `publish.yml` workflow accepts only that prepared asset and SHA-256 at its reviewed source
-commit. It confirms manifest, source, artifact SRI and SHA-256, checks the stage issuer's authority, then uploads
+The manual registered `publish.yml` workflow is dispatched with `--ref publish`, the prepared SHA and archive hash.
+It requires `refs/heads/publish`, the exact workflow/source SHA and a stage tag targeting that commit. It confirms
+manifest, source, artifact SRI and SHA-256, checks the stage issuer's authority, then uploads
 exactly the archive with npm provenance. It installs no candidate, builds nothing and runs no qualification. Its
 whole job has a one-minute execution ceiling; a timeout or uncertain upload does not establish success. Long registry
 propagation confirmation belongs to `confirm-publication` outside CI. Already published identical bytes are reused;
 a conflicting immutable version is refused and an accepted upload is never repeated.
+Before npm, the workflow retains one immutable upload intent on the prepared release; afterward it retains its
+run/attempt outcome. A missing outcome after an intent is uncertain, including after a terminated runner. A fresh
+dispatch cannot repeat that version's upload. Operators retain read-only confirmation output separately.
 
 Registry publication is separate from preparation, admission and website deployment. The index version derives from
 first-parent source history. Exact package/version, source, snapshot digest and installer integrity identify the
@@ -304,7 +315,6 @@ checkout, private company record or particular pack-repository layout is require
 submission, checking, generation and publishing commands are documented in README. Published CLI tooling includes
 the schema/validation code, so contributors see the same refusals before opening a PR.
 
-Explicit operator assessment can retain a feedback summary; it does not create a CI readiness check.
 GitHub reads retry one transport failure; HTTP refusals and writes are not retried. A transport failure identifies
 the method, repository path and underlying error code. A passing evaluation remains local evidence until an authorized recorder publishes its authenticated durable receipt; it does not grant admission on its own. Re-run the operator assessment for a changed PR or failed phase. Moderators configure membership through the
 repository's CODEOWNERS users or teams; platform write access is not required. Repository setup and npm publication are explicit

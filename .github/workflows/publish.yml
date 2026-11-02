@@ -10,20 +10,25 @@ on:
         description: SHA-256 of the independently reviewed and keys-swept archive
         required: true
         type: string
+      expected_source_commit:
+        description: Exact independently reviewed preparation source now on publish
+        required: true
+        type: string
 permissions:
-  contents: read
+  contents: write
   id-token: write
 concurrency:
   group: catalog-publication
   cancel-in-progress: false
 jobs:
   publish:
-    if: vars.CATALOG_PUBLISH_ENABLED == 'true'
+    if: vars.CATALOG_PUBLISH_ENABLED == 'true' && github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/publish'
     runs-on: ubuntu-latest
     timeout-minutes: 1
     steps:
       - uses: actions/checkout@v4
         with:
+          ref: ${{ github.sha }}
           fetch-depth: 1
           persist-credentials: false
       - uses: actions/setup-node@v4
@@ -36,4 +41,5 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
           PREPARED_TAG: ${{ inputs.prepared_tag }}
           ARCHIVE_SHA256: ${{ inputs.archive_sha256 }}
-        run: timeout 45s node bin/twin-catalog.mjs upload-prepared --tag "$PREPARED_TAG" --sha256 "$ARCHIVE_SHA256" > "$RUNNER_TEMP/catalog-upload.json"
+          SOURCE_COMMIT: ${{ inputs.expected_source_commit }}
+        run: timeout 45s node bin/twin-catalog.mjs upload-prepared --tag "$PREPARED_TAG" --sha256 "$ARCHIVE_SHA256" --source-commit "$SOURCE_COMMIT" > "$RUNNER_TEMP/catalog-upload.json"

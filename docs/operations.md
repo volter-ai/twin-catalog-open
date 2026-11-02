@@ -3,7 +3,8 @@
 The [process contract](process.md) owns identity and authority; [contributor instructions](contributing.md) own pack
 construction. Use existing GitHub sign-ins and custody. Qualification, assessment, index preparation and registry
 confirmation are explicit operator commands outside CI. Main never publishes. A publication requires independent
-review, a clean keys sweep over the exact archive and the manager's permission. The short provenance workflow only
+review, a clean keys sweep over the exact archive and the manager's permission. Publication runs from the separate
+`publish` branch at the exact reviewed source; main integration never advances or dispatches it. The short provenance workflow only
 uploads the prepared bytes. No automatic CI tests or merge gates run.
 
 ## Roles and credentials
@@ -61,15 +62,21 @@ package/version, source, snapshot digest, archive SHA-256 and SHA-512 SRI. Run t
 archive using pinned gitleaks rules and custody-value redaction (`@volter/teams/redact`). Retain the original sweep
 output. Its data receipt has `passed: true`, the exact `sha256` and `integrity`, the pinned `rules` identity and
 `custodyValuesChecked: true`. Those fields report the completed sweep; writing them alone is not a keys sweep.
-Obtain the manager's permission naming that archive and verdict before publication.
+Obtain the manager's permission naming that archive, verdict and reviewed source before advancing `publish` or
+publishing. Then explicitly advance `publish` to the receipt's exact `sourceCommit`. This is a separate authorized
+operator act; no merge, preparation or staging command moves the branch. Keep the clean source checkout at that SHA.
 
 ```sh
-node bin/twin-catalog.mjs stage-publication --repository <owner/catalog> --from <prepared-directory> --tag <unique-preparation-tag> --sweep <exact-sweep-receipt.json> --send
-gh workflow run publish.yml --repo <owner/catalog> --ref <reviewed-source-commit> -f prepared_tag=<unique-preparation-tag> -f archive_sha256=<exact-archive-sha256>
+node bin/twin-catalog.mjs stage-publication --repository <owner/catalog> --from <prepared-directory> --tag prepared-catalog-<version> --sweep <exact-sweep-receipt.json> --send
+gh workflow run publish.yml --repo <owner/catalog> --ref publish -f prepared_tag=prepared-catalog-<version> -f archive_sha256=<exact-archive-sha256> -f expected_source_commit=<reviewed-source-commit>
 ```
 
-Staging retains only byte-bound inputs under a registered publication authority. It performs no npm upload.
-The manual registered workflow validates stage issuer, source, sweep, manifest and archive digest, then runs one
+Staging requires the remote `publish` head and stage tag to equal the prepared source. The deterministic tag is
+shared by all attempts for that immutable version; another archive, source or issuer on it is a conflict.
+It retains byte-bound inputs under a registered publication authority and writes `staged-publication.json` beside
+the prepared inputs. It performs no npm upload. A commit or preparation tag is never the workflow dispatch ref.
+The manual registered workflow validates the exact `publish` ref, workflow/source SHA, expected source, stage tag,
+issuer, sweep, manifest and archive digest, then runs one
 `npm publish <archive> --ignore-scripts --provenance` with its publication credential. It performs no install, build,
 assessment or proposal. Its one-minute job ceiling bounds execution; a timeout is an unresolved upload, not proof of
 success within that ceiling. Read the actual completed run duration and outcome before claiming a successful upload.
@@ -77,14 +84,21 @@ success within that ceiling. Read the actual completed run duration and outcome 
 Registry confirmation runs separately outside CI:
 
 ```sh
-node bin/twin-catalog.mjs confirm-publication --receipt <prepared-directory>/prepared-publication.json
+node bin/twin-catalog.mjs confirm-publication --receipt <prepared-directory>/staged-publication.json --out <new-confirmation.json>
 ```
 
 It retries HTTP 404 only, every 15 seconds for at most ten minutes, under the retained
 [registry measurement](measurements/registry-confirmation.json). Other HTTP errors or conflicting identity fail
-immediately. A receipt with accepted or uncertain upload is confirmed through exact-version reads; never upload that
-immutable version again. Workflow attempts after the first cannot upload an absent version. Matching existing SRI
-is reused; different bytes always fail. Main never automatically dispatches publication.
+immediately. This command uses the shared registry metadata lookup, including its HTTPS and timing validation.
+Retain the output with the card's evidence. Confirmation performs no upload.
+
+Before npm, the workflow writes `publication-upload-intent.json` to the prepared release, binding the archive,
+preparation receipt, source, branch, workflow and run/attempt. It retains `publication-result-<run>-<attempt>.json`
+afterward with an accepted or uncertain outcome. A killed runner may leave only the intent. Missing or failed
+outcome persistence does not authorize another upload. Even a fresh workflow run refuses an absent version when
+that version has an earlier intent. Confirm accepted or uncertain uploads through exact-version reads; never
+delete the intent, replace its assets or upload that immutable version again. Matching existing SRI is reused;
+different bytes always fail. Preflight failures before an intent can be corrected and dispatched normally.
 
 ## Retain documentation and selected source inputs
 
