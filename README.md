@@ -55,7 +55,7 @@ In a fork of this catalog, create the submission with its released CLI or this i
 node bin/twin-catalog.mjs submit --source example-team --vendor stripe --package @example/stripe-simulator --version 1.2.3
 ```
 
-Open a PR adding only the generated `submissions/<sha256>.json`. The CLI writes data only. An operator explicitly assesses the exact artifact outside CI, verifies integrity and provenance, installs dependencies without scripts and runs the released standard in an offline container and a World. An independently registered assessment authority records its complete controller envelope in a durable GitHub evidence release; admitted reports also have an index-package copy. No PR event starts assessment. Code fixes require a new published version and updated submission filename. Do not edit the
+Open a PR adding only the generated `submissions/<sha256>.json`. The CLI writes data only. An operator explicitly assesses the exact artifact outside CI, verifies integrity and provenance, installs dependencies without scripts and runs the released standard in an offline container and a World. An independently registered assessment authority records its complete controller envelope in a durable GitHub evidence release; current defaults' reports also have an index-package copy. No PR event starts assessment. Code fixes require a new published version and updated submission filename. Do not edit the
 index, policy or source registration as part of a release submission.
 
 An authenticated ready assessment is evidence for a separate maintainer decision. Untrusted-account submissions require moderator review
@@ -100,8 +100,8 @@ import { browse } from '@volter/twin-catalog/browse';
 const catalog = browse('./node_modules/@volter/twin-catalog');
 ```
 
-Every implementation and recorded release remains visible. An ambiguous vendor has `selection.state: "choice-required"`.
-Filtering a package does not change the vendor's default. Revocation, selectability and assessment availability are
+The reader shows each vendor's current default release. An ambiguous vendor has `selection.state: "choice-required"`
+and no offered release. Filtering a package does not change the vendor's default. Selectability and assessment availability are
 separate fields. Bound report measurements retain their original scope; absent measurements are `null`. The reader
 checks snapshot and report digests without importing packs or reading Git history. `snapshot.integrity` is `null`
 unless the caller supplies retained installation evidence; the reader does not verify the package tarball. See
