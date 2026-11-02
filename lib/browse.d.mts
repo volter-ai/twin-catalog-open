@@ -35,6 +35,7 @@ export type Measurements = {
   failures: unknown[] | null;
   replay: Replay | null;
   conformance: Array<{ id: string; asks: string; failures: unknown[]; note?: string }> | null;
+  browserStatus: { state: 'measured' | 'failed' | 'not-measured' | 'not-applicable' | 'missing'; reason: string | null };
   browser: {
     measured: true;
     target: string;
@@ -72,6 +73,8 @@ export type CatalogRelease = Release & {
     license: string | null;
     engines: Record<string, string>;
     peerDependencies: Record<string, string>;
+    dependencies: Record<string, string> | null;
+    peerDependenciesMeta: Record<string, { optional?: boolean }> | null;
     repositoryDirectory: string | null;
     bugs: string | null;
     sourceCommit: string | null;
@@ -88,10 +91,11 @@ export type CatalogRelease = Release & {
   assessment: {
     recorded: boolean;
     available: boolean;
+    evaluatedAt: string | null;
     evidence: null | { submission: string; admissionCommit?: string; reportPath?: string; reportSha256?: string;
-      url?: string; pullRequest?: number; moderation?: Record<string, unknown> };
+      url?: string; pullRequest?: number; kind?: 'operator'; authority?: { id: number; login: string; type: 'User' | 'Bot' }; moderation?: Record<string, unknown> };
     input: null | { repository: string; pullRequest: number; head: string; base: string; image?: string;
-      workflow?: { repository: string; run: number; attempt: number; file: string };
+      workflow?: { repository: string; run: number; attempt: number; file: string } | null;
       tools: Record<string, string> | null };
   };
   measurements: Measurements | null;

@@ -112,6 +112,7 @@ const packageMetadata = {
   license: pack.license,
   engines: pack.engines ?? {},
   peerDependencies: pack.peerDependencies ?? {},
+        dependencies: pack.dependencies ?? {}, peerDependenciesMeta: pack.peerDependenciesMeta ?? {},
   repositoryDirectory: typeof pack.repository === 'object' ? pack.repository.directory ?? null : null,
   bugs: typeof pack.bugs === 'string' ? pack.bugs : pack.bugs?.url ?? null,
 };
