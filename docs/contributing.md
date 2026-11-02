@@ -237,7 +237,7 @@ and uses the product CLI to own a separate app World for the installed customer 
 For an HTTP browser target, use Linux, install Playwright at the catalog policy version and its Chromium binary,
 and install `libfaketime` (Debian/Ubuntu: `sudo apt-get install libfaketime`). The browser process uses the World
 clock for native cookie expiry, at one-second precision; JavaScript time retains millisecond precision. Authors on
-other platforms can omit `--browser` for in-process assessment; catalog Actions supplies the browser target. The report
+other platforms can omit `--browser` for in-process assessment; the explicit catalog operator assessment supplies the browser target. The report
 separates declared served/gap counts, operations actually exercised, deterministic replay, conformance, installed customer workflow and Chromium
 results. It does not measure DOM interactions, line coverage, real-vendor parity or every possible state transition.
 
@@ -257,11 +257,10 @@ twin-catalog register --source example-team --source-repository example/twins --
 The command prepares data only and refuses conflicting registrations. Outside a fork it writes `registration/sources.json`;
 copy that file into your fork and open the separate PR. Registration does not authorize a release or grant maintainer status.
 
-Pin your own dependencies and commit the lock. Your workflow runs on GitHub-hosted Linux with `id-token: write`,
-builds your artifact, and uses npm trusted publishing or your own scoped npm credential:
+Pin your dependencies and commit the lock. Build, qualify, independently review and keys-sweep your exact archive outside CI. Your manually dispatched registered provenance workflow runs on GitHub-hosted Linux with `id-token: write`, accepts only that prepared archive and uses npm trusted publishing or your scoped npm credential. It performs no install, build or qualification and finishes within 60 seconds:
 
 ```sh
-npm publish --ignore-scripts --access public --provenance
+npm publish <exact-reviewed-archive.tgz> --ignore-scripts --access public --provenance
 ```
 
 The artifact's repository URL matches the registered repository; the signing workflow filename matches registration.
@@ -271,10 +270,8 @@ Publishing does not admit a release. After source registration has merged, use t
 twin-catalog submit --source example-team --vendor stripe --package @example/payments --version 1.2.3
 ```
 
-Open a PR adding only its generated submission. The Actions job checks the registry artifact at the exact integrity,
-using catalog policy and released tools, then posts readiness evidence: the same `conform`, the journey replay, the
-installed customer workflow and the browser target. Untrusted accounts need moderator review;
+Open a PR adding only its generated submission. An explicit catalog operator assessment outside CI checks the immutable registry artifact using the trusted base policy and released tools: conformance, journey replay, installed first use and browser target. A separately registered assessment authority records its checksum-bound controller envelope in a durable authenticated GitHub evidence release. No PR event starts qualification, and a publisher-supplied JSON file grants no readiness. Untrusted accounts need moderator review;
 directly trusted accounts need no separate review. The [process contract](process.md) defines account trust and
 maintainer authority. Fixes need a new immutable release; infrastructure failures can be retried. Authorized
 maintainers merge; the publisher and catalog workflows do not. Once merged, publication lists the release in the
-catalog index, and the catalog's regular re-assessment runs the same checks against it.
+catalog index. Later explicit reassessments retain their own inputs and scope; missing historical measurements are not invented.

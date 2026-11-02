@@ -55,13 +55,10 @@ In a fork of this catalog, create the submission with its released CLI or this i
 node bin/twin-catalog.mjs submit --source example-team --vendor stripe --package @example/stripe-simulator --version 1.2.3
 ```
 
-Open a PR adding only the generated `submissions/<sha256>.json`. The CLI writes data only. Automation downloads the
-exact artifact, verifies its integrity and provenance, installs dependencies without scripts, runs the standard in
-an offline container and a World, and updates one feedback comment. Download the JSON report and diagnostics from
-the workflow artifacts; admitted reports also have a durable evidence release and an index-package copy. Code fixes require a new published version and updated submission filename. Do not edit the
+Open a PR adding only the generated `submissions/<sha256>.json`. The CLI writes data only. An operator explicitly assesses the exact artifact outside CI, verifies integrity and provenance, installs dependencies without scripts and runs the released standard in an offline container and a World. An independently registered assessment authority records its complete controller envelope in a durable GitHub evidence release; admitted reports also have an index-package copy. No PR event starts assessment. Code fixes require a new published version and updated submission filename. Do not edit the
 index, policy or source registration as part of a release submission.
 
-Passing automation means ready for a maintainer decision. Untrusted-account submissions require moderator review
+An authenticated ready assessment is evidence for a separate maintainer decision. Untrusted-account submissions require moderator review
 of the exact head before merge. Direct trusted-account submissions, including forks, and eligible internal publisher
 submissions permit an authorized maintainer merge without a separate review. The catalog does not approve or merge itself. A rejection is a closed PR with a reason. Moderators are named
 in `.github/CODEOWNERS`.
@@ -119,53 +116,42 @@ The evaluator requires Docker on Linux with an x86-64 runner (the pinned Bun bin
 and policy identity. Docker network isolation applies to evaluation; preparation downloads npm packages and
 attestations. No credentials enter either container.
 
-With a repository administration token in `GH_TOKEN`, inspect the proposed branch rule:
+Use the explicit operator commands, with existing GitHub authority in `GH_TOKEN` or `GITHUB_TOKEN`:
 
 ```sh
-node bin/twin-catalog.mjs configure --repository volter-ai/twin-catalog-open
+node bin/twin-catalog.mjs assess-pr --pr <number> --out <new-directory>/report.json
+node bin/twin-catalog.mjs record-assessment --report <new-directory>/report.json --send
 ```
 
-An authorized operator adds `--apply` to require current-head readiness, stale-review dismissal, code-owner approval,
-last-push approval and administrator enforcement, and enable Actions. CODEOWNERS initially names the existing
-catalog administrator, `@yueranyuan`; add other authorized people or teams there through moderator review.
-Ordinary commands never modify these settings. Source and catalog repositories must be public for npm provenance;
-publication needs npm trusted publishing or the workflow's scoped `NPM_TOKEN`. These are activation prerequisites,
-not changes performed by implementing this process.
+The controller checkout must be clean and exactly match the current PR base. `policy.assessmentAuthorities` binds
+recorders by numeric account ID, exact login and type, independently from contributor trust and moderator merge
+permission. Admission rereads authenticated release/asset identities, complete input bindings and report digest.
+A contributor's raw JSON never certifies readiness. Historical Actions reports retain their original envelope,
+digest and run identity; they are not rewritten as operator records. A changed head/base needs fresh evidence.
 
-`policy.reviewBypassUsers` names maintainers allowed to merge direct trusted-account and internal changes without
-a separate review. `policy.trustedAccounts` binds direct PR authors by GitHub numeric ID, exact login and account
-type, including contributions from forks. `policy.internalRepositories` separately lists registered pack repositories
-eligible for the internal publisher path. Untrusted accounts still need human review; all admissions need verified
-provenance and current-head readiness. The [process contract](docs/process.md) defines these admission paths.
-`policy.internalBotAuthors` binds each trusted publisher bot by GitHub user ID and exact login. It grants no
-exception without the internal source, same-catalog PR and authorized maintainer merge.
+`policy.reviewBypassUsers`, `trustedAccounts`, `internalRepositories` and `internalBotAuthors` retain their separate
+moderator exception rules. An untrusted-account admission still needs current-head non-author human approval.
+Source registration alone grants neither assessment nor admission authority. `configure --apply` explicitly removes
+required status/review gates and retains force-push/deletion protection; no build modifies repository settings.
+There are no CI tests or merge gates.
 
-The publication workflow uses a GitHub App with repository administration read, contents read, checks read and
-pull requests read. Install it only on the catalog repositories, set repository variable `CATALOG_READ_APP_CLIENT_ID`
-and secret `CATALOG_READ_APP_PRIVATE_KEY`, and keep its private key out of source and diagnostic output. Each job
-mints a short-lived token limited to its own repository; the action revokes it after the job. Existing deployments
-may supply an equivalent scoped `CATALOG_READ_TOKEN`. No administration write permission is needed by publication.
-Missing policy access refuses publication. Publisher CI can run `twin-catalog propose --from <submission-directory> --send` with its
-separate catalog PR token; that command opens idempotent submission PRs and never approves or merges them.
+After independent review and merge, prepare the exact index archive outside CI:
 
-Workflow dispatch with a PR number reruns readiness after an infrastructure failure. Publication dispatch retries
-the same source commit: its version derives from first-parent history, and an already published matching identity is
-reused. Force pushes are forbidden. A conflicting identity fails. `publish` verifies branch protection and admission
-PRs before using npm credentials. Append a `package`, `version`, and `reason` entry to `revocations.json` to remove a
-release from future selection; existing World pins are preserved.
+```sh
+node bin/twin-catalog.mjs prepare-publication --out <new-prepared-directory>
+```
 
-Set `CATALOG_PUBLISH_ENABLED=true` only after readiness verification and moderator setup.
+Run the approved pinned-rule and custody-value keys sweep over that archive and obtain the manager's permission
+naming its digest. A registered `policy.publicationAuthorities` account stages the byte-bound archive and receipt;
+the manual registered `publish.yml` uploads only those exact bytes with npm provenance within its one-minute job
+ceiling. It installs nothing, runs no qualification and performs no registry propagation wait. Main never publishes.
+`confirm-publication` performs the measured bounded registry reads outside CI. A timeout or uncertain result needs
+confirmation before retry, never another upload of accepted immutable bytes. The complete commands, sweep receipt
+format, current-head requirements and recovery paths are in [operations](docs/operations.md).
 
-Volter's pack release workflow stays inactive while its source repository is private, as required by npm provenance.
-Its trusted release workflow uses `CATALOG_PR_APP_CLIENT_ID` and `CATALOG_PR_APP_PRIVATE_KEY` in the pack repository
-to mint a short-lived catalog contents/pull-request write token, without administration. Install that separate App
-only on the target catalogs. Existing scoped `CATALOG_PR_TOKEN` configuration remains supported. Outside publishers
-use their own GitHub accounts/forks, never Volter's App key. Source visibility exposes Git history and remains an
-explicit owner decision.
-
-
-Browser pages are separate work. JSON reports distinguish quick replay from full admission conformance; unmeasured
-DOM, line and state coverage remain explicit. Readiness artifacts are evidence, not a fidelity guarantee.
+Website delivery is independent: it selects a released snapshot and exposes its own source/catalog/deployment receipt.
+Nothing here deploys it or changes an existing World's pins. Source repositories must be public for npm provenance;
+publication custody and trusted-workflow registration remain explicit operator responsibilities.
 
 A publisher that has just completed npm upload can use `submit --confirm-published` to wait for its exact
 version metadata before opening a PR. Only HTTP 404 is retried, every 15 seconds for at most ten minutes, based

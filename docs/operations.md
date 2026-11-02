@@ -1,110 +1,129 @@
 # Operate a catalog
 
-Select the catalog and publisher repositories for the operation. Use the authorized production or test targets; these commands do not select public source scope or alter an existing World. The [process contract](process.md) owns admission authority; [contributor instructions](contributing.md) own independent publishing.
+The [process contract](process.md) owns identity and authority; [contributor instructions](contributing.md) own pack
+construction. Use existing GitHub sign-ins and custody. Qualification, assessment, index preparation and registry
+confirmation are explicit operator commands outside CI. Main never publishes. A publication requires independent
+review, a clean keys sweep over the exact archive and the manager's permission. The short provenance workflow only
+uploads the prepared bytes. No automatic CI tests or merge gates run.
 
-## Responsibilities and access
+## Roles and credentials
 
-`CODEOWNERS` and repository permissions name the moderators; current policy names authorized maintainers and direct trusted accounts. The operator records an incident owner and GitHub failure-notification recipients in the handoff. Repository ownership alone does not prove notifications are configured. An untrusted outside contributor and a distinct authorized human moderator are required to rehearse the outside review path. A trusted-account rehearsal does not require that review.
+`policy.assessmentAuthorities` registers assessment recorders by numeric GitHub account ID, exact login and account
+type. `policy.publicationAuthorities` separately registers prepared-index uploaders. These roles are explicit policy,
+not consequences of contributor trust or package ownership. `policy.trustedAccounts`, `internalRepositories` and
+`reviewBypassUsers` continue to govern moderation paths. Admission checks an authorized merger's current repository
+permission separately from the assessment issuer. Candidate containers receive none of these credentials.
 
-The catalog read App has administration, contents, checks and pull-request read access to the selected catalog. Its key is in `CATALOG_READ_APP_PRIVATE_KEY`; its client ID is a repository variable. The separate publisher App has contents and pull-request write access, without administration; its key is in `CATALOG_PR_APP_PRIVATE_KEY` in the trusted publisher. Both workflows mint target-scoped short-lived tokens and revoke them afterward. Contributors use their own GitHub and npm authority, never these keys. Registry publication uses trusted publishing or the configured `NPM_TOKEN`. Record registry package/workflow scope separately from GitHub App scope.
+For outside contributors, a non-author human moderator approves the current head. Trusted-account and eligible
+internal PRs may use the named maintainer exception. No account may certify an artifact by supplying an unauthenticated
+JSON file. `record-assessment` authenticates its GitHub issuer; admission rereads both the release author and asset
+uploader and checks their registered identity. No new ChatGPT or Claude sign-in is part of this process.
 
-## Find and retain a failure
+## Assess and record a submission
 
-Set the selected repository names, then list runs in the repository that owns the failed phase:
-
-```sh
-catalog_repository="<catalog-owner/catalog-repository>"
-publisher_repository="<publisher-owner/publisher-repository>"
-gh run list --repo "$publisher_repository" --workflow release.yml
-gh run list --repo "$catalog_repository" --workflow check.yml
-gh run list --repo "$catalog_repository" --workflow publish.yml
-```
-
-Inspect the chosen run and retain its artifacts in a new directory:
-
-```sh
-gh run view <run-id> --repo <owner/repository> --log-failed
-gh run download <run-id> --repo <owner/repository> --dir <new-evidence-directory>
-```
-
-Record source SHA, attempt, submission identity and PR head/base alongside the diagnostics. Pack artifacts retain bytes, submission data and the installed catalog CLI lock. Assessment artifacts retain the input-bound report, dependency lock and preparation/cleanup logs. Index publication retains its receipt; durable evidence is also bundled in the index and linked from the evidence release. A failed or missing report is never reconstructed as a pass.
-
-## Recover pack publication
-
-An accepted upload is immutable. If `upload-accepted.json` exists, confirmation is unresolved, or an upload result is uncertain, never upload that version again. Inspect exact registry identity against retained bytes. A rerun of the original workflow uses `GITHUB_RUN_ATTEMPT > 1` and cannot upload:
+On Linux x86-64 with Docker, select a clean checkout at the PR's exact current base. Its policy pins the released
+tools; the host controller reads submission data from the exact head through GitHub and never imports the candidate.
 
 ```sh
-gh run rerun <publisher-run-id> --repo "$publisher_repository" --failed
+node bin/twin-catalog.mjs assess-pr --repository <owner/catalog> --pr <number> --out <new-evidence-directory>/report.json
+node bin/twin-catalog.mjs record-assessment --repository <owner/catalog> --report <new-evidence-directory>/report.json --send
 ```
 
-Its source, lock and rebuilt archive must still match the registry integrity. A mismatch refuses and needs investigation, not a changed version attached to old evidence. For retained-byte confirmation in a publisher that implements the retained-byte recovery command, use its exact checkout and retained `release/` directory; point `CATALOG_CLI` at the exact installed released CLI and run `node scripts/publish.mjs --confirm-only`. This path performs reads and writes its receipt without upload or proposal credentials.
+`GH_TOKEN` or `GITHUB_TOKEN` supplies existing authorized GitHub access; never print it. Assessment is credential-free
+inside its preparation and offline containers. The controller retains the container identity, full report, evaluator
+and app-local dependency locks, source/PR/policy bindings and cleanup diagnostics. The recorder executes no candidate.
+It publishes only a complete ready envelope for the still-current head/base to a digest-named durable evidence release.
+A second identical record reuses the same bytes; another issuer or conflicting asset is refused.
 
-Independent publishers may use different release tooling; they must preserve the same immutable bytes and read-only confirmation rule. The commands above describe the shipped Volter publisher workflow.
+A changed head/base needs a fresh assessment. A failed phase retains its exact error and logs. Fix candidate defects
+in a new immutable npm version. Fix a registry or controller failure at its recorded path, then reassess. Pending,
+failed, cancelled and missing results remain different from ready. Never fabricate success for an old workflow.
+Historical Actions evidence keeps its original envelope, digest and run/attempt, and its original verifier remains
+available for admitted releases. Removing the old workflows does not alter those reports.
 
-A new first-attempt dispatch can upload an absent version. Use it only after evidence proves a prior failure happened before upload, or for a newly prepared immutable version. It is not the recovery command for an accepted or uncertain upload.
+The authenticated receipt establishes readiness; a separately authorized maintainer performs the admission merge.
+The repository has no required CI status checks or branch review gates. `configure` displays the intended settings;
+`configure --apply` is an explicit administrative act that removes those gates while retaining force-push/deletion
+protection. The command never runs automatically from a build or submission.
 
-Proposal recovery uses canonical retained submission JSON. The publisher workflow's `propose --send` returns the existing PR even if it is closed; it does not reopen it, approve it or create a duplicate. A rejected release is not silently resubmitted. Artifact fixes require a new version. A proposal transport failure needs no package upload.
+## Prepare and publish the index
 
-## Recover assessment
-
-Preparation confirms both the exact-version registry view and npm's installation view. Visibility can lag independently. Confirmation is bounded by the existing measured registry policy, performs reads only and checks exact integrity. Only 404 and an otherwise valid installation document missing that version are retried. Permission errors, malformed identities and conflicting bytes remain refusals.
-
-For an infrastructure failure, explicitly reassess the current PR:
+After the source PRs have their independent review and merge, use current clean main. Preparation verifies every
+admission PR, moderator path and exact authenticated evidence, copies the original envelopes into the index, builds
+and packs outside CI. It does not execute candidates.
 
 ```sh
-gh workflow run check.yml --repo "$catalog_repository" --ref main -f pr=<pr-number>
+node bin/twin-catalog.mjs prepare-publication --repository <owner/catalog> --out <new-prepared-directory>
 ```
 
-The job uses trusted current source and reads candidate data at the exact head. A changed head or base needs fresh evidence. Check the resulting report and current-head readiness; an older success or local report is insufficient. Candidate defects need a new immutable package version. The automation neither approves nor merges.
-
-Untrusted-account submissions need genuine current-head non-author human moderator approval. Direct trusted-account contributions, including forks, and eligible internal changes may use the named maintainer exception; every path still requires current-head readiness. Verify the author against `policy.trustedAccounts` using GitHub ID, login and type. Never use administrator merge to bypass missing untrusted-account review or a failed check.
-
-## Recover index publication
-
-To retain workflow documentation for recorded releases, run the data-only capture in a catalog checkout:
+The directory retains `prepared-publication.json`, the packed archive and the compiler output. The receipt binds
+package/version, source, snapshot digest, archive SHA-256 and SHA-512 SRI. Run the approved keys sweep over that exact
+archive using pinned gitleaks rules and custody-value redaction (`@volter/teams/redact`). Retain the original sweep
+output. Its data receipt has `passed: true`, the exact `sha256` and `integrity`, the pinned `rules` identity and
+`custodyValuesChecked: true`. Those fields report the completed sweep; writing them alone is not a keys sweep.
+Obtain the manager's permission naming that archive and verdict before publication.
 
 ```sh
-node bin/twin-catalog.mjs capture-content
+node bin/twin-catalog.mjs stage-publication --repository <owner/catalog> --from <prepared-directory> --tag <unique-preparation-tag> --sweep <exact-sweep-receipt.json> --send
+gh workflow run publish.yml --repo <owner/catalog> --ref <reviewed-source-commit> -f prepared_tag=<unique-preparation-tag> -f archive_sha256=<exact-archive-sha256>
 ```
 
-It reads immutable tarballs at their recorded integrity and writes `content/<release-id>.json`.
-Existing receipts are reused. Commit them through the maintainer maintenance path before publishing;
-this neither assesses a candidate nor changes an admission record. The publisher includes the receipts
-in the index and binds their hashes to its snapshot. A missing README remains missing.
+Staging retains only byte-bound inputs under a registered publication authority. It performs no npm upload.
+The manual registered workflow validates stage issuer, source, sweep, manifest and archive digest, then runs one
+`npm publish <archive> --ignore-scripts --provenance` with its publication credential. It performs no install, build,
+assessment or proposal. Its one-minute job ceiling bounds execution; a timeout is an unresolved upload, not proof of
+success within that ceiling. Read the actual completed run duration and outcome before claiming a successful upload.
 
-Retry current protected main after resolving the recorded cause:
+Registry confirmation runs separately outside CI:
 
 ```sh
-gh workflow run publish.yml --repo "$catalog_repository" --ref main
+node bin/twin-catalog.mjs confirm-publication --receipt <prepared-directory>/prepared-publication.json
 ```
 
-The workflow verifies admission and protection, then reuses a published version only when source and digest match. It cannot overwrite a conflicting identity. Retain the new receipt and compare registry integrity before calling the upload confirmed. No platform build, candidate test or hosted deployment is part of this job.
+It retries HTTP 404 only, every 15 seconds for at most ten minutes, under the retained
+[registry measurement](measurements/registry-confirmation.json). Other HTTP errors or conflicting identity fail
+immediately. A receipt with accepted or uncertain upload is confirmed through exact-version reads; never upload that
+immutable version again. Workflow attempts after the first cannot upload an absent version. Matching existing SRI
+is reused; different bytes always fail. Main never automatically dispatches publication.
 
-The product site is an independent consumer. Its configured operator scheduler runs the site-only
-`apps/www/scripts/refresh.py` command documented in the World website's publishing instructions.
-It installs an exact released index in a disposable directory, retains registry integrity, builds
-and uploads the product site, and confirms the production snapshot. A site refresh does not
-rebuild or release the platform, change an admission, or replace a user's World pin. Hosting
-custody stays with that site operator; this catalog receives no hosting credential. Inspect the
-site publisher's retained receipt and failure logs when the npm snapshot is newer than the site.
+## Retain documentation and selected source inputs
 
-## Recommend, reject or revoke
+`capture-content` reads immutable archives at their recorded SRI, never installs or imports them. It retains README
+and manifest requirements in checksum-bound `content/` receipts. Existing metadata that predates dependency/optional
+peer fields can be enriched from those same bytes without changing an assessment. Commit the receipts in a maintenance
+change before preparing a new index. Missing documentation or historical measurement stays unavailable.
 
-A moderator rejects a PR with a concrete reason. An unmerged readiness success adds no release to the index.
+World's source checkout consumes the catalog through its existing selected `sources/catalog` Gitlink and
+`source-inputs/catalog` evidence inputs. After the catalog merge, select its exact main commit, retain the original
+`verifyAdmission`/`persistEvidence` envelopes and reference metadata, then use the existing catalog compiler through
+`node scripts/build-catalog-source.mjs`. Never replace the source checkout with an installed registry package or
+invent installer SRI for source-built output. A registry site's separately selected snapshot retains its actual SRI.
 
-With multiple live implementations, change `recommendations.json` in a separate maintainer PR to select the package. Versions from different publishers never compete. Selection within that package offers its newest live stable approved release.
+## Diagnose publication and website delivery
 
-To withdraw an admitted release, append its exact package/version and a nonempty reason to `revocations.json` in a maintainer PR. Remove or replace a recommendation that would otherwise have no selectable release. After current-head readiness and moderator merge, index publication changes future defaults. It preserves immutable package bytes, prior evidence and existing World pins; it does not remotely uninstall a pack.
-
-## Pause distribution and replace credentials
-
-Pause future work without deleting artifacts or rewriting history:
+Retain source SHA, workflow attempt, preparation receipt, archive and original sweep output. For a selected run:
 
 ```sh
-gh variable set PACK_PUBLISH_ENABLED --repo "$publisher_repository" --body false
-gh variable set CATALOG_PUBLISH_ENABLED --repo "$catalog_repository" --body false
+gh run view <run-id> --repo <owner/catalog> --log-failed
 ```
 
-These flags govern future jobs; they do not recall published packages or settle an in-flight upload. Preserve its receipts and inspect the outcome separately. Re-enable the intended flag only after the incident is resolved.
+An uncertain upload, failed confirmation and successful admission are separate states. Diagnose the failing registry,
+workflow or source path without rerunning qualification needlessly. Historical workflow artifacts are supplementary;
+durable evidence and bundled reports retain their original checksum identities.
 
-For an App key replacement, inventory selected repositories and consumers, generate an additional key, store it directly in the correct encrypted repository secret, and confirm the intended workflow's access before revoking the old key. Never print or commit a key, broaden an installation to every repository, or remove another consumer's key. Keep read and proposal roles separate. For npm replacement, use approved custody or trusted publishing and restrict package/workflow scope appropriately. Document identity, target and replacement outcome without secret values.
+The independent site operator uses World's existing `apps/www/scripts/refresh.py` publisher. Its publication receipt
+and served snapshot establish website source, catalog version/digest/integrity and deployment identity. Catalog npm
+publication neither deploys the website nor changes an existing World pin. Hosting custody stays with that operator.
+
+## Recommend, reject, revoke and pause distribution
+
+Reject a PR with a concrete reason. An unmerged assessment adds no release to the index. With competing implementations,
+change `recommendations.json` separately; versions from different packages never compete. To withdraw an admitted
+release, add its exact package/version and reason to `revocations.json`, reconciling any affected recommendation.
+After authorized merge and explicit index publication, the change affects future selections and preserves artifacts,
+old reports and current World pins. It cannot uninstall a running pack.
+
+`CATALOG_PUBLISH_ENABLED=false` disables future manual uploads; it does not settle an upload already underway.
+Credential replacement uses the existing scoped custody workflow. Never print a key, broaden its repository scope
+or revoke another consumer's key. Record target, identity and outcome without secrets. The catalog receives no
+publisher npm or website credential.
