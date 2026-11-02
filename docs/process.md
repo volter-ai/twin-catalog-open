@@ -138,6 +138,14 @@ The customer app has its own candidate, CLI-matching kernel and SDK installation
 outside the evaluator's dependency tree. Both volumes survive preparation and offline evaluation; temporary
 container files do not hold prepared inputs. The controller retains both dependency locks and verifies cleanup
 of every volume it created. This proves an app-local installation rather than ancestor dependency resolution.
+The evaluator's installation retains its npm JSON lock. Standard SDK fixtures use their declared installer and
+frozen Bun or pnpm lock; customer apps use the installer declared by the released standard. New pnpm customer
+evidence retains the native YAML stream, format and filename alongside its parsed documents and raw-byte digest.
+Catalog-owned evidence parsing validates the full registry dependency tree and the required direct identities
+in both preparation and authenticated recording. It uses the external YAML parser rather than the standard's
+private app-local lookup helper: the host controller is independent of the selected standard installation and
+must validate the entire retained lock. The public reader continues to read bundled JSON only. Historical npm
+JSON envelopes keep their original shape, bytes and digest; no historical evidence is converted.
 Before dependency installation, preparation confirms the candidate's exact version and integrity in npm's
 installation metadata as well as its exact-version metadata. These registry views may propagate separately.
 Tarball downloads also confirm availability and integrity before extraction. Only HTTP 404 or an otherwise valid package document without that version is retried, using the existing measured
