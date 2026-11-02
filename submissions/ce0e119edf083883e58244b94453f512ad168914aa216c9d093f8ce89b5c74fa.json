@@ -1,0 +1,8 @@
+{
+  "schemaVersion": 1,
+  "source": "twin-packs-open",
+  "vendor": "twitch",
+  "package": "@volter/twin-twitch",
+  "version": "1.0.1",
+  "integrity": "sha512-y8zkK93zUPerjS5aOtkCBVygVfOy0TcrE2mDJR3uOSgSnxiMEl6yMO4OjRixz2Kj9f6+Ry4jvGpO+b5VCj/dnQ=="
+}
