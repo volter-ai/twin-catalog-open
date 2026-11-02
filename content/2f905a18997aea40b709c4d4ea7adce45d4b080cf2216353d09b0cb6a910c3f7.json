@@ -17,6 +17,12 @@
     "peerDependencies": {
       "@volter/world-core": "^3.0.92"
     },
+    "dependencies": {
+      "pg": "8.16.3",
+      "react": "^19.2.7",
+      "react-dom": "^19.2.7"
+    },
+    "peerDependenciesMeta": {},
     "repositoryDirectory": "supabase",
     "bugs": null
   },

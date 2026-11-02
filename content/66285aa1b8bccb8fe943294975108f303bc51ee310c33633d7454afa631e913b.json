@@ -17,6 +17,13 @@
     "peerDependencies": {
       "@volter/world-core": "^3.0.127"
     },
+    "dependencies": {
+      "@volter/world-ui": "^1.0.127",
+      "react": "^19.2.7",
+      "react-dom": "^19.2.7",
+      "graphql": "16.14.2"
+    },
+    "peerDependenciesMeta": {},
     "repositoryDirectory": "github",
     "bugs": "https://github.com/volter-ai/twin-packs-open/issues"
   },

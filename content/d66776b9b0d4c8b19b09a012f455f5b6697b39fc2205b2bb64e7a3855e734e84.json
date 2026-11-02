@@ -17,6 +17,10 @@
     "peerDependencies": {
       "@volter/world-core": "^3.0.105"
     },
+    "dependencies": {
+      "graphql": "16.14.2"
+    },
+    "peerDependenciesMeta": {},
     "repositoryDirectory": "linear",
     "bugs": null
   },
