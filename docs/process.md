@@ -301,7 +301,11 @@ whole job has a one-minute execution ceiling; a timeout or uncertain upload does
 propagation confirmation belongs to `confirm-publication` outside CI. Already published identical bytes are reused;
 a conflicting immutable version is refused and an accepted upload is never repeated.
 Before npm, the workflow retains one immutable upload intent on the prepared release; afterward it retains its
-run/attempt outcome. A missing outcome after an intent is uncertain, including after a terminated runner. A fresh
+run/attempt outcome with the actual npm executable, arguments, working directory, stdout, stderr and launch error.
+Credential environment values and their encoded forms, URL credentials and token/authorization text are redacted
+before persistence. The same result is emitted as one JSON line on stderr, visible through workflow stdout redirection;
+no environment or configuration dump is retained. Exit zero records command acceptance; registry confirmation remains
+separate. A missing outcome after an intent is uncertain, including after a terminated runner. A fresh
 dispatch cannot repeat that version's upload. Operators retain read-only confirmation output separately.
 
 Registry publication is separate from preparation, admission and website deployment. The index version derives from

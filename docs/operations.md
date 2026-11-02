@@ -99,7 +99,13 @@ Retain the output with the card's evidence. Confirmation performs no upload.
 
 Before npm, the workflow writes `publication-upload-intent.json` to the prepared release, binding the archive,
 preparation receipt, source, branch, workflow and run/attempt. It retains `publication-result-<run>-<attempt>.json`
-afterward with an accepted or uncertain outcome. A killed runner may leave only the intent. Missing or failed
+afterward with an accepted or uncertain outcome. Its `npm` field retains the actual executable, arguments, working
+directory, stdout, stderr and any launch error. Credential environment values (including URI/base64 forms), URL
+credentials and token/authorization text are redacted before either persistence or the workflow log. The command
+emits `twin-catalog npm result: ` followed by the same JSON result on stderr, so stdout redirection does not hide it.
+Read the retained npm text for its actual publish, error, dry-run or skip message; exit zero alone does not supply
+that text or registry confirmation. No environment/configuration dump is recorded.
+A killed runner may leave only the intent. Missing or failed
 outcome persistence does not authorize another upload. Even a fresh workflow run refuses an absent version when
 that version has an earlier intent. Confirm accepted or uncertain uploads through exact-version reads; never
 delete the intent, replace its assets or upload that immutable version again. Matching existing SRI is reused;
