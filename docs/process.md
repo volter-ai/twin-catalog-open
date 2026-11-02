@@ -146,6 +146,12 @@ in both preparation and authenticated recording. It uses the external YAML parse
 private app-local lookup helper: the host controller is independent of the selected standard installation and
 must validate the entire retained lock. The public reader continues to read bundled JSON only. Historical npm
 JSON envelopes keep their original shape, bytes and digest; no historical evidence is converted.
+Assessment image builds and every container run explicitly select `linux/amd64`, matching the pinned Linux x64
+Bun and native pnpm artifacts. A host's architecture does not implicitly choose different tool bytes. The image
+and original input policy retain the execution conditions; selecting this platform does not establish that a
+particular machine has a working Docker engine or emulation.
+Each pnpm store stays beside its installation in the same owned volume, so the standard's hardlink import method
+never depends on linking across the temporary filesystem and the customer or evaluator volume.
 Before dependency installation, preparation confirms the candidate's exact version and integrity in npm's
 installation metadata as well as its exact-version metadata. These registry views may propagate separately.
 Tarball downloads also confirm availability and integrity before extraction. Only HTTP 404 or an otherwise valid package document without that version is retried, using the existing measured

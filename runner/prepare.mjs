@@ -8,6 +8,8 @@ import semver from 'semver';
 import { verify as verifyBundle } from 'sigstore';
 import { read, write, requireThat, digest } from '../lib/model.mjs';
 import { metadata, installationMetadata, registryURL, artifactBytes, verifiedProvenance } from '../lib/registry.mjs';
+import { parseDependencyLock, validateRegistryLock, directDependency } from '../lib/dependency-lock.mjs';
+import { dependencyInstall } from './dependency-install.mjs';
 
 const input = read('/input/input.json');
 const { submission: s, source, policy } = input;
@@ -53,11 +55,7 @@ const npm = (args) => {
 };
 npm(['install', '--ignore-scripts', '--no-audit', '--no-fund']);
 const lock = read('/work/package-lock.json');
-for (const [path, entry] of Object.entries(lock.packages ?? {})) {
-  if (!path) continue;
-  requireThat(!entry.link && entry.resolved && entry.integrity, `${path}: dependency is not a locked registry artifact`);
-  registryURL(entry.resolved, policy.registry);
-}
+validateRegistryLock(lock, 'npm', policy.registry);
 for (const [name, version] of Object.entries(policy.tools)) requireThat(lock.packages?.[`node_modules/${name}`]?.version === version, `${name}: evaluator version differs from policy`);
 requireThat(lock.packages?.[`node_modules/${s.package}`]?.integrity === s.integrity, 'installed artifact differs from submission');
 const candidateRequire = createRequire(join('/work/node_modules', s.package, 'package.json'));
@@ -67,11 +65,14 @@ const clientSdkLocks = [];
 for (const directory of standardManifest.assessmentClientSdks ?? []) {
   requireThat(typeof directory === 'string' && /^[a-z][a-z0-9-]*$/.test(directory), 'standard client SDK directory must be a package-local name');
   const sdkRoot = join('/work/node_modules/@volter/twin-standard', directory);
-  const sdkLock = readFileSync(join(sdkRoot, 'bun.lock'), 'utf8');
-  const installed = spawnSync('bun', ['install', '--frozen-lockfile', '--ignore-scripts', '--registry', policy.registry], { cwd: sdkRoot, encoding: 'utf8', maxBuffer: 16 * 1024 * 1024 });
+  const installer = dependencyInstall(sdkRoot, policy, { frozen: true });
+  const sdkLock = readFileSync(join(sdkRoot, installer.file), 'utf8');
+  const installed = spawnSync(installer.command, installer.args, { cwd: installer.cwd, encoding: 'utf8', maxBuffer: 16 * 1024 * 1024 });
   requireThat(installed.status === 0, `standard client SDK preparation failed: ${installed.stderr}`);
-  requireThat(readFileSync(join(sdkRoot, 'bun.lock'), 'utf8') === sdkLock, 'standard client SDK lock changed during frozen installation');
-  clientSdkLocks.push({ directory, manifest: read(join(sdkRoot, 'package.json')), lock: sdkLock, sha256: digest(sdkLock) });
+  requireThat(readFileSync(join(sdkRoot, installer.file), 'utf8') === sdkLock, 'standard client SDK lock changed during frozen installation');
+  if (installer.format !== 'bun') validateRegistryLock(parseDependencyLock(sdkLock, installer.format), installer.format, policy.registry);
+  clientSdkLocks.push({ directory, manifest: installer.manifest, packageManager: installer.packageManager,
+    file: installer.file, format: installer.format, lock: sdkLock, sha256: digest(sdkLock) });
 }
 const audit = npm(['audit', 'signatures', '--json']);
 writeFileSync('/work/signatures.json', audit);
@@ -91,16 +92,13 @@ requireThat(!relative(realpathSync(productRoot), cli).startsWith('..'), 'CLI ent
 // Keep the app outside /work's evaluator dependency tree.
 const appDir = '/customer/app';
 const consumerFixture = prepareConsumerApp(join('/work/packs', s.vendor), appDir, { cli });
-const appInstall = spawnSync('npm', ['install', '--ignore-scripts', '--no-audit', '--no-fund', '--registry', policy.registry], { cwd: appDir, encoding: 'utf8', maxBuffer: 16 * 1024 * 1024 });
+const appInstaller = dependencyInstall(appDir, policy);
+const appInstall = spawnSync(appInstaller.command, appInstaller.args, { cwd: appInstaller.cwd, encoding: 'utf8', maxBuffer: 16 * 1024 * 1024 });
 requireThat(appInstall.status === 0, `customer SDK preparation failed: ${appInstall.stderr}`);
-const consumerLock = read(join(appDir, 'package-lock.json'));
-requireThat(consumerLock.packages[`node_modules/${s.package}`]?.integrity === s.integrity, 'customer candidate differs from the admitted artifact');
-requireThat(consumerLock.packages['node_modules/@volter/world-core']?.version === policy.tools['@volter/world-core'], 'customer kernel differs from the CLI pin');
-for (const [path, entry] of Object.entries(consumerLock.packages ?? {})) {
-  if (!path) continue;
-  requireThat(!entry.link && entry.resolved && entry.integrity, `${path}: customer dependency is not a locked registry artifact`);
-  registryURL(entry.resolved, policy.registry);
-}
+const consumerLockText = readFileSync(join(appDir, appInstaller.file), 'utf8'), consumerLock = parseDependencyLock(consumerLockText, appInstaller.format);
+requireThat(directDependency(consumerLock, appInstaller.format, s.package)?.integrity === s.integrity, 'customer candidate differs from the admitted artifact');
+requireThat(directDependency(consumerLock, appInstaller.format, '@volter/world-core')?.version === policy.tools['@volter/world-core'], 'customer kernel differs from the CLI pin');
+validateRegistryLock(consumerLock, appInstaller.format, policy.registry);
 const consumer = { appDir, cli, artifactIntegrity: s.integrity };
 // Retain listing facts from these exact bytes, never the registry's moving latest metadata.
 const readmeNames = readdirSync('/work/unpacked/package').filter(name => /^readme(?:\.md|\.markdown|\.txt)?$/i.test(name));
@@ -116,5 +114,7 @@ const packageMetadata = {
   repositoryDirectory: typeof pack.repository === 'object' ? pack.repository.directory ?? null : null,
   bugs: typeof pack.bugs === 'string' ? pack.bugs : pack.bugs?.url ?? null,
 };
-write('/work/prepared.json', { schemaVersion: 1, submission: s, integrity: s.integrity, provenance, packageMetadata, readme, dependencyLockSha256: digest(readFileSync('/work/package-lock.json', 'utf8')), clientSdkLocks, clientDependencyChoices, tools: policy.tools, consumer, consumerFixture, consumerDependencyLockSha256: digest(readFileSync(join(appDir, 'package-lock.json'), 'utf8')) });
+write('/work/prepared.json', { schemaVersion: 1, submission: s, integrity: s.integrity, provenance, packageMetadata, readme, dependencyLockSha256: digest(readFileSync('/work/package-lock.json', 'utf8')), clientSdkLocks, clientDependencyChoices, tools: policy.tools, consumer, consumerFixture,
+  consumerPackageManager: appInstaller.packageManager, consumerDependencyLockFile: appInstaller.file, consumerDependencyLockFormat: appInstaller.format,
+  consumerDependencyLockSha256: digest(consumerLockText) });
 write('/work/world.json', { id: 'catalog-assessment', network: { egress: [] }, services: [] });

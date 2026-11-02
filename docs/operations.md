@@ -22,8 +22,13 @@ uploader and checks their registered identity. No new ChatGPT or Claude sign-in 
 
 ## Assess and record a submission
 
-On Linux x86-64 with Docker, select a clean checkout at the PR's exact current base. Its policy pins the released
+With Docker capable of `linux/amd64` containers, select a clean checkout at the PR's exact current base. Its policy pins the released
 tools; the host controller reads submission data from the exact head through GitHub and never imports the candidate.
+Image builds and all containers explicitly select that platform to match the Linux x64 Bun and native pnpm bytes;
+an ARM64 host needs Docker's supported emulation. SDK fixtures install their declared manager frozen and without
+scripts. A pnpm customer app retains `pnpm-lock.yaml`, including all native YAML documents; older npm apps retain
+`package-lock.json`. The controller binds original bytes, parsed documents, exact format/filename and package
+identities. A native manager mismatch or non-registry dependency fails preparation instead of falling back to npm.
 
 ```sh
 node bin/twin-catalog.mjs assess-pr --repository <owner/catalog> --pr <number> --out <new-evidence-directory>/report.json

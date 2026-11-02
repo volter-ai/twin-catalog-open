@@ -1,6 +1,7 @@
 ARG NODE_IMAGE=node:24-bookworm-slim
 FROM ${NODE_IMAGE}
 ARG BUN_VERSION=1.3.11
+ARG PNPM_VERSION=12.15.0
 ARG STANDARD_VERSION=1.0.37
 ARG CORE_VERSION=3.0.45
 ARG RUNTIME_VERSION=3.0.45
@@ -13,8 +14,9 @@ RUN mkdir -p /etc/postgresql-common && printf 'create_main_cluster = false\n' > 
     && apt-get update && apt-get install -y --no-install-recommends git openssl ca-certificates libfaketime postgresql-15 && rm -rf /var/lib/apt/lists/*
 ENV VOLTER_WORLD_POSTGRES_BIN=/usr/lib/postgresql/15/bin
 WORKDIR /opt/catalog
+COPY package.json /opt/catalog/package.json
 RUN npm install --ignore-scripts --no-audit --no-fund --save-exact \
-    @oven/bun-linux-x64@${BUN_VERSION} @volter/twin-standard@${STANDARD_VERSION} \
+    @oven/bun-linux-x64@${BUN_VERSION} @pnpm/exe.linux-x64@${PNPM_VERSION} @volter/twin-standard@${STANDARD_VERSION} \
     @volter/world-core@${CORE_VERSION} @volter/world-runtime@${RUNTIME_VERSION} @volter/world@${CLI_VERSION} tar@7.5.7 semver@7.8.5 sigstore@4.1.1 playwright@${PLAYWRIGHT_VERSION}
 ENV PATH="/opt/catalog/node_modules/@oven/bun-linux-x64/bin:/opt/catalog/node_modules/.bin:${PATH}"
 RUN ./node_modules/.bin/playwright install --with-deps chromium
