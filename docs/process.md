@@ -3,8 +3,7 @@
 This repository operates admission and distribution of twin packages from independent publishers. The platform owns
 the runtime, Protocol 3 and the versioned standard. Publishers own their source and npm releases. This repository
 owns source registration, submissions, evaluation policy, moderator decisions and the approved index. It requires
-released tools, not a platform checkout. Its executable contract is the modules in `lib/` and the workflows in
-`.github/workflows/`; `bin/twin-catalog.mjs` exposes the same operations to contributors and automation.
+released tools, not a platform checkout. Its executable contract is the modules in `lib/`; `bin/twin-catalog.mjs` exposes the explicit operator commands. Qualification and assessment run outside CI. Main never publishes. No automatic CI tests, required status checks or merge gates establish readiness.
 
 ## Identity and authority
 
@@ -98,37 +97,35 @@ unchanged client invocation; the pinned standard owns initialization, lifecycle,
 
 ## State and invalidation
 
-| State | Evidence | Next action |
-|---|---|---|
-| Submitted | A release PR with valid data | Automation resolves the artifact |
-| Checking | Current-head readiness check in progress | Automation evaluates |
-| Changes needed | Validation, evaluation or replay failed | Contributor updates and resubmits |
-| Ready | Required checks passed for this head and policy | Untrusted authors obtain moderator approval; trusted accounts proceed to authorized maintainer merge |
-| Approved | Required checks remain current; untrusted authors have current-head review, or an explicit trusted-account/internal exception applies | Authorized maintainer merges |
-| Admitted | Authorized merge on protected main through human review, trusted-account admission or the internal maintainer path | Publication builds the index |
-| Rejected | Moderator closes the PR with a reason | New submission if corrected |
+A submission starts as data on an open PR. An operator uses `assess-pr` from a clean checkout of its exact current
+base, with that base's released policy and controller. A ready envelope binds the PR, head/base, submission,
+registered source, policy, controller source, immutable container image, exact artifact integrity, evaluator tools,
+preparation locks and full report digest. A changed head or base requires fresh evidence. An interrupted, failed,
+superseded or missing report cannot establish readiness. No PR event executes assessment automatically.
 
-Readiness is not approval. Catalog assessment never approves or merges. Review dismissal on new commits, required current-head checks,
-CODEOWNERS review and a branch rule requiring the branch to be current enforce the decision. A moderator's identity
-comes from GitHub review and merge events, never a contributor's `by` string. Self-approval is not accepted as review.
-Named maintainers have a review bypass for internal changes and direct trusted-account contributions; untrusted
-admissions still need human review. Every path needs current-head readiness. Publication records which admission path and merger established authority.
-The repository's installation command checks/configures these rules explicitly; merely committing a workflow is not
-evidence that they are enabled. No credentials or repository settings are changed by an ordinary build.
+`record-assessment --report <file> --send` is a separate credentialed, data-only act. It executes no candidate and
+accepts only a complete ready controller envelope for the still-current PR. The authenticated GitHub issuer must
+match an entry in `policy.assessmentAuthorities` by numeric account ID, exact login and account type. This explicit
+role is independent of contributor trust, source registration and moderator authority. A contributor's local JSON
+or comment cannot certify readiness. The command publishes the envelope as `report.json` in a durable GitHub evidence
+release named for the submission and report digest. Both release author and asset uploader must match the registered
+authority. Admission retrieves that authenticated asset, recomputes its digest, and checks every bound input against
+the base source. A release or asset with another issuer, conflicting content or absent identity is refused.
 
-Use the intended GitHub account explicitly for the submission push and the maintainer's merge action.
-If GitHub requires an approval, its last-push rule requires a permitted reviewer who did not make the most recent
-reviewable push. An account that authored the PR cannot approve its own PR. The trusted-account/internal exception
-removes separate human moderation; it does not turn self-approval into a review or override required readiness.
-Correct the submitting account and obtain the applicable maintainer approval without weakening the branch rules
-or copying a successful check onto another commit. A changed head receives its own readiness receipt.
+Historical GitHub Actions evidence keeps its original envelope, checksum, check receipt, workflow run and attempt.
+Its verifier remains available; no operator receipt is labeled as a successful `check.yml` run. Historical reports
+remain evaluated under their originally bound policy. New evidence uses an explicit `operator` variant.
 
-An assessment binds the PR number and head SHA, base SHA, source registration, submission, policy, evaluator package
-versions, container image identity, artifact integrity and resolved dependency lock. Evidence from an earlier head
-does not satisfy a new one. A base update requires updating the branch and a new readiness run. Jobs cancel superseded
-runs; their historical reports remain evidence only. A merged policy change affects subsequent admission runs; it
-does not retroactively certify old releases under the new policy. Publication checks the admitted submission identity. Identical reruns retain their inputs and produce comparable
-results. A failed or interrupted run has no successful readiness receipt.
+Readiness and admission authority are separate. Untrusted contributors need current-head non-author human moderator
+approval; trusted-account or internal contributors can use the named authorized maintainer exception. Every admission
+records its merger and authority path. The maintainer's current `admin` or `maintain` permission is checked separately
+from assessment authority. No branch check or CI success substitutes for either decision. `configure --apply` removes
+required branch checks/review gates while retaining force-push and deletion protection; repository administration is
+an explicit operator action, never an ordinary build side effect.
+
+Merging records an admission in main; immutable submission data cannot be edited afterward. Index preparation verifies
+the admitted PR and its authenticated evidence. Rejection remains the closed PR and reason. A policy update affects
+subsequent assessments and never relabels old evidence. Reports are bound to their complete original policy and locks.
 
 ## Execution boundary
 
@@ -141,6 +138,20 @@ The customer app has its own candidate, CLI-matching kernel and SDK installation
 outside the evaluator's dependency tree. Both volumes survive preparation and offline evaluation; temporary
 container files do not hold prepared inputs. The controller retains both dependency locks and verifies cleanup
 of every volume it created. This proves an app-local installation rather than ancestor dependency resolution.
+The evaluator's installation retains its npm JSON lock. Standard SDK fixtures use their declared installer and
+frozen Bun or pnpm lock; customer apps use the installer declared by the released standard. New pnpm customer
+evidence retains the native YAML stream, format and filename alongside its parsed documents and raw-byte digest.
+Catalog-owned evidence parsing validates the full registry dependency tree and the required direct identities
+in both preparation and authenticated recording. It uses the external YAML parser rather than the standard's
+private app-local lookup helper: the host controller is independent of the selected standard installation and
+must validate the entire retained lock. The public reader continues to read bundled JSON only. Historical npm
+JSON envelopes keep their original shape, bytes and digest; no historical evidence is converted.
+Assessment image builds and every container run explicitly select `linux/amd64`, matching the pinned Linux x64
+Bun and native pnpm artifacts. A host's architecture does not implicitly choose different tool bytes. The image
+and original input policy retain the execution conditions; selecting this platform does not establish that a
+particular machine has a working Docker engine or emulation.
+Each pnpm store stays beside its installation in the same owned volume, so the standard's hardlink import method
+never depends on linking across the temporary filesystem and the customer or evaluator volume.
 Before dependency installation, preparation confirms the candidate's exact version and integrity in npm's
 installation metadata as well as its exact-version metadata. These registry views may propagate separately.
 Tarball downloads also confirm availability and integrity before extraction. Only HTTP 404 or an otherwise valid package document without that version is retried, using the existing measured
@@ -176,6 +187,10 @@ source review remains part of admission.
 Provenance verification checks the registry signature/attestation using npm's verifier, cryptographically verifies the exact downloaded Sigstore bundle, and checks the attested
 repository/workflow against the registered source. A certificate-shaped string alone is not verification. The
 artifact digest is independently recomputed. Private-source publication without provenance cannot claim readiness.
+For repositories named in the assessment policy's `provenanceRefs`, the certificate identity, SLSA workflow ref and
+resolved Git dependency must all name that exact branch, with one immutable source commit. Volter's public packs
+use `refs/heads/publish`. The policy is bound to the original assessment input; historical reports keep their
+original branch identity and remain verified under their original policy.
 
 ## Evaluation and reports
 
@@ -239,17 +254,13 @@ never automatic selections. A missing or failing assessment is never inferred fr
 
 The public catalog groups implementations under a vendor, attributes the repository and publisher, and links to
 the immutable version and admission PR/evidence. It displays release documentation and Setup separately from
-support counts, installed-customer journeys and replay results. A contributor sees the PR check, one updated feedback comment, and downloadable workflow artifacts.
-Readiness checks bind the report digest, workflow run ID and attempt in their external receipt. GitHub may replace
-the display URL and attach a manually dispatched check to an older PR check suite; that display association is not
-the report's source. After authorized merge, publication fetches the exact recorded workflow attempt and requires
-success, the trusted readiness workflow, and the report's bound input identity. A manual dispatch runs at the bound
-trusted base; a pull-request-target run names the submitted head. Older receipts retain their validated run URL or
-unique check-suite/head association. An unrelated workflow, source commit, attempt or substituted artifact cannot
-supply evidence. The publisher then validates
-the report against that receipt and stores it in a GitHub evidence release and in the index package's `evidence/`.
-Reports include the resolved dependency lock. Workflow logs remain supplementary artifacts with configured retention.
-If evidence expires before its first durable copy, publication refuses; it never reconstructs a passing report.
+support counts, installed-customer journeys and replay results. Assessment metadata exposes the report's `evaluatedAt` independently from admission time.
+The browser measurement remains nullable for existing consumers; additive `browserStatus` preserves recorded failure,
+non-measurement and explicit non-applicability reasons. Missing historical data stays unknown. Package requirements
+come from the exact artifact's manifest, never its current registry tag. Assessment records are copied from their
+authenticated durable evidence releases into the index; historical workflow artifacts remain an allowed source for
+the original Actions variant only. Evidence expires before first durable copy only on that historical path, which
+refuses rather than manufacturing a report.
 This process supplies data for a browse page and does not deploy one.
 
 `volter world init` uses the installed catalog's selected exact package version when installing a missing vendor.
@@ -260,46 +271,30 @@ an existing World's declared dependency; the catalog cannot remotely uninstall c
 
 ## Merge and publication
 
-The publication workflow runs only when the repository variable `CATALOG_PUBLISH_ENABLED` is `true`; activation
-follows successful Actions verification and moderator configuration. Protected main is the admission ledger. Submission files are immutable after admission. The publisher rebuilds from
-the existing index and merged submissions, adding versions without altering historical identity. It writes
-`sources.json`, `vendors/`, `recommendations.json` and machine-readable catalog metadata into the package artifact.
-Each admitted version links to its submission and merge commit; the GitHub PR retains reviews and readiness artifacts.
-Index generation does not import a pack, execute tests or rebuild the platform. The website and hosted runtime are
-independent consumers of the published index; their absence or build failures do not block index publication.
+Main is autonomous integration and the admission ledger. It never publishes. `prepare-publication --out <new-folder>`
+runs explicitly outside CI after review, verifies admission and authenticated evidence, builds the index and packs
+one exact archive. The operator keys-sweeps that archive and obtains the manager's permission naming its digest.
+Publication is a separate explicit action through `publish`, advanced to that exact reviewed source only after
+permission. Main integration never advances or dispatches publication. `stage-publication --from <folder>
+--tag prepared-catalog-<version> --sweep <receipt> --send` retains the archive and byte-bound preparation receipt in
+a separate GitHub release. One deterministic stage tag per immutable version prevents a new tag from bypassing
+upload recovery. This data-only upload does not publish npm. Publication custody stays outside assessment.
 
-The publisher verifies branch protection and merger permissions with read-only GitHub App access, separate from
-its index/evidence write token. Install the App only on the catalog repositories with administration, contents,
-checks and pull requests set to read. Store its client ID in `CATALOG_READ_APP_CLIENT_ID` and private key in
-`CATALOG_READ_APP_PRIVATE_KEY`. The pinned token action requests those permissions only for the current catalog
-repository and revokes its installation token after the job. The key is available only to the trusted publication
-job; candidate preparation and evaluation remain credential-free. A preconfigured equivalent `CATALOG_READ_TOKEN`
-is supported for existing operators. Missing read access fails admission verification and cannot bypass it.
+The manual registered `publish.yml` workflow is dispatched with `--ref publish`, the prepared SHA and archive hash.
+It requires `refs/heads/publish`, the exact workflow/source SHA and a stage tag targeting that commit. It confirms
+manifest, source, artifact SRI and SHA-256, checks the stage issuer's authority, then uploads
+exactly the archive with npm provenance. It installs no candidate, builds nothing and runs no qualification. Its
+whole job has a one-minute execution ceiling; a timeout or uncertain upload does not establish success. Long registry
+propagation confirmation belongs to `confirm-publication` outside CI. Already published identical bytes are reused;
+a conflicting immutable version is refused and an accepted upload is never repeated.
+Before npm, the workflow retains one immutable upload intent on the prepared release; afterward it retains its
+run/attempt outcome. A missing outcome after an intent is uncertain, including after a terminated runner. A fresh
+dispatch cannot repeat that version's upload. Operators retain read-only confirmation output separately.
 
-Trusted pack repositories use a separate publisher App to propose immutable data PRs. Install that App only on the
-target catalogs with contents and pull requests set to write, without administration. Store its client ID as
-`CATALOG_PR_APP_CLIENT_ID` and key as `CATALOG_PR_APP_PRIVATE_KEY` in the trusted publisher repository, never in
-candidate evaluation. Its workflow mints a short-lived token restricted to the target catalog and revokes it after
-proposal. App-authored PR events start catalog readiness through GitHub's normal event flow; the publisher does not
-dispatch or choose an evaluator. Existing scoped `CATALOG_PR_TOKEN` deployments remain supported. Outside publishers
-do not receive Volter's App key: they register their own source and submit through their own GitHub account or fork.
-
-Publication is serialized and starts from a clean checkout of current protected main. An obsolete queued job refuses
-to publish, so it cannot move the registry default backwards; retry on current main includes its admitted releases.
-A release identifies its source commit and npm artifact; retrying the same commit reuses
-the same version, verifies identity if it already exists, and does not publish a duplicate. A registry conflict with
-different identity fails. A publish failure leaves the admitted ledger intact and is retryable; it does not mark
-anything deployed. Credentialed publication never evaluates candidate code. Rejection records remain in closed PRs;
-they are not added to the resolvable index. Revocation of an admitted version is an explicit moderator-maintained
-record with a reason; it removes the version from future selection without rewriting its artifact or existing pins.
-
-After npm accepts an upload, publication confirms the exact version with read-only registry requests. A temporary
-404 is pending propagation, not a second upload: confirmation retries every 15 seconds for up to ten minutes.
-Matching source identity and integrity are still required; conflicting identity and other HTTP refusals fail
-immediately. Exhausted confirmation reports an unverified upload and leaves the admitted ledger intact.
-The window rounds up three times the observed confirmation delay; it is not a registry availability guarantee. Its
-[captured measurement](measurements/registry-confirmation.json) records the source commit, real Actions mode,
-concurrent work, commands and UTC observations; repeat it on a fresh sandbox version when registry behavior changes.
+Registry publication is separate from preparation, admission and website deployment. The index version derives from
+first-parent source history. Exact package/version, source, snapshot digest and installer integrity identify the
+result. Website publishers select a released snapshot independently. Their receipt and served readback establish what
+was deployed; this catalog receives no hosting credential and changes no existing World pin.
 
 ## Contribution and operation
 
@@ -334,11 +329,8 @@ checkout, private company record or particular pack-repository layout is require
 submission, checking, generation and publishing commands are documented in README. Published CLI tooling includes
 the schema/validation code, so contributors see the same refusals before opening a PR.
 
-Automation maintains one PR feedback comment, includes the report in the check summary, and updates it on reruns.
 GitHub reads retry one transport failure; HTTP refusals and writes are not retried. A transport failure identifies
-the method, repository path and underlying error code. A passing evaluation remains retained evidence until GitHub
-successfully records its current-head readiness check; it does not grant admission on its own.
-Manual workflow dispatch can reassess a PR after an external failure. Moderators configure membership through the
+the method, repository path and underlying error code. A passing evaluation remains local evidence until an authorized recorder publishes its authenticated durable receipt; it does not grant admission on its own. Re-run the operator assessment for a changed PR or failed phase. Moderators configure membership through the
 repository's CODEOWNERS users or teams; platform write access is not required. Repository setup and npm publication are explicit
 operator actions. Deploy tokens, website changes, making repositories public, and operating GitHub settings are not
 performed as part of implementing this process.

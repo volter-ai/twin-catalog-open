@@ -22,6 +22,9 @@
   },
   "author": "Volter (https://github.com/volter-ai)",
   "license": "Apache-2.0",
+  "dependencies": {
+    "yaml": "2.9.0"
+  },
   "files": [
     "sources.json",
     "vendors",

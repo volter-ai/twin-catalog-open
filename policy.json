@@ -2,15 +2,21 @@
   "schemaVersion": 1,
   "registry": "https://registry.npmjs.org",
   "tools": {
-    "@volter/world-core": "3.0.155",
-    "@volter/world-runtime": "3.0.163",
-    "@volter/twin-standard": "1.0.148",
+    "@volter/world-core": "3.0.161",
+    "@volter/world-runtime": "3.0.180",
+    "@volter/twin-standard": "1.0.154",
     "playwright": "1.63.0",
-    "@volter/world": "3.0.165"
+    "@volter/world": "3.0.183",
+    "@volter/world-ui": "1.0.161",
+    "@volter/world-console": "3.0.156"
   },
   "bun": "1.4.2",
+  "pnpm": "12.15.0",
   "nodeImage": "node:24-bookworm-slim",
   "requireProvenance": true,
+  "provenanceRefs": {
+    "volter-ai/twin-packs-open": "refs/heads/publish"
+  },
   "reviewBypassUsers": [
     "yueranyuan"
   ],
@@ -29,6 +35,20 @@
       "login": "yueranyuan",
       "type": "User"
     },
+    {
+      "id": 253602084,
+      "login": "portable-one",
+      "type": "User"
+    }
+  ],
+  "assessmentAuthorities": [
+    {
+      "id": 253602084,
+      "login": "portable-one",
+      "type": "User"
+    }
+  ],
+  "publicationAuthorities": [
     {
       "id": 253602084,
       "login": "portable-one",

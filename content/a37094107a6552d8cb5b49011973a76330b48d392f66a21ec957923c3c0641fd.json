@@ -17,6 +17,8 @@
     "peerDependencies": {
       "@volter/world-core": "^3.0.64"
     },
+    "dependencies": {},
+    "peerDependenciesMeta": {},
     "repositoryDirectory": "resend",
     "bugs": "https://github.com/volter-ai/twin-packs-open/issues"
   },

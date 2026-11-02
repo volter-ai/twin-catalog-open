@@ -17,6 +17,8 @@
     "peerDependencies": {
       "@volter/world-core": "^3.0.59"
     },
+    "dependencies": {},
+    "peerDependenciesMeta": {},
     "repositoryDirectory": "tavily",
     "bugs": null
   },

@@ -17,6 +17,11 @@
     "peerDependencies": {
       "@volter/world-core": "^3.0.96"
     },
+    "dependencies": {
+      "react": "^19.2.7",
+      "react-dom": "^19.2.7"
+    },
+    "peerDependenciesMeta": {},
     "repositoryDirectory": "clerk",
     "bugs": null
   },

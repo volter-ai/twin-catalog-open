@@ -1,17 +1,18 @@
 #!/usr/bin/env node
 import { existsSync, readFileSync } from 'node:fs';
-import { dirname, join, resolve } from 'node:path';
+import { basename, dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { loadIndex, defaults, read, write, requireThat, stable, submissionId, validateSubmission } from '../lib/model.mjs';
 import { metadata } from '../lib/registry.mjs';
 import { GitHub } from '../lib/github.mjs';
 import { assessPullRequest, configure } from '../lib/automation.mjs';
-import { build, builtIndex, publish, verifyAdmission } from '../lib/publication.mjs';
-import { persistEvidence } from '../lib/evidence.mjs';
+import { build, builtIndex } from '../lib/publication.mjs';
 import { propose } from '../lib/propose.mjs';
 import { browse } from '../lib/browse.mjs';
 import { register } from '../lib/register.mjs';
 import { captureContent } from '../lib/content.mjs';
+import { recordAssessment } from '../lib/operator-evidence.mjs';
+import { preparePublication, stagePublication, uploadPrepared, confirmPublication } from '../lib/prepared-publication.mjs';
 
 const [command, ...args] = process.argv.slice(2);
 const arg = (name, fallback) => { const at = args.indexOf(`--${name}`); if (at < 0) return fallback; requireThat(args[at + 1] && !args[at + 1].startsWith('--'), `--${name} needs a value`); return args[at + 1]; };
@@ -43,7 +44,7 @@ try {
       const submission = { schemaVersion: 1, source: arg('source'), vendor: arg('vendor'), package: doc.name, version: doc.version, integrity: doc.dist?.integrity };
       validateSubmission(submission, loadIndex(indexRoot).sources);
       const file = resolve(arg('out', join(resolve(arg('out-dir', join(root, args.includes('--reassess') ? 'reassessments' : 'submissions'))), `${submissionId(submission)}.json`)));
-      requireThat(file.endsWith(`/${submissionId(submission)}.json`), 'output must be named for the submission identity');
+      requireThat(basename(file) === `${submissionId(submission)}.json`, 'output must be named for the submission identity');
       if (existsSync(file)) requireThat(stable(read(file)) === stable(submission), 'submission output already exists with different content');
       write(file, submission);
       result = { file, submission, next: 'Open a pull request adding only this submission file to the catalog. No publication or PR was performed.' };
@@ -57,7 +58,12 @@ try {
       if (result.status !== 'ready') process.exitCode = 1;
       break;
     }
-    case 'configure': result = await configure(github(), args.includes('--apply'), policy().reviewBypassUsers ?? []); break;
+    case 'record-assessment': {
+      requireThat(args.includes('--send'), 'record-assessment publishes authenticated evidence; pass --send');
+      result = await recordAssessment(read(resolve(arg('report'))), github());
+      break;
+    }
+    case 'configure': result = await configure(github(), args.includes('--apply')); break;
     case 'propose': {
       requireThat(args.includes('--send'), 'propose opens GitHub PRs; pass --send for this explicit publisher action');
       result = await propose(github(), resolve(arg('from', args.includes('--reassess') ? 'reassessments' : 'submissions')), args.includes('--reassess'));
@@ -65,17 +71,28 @@ try {
     }
     case 'build': result = build(root, resolve(arg('out', 'dist'))); break;
     case 'capture-content': result = await captureContent(root, builtIndex(root), policy().registry); break;
-    case 'publish': {
+    case 'prepare-publication': {
       const client = github();
       const policyClient = process.env.CATALOG_READ_TOKEN ? new GitHub(client.repository, process.env.CATALOG_READ_TOKEN) : client;
-      const proofs = await verifyAdmission(root, client, policyClient);
-      const evidence = await persistEvidence(proofs, client);
-      const output = resolve(arg('out', 'dist'));
-      build(root, output, evidence);
-      result = await publish(output, policy().registry);
+      result = await preparePublication(root, resolve(arg('out')), client, policyClient);
       break;
     }
-    default: throw new Error('usage: twin-catalog register --source <id> --source-repository <owner/repo> --scope <@scope> [--out <sources.json>] | submit --source <id> --vendor <vendor> --package <@scope/name> --version <exact> | browse [--root <installed-index>] [--vendor <vendor>] [--package <@scope/name>] | capture-content | assess-pr --pr <number> | check | defaults | build --out <new-directory> | publish | configure [--apply] | propose --from <submission-directory> --send');
+    case 'stage-publication': {
+      requireThat(args.includes('--send'), 'stage-publication uploads prepared data; pass --send');
+      result = await stagePublication(root, resolve(arg('from')), arg('tag'), resolve(arg('sweep')), github());
+      break;
+    }
+    case 'upload-prepared': result = await uploadPrepared(root, arg('tag'), arg('sha256'), github(), undefined, undefined, { expectedSourceCommit: arg('source-commit') }); break;
+    case 'confirm-publication': {
+      result = await confirmPublication(read(resolve(arg('receipt'))), policy().registry);
+      if (args.includes('--out')) {
+        const file = resolve(arg('out'));
+        requireThat(!existsSync(file), 'confirmation output must be a new file; retain earlier readbacks');
+        write(file, result);
+      }
+      break;
+    }
+    default: throw new Error('usage: twin-catalog register --source <id> --source-repository <owner/repo> --scope <@scope> [--out <sources.json>] | submit --source <id> --vendor <vendor> --package <@scope/name> --version <exact> | browse [--root <installed-index>] [--vendor <vendor>] [--package <@scope/name>] | capture-content | assess-pr --pr <number> | record-assessment --report <file> --send | check | defaults | build --out <new-directory> | prepare-publication --out <new-directory> | stage-publication --from <prepared-directory> --tag prepared-catalog-<version> --sweep <receipt> --send | confirm-publication --receipt <staged-publication.json> [--out <new-confirmation.json>] | configure [--apply] | propose --from <submission-directory> --send');
   }
   console.log(JSON.stringify(result, null, 2));
 } catch (error) { console.error(`twin-catalog: ${error.message ?? error}`); process.exitCode = 1; }
