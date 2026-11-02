@@ -201,6 +201,12 @@ The released standard owns the development SDK versions used by its client cases
 The versioned `@volter/twin-standard` owns the checks and machine-readable assessment API. The catalog invokes it;
 it does not implement another Protocol 3 grader or journey engine. Evaluation occurs inside a task-owned World.
 
+`policy.json` owns the exact evaluator tool cohort under `tools`. Change those pins when selecting a new platform
+cohort; assessment can use it only after every selected version is available from the policy registry. The existing
+preparation resolves and retains its native evaluator and customer dependency locks from those exact versions.
+Publisher tool pins and pack peer requirements remain their owners' declarations, checked against this policy
+selection rather than rewritten by the catalog.
+
 Installed customer readiness is separate from the HTTP journey replay. The released standard materializes the
 pack's `journeys/first-use.json` in a new application directory; versioned standard fixtures cover older immutable
 artifacts that predate this format. Preparation installs the fixture's exact SDK versions with scripts disabled,
