@@ -43,6 +43,13 @@ does not change that pin. Removing a recommendation is not uninstalling a runnin
 
 ## Release information for users
 
+The reader projects each vendor's current default release, chosen by the catalog's existing recommendation and
+version rules. It validates the complete admission ledger and snapshot before selecting those rows. A vendor
+without a choice retains its selection state and offers no release. The compiled index carries only the current
+defaults' reports and artifact content; every assessment's durable URL and checksum remain in the admission ledger.
+Source consumers hydrate current reports from those public, checksum-bound URLs at build time rather than keeping
+report envelopes in their repositories. Hydration reads evidence and never runs a new assessment.
+
 Each assessed release exposes its artifact's description, license, Node requirements, kernel peer requirements,
 source directory and issue tracker beside its integrity, provenance and measured behavior. README and license links
 point to the source commit verified by npm provenance. They describe that version, not the publisher's current branch.
@@ -252,12 +259,12 @@ historical records. Consumers read `recommendations.json` and `revocations.json`
 release is different from offering it as an install default: pending, rejected, revoked and prerelease versions are
 never automatic selections. A missing or failing assessment is never inferred from a publisher badge.
 
-The public catalog groups implementations under a vendor, attributes the repository and publisher, and links to
+The public catalog shows each vendor's current default, attributes the repository and publisher, and links to
 the immutable version and admission PR/evidence. It displays release documentation and Setup separately from
 support counts, installed-customer journeys and replay results. Assessment metadata exposes the report's `evaluatedAt` independently from admission time.
 The browser measurement remains nullable for existing consumers; additive `browserStatus` preserves recorded failure,
 non-measurement and explicit non-applicability reasons. Missing historical data stays unknown. Package requirements
-come from the exact artifact's manifest, never its current registry tag. Assessment records are copied from their
+come from the exact artifact's manifest, never its current registry tag. Current defaults' assessment records are copied from their
 authenticated durable evidence releases into the index; historical workflow artifacts remain an allowed source for
 the original Actions variant only. Evidence expires before first durable copy only on that historical path, which
 refuses rather than manufacturing a report.
@@ -306,10 +313,10 @@ source and digest against the index records and evidence references, then checks
 recorded digest and release identity. Package tarball integrity remains the installer's responsibility; the caller
 may retain its verified lockfile integrity with the snapshot, but the adapter does not manufacture it.
 
-The projection preserves every implementation and version, including historical, pending, rejected and revoked
-records. Selectability, recorded status, assessment availability and default choice are separate fields. Selection
-uses the existing catalog default rule for each vendor. A vendor with competing packages remains browsable with
-`choice-required`; ambiguity does not hide the other vendors or compare versions across publishers.
+The projection contains only current default releases. Recorded status, assessment availability and default choice
+are separate fields. Selection uses the existing catalog rule for each vendor. A vendor with competing packages
+and no recommendation keeps `choice-required` with no offered release; ambiguity does not hide other vendors or
+compare versions across publishers. The complete admission ledger remains part of the checksum-bound snapshot.
 
 Measurements come only from checksum-bound catalog reports. Declared surface, dispatched operation coverage,
 journey failures, replay and browser execution retain their scopes and denominators. Missing measurements are

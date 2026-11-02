@@ -55,7 +55,7 @@ protection. The command never runs automatically from a build or submission.
 ## Prepare and publish the index
 
 After the source PRs have their independent review and merge, use current clean main. Preparation verifies every
-admission PR, moderator path and exact authenticated evidence, copies the original envelopes into the index, builds
+admission PR, moderator path and exact authenticated evidence, copies only current defaults' envelopes into the index, builds
 and packs outside CI. It does not execute candidates.
 
 ```sh
@@ -112,11 +112,13 @@ and manifest requirements in checksum-bound `content/` receipts. Existing metada
 peer fields can be enriched from those same bytes without changing an assessment. Commit the receipts in a maintenance
 change before preparing a new index. Missing documentation or historical measurement stays unavailable.
 
-World's source checkout consumes the catalog through its existing selected `sources/catalog` Gitlink and
-`source-inputs/catalog` evidence inputs. After the catalog merge, select its exact main commit, retain the original
-`verifyAdmission`/`persistEvidence` envelopes and reference metadata, then use the existing catalog compiler through
-`node scripts/build-catalog-source.mjs`. Never replace the source checkout with an installed registry package or
-invent installer SRI for source-built output. A registry site's separately selected snapshot retains its actual SRI.
+World's source checkout consumes the catalog through its selected `sources/catalog` Gitlink and
+`source-inputs/catalog` receipt references. After the catalog merge, select its exact main commit and retain the
+durable report URLs and checksums. `hydrateEvidence(builtIndex(source), references)` downloads and validates only
+current defaults' reports for the native compiler; report envelopes are generated build inputs, never committed
+source inputs. `node scripts/build-catalog-source.mjs` owns this source build. Never replace the source checkout
+with an installed registry package or invent installer SRI for source-built output. A registry site's separately
+selected snapshot retains its actual SRI.
 
 ## Diagnose publication and website delivery
 
