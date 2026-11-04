@@ -1,0 +1,8 @@
+{
+  "schemaVersion": 1,
+  "source": "twin-packs-open",
+  "vendor": "vercel",
+  "package": "@volter/twin-vercel",
+  "version": "1.0.1",
+  "integrity": "sha512-WNnFNYmf+Xu3qmSHou2u5f06XVRrM54cJXrwDQUnxFmmL0am7YirUIGojwhAeTnExiphhLkZl6kFfOKIJMoZYQ=="
+}
