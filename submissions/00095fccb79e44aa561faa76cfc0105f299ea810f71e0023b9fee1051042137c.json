@@ -1,0 +1,8 @@
+{
+  "schemaVersion": 1,
+  "source": "twin-packs-open",
+  "vendor": "ai-gateway",
+  "package": "@volter/twin-ai-gateway",
+  "version": "1.0.1",
+  "integrity": "sha512-90/9BJAD7QgRLsrESXZumtjzuEq598rjk6ETTU0qREwWYclpMOWlYEv1YBm7IpFWaQfJ29ArMqLWIncrr4TvsQ=="
+}
