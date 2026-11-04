@@ -1,0 +1,8 @@
+{
+  "schemaVersion": 1,
+  "source": "twin-packs-open",
+  "vendor": "upstash",
+  "package": "@volter/twin-upstash",
+  "version": "1.0.4",
+  "integrity": "sha512-4JKg1k6t4N8wyRn59bZz/mvAC3A0zRmRoNoy7zpSTaczR5T3qsCVn3MHNAGoIEmRr4T/G8zznvUQkKco8GJuNw=="
+}
