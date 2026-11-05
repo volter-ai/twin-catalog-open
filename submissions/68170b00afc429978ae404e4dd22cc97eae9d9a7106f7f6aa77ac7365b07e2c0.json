@@ -1,0 +1,8 @@
+{
+  "schemaVersion": 1,
+  "source": "twin-packs-open",
+  "vendor": "clerk",
+  "package": "@volter/twin-clerk",
+  "version": "1.0.5",
+  "integrity": "sha512-wLc89TKHrmvVLd2b6T/y5+cK7oAWImPq8xh/x0SzoYMoAg2Gn7bG+0/9fKTr7IHD2/sOyC5nOTLlGvOKkBjh5w=="
+}
