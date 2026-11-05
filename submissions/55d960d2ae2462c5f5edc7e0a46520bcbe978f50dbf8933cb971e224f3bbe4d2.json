@@ -1,0 +1,8 @@
+{
+  "schemaVersion": 1,
+  "source": "twin-packs-open",
+  "vendor": "jira",
+  "package": "@volter/twin-jira",
+  "version": "3.0.1",
+  "integrity": "sha512-oZGlRoGDPOKQHLcKbZhhuvhNhDIHEY9a/Nk0A3PiZkdAxNl32oBHi/Mv6BMSfB3LBJB6zzvuB/vb0Eu8ryF+IA=="
+}
