@@ -1,0 +1,8 @@
+{
+  "schemaVersion": 1,
+  "source": "twin-packs-open",
+  "vendor": "huggingface",
+  "package": "@volter/twin-huggingface",
+  "version": "1.0.1",
+  "integrity": "sha512-6jz7wdYsGYID7GlgJtuuMObIqvhfzIl7c7/aSa8lwU56HMiu015Adfx/lt8+MT480iyk49Zb2zIHgOQryFv53A=="
+}
