@@ -1,0 +1,8 @@
+{
+  "schemaVersion": 1,
+  "source": "twin-packs-open",
+  "vendor": "fly",
+  "package": "@volter/twin-fly",
+  "version": "1.0.2",
+  "integrity": "sha512-QJIzILmBhzHbUAr+FBN3XXDdbKW8W6Xc8+iQiRjKfNq1pTugWulxPb8hII6+29R8zGt83iZkZTo9tSKcKGVpdw=="
+}
