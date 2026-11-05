@@ -1,0 +1,8 @@
+{
+  "schemaVersion": 1,
+  "source": "twin-packs-open",
+  "vendor": "openrouter",
+  "package": "@volter/twin-openrouter",
+  "version": "1.0.1",
+  "integrity": "sha512-uOxRESF1FLrO1/iTam/tp3SNVzbO6jL8CDWBrgcpZatBbJGya4/UgSwMcwDz4khW5soZCXYy7/gAHC4Ssh4alQ=="
+}
