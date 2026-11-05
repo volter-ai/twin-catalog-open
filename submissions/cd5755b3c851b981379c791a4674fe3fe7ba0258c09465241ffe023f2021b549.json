@@ -1,0 +1,8 @@
+{
+  "schemaVersion": 1,
+  "source": "twin-packs-open",
+  "vendor": "tunnel",
+  "package": "@volter/twin-tunnel",
+  "version": "1.0.2",
+  "integrity": "sha512-8k0iYG1bphVcpn8MzaFQ3FhPZtkRQ7EUE/Qu5FlUWbcCpG+kzHYIhAvlod5DyYWuLBbCIXg6C0I9j55X9mkcUA=="
+}
