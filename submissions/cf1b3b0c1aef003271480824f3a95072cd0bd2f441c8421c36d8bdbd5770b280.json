@@ -1,0 +1,8 @@
+{
+  "schemaVersion": 1,
+  "source": "twin-packs-open",
+  "vendor": "reddit",
+  "package": "@volter/twin-reddit",
+  "version": "1.0.6",
+  "integrity": "sha512-2/q6bvZ5XVNTRaYvS1nKr+Jk+vUjNIBzgmVLVffa0V5OwlNaQec5yiALTzCfmWfAijuc2mA0iGQIdZdCCUBkSQ=="
+}
