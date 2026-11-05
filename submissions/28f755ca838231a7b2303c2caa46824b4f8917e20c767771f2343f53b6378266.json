@@ -1,0 +1,8 @@
+{
+  "schemaVersion": 1,
+  "source": "twin-packs-open",
+  "vendor": "tavily",
+  "package": "@volter/twin-tavily",
+  "version": "1.0.3",
+  "integrity": "sha512-3JGKG0BqVo0sfcAhNXk+uEAWmoLV25cUz1THZbOMlvoxxDbqJQmQBp+fUazv/bQ1+EpGrtgLnWyCC7jyq9rKAw=="
+}
