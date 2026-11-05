@@ -1,0 +1,8 @@
+{
+  "schemaVersion": 1,
+  "source": "twin-packs-open",
+  "vendor": "merge",
+  "package": "@volter/twin-merge",
+  "version": "1.0.3",
+  "integrity": "sha512-TeKO+vAWchVS3LrANGjCG2hNmMxn47I/cYZaiUXSuTSUqGQ7GfVf+KNLvP57GOwS8X/4r2aP862RgstSgEP2IA=="
+}
