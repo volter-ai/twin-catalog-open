@@ -1,0 +1,8 @@
+{
+  "schemaVersion": 1,
+  "source": "twin-packs-open",
+  "vendor": "tiktok",
+  "package": "@volter/twin-tiktok",
+  "version": "1.0.1",
+  "integrity": "sha512-qlWoBrUjCayeWBK6dC58ZGSewOgSmlCEkW1X1VbpcrbtGzGAf0q69UpOufG+weHP1+xD1/LMNqNyU66D4v10lg=="
+}
