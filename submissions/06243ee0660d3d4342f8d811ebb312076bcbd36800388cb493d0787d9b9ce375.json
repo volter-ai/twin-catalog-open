@@ -1,0 +1,8 @@
+{
+  "schemaVersion": 1,
+  "source": "twin-packs-open",
+  "vendor": "firecrawl",
+  "package": "@volter/twin-firecrawl",
+  "version": "1.0.1",
+  "integrity": "sha512-UntDTd+g/oMg3sBDdsnRC3b0tWDE1qGx61XwtRY6Ldy4dhWNdDsFy/t0QfgFs/Xp8BvDnfyrUfjWFT97xgRk1A=="
+}
