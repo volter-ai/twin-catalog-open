@@ -1,0 +1,8 @@
+{
+  "schemaVersion": 1,
+  "source": "twin-packs-open",
+  "vendor": "googlefonts",
+  "package": "@volter/twin-googlefonts",
+  "version": "1.0.1",
+  "integrity": "sha512-j7bjbAGfoQ2I7W/MGZhahqFWqEsyqO3/iIODiCrQFPvBnQ4loFmxk2WEO9lNgrQbGB15hxrsz4/GGQu8W83lXw=="
+}
