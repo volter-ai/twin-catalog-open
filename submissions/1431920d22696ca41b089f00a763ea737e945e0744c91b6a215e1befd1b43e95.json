@@ -1,0 +1,8 @@
+{
+  "schemaVersion": 1,
+  "source": "twin-packs-open",
+  "vendor": "fal",
+  "package": "@volter/twin-fal",
+  "version": "1.0.1",
+  "integrity": "sha512-+G4cQ80VT3q+ZOzg7RD7aR5jrYgh8H6kpr1jeCik/iyXxBOhOfMJYdhfuXJVCfIMOkQisLJrf4dcm1QqaUvJQg=="
+}
