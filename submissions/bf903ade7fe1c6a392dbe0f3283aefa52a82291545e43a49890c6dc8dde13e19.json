@@ -1,0 +1,8 @@
+{
+  "schemaVersion": 1,
+  "source": "twin-packs-open",
+  "vendor": "bitly",
+  "package": "@volter/twin-bitly",
+  "version": "1.0.1",
+  "integrity": "sha512-zZ+IHXQZTeptynOq+qySJ16/IfsKKqmexwXyBbBr900LDd9s/9S8VSmemOWwNOZA+tVM9TwV1UjJz3YlJapKkw=="
+}
