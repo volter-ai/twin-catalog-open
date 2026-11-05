@@ -1,0 +1,8 @@
+{
+  "schemaVersion": 1,
+  "source": "twin-packs-open",
+  "vendor": "e2b",
+  "package": "@volter/twin-e2b",
+  "version": "1.0.2",
+  "integrity": "sha512-RKCPCU6aLWpEXNGgopgzNLsNR84uWaPxGPWinpOqyh5GWo5B4aOdpKN7sq7FbE65aUvkP3zaKM7TI1NQjNhORA=="
+}
