@@ -1,0 +1,8 @@
+{
+  "schemaVersion": 1,
+  "source": "twin-packs-open",
+  "vendor": "mistral",
+  "package": "@volter/twin-mistral",
+  "version": "1.0.1",
+  "integrity": "sha512-kya6JNKdIoOhuwzZEloR8zsX7OhsmmEW6RKj9mPIPmebrI1rbeNkoUS/XAevcEn3p/ROPY4OVEhyaH7T8XiwxQ=="
+}
