@@ -1,0 +1,8 @@
+{
+  "schemaVersion": 1,
+  "source": "twin-packs-open",
+  "vendor": "hackernews",
+  "package": "@volter/twin-hackernews",
+  "version": "1.0.5",
+  "integrity": "sha512-lB4tM/BlbbwUMR5VHpZHcBglTnnzhevkB9wK4odQ3K/SdoVSI1lj35lfk/auRyiHk0T084lhja/VbLaBq5wBcA=="
+}
