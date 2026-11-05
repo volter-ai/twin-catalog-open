@@ -1,0 +1,8 @@
+{
+  "schemaVersion": 1,
+  "source": "twin-packs-open",
+  "vendor": "linkedin",
+  "package": "@volter/twin-linkedin",
+  "version": "1.0.6",
+  "integrity": "sha512-DnzSss91CTyjSXa9QReQ7nilANbfb9qihvPXI0Uo76RO8o8nbqLFEZodtTUgNoSYwUyIse/RIUqjgTJcPRsvqQ=="
+}
