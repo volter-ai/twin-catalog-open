@@ -1,0 +1,8 @@
+{
+  "schemaVersion": 1,
+  "source": "twin-packs-open",
+  "vendor": "instagram",
+  "package": "@volter/twin-instagram",
+  "version": "1.0.1",
+  "integrity": "sha512-cn+GvU8ZCWXEyignmUyk45dGUCzxUFz31bWHmr0UNpTkSh9AOb77m8UXDPtPoh63X50BfsTYwujLfFV1OHksFg=="
+}
