@@ -1,0 +1,8 @@
+{
+  "schemaVersion": 1,
+  "source": "twin-packs-open",
+  "vendor": "github",
+  "package": "@volter/twin-github",
+  "version": "3.0.12",
+  "integrity": "sha512-CP7xdZI/ObF0mALnvQeCfpLmt3fU5LTou8yij130yfwEQcCGc2a5EkEIf4tbKZZnPbxrPjw0tqp6wEwVATMTJw=="
+}
