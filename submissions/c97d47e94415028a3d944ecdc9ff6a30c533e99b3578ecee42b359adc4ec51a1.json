@@ -1,0 +1,8 @@
+{
+  "schemaVersion": 1,
+  "source": "twin-packs-open",
+  "vendor": "sentry",
+  "package": "@volter/twin-sentry",
+  "version": "1.0.1",
+  "integrity": "sha512-WJCB9AT210gOk9YRNHbdBPezMoqUwe1sAmG9rIsd6N9b7PpSUbTCkgTT9ZzdJht90jO/KZWmrcXyFE8jfg75Og=="
+}
