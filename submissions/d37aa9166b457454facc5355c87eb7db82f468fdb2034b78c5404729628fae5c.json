@@ -1,0 +1,8 @@
+{
+  "schemaVersion": 1,
+  "source": "twin-packs-open",
+  "vendor": "gemini",
+  "package": "@volter/twin-gemini",
+  "version": "1.0.1",
+  "integrity": "sha512-Ilo7KqGskzjXB2YRk6Zln6Ap1pIYIOIMyIaYCWNp8Bwx45zNGq6+q22o9N+YcYEr+JMM/ut7vtP/0a+z8iDhIw=="
+}
