@@ -1,0 +1,8 @@
+{
+  "schemaVersion": 1,
+  "source": "twin-packs-open",
+  "vendor": "discord",
+  "package": "@volter/twin-discord",
+  "version": "3.0.1",
+  "integrity": "sha512-97PbEdPss/YxZclDqUx1UYH0yiKjeZAIgok4MWZTXn4nXVBPuI0stjfMRh7Yz3fAZdNU7BkBQBv6vwnDh6Ty6w=="
+}
