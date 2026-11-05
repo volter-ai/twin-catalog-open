@@ -1,0 +1,8 @@
+{
+  "schemaVersion": 1,
+  "source": "twin-packs-open",
+  "vendor": "npm-registry",
+  "package": "@volter/twin-npm-registry",
+  "version": "3.0.3",
+  "integrity": "sha512-xiHQdgMPFqb58TWBA3XJPKQr9Z3M7hqJQpNyfnNPgVNgpU3rmImgj96p817VCAt15Akh0cJSgiTnIk+EtPO/+g=="
+}
