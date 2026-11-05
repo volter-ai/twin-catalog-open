@@ -1,0 +1,8 @@
+{
+  "schemaVersion": 1,
+  "source": "twin-packs-open",
+  "vendor": "polar",
+  "package": "@volter/twin-polar",
+  "version": "3.0.3",
+  "integrity": "sha512-UuA3eXnujqrsyKJ689eIC8VG+cDEM+kzlBwN86B3MV7Uz7CnGhA89DEUBlUnXJX8AGajrETTIHzj2db4WBtZXQ=="
+}
