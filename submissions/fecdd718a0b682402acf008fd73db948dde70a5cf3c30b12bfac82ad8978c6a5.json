@@ -1,0 +1,8 @@
+{
+  "schemaVersion": 1,
+  "source": "twin-packs-open",
+  "vendor": "youtube",
+  "package": "@volter/twin-youtube",
+  "version": "1.0.1",
+  "integrity": "sha512-vafUa8dkJZQbIH0eUAE/t3gm3eHI+Co22Gy9mjNxytGiwEbtTmh26l9qZfoaBHHMGaa0shKBLoMWz+UR7he7ww=="
+}
