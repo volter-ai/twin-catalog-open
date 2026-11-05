@@ -1,0 +1,8 @@
+{
+  "schemaVersion": 1,
+  "source": "twin-packs-open",
+  "vendor": "aws",
+  "package": "@volter/twin-aws",
+  "version": "3.0.1",
+  "integrity": "sha512-geRzWteHHxhJ1rAo3IVjRj8qqBfPzNtjhudQ20fGGcegD/jCd3wPHxGKZhjHJ2WD8GJWAwOXr/Gi3BtvBru//w=="
+}
