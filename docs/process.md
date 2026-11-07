@@ -60,7 +60,8 @@ fill missing historical evidence. A provenance link establishes source and build
 
 Maintainers can retain release documentation with `twin-catalog capture-content`. This reads each recorded
 package/version's tarball from the policy registry, verifies its recorded SHA-512 integrity, and captures its
-manifest listing facts and README as data in `content/`. It never installs, imports or executes a pack. The
+manifest listing facts, README and pack facts (the release's own `generated/pack-facts.json` entry for its vendor, which a
+World reads to detect the vendor before installing it) as data in `content/`. It never installs, imports or executes a pack. The
 published snapshot binds those receipts by SHA-256; its reader checks both the receipt and release identity.
 Consumers can display that version's README without fetching a publisher's current branch. Missing README
 content stays unavailable. Artifact facts can supply older listings, but never supply missing assessment,

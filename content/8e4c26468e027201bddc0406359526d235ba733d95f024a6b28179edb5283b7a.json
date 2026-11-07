@@ -1,0 +1,92 @@
+{
+  "schemaVersion": 1,
+  "release": {
+    "schemaVersion": 1,
+    "source": "twin-packs-open",
+    "vendor": "polar",
+    "package": "@volter/twin-polar",
+    "version": "3.0.2",
+    "integrity": "sha512-zXbRITKm17mRhsSktxdQ8aV0ihrO8PvV7ctxSkuP7eV8qlX9pHibYcgYSiNThn+lCVJU30LcX96PsFSoq5C0yw=="
+  },
+  "packageMetadata": {
+    "description": "The polar twin (Protocol 3).",
+    "license": "Apache-2.0",
+    "engines": {
+      "node": ">=22.3"
+    },
+    "peerDependencies": {
+      "@volter/world-core": "^3.0.161"
+    },
+    "dependencies": {},
+    "peerDependenciesMeta": {},
+    "repositoryDirectory": "polar",
+    "bugs": "https://github.com/volter-ai/twin-packs-open/issues"
+  },
+  "readme": {
+    "path": "package/README.md",
+    "markdown": "# @volter/twin-polar\r\n\r\nThe Polar twin (Protocol 3): Polar's API (`api.polar.sh`) derived from its own OpenAPI document (`spec/`, provenance\r\nin `spec/SOURCE.md`), scoped to what the applications that bill through Polar call\r\n([journeys/demand.json](./journeys/demand.json)): Volter's platform biller (twin-world `apps/billing`), Open Autonomy's patronage and Relay's offline store integration.\r\n\r\n| area | served |\r\n|---|---|\r\n| catalog | meters (listed, made) and products (listed, made, read by id) |\r\n| checkout | checkouts made, listed and read back by id, and Polar's hosted checkout page (`buy.polar.sh/<client secret>`), which reads and confirms it (making the order and, for a recurring product, the subscription) |\r\n| customers | made, listed, read by id, their state (active subscriptions, meter usage) by external id, and a customer session and its pre-authenticated portal overview (subscriptions and purchase history) |\r\n| usage | events ingested and listed |\r\n| subscriptions | listed and read by id; period-end cancellation set or undone with `cancel_at_period_end` |\r\n| orders | read by id and listed (by checkout, customer, product, subscription, status), each paid order told by `order.created` and `order.paid` |\r\n| refunds | created for tax-free paid orders, with an atomic check and update of that order's remaining refundable balance |\r\n| webhooks | `checkout.created`, `order.created`, `order.paid` and `order.refunded` declared for raw endpoints registered and listed through the API (`/v1/webhooks/endpoints`); World renders, signs and transports them |\r\n\r\n## Scope and limitations\r\n\r\nPortal email sign-in, cancellation, invoice downloads and payment-method changes are outside this scope. Calendar-month subscription renewals and trial conversion run on the World clock; payments use deterministic test confirmation tokens and succeed. Fixed/custom paid checkouts require the client confirmation token; trial orders are deferred. Production and sandbox credentials and records are independent. Checkouts expire after 24 hours.\r\n\r\n- **Refunds:** refund listing and refund lifecycle webhooks (`refund.created`, `refund.updated`) are unsupported.\r\n  Updating the order's balance and creating the refund record are separate writes, without atomic recovery across\r\n  both. Tax splitting and customer credit-balance handling are not modeled; order and refund tax amounts are zero.\r\n- **Subscriptions:** immediate revocation and update forms other than `cancel_at_period_end` are unsupported,\r\n  as are outgoing subscription lifecycle webhooks. Clock renewal and trial conversion update the subscription\r\n  before creating its order; there is no atomic subscription-and-payment transaction, concurrent renewal guarantee\r\n  or recovery from an interruption between those writes. Incoming subscription webhooks refresh state; they do not\r\n  establish outgoing lifecycle delivery.\r\n- **Webhook endpoints:** registration and listing are supported; get, update, delete and secret reset are unsupported.\r\n- **Usage-event retention:** 90-day retention and expiry are not modeled. Events remain stored; listing can filter\r\n  their timestamps, and customer meter balances aggregate all stored matching events.\r\n- **Checkout recovery:** confirmation claims the checkout's `open` to `confirmed` transition through the kernel's\r\n  atomic `ctx.change` before creating customer or payment effects. Concurrent confirmations of the same checkout\r\n  cannot both create an order. An interruption after that claim remains unresolved; there is no complete\r\n  multi-resource recovery.\r\n- **Products and pricing:** billing scope is single-product, single-price workflows in one currency. Checkout\r\n  selection uses the first product and its first price; product switching, currency selection or conversion, and\r\n  general multi-price billing are unsupported. Product creation checks that the name is nonempty, but does not\r\n  enforce Polar's name length of 3–64 Unicode characters, its allowed presentment currencies or fixed-price amount\r\n  validation.\r\n\r\nEvery other operation of Polar's API is the gap (`src/manifest.ts` `unmodeled`, and the operations no handler serves).\r\n\r\nThe pinned `2026-04` webhook contract signs with the entire endpoint secret's UTF-8 bytes. Slack and Discord endpoint\r\nformats are not raw Polar events and are not sent through this declaration. Durable delivery outcomes, retries and\r\nredelivery belong to World's shared event mechanism; the pack does not supply a second sender. The generated\r\n[standing](../STANDING.md) owns qualification facts.\r\n\r\n## Credentials\r\n\r\nAn organization's operations take an Organization Access Token the World issued (held by its SHA-256); a customer\r\nportal operation takes a live customer session's token; the checkout's client operations take the checkout's client\r\nsecret in their path (each operation's security schemes, from the spec's security as the derive keeps them). The World's application is issued its token when\r\nthe World boots (`POST /_twin/app-credentials`, the descriptor's credential door), the same at every boot.\r\n\r\n## Doors\r\n\r\n- `POST /_twin/access-tokens {comment, expires_in_days?}` and `DELETE /_twin/access-tokens/{n}`: tokens (including their returned id) made and revoked\r\n  on the settings page.\r\n- `POST /_twin/app-credentials`: the application's token.\r\n- `GET /_twin/deliveries?to=&type=`: every webhook sent, as the receiving server got it.\r\n"
+  },
+  "facts": {
+    "adoption": {
+      "sdks": [
+        "@polar-sh/sdk"
+      ],
+      "pypi": [
+        "polar-sdk"
+      ],
+      "scopes": [
+        "@polar-sh/"
+      ],
+      "envStems": [
+        "POLAR"
+      ]
+    },
+    "hosts": [
+      {
+        "host": "api.polar.sh"
+      },
+      {
+        "host": "sandbox-api.polar.sh"
+      },
+      {
+        "host": "buy.polar.sh"
+      },
+      {
+        "host": "polar.sh",
+        "pathPattern": "^/[^/]+/portal"
+      },
+      {
+        "host": "sandbox.polar.sh"
+      }
+    ],
+    "archetype": "crud",
+    "protocol": {
+      "declared": "3",
+      "major": 3,
+      "standing": "current"
+    },
+    "transport": "rest",
+    "resources": [
+      "customer",
+      "product",
+      "checkout",
+      "subscription",
+      "order",
+      "event",
+      "meter",
+      "customer_session",
+      "webhook_endpoint"
+    ],
+    "endpointEnvNone": "@polar-sh/sdk reads no base-URL variable: its `server` option picks production or sandbox, both claimed by the host rules.",
+    "credentialDoor": {
+      "path": "/_twin/app-credentials",
+      "body": {},
+      "fill": {
+        "POLAR_ACCESS_TOKEN": "access_token",
+        "POLAR_API_KEY": "access_token",
+        "POLAR_ORGANIZATION_TOKEN": "access_token"
+      }
+    },
+    "serveExport": "createPolarTwinServer"
+  }
+}
