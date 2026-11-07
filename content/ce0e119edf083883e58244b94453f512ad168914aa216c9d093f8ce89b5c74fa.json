@@ -1,0 +1,129 @@
+{
+  "schemaVersion": 1,
+  "release": {
+    "schemaVersion": 1,
+    "source": "twin-packs-open",
+    "vendor": "twitch",
+    "package": "@volter/twin-twitch",
+    "version": "1.0.1",
+    "integrity": "sha512-y8zkK93zUPerjS5aOtkCBVygVfOy0TcrE2mDJR3uOSgSnxiMEl6yMO4OjRixz2Kj9f6+Ry4jvGpO+b5VCj/dnQ=="
+  },
+  "packageMetadata": {
+    "description": "Local Twitch twin: twitch.tv's channel page (a LivePlayer playing the broadcast OBS streams in over RTMP, its live chat, viewers, title and category), chat popout, log-in and creator dashboard (stream manager, stream key); chat over IRC on WebSocket; id.twitch.tv's OAuth (authorize page, token, validate, revoke) and the Helix calls those need (users, channels, streams, stream key, categories, Send Chat Message), built on @volter/world-core's live media.",
+    "license": "Apache-2.0",
+    "engines": {
+      "node": ">=22.3"
+    },
+    "peerDependencies": {
+      "@volter/world-core": "^3.0.161"
+    },
+    "dependencies": {
+      "@volter/world-ui": "^1.0.161",
+      "react": "^19.2.7",
+      "react-dom": "^19.2.7"
+    },
+    "peerDependenciesMeta": {},
+    "repositoryDirectory": "twitch",
+    "bugs": "https://github.com/volter-ai/twin-packs-open/issues"
+  },
+  "readme": {
+    "path": "package/README.md",
+    "markdown": "# @volter/twin-twitch\r\n\r\nA local Twitch for rehearsing a stream: OBS streams RTMP into the twin and twitch.tv's own pages play it back as HLS,\r\nwith the channel's live chat beside it. Built first for an AI VTuber's stream rig (OBS, an anonymous chat reader, and a\r\nprogram of simulated viewers that chat through the API), which rehearses against it instead of live Twitch.\r\n\r\n## Use it in a World\r\n\r\nChoose this package's exact release in the [catalog](https://world.volter.ai/twins/twitch).\r\nIts Setup tab supplies release-specific installation and World initialization commands.\r\nReview the selected vendor, retain its package/version and lockfile, and run the app through\r\nthe World. [First local World](https://world-docs.volter.ai/docs/getting-started) explains the shared workflow.\r\n\r\nThe World records the twin's RTMP ingest as `rtmp://127.0.0.1:<port>/app` (the twin's `ingest` side, `volter-world url\r\n<world> twitch.ingest`). Point OBS's custom server there, in place of `rtmp://live.twitch.tv/app`, with the channel's\r\nstream key from the creator dashboard (Settings, Stream: Primary Stream key).\r\n\r\n## SDK workflow\r\n\r\nTwitch publishes no SDK; its clients send plain HTTPS and WebSocket frames. `journeys/first-use.json` is Twitch's\r\n[Get Started](https://dev.twitch.tv/docs/api/get-started/): an app access token from the client credentials grant\r\n(`POST https://id.twitch.tv/oauth2/token`), validated (`GET /oauth2/validate`: no login, no user), then the channel read\r\nthrough Get Users (`/helix/users?login=`), Get Channel Information and Get Streams, each with `Authorization: Bearer\r\n<token>` and `Client-Id`. It asserts the channel's numeric id and login, no email for an app token, and the channel\r\noffline; its readback reads the same user and channel again with the saved token.\r\n\r\nEnvironment: `TWITCH_CLIENT_ID`, `TWITCH_CLIENT_SECRET` and `TWITCH_CHANNEL`, filled by the World's credential door\r\n(`POST /_twin/console`: an account signed up and an app registered in the developer console, the same at every boot).\r\n\r\n## Data and behavior\r\n\r\nStored state is synthetic and Twitch-shaped: accounts (Get Users' shape) and their channels, a live broadcast's stream\r\n(present only while the encoder publishes), chat messages, applications, and every credential by its SHA-256 (a stream\r\nkey is drawn from the World's secret and never stored). A broadcast's recording is the kernel's live media: its\r\nsegments are the World's blobs, so a branch carries what was broadcast. Viewers on a live stream are the World's\r\n`audience` door. Inspect the result on the pages: `www.twitch.tv/<login>`, its chat popout, and\r\n`dashboard.twitch.tv/u/<login>/stream-manager`.\r\n\r\nThe twin serves:\r\n- **Pages** (twitch.tv's own, in its dark skin): the log-in; a channel's page with world-ui's `LivePlayer` playing the\r\n  broadcast, the title, category, LIVE badge, viewers and uptime, and the chat, both kept current on an open page by\r\n  world-ui's `LiveRegion`; the chat popout; the stream manager (stream preview, live status and viewers, Edit Stream\r\n  Info's title and category, My Chat); the stream key settings (Show, Copy); twitch.tv's root and host moves.\r\n- **id.twitch.tv** (the `id` lane): the authorize page (log in, Authorize, Cancel and the documented redirects), the\r\n  token endpoint (client credentials, authorization code, refresh token), validate and revoke.\r\n- **Helix** (`api.twitch.tv/helix`): Get Users, Get Channel Information, Modify Channel Information, Get Streams, Get\r\n  Stream Key, Search Categories (the categories the reference's examples name) and Send Chat Message. Every other\r\n  reference operation answers Twitch's 404.\r\n- **Chat**: IRC on WebSocket at `irc-ws.chat.twitch.tv`: the tags capability, the anonymous `justinfan` login, JOIN\r\n  (JOIN, 353, 366), PART, PING, and every message sent to a joined channel as a PRIVMSG, tagged.\r\n- **Video**: the RTMP ingest (`rtmp://.../app/<stream key>`, `?bandwidthtest=true` recorded and shown to no one) and\r\n  the broadcast as HLS on `usher.ttvnw.net`.\r\n\r\nStop and resume keep everything recorded; reset discards it.\r\n\r\n## Scope and limits\r\n\r\n- No journey step speaks RTMP yet, so the customer life walks every act but the encoder's publish; the ingest path\r\n  (`semantics/live.ts`, the audience door, a page's live view) is recorded unreachable for a walk.\r\n- Not served: EventSub, follows, raids, subscriptions, moderation and every other Helix operation (the gap); IRC login\r\n  with a user token, sending chat over IRC, and the `twitch.tv/commands` and `twitch.tv/membership` capabilities (NAK);\r\n  Twitch's own server PING; the implicit and device code grants; a playback access token, other renditions, ads and\r\n  past broadcasts; an already-authorized app's skipped consent (the page asks again).\r\n- Users' pictures and box art are Twitch's image-host URLs the twin does not serve; its pages draw avatars.\r\n- Generated surface counts are not an SDK claim. The catalog's Evidence tab records actual measured journeys and their\r\n  exact tool versions.\r\n\r\n## Package facts\r\n\r\nProtocol 3. The Twitch API (Helix) written from Twitch's reference page in `spec/` (provenance in `spec/SOURCE.md`, by\r\n`spec/page-to-openapi.ts`); id.twitch.tv's endpoints in `id/spec/` (`id/spec/SOURCE.md`). Apache-2.0, Node >= 22.3, on\r\n`@volter/world-core` and `@volter/world-ui` with live media. Contributor mechanics belong to the\r\n[pack procedure](https://world-docs.volter.ai/docs/contributing/architecture#creating-a-pack).\r\n"
+  },
+  "facts": {
+    "adoption": {
+      "sdks": [],
+      "envStems": [
+        "TWITCH"
+      ]
+    },
+    "hosts": [
+      {
+        "host": "api.twitch.tv",
+        "pathPattern": "^/helix/|^/_twin/"
+      },
+      {
+        "host": "id.twitch.tv",
+        "pathPattern": "^/oauth2/|^/_twin/"
+      },
+      {
+        "host": "www.twitch.tv",
+        "pathPattern": "^/$|^/login/?$|^/popout/[A-Za-z0-9_]{1,25}/chat/?$|^/[A-Za-z0-9_]{1,25}/?$|^/_twin/"
+      },
+      {
+        "host": "twitch.tv",
+        "pathPattern": "^/$|^/login/?$|^/popout/[A-Za-z0-9_]{1,25}/chat/?$|^/[A-Za-z0-9_]{1,25}/?$|^/_twin/"
+      },
+      {
+        "host": "m.twitch.tv",
+        "pathPattern": "^/$|^/login/?$|^/popout/[A-Za-z0-9_]{1,25}/chat/?$|^/[A-Za-z0-9_]{1,25}/?$|^/_twin/"
+      },
+      {
+        "host": "dashboard.twitch.tv",
+        "pathPattern": "^/u/[A-Za-z0-9_]{1,25}/(?:stream-manager|settings/stream)/?$"
+      },
+      {
+        "host": "player.twitch.tv",
+        "pathPattern": "^/$"
+      },
+      {
+        "host": "irc-ws.chat.twitch.tv"
+      },
+      {
+        "host": "usher.ttvnw.net",
+        "pathPattern": "^/api/channel/hls/"
+      }
+    ],
+    "archetype": "crud",
+    "protocol": {
+      "declared": "3",
+      "major": 3,
+      "standing": "current"
+    },
+    "transport": "rest",
+    "resources": [
+      "user",
+      "channel",
+      "stream",
+      "chat_message",
+      "application",
+      "_token",
+      "_authorization_code",
+      "_client_secret",
+      "_stream_key",
+      "_live",
+      "_live_segment"
+    ],
+    "endpointEnvNone": "Twitch's clients address api.twitch.tv, id.twitch.tv and irc-ws.chat.twitch.tv by their published URLs; no SDK reads a base-URL variable",
+    "credentialDoor": {
+      "path": "/_twin/console",
+      "body": {
+        "login": "worldchannel",
+        "password": "world-password",
+        "email": "worldchannel@example.com",
+        "application": {
+          "name": "World App",
+          "redirect_uris": [
+            "http://localhost:3000"
+          ]
+        }
+      },
+      "fill": {
+        "TWITCH_CLIENT_ID": "client_id",
+        "TWITCH_CLIENT_SECRET": "client_secret",
+        "TWITCH_CHANNEL": "login"
+      }
+    },
+    "sidePorts": [
+      {
+        "name": "ingest",
+        "option": "ingestPort",
+        "flag": "--ingest-port",
+        "scheme": "rtmp",
+        "path": "/app",
+        "note": "Twitch's RTMP ingest (rtmp://<ingest-server>/app/<stream-key>): OBS publishes the channel's broadcast here"
+      }
+    ],
+    "serveExport": "createTwitchTwinServer"
+  }
+}

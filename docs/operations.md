@@ -113,9 +113,10 @@ different bytes always fail. Preflight failures before an intent can be correcte
 
 ## Retain documentation and selected source inputs
 
-`capture-content` reads immutable archives at their recorded SRI, never installs or imports them. It retains README
-and manifest requirements in checksum-bound `content/` receipts. Existing metadata that predates dependency/optional
-peer fields can be enriched from those same bytes without changing an assessment. Commit the receipts in a maintenance
+`capture-content` reads immutable archives at their recorded SRI, never installs or imports them. It retains README,
+manifest requirements and the release's pack facts in checksum-bound `content/` receipts. Existing metadata that
+predates dependency/optional peer fields or pack facts can be enriched from those same bytes without changing an
+assessment. Commit the receipts in a maintenance
 change before preparing a new index. Missing documentation or historical measurement stays unavailable.
 
 World's source checkout consumes the catalog through its selected `sources/catalog` Gitlink and
