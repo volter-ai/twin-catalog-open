@@ -103,6 +103,15 @@ repository and evidence supplied in the PR are context, never substitutes for ru
 cannot select its own evaluator, thresholds, registry or privileges. A pack's customer fixture supplies its
 unchanged client invocation; the pinned standard owns initialization, lifecycle, assertions and readiness.
 
+A publisher's release submits and is assessed as part of the release, not days after it. Once its upload is confirmed
+in the registry, the publisher's release command opens the version's one submission PR and runs this catalog's
+`assess-pr` on it, with the catalog's own checkout at the PR's base and a `linux/amd64` Docker. A report other than
+`ready` fails that release, naming its phase and error, and the release closes the PR with that reason: no submission is
+left open for a refused artifact, whose fix is a new version. A `ready` report still needs what a publisher cannot
+supply: `record-assessment` by a registered assessment authority (`policy.assessmentAuthorities`), whose sign-in stays on
+its own machine, and a separately authorized maintainer's merge. The release names both as its remaining steps. The
+publisher's evidence remains context; the recorded catalog report is the readiness.
+
 ## State and invalidation
 
 A submission starts as data on an open PR. An operator uses `assess-pr` from a clean checkout of its exact current
