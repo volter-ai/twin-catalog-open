@@ -1,0 +1,8 @@
+{
+  "schemaVersion": 1,
+  "source": "twin-packs-open",
+  "vendor": "elevenlabs",
+  "package": "@volter/twin-elevenlabs",
+  "version": "1.0.1",
+  "integrity": "sha512-6EUWTjJ1rUK8rmL8E+EnqiSIVZj7y5eSwCD0AQXRnvQvzrlYCh4u3YMp9TBB5xb2EjJ0uXUn2uBS9ItVk2mSqw=="
+}
