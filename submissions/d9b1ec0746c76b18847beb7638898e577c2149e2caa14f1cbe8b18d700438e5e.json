@@ -1,0 +1,8 @@
+{
+  "schemaVersion": 1,
+  "source": "twin-packs-open",
+  "vendor": "planetscale",
+  "package": "@volter/twin-planetscale",
+  "version": "1.0.2",
+  "integrity": "sha512-Sx/2mmqIT594PC9Qom0qFl7xqQSgPTJ7LWaRHhzcxsq+k0h+Hkm2UZqflzo6ACXPX20sIh6oV2xf4NuSYtBj0w=="
+}
