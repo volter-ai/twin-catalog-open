@@ -1,0 +1,8 @@
+{
+  "schemaVersion": 1,
+  "source": "twin-packs-open",
+  "vendor": "resend",
+  "package": "@volter/twin-resend",
+  "version": "1.0.6",
+  "integrity": "sha512-rUcauke2VacT8PgY1Vpt+JPdU+GIsHSOZmyjP3xZSTp769FMPj7jgmnsVC6l1dommpM5cnIMbgZ6/cRIVrc0xg=="
+}
