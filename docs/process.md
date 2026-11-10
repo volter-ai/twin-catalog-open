@@ -209,8 +209,13 @@ The released standard owns the development SDK versions used by its client cases
 The versioned `@volter/twin-standard` owns the checks and machine-readable assessment API. The catalog invokes it;
 it does not implement another Protocol 3 grader or journey engine. Evaluation occurs inside a task-owned World.
 
-`policy.json` owns the exact evaluator tool cohort under `tools`. Change those pins when selecting a new platform
-cohort; assessment can use it only after every selected version is available from the policy registry. The existing
+`policy.json` owns the exact evaluator tool cohort under `tools`. The evaluator moves with each released platform
+cohort: a platform release that packs build on (its `@volter/world-core`, `@volter/world-runtime`,
+`@volter/twin-standard`, `@volter/world` and the UI and console packages released with them) moves these pins to that
+release's set, read from the registry, in its own policy PR. An evaluator pinned behind the packs it judges refuses
+every pack built on a newer kernel: the candidate's kernel peer range cannot install beside the pinned kernel, as
+`@volter/twin-upstash` 1.0.4 and 1.0.5 (`@volter/world-core >=3.0.163`) could not beside 3.0.161. Assessment can use a
+cohort only after every selected version is available from the policy registry. The existing
 preparation resolves and retains its native evaluator and customer dependency locks from those exact versions.
 Publisher tool pins and pack peer requirements remain their owners' declarations, checked against this policy
 selection rather than rewritten by the catalog.
