@@ -1,0 +1,8 @@
+{
+  "schemaVersion": 1,
+  "source": "twin-packs-open",
+  "vendor": "cohere",
+  "package": "@volter/twin-cohere",
+  "version": "1.0.1",
+  "integrity": "sha512-KT4MaENqSOkqJV2OyV7ebmGHCIXAv+8RGqdMDRAlhbYcaR+Jl/h6vP0y21R7nZ9Avprsd3Sr+LnLtRARcNlarg=="
+}
