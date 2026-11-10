@@ -1,8 +1,12 @@
 # Catalog process
 
-This repository operates admission and distribution of twin packages from independent publishers. The platform owns
-the runtime, Protocol 3 and the versioned standard. Publishers own their source and npm releases. This repository
-owns source registration, submissions, evaluation policy, moderator decisions and the approved index. It requires
+This repository lists the twins that exist and distributes their index: each vendor, the packages implementing it and
+the facts each release ships, which detection reads before a pack is installed. The platform owns the runtime,
+Protocol 3 and the versioned standard. Publishers own their source and npm releases. An official source's versions
+(`official: true` in `sources.json`, Volter's) are used as they publish: its own release door qualifies, keys-sweeps and
+customer-installs the exact tarball before upload, so a World's `init` proposes its latest published version and no
+admission here gates it. Every other source's release is admitted here: this repository owns source registration,
+submissions, evaluation policy, moderator decisions and the approved index those releases are chosen from. It requires
 released tools, not a platform checkout. Its executable contract is the modules in `lib/`; `bin/twin-catalog.mjs` exposes the explicit operator commands. Qualification and assessment run outside CI. Main never publishes. No automatic CI tests, required status checks or merge gates establish readiness.
 
 ## Identity and authority
@@ -13,8 +17,10 @@ One repository may publish several packages. Several repositories may implement 
 not vendor identities. Version ordering applies only within one package, never between competing implementations.
 
 `sources.json` registers sources. Registration is its own separately authorized PR; a submission cannot grant its source
-trust, change evaluation tools, or change catalog policy. `official` identifies Volter maintenance, not a verification
-exemption or vendor endorsement. Every new release follows the same readiness requirements. Contributions from untrusted accounts
+trust, change evaluation tools, or change catalog policy. `official` identifies Volter's own source, whose
+releases are used as published (its release door's qualification, exact-archive sweep and customer install stand for
+the assessment here); it is no vendor endorsement. Every other source's new release follows the readiness requirements
+below. Contributions from untrusted accounts
 require current-head human moderator approval. Direct submissions from an account explicitly listed in
 `policy.trustedAccounts` need no separate moderator review, including fork PRs. Each entry binds the numeric
 GitHub account ID, exact login and account type (`User` or `Bot`). Trust is checked against the PR author returned
@@ -102,15 +108,6 @@ The catalog evaluates only the tarball fetched at the declared integrity. Packag
 repository and evidence supplied in the PR are context, never substitutes for running that artifact. A submission
 cannot select its own evaluator, thresholds, registry or privileges. A pack's customer fixture supplies its
 unchanged client invocation; the pinned standard owns initialization, lifecycle, assertions and readiness.
-
-A publisher's release submits and is assessed as part of the release, not days after it. Once its upload is confirmed
-in the registry, the publisher's release command opens the version's one submission PR and runs this catalog's
-`assess-pr` on it, with the catalog's own checkout at the PR's base and a `linux/amd64` Docker. A report other than
-`ready` fails that release, naming its phase and error, and the release closes the PR with that reason: no submission is
-left open for a refused artifact, whose fix is a new version. A `ready` report still needs what a publisher cannot
-supply: `record-assessment` by a registered assessment authority (`policy.assessmentAuthorities`), whose sign-in stays on
-its own machine, and a separately authorized maintainer's merge. The release names both as its remaining steps. The
-publisher's evidence remains context; the recorded catalog report is the readiness.
 
 ## State and invalidation
 
