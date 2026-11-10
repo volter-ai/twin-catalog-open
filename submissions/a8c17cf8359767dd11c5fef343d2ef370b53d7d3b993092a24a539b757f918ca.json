@@ -1,0 +1,8 @@
+{
+  "schemaVersion": 1,
+  "source": "twin-packs-open",
+  "vendor": "xai",
+  "package": "@volter/twin-xai",
+  "version": "1.0.1",
+  "integrity": "sha512-NYVQBXuyD8WBktSrYV37lmGs1HAuloCwxI8NFywMOznav3kS6CxLxntQmYEbbLQg4EKAyEpCPKLw0cZINpksCw=="
+}
