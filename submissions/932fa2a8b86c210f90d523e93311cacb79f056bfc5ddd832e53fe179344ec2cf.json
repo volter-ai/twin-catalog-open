@@ -1,0 +1,8 @@
+{
+  "schemaVersion": 1,
+  "source": "twin-packs-open",
+  "vendor": "smtp",
+  "package": "@volter/twin-smtp",
+  "version": "1.0.1",
+  "integrity": "sha512-ZiilTxKhkxCsqkGcgvogZKACOMCVfeblAExon4goGkaG3TWbWLV+HRYqrUiOGXvyEQ8iQ6vxCXC7xdlLeiw2Yg=="
+}
