@@ -1,0 +1,8 @@
+{
+  "schemaVersion": 1,
+  "source": "twin-packs-open",
+  "vendor": "cloudflare",
+  "package": "@volter/twin-cloudflare",
+  "version": "3.0.14",
+  "integrity": "sha512-QolHY8FjUKzbTlRra+cvz9aHfU8eq9Q6lRMfsvNizxdtzcBnciJPbyW8Hw5atUkZgFk8Rv2i/+dgxWSBLRE4sQ=="
+}
