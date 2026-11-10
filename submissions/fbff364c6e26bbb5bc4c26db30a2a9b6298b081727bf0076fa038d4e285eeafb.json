@@ -1,0 +1,8 @@
+{
+  "schemaVersion": 1,
+  "source": "twin-packs-open",
+  "vendor": "vgauth",
+  "package": "@volter/twin-vgauth",
+  "version": "1.0.1",
+  "integrity": "sha512-BjxDLVB826s60x/NKZpWGKMklbRSbaP+bDsSU5Y8Q4PodZJKk3TgInBSfvl5L3RrbvKNm9Cwwr99J3NzlQ9yCA=="
+}
