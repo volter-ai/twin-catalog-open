@@ -1,0 +1,8 @@
+{
+  "schemaVersion": 1,
+  "source": "twin-packs-open",
+  "vendor": "tripo",
+  "package": "@volter/twin-tripo",
+  "version": "1.0.1",
+  "integrity": "sha512-JKH2DQAS/q5mQDmpJ5Qgrt4tEV4ZeFOtND5A340wpQJomHFWuKf9BJmQx6n9zxuzw32UsY4KerFh2wqwzlrFpw=="
+}
