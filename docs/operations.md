@@ -22,6 +22,10 @@ uploader and checks their registered identity. No new ChatGPT or Claude sign-in 
 
 ## Assess and record a submission
 
+A registered publisher's release runs `assess-pr` itself on the submission it has just opened, and fails on a report
+other than `ready` (process, "Submission"); the operator steps below are then the recording authority's and the
+maintainer's, for that report. An open submission without a release behind it is assessed the same way.
+
 With Docker capable of `linux/amd64` containers, select a clean checkout at the PR's exact current base. Its policy pins the released
 tools; the host controller reads submission data from the exact head through GitHub and never imports the candidate.
 Image builds and all containers explicitly select that platform to match the Linux x64 Bun and native pnpm bytes;
