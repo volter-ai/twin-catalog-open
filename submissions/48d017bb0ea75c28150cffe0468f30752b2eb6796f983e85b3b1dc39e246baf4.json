@@ -1,0 +1,8 @@
+{
+  "schemaVersion": 1,
+  "source": "twin-packs-open",
+  "vendor": "worldlabs",
+  "package": "@volter/twin-worldlabs",
+  "version": "1.0.1",
+  "integrity": "sha512-nTF1RFCCA4eYsVJsQgUKfP/pemd+OQs6qijOKImxWK405qmGFpyZEcwPhnqUF/jcOz5x6Xk+x5OVVq2nJxBNAA=="
+}
