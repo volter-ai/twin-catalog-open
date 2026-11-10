@@ -1,0 +1,8 @@
+{
+  "schemaVersion": 1,
+  "source": "twin-packs-open",
+  "vendor": "googleoauth",
+  "package": "@volter/twin-googleoauth",
+  "version": "1.1.2",
+  "integrity": "sha512-tTsRQEvn7/C/jmyoSq9pDHZUefZQUJlQof3w9XYW/rwS6jXNz8nlEqO8tuwAh6cJNbp057U8FjOsrcXcSEEYMw=="
+}
