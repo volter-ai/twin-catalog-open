@@ -2,13 +2,13 @@
   "schemaVersion": 1,
   "registry": "https://registry.npmjs.org",
   "tools": {
-    "@volter/world-core": "3.0.176",
-    "@volter/world-runtime": "3.0.204",
-    "@volter/twin-standard": "1.0.174",
+    "@volter/world-core": "3.0.185",
+    "@volter/world-runtime": "3.0.214",
+    "@volter/twin-standard": "1.0.184",
     "playwright": "1.63.0",
-    "@volter/world": "3.0.206",
-    "@volter/world-ui": "1.0.175",
-    "@volter/world-console": "3.0.169"
+    "@volter/world": "3.0.216",
+    "@volter/world-ui": "1.0.184",
+    "@volter/world-console": "3.0.174"
   },
   "bun": "1.4.2",
   "pnpm": "12.15.0",
