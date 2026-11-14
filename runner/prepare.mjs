@@ -117,4 +117,3 @@ const packageMetadata = {
 write('/work/prepared.json', { schemaVersion: 1, submission: s, integrity: s.integrity, provenance, packageMetadata, readme, dependencyLockSha256: digest(readFileSync('/work/package-lock.json', 'utf8')), clientSdkLocks, clientDependencyChoices, tools: policy.tools, consumer, consumerFixture,
   consumerPackageManager: appInstaller.packageManager, consumerDependencyLockFile: appInstaller.file, consumerDependencyLockFormat: appInstaller.format,
   consumerDependencyLockSha256: digest(consumerLockText) });
-write('/work/world.json', { id: 'catalog-assessment', network: { egress: [] }, services: [] });

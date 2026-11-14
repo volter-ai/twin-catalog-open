@@ -15,6 +15,7 @@ the architecture section it links holds the format.
 ## What you need
 
 - Bun at the catalog policy's version (`policy.json`, `bun`) and Node 22.3 or newer.
+- pnpm at the catalog policy's version (`policy.json`, `pnpm`): a prepared customer app declares it as its installer.
 - In your repository's `package.json`, the public `@volter/world`, `@volter/world-core`, `@volter/world-runtime` and
   `@volter/twin-standard` at the versions `policy.json` names under `tools` (the versions the catalog's admission
   runs), TypeScript and its Node and Bun types as development dependencies. Commit the lockfile.
@@ -221,26 +222,22 @@ the installed package. Keep the archive inventory and lockfile. Prepare a new cu
 
 ```sh
 twin-standard prepare-consumer <installed pack dir> --app <new app dir> --cli <absolute installed volter executable> --integrity <packed SHA-512 integrity> --out prepared-consumer.json
-npm install --prefix <new app dir> --ignore-scripts --no-audit --no-fund
+pnpm --dir <new app dir> install --ignore-scripts
 ```
 
-This preparation writes fixture files only; SDK dependency installation precedes offline execution. Select `--cli` from the installed `@volter/world` package's declared `bin.volter`, rather than the shared
+This preparation writes fixture files only, a pnpm app (its `packageManager` and `pnpm-workspace.yaml`), installed as
+the catalog's admission installs it; SDK dependency installation precedes offline execution. Select `--cli` from the installed `@volter/world` package's declared `bin.volter`, rather than the shared
 `node_modules/.bin/volter`: another package may claim that shortcut. The runner invokes compiled JavaScript
 through Node and records the actual entrypoint, command and Node version. The product CLI must resolve the installed candidate through that app's parent dependency directory. For the final assessment,
-run the released standard through a World:
-
-Create `assessment.world.config.json`:
-
-```json
-{ "id": "pack-assessment", "services": [], "network": { "egress": [] } }
-```
+run the released standard's assessment, the one the catalog's admission runs:
 
 ```sh
-volter-world run assessment.world.config.json --root . --env-out /tmp/new-assessment.env --owner pack-assessment -- twin-standard assess <installed pack dir> --prepared-consumer prepared-consumer.json --browser --out assessment.json
+twin-standard assess <installed pack dir> --prepared-consumer prepared-consumer.json --browser --out assessment.json
 ```
 
-The outer assessment config has no vendor services; the standard creates fresh in-memory state for journey replay
-and uses the product CLI to own a separate app World for the installed customer workflow.
+It makes the Worlds it needs: fresh in-memory state for each journey replay, and, through the product CLI, the app
+World of the installed customer workflow, which routes the app's vendor calls to the candidate. In the catalog it runs
+in a container with no network; run here, it has that World's routing and no enforced network boundary.
 For an HTTP browser target, use Linux, install Playwright at the catalog policy version and its Chromium binary,
 and install `libfaketime` (Debian/Ubuntu: `sudo apt-get install libfaketime`). The browser process uses the World
 clock for native cookie expiry, at one-second precision; JavaScript time retains millisecond precision. Authors on

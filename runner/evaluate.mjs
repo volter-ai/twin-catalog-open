@@ -1,9 +1,8 @@
-// Runs only inside the offline container and a task-owned World. The released standard owns all pack checks.
+// Runs only inside the offline container. The released standard owns all pack checks and the Worlds they need.
 import { existsSync } from 'node:fs';
 import { join } from 'node:path';
 import { createRequire } from 'node:module';
 import { read, requireThat, write, compareReports } from '../lib/model.mjs';
-requireThat(Boolean(process.env.VOLTER_WORLD), 'evaluation must run inside a World');
 const { submission: s } = read('/input/input.json');
 const requireFromPack = createRequire('/work/package.json');
 const { assessPack } = await import(requireFromPack.resolve('@volter/twin-standard'));
