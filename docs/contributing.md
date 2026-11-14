@@ -229,20 +229,15 @@ This preparation writes fixture files only, a pnpm app (its `packageManager` and
 the catalog's admission installs it; SDK dependency installation precedes offline execution. Select `--cli` from the installed `@volter/world` package's declared `bin.volter`, rather than the shared
 `node_modules/.bin/volter`: another package may claim that shortcut. The runner invokes compiled JavaScript
 through Node and records the actual entrypoint, command and Node version. The product CLI must resolve the installed candidate through that app's parent dependency directory. For the final assessment,
-run the released standard through a World:
-
-Create `assessment.world.config.json`:
-
-```json
-{ "id": "pack-assessment", "services": [], "network": { "egress": [] } }
-```
+run the released standard's assessment, the one the catalog's admission runs:
 
 ```sh
-volter-world run assessment.world.config.json --root . --env-out /tmp/new-assessment.env --owner pack-assessment -- twin-standard assess <installed pack dir> --prepared-consumer prepared-consumer.json --browser --out assessment.json
+twin-standard assess <installed pack dir> --prepared-consumer prepared-consumer.json --browser --out assessment.json
 ```
 
-The outer assessment config has no vendor services; the standard creates fresh in-memory state for journey replay
-and uses the product CLI to own a separate app World for the installed customer workflow.
+It makes the Worlds it needs: fresh in-memory state for each journey replay, and, through the product CLI, the app
+World of the installed customer workflow, which routes the app's vendor calls to the candidate. In the catalog it runs
+in a container with no network; run here, it has that World's routing and no enforced network boundary.
 For an HTTP browser target, use Linux, install Playwright at the catalog policy version and its Chromium binary,
 and install `libfaketime` (Debian/Ubuntu: `sudo apt-get install libfaketime`). The browser process uses the World
 clock for native cookie expiry, at one-second precision; JavaScript time retains millisecond precision. Authors on

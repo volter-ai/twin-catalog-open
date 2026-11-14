@@ -213,7 +213,8 @@ Resend client conformance uses its official Node SDK at the demanded application
 The released standard owns the development SDK versions used by its client cases. Candidate development dependencies supply additional clients but cannot override an evaluator-owned version. Preparation retains `clientDependencyChoices` for differing requested ranges and the resolved dependency lock. These cases measure the selected evaluator client; they do not establish compatibility with every SDK range in the candidate manifest.
 
 The versioned `@volter/twin-standard` owns the checks and machine-readable assessment API. The catalog invokes it;
-it does not implement another Protocol 3 grader or journey engine. Evaluation occurs inside a task-owned World.
+it does not implement another Protocol 3 grader or journey engine. Evaluation occurs in the offline container, with no
+network, which is its network boundary; the standard makes the Worlds its checks need.
 
 `policy.json` owns the exact evaluator tool cohort under `tools`. The evaluator moves with each released platform
 cohort: a platform release that packs build on (its `@volter/world-core`, `@volter/world-runtime`,
