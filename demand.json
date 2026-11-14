@@ -1,0 +1,1924 @@
+{
+ "//": "Written by twin-packs-p3's scripts/demand-public.ts from its demand scan; do not edit. Each vendor the public applications in `scanned` call, read at those commits, ranked by the applications that call it without a setting: per application, its evidence (`npm:` an SDK in a manifest, `env:` a vendor's environment name in the file that reads it, `host:` a request host with the file and line that sends it, `ships:` an integration the product ships, `opt-in:` the setting that turns the call on). `listed` says whether this catalog lists an implementation of the vendor.",
+ "scannedOn": "2026-10-27",
+ "scanned": [
+  {
+   "repo": "open-autonomy-org/open-autonomy",
+   "product": "Open Autonomy",
+   "commit": "0841076bed91"
+  },
+  {
+   "repo": "volter-ai/tabnode",
+   "product": "tabnode",
+   "commit": "ebf9db73be00"
+  },
+  {
+   "repo": "dubinc/dub",
+   "product": "Dub",
+   "commit": "7e0101363b2a"
+  },
+  {
+   "repo": "lukevella/rallly",
+   "product": "Rallly",
+   "commit": "3e63239dbdec"
+  },
+  {
+   "repo": "twentyhq/twenty",
+   "product": "Twenty",
+   "commit": "1d561b8c73c9"
+  },
+  {
+   "repo": "LibreChat-AI/LibreChat",
+   "product": "LibreChat",
+   "commit": "f10b1d91f1ee"
+  },
+  {
+   "repo": "calcom/cal.diy",
+   "product": "Cal.com",
+   "commit": "54343aa685ae"
+  }
+ ],
+ "vendors": [
+  {
+   "vendor": "github",
+   "listed": true,
+   "applications": [
+    {
+     "repo": "open-autonomy-org/open-autonomy",
+     "calls": [
+      "env: GITHUB_TOKEN (.open-autonomy/community.ts)",
+      "host: api.github.com (.open-autonomy/credentials.ts:65 -> fetch at .open-autonomy/credentials.ts:65)",
+      "env: GITHUB_TOKEN (.open-autonomy/maintain.ts)",
+      "env: GITHUB_TOKEN (apps/platform/src/give-auth.ts)",
+      "env: GITHUB_OAUTH_CLIENT_ID (apps/platform/src/give-auth.ts)"
+     ]
+    },
+    {
+     "repo": "dubinc/dub",
+     "calls": [
+      "env: GITHUB_CLIENT_ID (apps/web/.env.example)",
+      "env: GITHUB_CLIENT_SECRET (apps/web/.env.example)",
+      "host: raw.githubusercontent.com (apps/web/app/(ee)/api/cron/disposable-emails/route.ts:13 -> fetch at apps/web/app/(ee)/api/cron/disposable-emails/route.ts:12)",
+      "env: GITHUB_CLIENT_ID (apps/web/lib/auth/options.ts)",
+      "env: GITHUB_CLIENT_SECRET (apps/web/lib/auth/options.ts)"
+     ]
+    },
+    {
+     "repo": "lukevella/rallly",
+     "calls": [
+      "host: github.com (apps/landing/src/app/[locale]/(main)/footer.tsx:93 -> browser a href at apps/landing/src/app/[locale]/(main)/footer.tsx:93)",
+      "host: github.com (apps/landing/src/app/[locale]/(main)/press-kit/page.tsx:284 -> browser a href at apps/landing/src/app/[locale]/(main)/press-kit/page.tsx:284)",
+      "host: api.github.com (apps/web/src/app/api/updates/route.ts:16 -> fetch at apps/web/src/app/api/updates/route.ts:49)",
+      "host: api.github.com (apps/web/src/app/api/updates/route.ts:17 -> fetch at apps/web/src/app/api/updates/route.ts:93)"
+     ]
+    },
+    {
+     "repo": "twentyhq/twenty",
+     "calls": [
+      "host: github.com (packages/twenty-emails/src/components/Footer.tsx:30 -> browser Link href at packages/twenty-emails/src/components/Footer.tsx:30)",
+      "host: github.com (packages/twenty-server/src/engine/core-modules/application/application-registration/application-registration-claim.service.ts:418 -> axios.post at packages/twenty-server/src/engine/core-modules/application/application-registration/application-registration-claim.service.ts:417)",
+      "host: api.github.com (packages/twenty-server/src/engine/core-modules/application/application-registration/application-registration-claim.service.ts:456 -> axios.get at packages/twenty-server/src/engine/core-modules/application/application-registration/application-registration-claim.service.ts:456)",
+      "host: api.github.com (packages/twenty-server/src/engine/core-modules/application/application-registration/application-registration-claim.service.ts:479 -> axios.get at packages/twenty-server/src/engine/core-modules/application/application-registration/application-registration-claim.service.ts:478)",
+      "host: api.github.com (packages/twenty-website/src/platform/community/get-community-stats.ts:15 -> fetch at packages/twenty-website/src/platform/community/get-community-stats.ts:22)"
+     ]
+    },
+    {
+     "repo": "LibreChat-AI/LibreChat",
+     "calls": [
+      "env: GITHUB_CLIENT_ID (.env.example)",
+      "env: GITHUB_CLIENT_SECRET (.env.example)",
+      "env: GITHUB_CLIENT_ID (api/server/routes/config.js)",
+      "env: GITHUB_CLIENT_SECRET (api/server/routes/config.js)",
+      "env: GITHUB_CLIENT_ID (api/server/socialLogins.js)"
+     ]
+    },
+    {
+     "repo": "calcom/cal.diy",
+     "calls": [
+      "host: github.com (packages/ui/components/credits/Credits.tsx:33 -> browser Link href at packages/ui/components/credits/Credits.tsx:33)"
+     ]
+    }
+   ]
+  },
+  {
+   "vendor": "cloudflare",
+   "listed": true,
+   "applications": [
+    {
+     "repo": "dubinc/dub",
+     "calls": [
+      "npm: aws4fetch (apps/web/package.json)"
+     ]
+    },
+    {
+     "repo": "lukevella/rallly",
+     "calls": [
+      "npm: @marsidev/react-turnstile (apps/web/package.json)",
+      "env: TURNSTILE_SECRET_KEY (apps/web/src/env.ts)",
+      "env: TURNSTILE_SECRET_KEY (apps/web/src/lib/auth.ts)",
+      "env: TURNSTILE_SECRET_KEY (apps/web/src/lib/feature-flags/config.ts)"
+     ]
+    },
+    {
+     "repo": "twentyhq/twenty",
+     "calls": [
+      "npm: cloudflare (packages/twenty-server/package.json)",
+      "env: CLOUDFLARE_API_KEY (packages/twenty-server/src/engine/core-modules/twenty-config/config-variables.ts)"
+     ]
+    },
+    {
+     "repo": "LibreChat-AI/LibreChat",
+     "calls": [
+      "npm: @marsidev/react-turnstile (client/package.json)"
+     ]
+    },
+    {
+     "repo": "calcom/cal.diy",
+     "calls": [
+      "npm: react-turnstile (apps/web/package.json)",
+      "env: CLOUDFLARE_ACCOUNT_ID (packages/lib/constants.ts)",
+      "host: challenges.cloudflare.com (packages/lib/server/checkCfTurnstileToken.ts:25 -> fetch at packages/lib/server/checkCfTurnstileToken.ts:25)"
+     ]
+    }
+   ]
+  },
+  {
+   "vendor": "googleoauth",
+   "listed": true,
+   "applications": [
+    {
+     "repo": "dubinc/dub",
+     "calls": [
+      "env: GOOGLE_CLIENT_ID (apps/web/.env.example)",
+      "env: GOOGLE_CLIENT_SECRET (apps/web/.env.example)",
+      "env: GOOGLE_CLIENT_ID (apps/web/lib/auth/options.ts)",
+      "env: GOOGLE_CLIENT_SECRET (apps/web/lib/auth/options.ts)"
+     ]
+    },
+    {
+     "repo": "lukevella/rallly",
+     "calls": [
+      "env: GOOGLE_CLIENT_ID (apps/web/src/app/api/integrations/[...connection]/route.ts)",
+      "env: GOOGLE_CLIENT_SECRET (apps/web/src/app/api/integrations/[...connection]/route.ts)",
+      "env: GOOGLE_CLIENT_ID (apps/web/src/env.ts)",
+      "env: GOOGLE_CLIENT_SECRET (apps/web/src/env.ts)",
+      "env: GOOGLE_CLIENT_ID (apps/web/src/features/calendars/google/service.ts)"
+     ]
+    },
+    {
+     "repo": "twentyhq/twenty",
+     "calls": [
+      "ships: Scanned source caller behind operator setup: AUTH_GOOGLE_ENABLED, MESSAGING_PROVIDER_GMAIL_ENABLED and CALENDAR_PROVIDER_GOOGLE_ENABLED default false; OAuth client keys commented (packages/twenty-server/.env.example:17,19,31-35; packages/twenty-server/src/engine/core-modules/auth/guards/google-provider-enabled.guard.ts:24)."
+     ]
+    },
+    {
+     "repo": "LibreChat-AI/LibreChat",
+     "calls": [
+      "env: GOOGLE_CLIENT_ID (.env.example)",
+      "env: GOOGLE_CLIENT_SECRET (.env.example)",
+      "env: GOOGLE_CLIENT_ID (api/server/routes/admin/auth.js)",
+      "host: openidconnect.googleapis.com (packages/api/src/auth/googleRefresh.ts:12 -> fetch at packages/api/src/auth/googleRefresh.ts:70)",
+      "npm: google-auth-library (packages/api/package.json)"
+     ]
+    },
+    {
+     "repo": "calcom/cal.diy",
+     "calls": [
+      "npm: @googleapis/oauth2 (apps/web/package.json)",
+      "npm: google-auth-library (apps/web/package.json)",
+      "env: GOOGLE_CLIENT_ID (example-apps/credential-sync/.env.example)",
+      "env: GOOGLE_CLIENT_SECRET (example-apps/credential-sync/.env.example)"
+     ]
+    }
+   ]
+  },
+  {
+   "vendor": "smtp",
+   "listed": true,
+   "applications": [
+    {
+     "repo": "dubinc/dub",
+     "calls": [
+      "npm: nodemailer (packages/email/package.json)"
+     ]
+    },
+    {
+     "repo": "lukevella/rallly",
+     "calls": [
+      "npm: nodemailer (packages/emails/package.json)"
+     ]
+    },
+    {
+     "repo": "twentyhq/twenty",
+     "calls": [
+      "npm: nodemailer (packages/twenty-server/package.json)",
+      "npm: nodemailer (packages/twenty-server/src/engine/core-modules/application/application-package/constants/seed-dependencies/package.json)"
+     ]
+    },
+    {
+     "repo": "LibreChat-AI/LibreChat",
+     "calls": [
+      "npm: nodemailer (api/package.json)"
+     ]
+    },
+    {
+     "repo": "calcom/cal.diy",
+     "calls": [
+      "npm: nodemailer (apps/web/package.json)",
+      "npm: nodemailer (packages/features/auth/package.json)"
+     ]
+    }
+   ]
+  },
+  {
+   "vendor": "stripe",
+   "listed": true,
+   "applications": [
+    {
+     "repo": "open-autonomy-org/open-autonomy",
+     "calls": [
+      "env: STRIPE_SECRET_KEY (apps/platform/world.ts)",
+      "env: STRIPE_WEBHOOK_SECRET (packages/backend/src/rails.ts)",
+      "env: STRIPE_SECRET_KEY (packages/backend/src/stripe.ts)",
+      "env: STRIPE_WEBHOOK_SECRET (packages/backend/src/stripe.ts)"
+     ]
+    },
+    {
+     "repo": "dubinc/dub",
+     "calls": [
+      "env: NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY (apps/web/.env.example)",
+      "env: STRIPE_SECRET_KEY (apps/web/.env.example)",
+      "env: STRIPE_WEBHOOK_SECRET (apps/web/.env.example)",
+      "npm: stripe (apps/web/package.json)",
+      "host: dashboard.stripe.com (apps/web/app/(ee)/admin.dub.co/(dashboard)/programs/recent/page.tsx:185 -> browser a href at apps/web/app/(ee)/admin.dub.co/(dashboard)/programs/recent/page.tsx:185)"
+     ]
+    },
+    {
+     "repo": "lukevella/rallly",
+     "calls": [
+      "env: STRIPE_SECRET_KEY (apps/landing/.env.sample)",
+      "env: STRIPE_SECRET_KEY (apps/landing/src/lib/data.ts)",
+      "env: STRIPE_SIGNING_SECRET (apps/web/src/app/api/stripe/webhook/route.ts)",
+      "env: STRIPE_SECRET_KEY (apps/web/src/features/billing/service.ts)",
+      "npm: stripe (packages/billing/package.json)"
+     ]
+    },
+    {
+     "repo": "twentyhq/twenty",
+     "calls": [
+      "npm: stripe (packages/twenty-server/package.json)",
+      "env: STRIPE_SECRET_KEY (packages/twenty-website/.env.example)",
+      "npm: stripe (packages/twenty-website/package.json)",
+      "env: STRIPE_SECRET_KEY (packages/twenty-website/src/app/api/enterprise/activate/route.ts)",
+      "env: STRIPE_SECRET_KEY (packages/twenty-website/src/app/api/enterprise/checkout/route.ts)"
+     ]
+    },
+    {
+     "repo": "calcom/cal.diy",
+     "calls": [
+      "env: NEXT_PUBLIC_STRIPE_PUBLIC_KEY (.env.appStore.example)",
+      "env: STRIPE_PRIVATE_KEY (.env.appStore.example)",
+      "env: STRIPE_WEBHOOK_SECRET (.env.appStore.example)",
+      "env: STRIPE_CLIENT_ID (.env.appStore.example)",
+      "npm: stripe (apps/api/v2/package.json)"
+     ]
+    }
+   ]
+  },
+  {
+   "vendor": "openai",
+   "listed": true,
+   "applications": [
+    {
+     "repo": "open-autonomy-org/open-autonomy",
+     "calls": [
+      "env: CODEX_HOME (.open-autonomy/start.ts)",
+      "host: chatgpt.com (.open-autonomy/valve.ts:103 -> fetch at .open-autonomy/valve.ts:114)",
+      "env: CODEX_HOME (cookbooks/todo-cli/.open-autonomy/start.ts)",
+      "host: chatgpt.com (cookbooks/todo-cli/.open-autonomy/valve.ts:103 -> fetch at cookbooks/todo-cli/.open-autonomy/valve.ts:114)"
+     ]
+    },
+    {
+     "repo": "lukevella/rallly",
+     "calls": [
+      "npm: @ai-sdk/openai (apps/web/package.json)",
+      "env: OPENAI_API_KEY (apps/web/src/env.ts)",
+      "env: OPENAI_API_KEY (apps/web/src/features/moderation/mutations.ts)"
+     ]
+    },
+    {
+     "repo": "twentyhq/twenty",
+     "calls": [
+      "npm: @ai-sdk/openai (packages/twenty-server/package.json)"
+     ]
+    },
+    {
+     "repo": "LibreChat-AI/LibreChat",
+     "calls": [
+      "env: OPENAI_API_KEY (.env.example)",
+      "npm: openai (api/package.json)",
+      "host: api.openai.com (api/server/middleware/moderateText.js:90 -> axios.post at api/server/middleware/moderateText.js:89)",
+      "env: OPENAI_API_KEY (api/test/.env.test.example)",
+      "env: OPENAI_API_KEY (packages/api/src/agents/run.ts)"
+     ]
+    }
+   ]
+  },
+  {
+   "vendor": "azure",
+   "listed": false,
+   "applications": [
+    {
+     "repo": "lukevella/rallly",
+     "calls": [
+      "env: MICROSOFT_CLIENT_ID (apps/web/src/app/api/integrations/[...connection]/route.ts)",
+      "env: MICROSOFT_CLIENT_SECRET (apps/web/src/app/api/integrations/[...connection]/route.ts)",
+      "env: MICROSOFT_CLIENT_ID (apps/web/src/env.ts)",
+      "env: MICROSOFT_CLIENT_SECRET (apps/web/src/env.ts)",
+      "env: MICROSOFT_CLIENT_ID (apps/web/src/features/conferencing/constants.ts)"
+     ]
+    },
+    {
+     "repo": "twentyhq/twenty",
+     "calls": [
+      "npm: @ai-sdk/azure (packages/twenty-server/package.json)",
+      "npm: @azure/msal-node (packages/twenty-server/package.json)",
+      "opt-in: 1d561b8c73c9: Configuration (1): AUTH_MICROSOFT_ENABLED, MESSAGING_PROVIDER_MICROSOFT_ENABLED and CALENDAR_PROVIDER_MICROSOFT_ENABLED replace false (packages/twenty-server/src/engine/core-modules/twenty-config/config-variables.ts:266,322,339). Azure AI requires adding a provider/catalog override over the built-in non-Azure catalog; AI_PROVIDERS defaults {} (same file:2042; packages/twenty-server/src/engine/metadata-modules/ai/ai-models/services/provider-config.service.ts:28-41)."
+     ]
+    },
+    {
+     "repo": "LibreChat-AI/LibreChat",
+     "calls": [
+      "env: AZURE_AI_SEARCH_SERVICE_ENDPOINT (.env.example)",
+      "env: AZURE_AI_SEARCH_API_KEY (.env.example)",
+      "npm: @azure/search-documents (api/package.json)",
+      "npm: @azure/storage-blob (api/package.json)",
+      "npm: @azure/search-documents (packages/api/package.json)"
+     ]
+    },
+    {
+     "repo": "calcom/cal.diy",
+     "calls": [
+      "env: MICROSOFT_WEBHOOK_TOKEN (.env.example)",
+      "env: MICROSOFT_WEBHOOK_URL (.env.example)",
+      "env: MICROSOFT_WEBHOOK_TOKEN (packages/features/calendar-subscription/adapters/Office365CalendarSubscription.adapter.ts)",
+      "env: MICROSOFT_WEBHOOK_URL (packages/features/calendar-subscription/adapters/Office365CalendarSubscription.adapter.ts)"
+     ]
+    }
+   ]
+  },
+  {
+   "vendor": "anthropic",
+   "listed": true,
+   "applications": [
+    {
+     "repo": "dubinc/dub",
+     "calls": [
+      "env: ANTHROPIC_API_KEY (apps/web/.env.example)",
+      "npm: @ai-sdk/anthropic (apps/web/package.json)"
+     ]
+    },
+    {
+     "repo": "twentyhq/twenty",
+     "calls": [
+      "npm: @ai-sdk/anthropic (packages/twenty-server/package.json)"
+     ]
+    },
+    {
+     "repo": "LibreChat-AI/LibreChat",
+     "calls": [
+      "env: ANTHROPIC_API_KEY (.env.example)",
+      "npm: @anthropic-ai/vertex-sdk (api/package.json)",
+      "npm: @anthropic-ai/vertex-sdk (packages/api/package.json)",
+      "env: ANTHROPIC_API_KEY (packages/api/src/endpoints/models.ts)"
+     ]
+    }
+   ]
+  },
+  {
+   "vendor": "aws",
+   "listed": true,
+   "applications": [
+    {
+     "repo": "lukevella/rallly",
+     "calls": [
+      "npm: @aws-sdk/client-s3 (apps/web/package.json)",
+      "env: AWS_ACCESS_KEY_ID (apps/web/src/env.ts)",
+      "env: AWS_SECRET_ACCESS_KEY (apps/web/src/env.ts)"
+     ]
+    },
+    {
+     "repo": "twentyhq/twenty",
+     "calls": [
+      "npm: @aws-sdk/client-s3 (packages/twenty-server/package.json)"
+     ]
+    },
+    {
+     "repo": "LibreChat-AI/LibreChat",
+     "calls": [
+      "env: AWS_ENDPOINT_URL (.env.example)",
+      "env: AWS_ACCESS_KEY_ID (.env.example)",
+      "env: AWS_SECRET_ACCESS_KEY (.env.example)",
+      "npm: @aws-sdk/client-s3 (api/package.json)",
+      "npm: @aws-sdk/client-s3 (packages/api/package.json)"
+     ]
+    }
+   ]
+  },
+  {
+   "vendor": "discord",
+   "listed": true,
+   "applications": [
+    {
+     "repo": "open-autonomy-org/open-autonomy",
+     "calls": [
+      "npm: @chat-adapter/discord (.open-autonomy/package.json)",
+      "npm: @chat-adapter/discord (cookbooks/todo-cli/.open-autonomy/package.json)",
+      "npm: @chat-adapter/discord (packages/kit-hermes/base/.open-autonomy/package.json)",
+      "env: DISCORD_BOT_TOKEN (packages/kit-hermes/src/setup.ts)",
+      "host: discord.com (packages/kit-hermes/src/setup.ts:323 -> fetch at packages/kit-hermes/src/setup.ts:323)"
+     ]
+    },
+    {
+     "repo": "twentyhq/twenty",
+     "calls": [
+      "host: discord.com (packages/twenty-website/src/platform/community/get-community-stats.ts:17 -> fetch at packages/twenty-website/src/platform/community/get-community-stats.ts:45)",
+      "ships: 1d561b8c73c9: Public invite count with no operator credential (packages/twenty-website/src/platform/community/get-community-stats.ts:16-17,44-46)"
+     ]
+    },
+    {
+     "repo": "LibreChat-AI/LibreChat",
+     "calls": [
+      "env: DISCORD_CLIENT_ID (.env.example)",
+      "env: DISCORD_CLIENT_SECRET (.env.example)",
+      "npm: passport-discord (api/package.json)",
+      "env: DISCORD_CLIENT_ID (api/server/routes/config.js)",
+      "env: DISCORD_CLIENT_SECRET (api/server/routes/config.js)"
+     ]
+    }
+   ]
+  },
+  {
+   "vendor": "microsoft-graph",
+   "listed": false,
+   "applications": [
+    {
+     "repo": "lukevella/rallly",
+     "calls": [
+      "host: graph.microsoft.com (apps/web/src/lib/oauth/providers/microsoft.ts:101 -> fetch at apps/web/src/lib/oauth/providers/microsoft.ts:100)",
+      "host: graph.microsoft.com (apps/web/src/features/conferencing/service.ts:48 -> fetch at apps/web/src/features/conferencing/service.ts:362)",
+      "host: graph.microsoft.com (apps/web/src/features/conferencing/service.ts:48 -> fetch at apps/web/src/features/conferencing/service.ts:410)",
+      "host: graph.microsoft.com (apps/web/src/features/conferencing/service.ts:48 -> fetch at apps/web/src/features/conferencing/service.ts:305)"
+     ]
+    },
+    {
+     "repo": "LibreChat-AI/LibreChat",
+     "calls": [
+      "host: graph.microsoft.com (api/strategies/openidStrategy.js:402 -> undici.fetch at api/strategies/openidStrategy.js:422)",
+      "host: graph.microsoft.com (client/src/data-provider/Files/sharepoint.ts:43 -> fetch at client/src/data-provider/Files/sharepoint.ts:45)",
+      "host: graph.microsoft.com (client/src/data-provider/Files/sharepoint.ts:132 -> fetch at client/src/data-provider/Files/sharepoint.ts:134)"
+     ]
+    },
+    {
+     "repo": "calcom/cal.diy",
+     "calls": [
+      "host: login.microsoftonline.com (apps/api/v2/src/modules/conferencing/services/office365-video.service.ts:81 -> fetch at apps/api/v2/src/modules/conferencing/services/office365-video.service.ts:81)",
+      "host: graph.microsoft.com (apps/api/v2/src/modules/conferencing/services/office365-video.service.ts:95 -> fetch at apps/api/v2/src/modules/conferencing/services/office365-video.service.ts:95)",
+      "host: login.microsoftonline.com (apps/api/v2/src/platform/calendars/services/outlook.service.ts:136 -> fetch at apps/api/v2/src/platform/calendars/services/outlook.service.ts:136)",
+      "host: graph.microsoft.com (apps/api/v2/src/platform/calendars/services/outlook.service.ts:150 -> fetch at apps/api/v2/src/platform/calendars/services/outlook.service.ts:150)",
+      "host: graph.microsoft.com (packages/features/auth/lib/next-auth-options.ts:691 -> fetch at packages/features/auth/lib/next-auth-options.ts:690)"
+     ]
+    }
+   ]
+  },
+  {
+   "vendor": "redis",
+   "listed": true,
+   "applications": [
+    {
+     "repo": "twentyhq/twenty",
+     "calls": [
+      "env: REDIS_URL (packages/twenty-docker/docker-compose.yml)",
+      "env: REDIS_URL (packages/twenty-server/.env.e2e-testing-server)",
+      "env: REDIS_URL (packages/twenty-server/.env.example)",
+      "env: REDIS_URL (packages/twenty-server/.env.test)",
+      "npm: bullmq (packages/twenty-server/package.json)"
+     ]
+    },
+    {
+     "repo": "LibreChat-AI/LibreChat",
+     "calls": [
+      "npm: ioredis (api/package.json)",
+      "env: REDIS_HOST (api/server/experimental.js)",
+      "env: REDIS_PASSWORD (api/server/experimental.js)",
+      "npm: ioredis (packages/api/package.json)",
+      "env: REDIS_USERNAME (packages/api/src/cache/cacheConfig.ts)"
+     ]
+    },
+    {
+     "repo": "calcom/cal.diy",
+     "calls": [
+      "env: REDIS_URL (apps/api/v2/.env.example)",
+      "npm: ioredis (apps/api/v2/package.json)",
+      "env: REDIS_URL (apps/api/v2/src/app.module.ts)"
+     ]
+    }
+   ]
+  },
+  {
+   "vendor": "resend",
+   "listed": true,
+   "applications": [
+    {
+     "repo": "dubinc/dub",
+     "calls": [
+      "env: RESEND_API_KEY (apps/web/.env.example)",
+      "env: RESEND_WEBHOOK_SECRET (apps/web/.env.example)",
+      "env: RESEND_WEBHOOK_SECRET (apps/web/app/api/resend/webhook/route.ts)",
+      "npm: resend (packages/email/package.json)",
+      "env: RESEND_API_KEY (packages/email/src/resend/client.ts)"
+     ]
+    },
+    {
+     "repo": "twentyhq/twenty",
+     "calls": [
+      "host: api.resend.com (packages/twenty-server/src/engine/core-modules/emailing-domain/drivers/resend/services/resend-api-client.service.ts:17 -> fetch at packages/twenty-server/src/engine/core-modules/emailing-domain/drivers/resend/services/resend-api-client.service.ts:121)"
+     ]
+    },
+    {
+     "repo": "calcom/cal.diy",
+     "calls": [
+      "env: RESEND_API_KEY (packages/lib/serverConfig.ts)"
+     ]
+    }
+   ]
+  },
+  {
+   "vendor": "sentry",
+   "listed": true,
+   "applications": [
+    {
+     "repo": "lukevella/rallly",
+     "calls": [
+      "env: SENTRY_DSN (apps/web/instrumentation-client.ts)",
+      "env: NEXT_PUBLIC_SENTRY_DSN (apps/web/instrumentation-client.ts)",
+      "env: SENTRY_ORG (apps/web/next.config.ts)",
+      "env: SENTRY_PROJECT (apps/web/next.config.ts)",
+      "npm: @sentry/nextjs (apps/web/package.json)"
+     ]
+    },
+    {
+     "repo": "twentyhq/twenty",
+     "calls": [
+      "npm: @sentry/react (packages/twenty-front/package.json)",
+      "env: SENTRY_DSN (packages/twenty-server/.env.test)",
+      "npm: @sentry/nestjs (packages/twenty-server/package.json)",
+      "npm: @sentry/node (packages/twenty-server/package.json)",
+      "env: SENTRY_DSN (packages/twenty-server/src/instrument.ts)"
+     ]
+    },
+    {
+     "repo": "calcom/cal.diy",
+     "calls": [
+      "env: SENTRY_ORG (.env.example)",
+      "env: SENTRY_PROJECT (.env.example)",
+      "env: SENTRY_AUTH_TOKEN (.env.example)",
+      "env: NEXT_PUBLIC_SENTRY_DSN (.env.example)",
+      "npm: @sentry/nestjs (apps/api/v2/package.json)"
+     ]
+    }
+   ]
+  },
+  {
+   "vendor": "upstash",
+   "listed": true,
+   "applications": [
+    {
+     "repo": "dubinc/dub",
+     "calls": [
+      "env: UPSTASH_REDIS_REST_URL (apps/web/.env.example)",
+      "env: UPSTASH_REDIS_REST_TOKEN (apps/web/.env.example)",
+      "env: QSTASH_URL (apps/web/.env.example)",
+      "npm: @upstash/qstash (apps/web/package.json)",
+      "host: qstash-us-east-1.upstash.io (apps/web/lib/cron/index.ts:4 -> client address baseUrl at apps/web/lib/cron/index.ts:3)"
+     ]
+    },
+    {
+     "repo": "lukevella/rallly",
+     "calls": [
+      "env: KV_REST_API_URL (apps/web/.env.sample)",
+      "env: KV_REST_API_TOKEN (apps/web/.env.sample)",
+      "npm: @upstash/ratelimit (apps/web/package.json)",
+      "npm: @upstash/redis (apps/web/package.json)",
+      "env: KV_REST_API_URL (apps/web/src/env.ts)"
+     ]
+    },
+    {
+     "repo": "calcom/cal.diy",
+     "calls": [
+      "npm: @upstash/redis (apps/web/package.json)",
+      "env: UPSTASH_REDIS_REST_URL (packages/features/redis/RedisService.ts)",
+      "env: UPSTASH_REDIS_REST_TOKEN (packages/features/redis/RedisService.ts)",
+      "env: UPSTASH_REDIS_REST_URL (packages/features/redis/di/redisModule.ts)",
+      "env: UPSTASH_REDIS_REST_TOKEN (packages/features/redis/di/redisModule.ts)"
+     ]
+    }
+   ]
+  },
+  {
+   "vendor": "ai-gateway",
+   "listed": true,
+   "applications": [
+    {
+     "repo": "dubinc/dub",
+     "calls": [
+      "env: AI_GATEWAY_API_KEY (apps/web/.env.example)"
+     ]
+    },
+    {
+     "repo": "LibreChat-AI/LibreChat",
+     "calls": [
+      "ships: Scanned source caller behind operator setup: A custom Vercel endpoint must be added by the operator to endpoints.custom with its API key/baseURL; no shipped Vercel endpoint (librechat.example.yaml:909; packages/api/src/endpoints/openai/config.ts:126)."
+     ]
+    }
+   ]
+  },
+  {
+   "vendor": "axiom",
+   "listed": true,
+   "applications": [
+    {
+     "repo": "dubinc/dub",
+     "calls": [
+      "env: AXIOM_TOKEN (apps/web/.env.example)",
+      "env: AXIOM_TOKEN (apps/web/lib/axiom/axiom.ts)",
+      "env: AXIOM_TOKEN (apps/web/lib/axiom/server.ts)",
+      "npm: @axiomhq/js (apps/web/package.json)",
+      "npm: @axiomhq/logging (apps/web/package.json)"
+     ]
+    },
+    {
+     "repo": "calcom/cal.diy",
+     "calls": [
+      "env: AXIOM_TOKEN (apps/api/v2/.env.example)",
+      "npm: @axiomhq/winston (apps/api/v2/package.json)",
+      "env: AXIOM_TOKEN (apps/api/v2/src/lib/logger.ts)",
+      "npm: next-axiom (apps/web/package.json)"
+     ]
+    }
+   ]
+  },
+  {
+   "vendor": "clickhouse",
+   "listed": true,
+   "applications": [
+    {
+     "repo": "twentyhq/twenty",
+     "calls": [
+      "env: CLICKHOUSE_URL (packages/twenty-server/.env.test)",
+      "npm: @clickhouse/client (packages/twenty-server/package.json)",
+      "env: CLICKHOUSE_URL (packages/twenty-server/src/database/clickhouse/migrations/run-migrations.ts)",
+      "env: CLICKHOUSE_URL (packages/twenty-server/src/database/clickhouse/seeds/run-seeds.ts)"
+     ]
+    },
+    {
+     "repo": "LibreChat-AI/LibreChat",
+     "calls": [
+      "env: CLICKHOUSE_PASSWORD (search/.env.example)"
+     ]
+    }
+   ]
+  },
+  {
+   "vendor": "firecrawl",
+   "listed": true,
+   "applications": [
+    {
+     "repo": "dubinc/dub",
+     "calls": [
+      "env: FIRECRAWL_API_KEY (apps/web/.env.example)",
+      "env: FIRECRAWL_API_KEY (apps/web/app/(ee)/api/admin/programs/route.ts)",
+      "env: FIRECRAWL_API_KEY (apps/web/lib/actions/verify-workspace-setup.ts)",
+      "env: FIRECRAWL_API_KEY (apps/web/lib/ai/generate-lander.ts)",
+      "npm: @mendable/firecrawl-js (apps/web/package.json)"
+     ]
+    },
+    {
+     "repo": "LibreChat-AI/LibreChat",
+     "calls": [
+      "ships: f10b1d91f1ee: Shipped-on web-search scraper selected with user credentials (packages/data-provider/src/config.ts:2421; packages/api/src/web/web.ts:386-402,476-482); @librechat/agents@4.0.1:src/tools/search/firecrawl.ts:122"
+     ]
+    }
+   ]
+  },
+  {
+   "vendor": "gemini",
+   "listed": true,
+   "applications": [
+    {
+     "repo": "twentyhq/twenty",
+     "calls": [
+      "npm: @ai-sdk/google (packages/twenty-server/package.json)"
+     ]
+    },
+    {
+     "repo": "LibreChat-AI/LibreChat",
+     "calls": [
+      "npm: @google/genai (api/package.json)",
+      "npm: @google/genai (packages/api/package.json)"
+     ]
+    }
+   ]
+  },
+  {
+   "vendor": "googlefonts",
+   "listed": true,
+   "applications": [
+    {
+     "repo": "dubinc/dub",
+     "calls": [
+      "host: fonts.googleapis.com (apps/web/app/api/og/load-google-font.ts:2 -> fetch at apps/web/app/api/og/load-google-font.ts:3)"
+     ]
+    },
+    {
+     "repo": "lukevella/rallly",
+     "calls": [
+      "host: fonts.googleapis.com (apps/landing/src/app/[locale]/opengraph-image.tsx:26 -> fetch at apps/landing/src/app/[locale]/opengraph-image.tsx:27)"
+     ]
+    }
+   ]
+  },
+  {
+   "vendor": "hubspot",
+   "listed": true,
+   "applications": [
+    {
+     "repo": "dubinc/dub",
+     "calls": [
+      "env: HUBSPOT_CLIENT_ID (apps/web/.env.example)",
+      "env: HUBSPOT_CLIENT_SECRET (apps/web/.env.example)",
+      "host: api.hubapi.com (apps/web/lib/integrations/hubspot/api.ts:9 -> fetch at apps/web/lib/integrations/hubspot/api.ts:34)",
+      "env: HUBSPOT_CLIENT_SECRET (apps/web/app/(ee)/api/hubspot/webhook/route.ts)",
+      "env: HUBSPOT_CLIENT_ID (apps/web/lib/integrations/hubspot/oauth.ts)"
+     ]
+    },
+    {
+     "repo": "calcom/cal.diy",
+     "calls": [
+      "env: HUBSPOT_CLIENT_ID (.env.appStore.example)",
+      "env: HUBSPOT_CLIENT_SECRET (.env.appStore.example)",
+      "env: HUBSPOT_CLIENT_ID (packages/app-store/hubspot/_metadata.ts)",
+      "npm: @hubspot/api-client (packages/app-store/hubspot/package.json)"
+     ]
+    }
+   ]
+  },
+  {
+   "vendor": "intercom",
+   "listed": true,
+   "applications": [
+    {
+     "repo": "dubinc/dub",
+     "calls": [
+      "env: INTERCOM_CLIENT_ID (apps/web/.env.example)",
+      "env: INTERCOM_CLIENT_SECRET (apps/web/.env.example)",
+      "env: INTERCOM_CLIENT_SECRET (apps/web/app/(ee)/api/intercom/webhook/verify-webhook-signature.ts)",
+      "env: INTERCOM_CLIENT_ID (apps/web/lib/integrations/intercom/oauth.ts)",
+      "npm: intercom-client (apps/web/package.json)"
+     ]
+    },
+    {
+     "repo": "calcom/cal.diy",
+     "calls": [
+      "env: NEXT_PUBLIC_INTERCOM_APP_ID (.env.example)",
+      "env: INTERCOM_SECRET (.env.example)",
+      "env: INTERCOM_API_TOKEN (.env.example)",
+      "host: api.intercom.io (packages/app-store/intercom/api/callback.ts:35 -> fetch at packages/app-store/intercom/api/callback.ts:35)",
+      "host: api.intercom.io (packages/app-store/intercom/api/callback.ts:55 -> fetch at packages/app-store/intercom/api/callback.ts:55)"
+     ]
+    }
+   ]
+  },
+  {
+   "vendor": "paypal",
+   "listed": false,
+   "applications": [
+    {
+     "repo": "dubinc/dub",
+     "calls": [
+      "env: PAYPAL_CLIENT_ID (apps/web/.env.example)",
+      "env: PAYPAL_CLIENT_SECRET (apps/web/.env.example)",
+      "env: PAYPAL_WEBHOOK_ID (apps/web/.env.example)",
+      "env: PAYPAL_CLIENT_ID (apps/web/lib/paypal/env.ts)",
+      "ships: 7e0101363b2a: Shipped payout connection and payment (apps/web/ui/partners/payouts/use-payout-connect-flow.tsx:45; apps/web/lib/paypal/create-paypal-token.ts:26)"
+     ]
+    },
+    {
+     "repo": "calcom/cal.diy",
+     "calls": [
+      "host: api-m.paypal.com (packages/app-store/paypal/lib/Paypal.ts:18 -> fetch at packages/app-store/paypal/lib/Paypal.ts:25)",
+      "host: api-m.sandbox.paypal.com (packages/app-store/paypal/lib/Paypal.ts:18 -> fetch at packages/app-store/paypal/lib/Paypal.ts:25)",
+      "host: api-m.paypal.com (packages/app-store/paypal/lib/Paypal.ts:18 -> fetch at packages/app-store/paypal/lib/Paypal.ts:49)",
+      "host: api-m.sandbox.paypal.com (packages/app-store/paypal/lib/Paypal.ts:18 -> fetch at packages/app-store/paypal/lib/Paypal.ts:49)"
+     ]
+    }
+   ]
+  },
+  {
+   "vendor": "posthog",
+   "listed": true,
+   "applications": [
+    {
+     "repo": "lukevella/rallly",
+     "calls": [
+      "env: NEXT_PUBLIC_POSTHOG_API_KEY (apps/web/src/env.ts)",
+      "env: NEXT_PUBLIC_POSTHOG_API_HOST (apps/web/src/env.ts)",
+      "env: NEXT_PUBLIC_POSTHOG_API_KEY (apps/web/src/lib/posthog.ts)",
+      "npm: posthog-js (packages/posthog/package.json)",
+      "host: eu.posthog.com (apps/web/src/lib/posthog.ts:149 -> fetch at apps/web/src/lib/posthog.ts:152)"
+     ]
+    },
+    {
+     "repo": "calcom/cal.diy",
+     "calls": [
+      "env: NEXT_PUBLIC_POSTHOG_KEY (.env.example)",
+      "env: NEXT_PUBLIC_POSTHOG_HOST (.env.example)",
+      "npm: posthog-js (apps/web/package.json)"
+     ]
+    }
+   ]
+  },
+  {
+   "vendor": "slack",
+   "listed": true,
+   "applications": [
+    {
+     "repo": "dubinc/dub",
+     "calls": [
+      "env: SLACK_CLIENT_ID (apps/web/.env.example)",
+      "env: SLACK_CLIENT_SECRET (apps/web/.env.example)",
+      "env: SLACK_SIGNING_SECRET (apps/web/.env.example)",
+      "host: slack.com (apps/web/lib/integrations/slack/commands.ts:153 -> fetch at apps/web/lib/integrations/slack/commands.ts:152)",
+      "npm: @slack/web-api (apps/web/package.json)"
+     ]
+    },
+    {
+     "repo": "twentyhq/twenty",
+     "calls": [
+      "npm: @slack/web-api (packages/twenty-apps/public/slack/package.json)"
+     ]
+    }
+   ]
+  },
+  {
+   "vendor": "vercel",
+   "listed": true,
+   "applications": [
+    {
+     "repo": "dubinc/dub",
+     "calls": [
+      "env: VERCEL_API_KEY (apps/web/.env.example)",
+      "env: EDGE_CONFIG (apps/web/.env.example)",
+      "env: EDGE_CONFIG_ID (apps/web/.env.example)",
+      "npm: @vercel/edge-config (apps/web/package.json)",
+      "host: api.vercel.com (apps/web/app/(ee)/api/admin/domains/refresh/route.ts:10 -> fetch at apps/web/app/(ee)/api/admin/domains/refresh/route.ts:9)"
+     ]
+    },
+    {
+     "repo": "calcom/cal.diy",
+     "calls": [
+      "env: EDGE_CONFIG (.env.example)",
+      "npm: @vercel/edge-config (apps/web/package.json)"
+     ]
+    }
+   ]
+  },
+  {
+   "vendor": "x",
+   "listed": true,
+   "applications": [
+    {
+     "repo": "dubinc/dub",
+     "calls": [
+      "env: TWITTER_CLIENT_ID (apps/web/.env.example)",
+      "env: TWITTER_CLIENT_SECRET (apps/web/.env.example)",
+      "env: TWITTER_CLIENT_ID (apps/web/lib/api/partner-profile/partner-platforms-providers.ts)",
+      "env: TWITTER_CLIENT_SECRET (apps/web/lib/api/partner-profile/partner-platforms-providers.ts)",
+      "host: api.twitter.com (apps/web/lib/api/partner-profile/partner-platforms-providers.ts:36 -> fetch at apps/web/lib/api/partner-profile/partner-platforms-providers.ts:36)"
+     ]
+    },
+    {
+     "repo": "lukevella/rallly",
+     "calls": [
+      "host: twitter.com (apps/landing/src/app/[locale]/(main)/blog/[slug]/page.tsx:103 -> browser Link href at apps/landing/src/app/[locale]/(main)/blog/[slug]/page.tsx:103)",
+      "host: x.com (apps/landing/src/app/[locale]/(main)/footer.tsx:62 -> browser a href at apps/landing/src/app/[locale]/(main)/footer.tsx:62)"
+     ]
+    }
+   ]
+  },
+  {
+   "vendor": "apple",
+   "listed": false,
+   "applications": [
+    {
+     "repo": "LibreChat-AI/LibreChat",
+     "calls": [
+      "env: APPLE_CLIENT_ID (.env.example)",
+      "env: APPLE_KEY_ID (.env.example)",
+      "env: APPLE_PRIVATE_KEY_PATH (.env.example)",
+      "env: APPLE_CLIENT_ID (api/server/routes/config.js)",
+      "env: APPLE_KEY_ID (api/server/routes/config.js)",
+      "opt-in: f10b1d91f1ee: Configuration (1): ALLOW_SOCIAL_LOGIN=true replaces false (.env.example:891; api/server/index.js:393-394); provider credentials alone do not enable social login (api/server/socialLogins.js:95,107)."
+     ]
+    },
+    {
+     "repo": "calcom/cal.diy",
+     "calls": [
+      "host: appleid.apple.com (apps/web/components/apps/applecalendar/Setup.tsx:47 -> browser a href at apps/web/components/apps/applecalendar/Setup.tsx:47)"
+     ]
+    }
+   ]
+  },
+  {
+   "vendor": "ahrefs",
+   "listed": false,
+   "applications": [
+    {
+     "repo": "dubinc/dub",
+     "calls": [
+      "env: AHREFS_API_KEY (apps/web/.env.example)",
+      "host: api.ahrefs.com (apps/web/lib/ahrefs/client.ts:10 -> fetch at apps/web/lib/http/base-client.ts:226)",
+      "ships: 7e0101363b2a: Partner website ratings (apps/web/app/(ee)/api/cron/partner-platforms/website/route.ts:56; apps/web/lib/ahrefs/client.ts:23)"
+     ]
+    }
+   ]
+  },
+  {
+   "vendor": "avatarapi",
+   "listed": false,
+   "applications": [
+    {
+     "repo": "calcom/cal.diy",
+     "calls": [
+      "host: avatarapi.com (packages/features/auth/signup/utils/prefillAvatar.ts:67 -> fetch at packages/features/auth/signup/utils/prefillAvatar.ts:67)"
+     ]
+    }
+   ]
+  },
+  {
+   "vendor": "bfl",
+   "listed": false,
+   "applications": [
+    {
+     "repo": "LibreChat-AI/LibreChat",
+     "calls": [
+      "env: FLUX_API_BASE_URL (.env.example)",
+      "env: FLUX_API_BASE_URL (api/app/clients/tools/structured/FluxAPI.js)",
+      "env: FLUX_API_KEY (api/app/clients/tools/structured/FluxAPI.js)",
+      "host: api.us1.bfl.ai (api/app/clients/tools/structured/FluxAPI.js:148 -> axios.post at api/app/clients/tools/structured/FluxAPI.js:249)",
+      "ships: f10b1d91f1ee: Flux image tool takes the user’s key (api/app/clients/tools/manifest.json:155-160; api/app/clients/tools/structured/FluxAPI.js:136,148; api/app/clients/tools/util/handleTools.js:151-168,596-604)"
+     ]
+    }
+   ]
+  },
+  {
+   "vendor": "bitly",
+   "listed": true,
+   "applications": [
+    {
+     "repo": "dubinc/dub",
+     "calls": [
+      "env: BITLY_CLIENT_ID (apps/web/.env.example)",
+      "env: BITLY_CLIENT_SECRET (apps/web/.env.example)",
+      "host: api-ssl.bitly.com (apps/web/app/(ee)/api/cron/import/bitly/fetch-utils.ts:145 -> fetch at apps/web/app/(ee)/api/cron/import/bitly/fetch-utils.ts:144)",
+      "host: api-ssl.bitly.com (apps/web/app/(ee)/api/cron/import/bitly/fetch-utils.ts:66 -> fetch at apps/web/app/(ee)/api/cron/import/bitly/fetch-utils.ts:65)",
+      "ships: 7e0101363b2a: Shipped Bitly import flow (apps/web/ui/modals/import-bitly-modal.tsx:144; apps/web/app/(ee)/api/cron/import/bitly/fetch-utils.ts:66)"
+     ]
+    }
+   ]
+  },
+  {
+   "vendor": "currencyapi",
+   "listed": true,
+   "applications": [
+    {
+     "repo": "dubinc/dub",
+     "calls": [
+      "host: api.currencyapi.com (apps/web/lib/currencyapi/client.ts:7 -> fetch at apps/web/lib/http/base-client.ts:226)"
+     ]
+    }
+   ]
+  },
+  {
+   "vendor": "daily",
+   "listed": true,
+   "applications": [
+    {
+     "repo": "calcom/cal.diy",
+     "calls": [
+      "env: DAILY_API_KEY (.env.appStore.example)",
+      "env: DAILY_WEBHOOK_SECRET (.env.appStore.example)",
+      "env: DAILY_WEBHOOK_SECRET (apps/web/app/api/recorded-daily-video/route.ts)",
+      "env: DAILY_API_KEY (packages/app-store/dailyvideo/_metadata.ts)",
+      "host: api.daily.co (packages/app-store/dailyvideo/lib/dailyApiFetcher.ts:7 -> fetch at packages/app-store/dailyvideo/lib/dailyApiFetcher.ts:7)"
+     ]
+    }
+   ]
+  },
+  {
+   "vendor": "dockerhub",
+   "listed": false,
+   "applications": [
+    {
+     "repo": "twentyhq/twenty",
+     "calls": [
+      "host: hub.docker.com (packages/twenty-sdk/src/cli/utilities/version/get-published-server-versions.ts:18 -> fetch at packages/twenty-sdk/src/cli/utilities/version/get-published-server-versions.ts:77)"
+     ]
+    }
+   ]
+  },
+  {
+   "vendor": "dub",
+   "listed": false,
+   "applications": [
+    {
+     "repo": "calcom/cal.diy",
+     "calls": [
+      "env: DUB_API_KEY (.env.example)",
+      "host: api.dub.co (packages/app-store/dub/api/callback.ts:36 -> fetch at packages/app-store/dub/api/callback.ts:38)",
+      "host: api.dub.co (packages/app-store/dub/lib/AnalyticsService.ts:64 -> fetch at packages/app-store/dub/lib/AnalyticsService.ts:64)",
+      "env: DUB_API_KEY (packages/features/auth/lib/dub.ts)",
+      "env: DUB_API_KEY (packages/features/auth/lib/next-auth-options.ts)"
+     ]
+    }
+   ]
+  },
+  {
+   "vendor": "dynadot",
+   "listed": false,
+   "applications": [
+    {
+     "repo": "dubinc/dub",
+     "calls": [
+      "env: DYNADOT_API_KEY (apps/web/.env.example)",
+      "env: DYNADOT_BASE_URL (apps/web/.env.example)",
+      "env: DYNADOT_BASE_URL (apps/web/lib/dynadot/client.ts)",
+      "host: api.dynadot.com (apps/web/lib/dynadot/client.ts:17 -> fetch at apps/web/lib/http/base-client.ts:226)",
+      "ships: 7e0101363b2a: Shipped domain purchase/search (apps/web/lib/api/domains/get-domain-search-availability.ts:24; apps/web/lib/dynadot/register-domain.ts:40)"
+     ]
+    }
+   ]
+  },
+  {
+   "vendor": "e2b",
+   "listed": true,
+   "applications": [
+    {
+     "repo": "twentyhq/twenty",
+     "calls": [
+      "npm: @e2b/code-interpreter (packages/twenty-server/package.json)"
+     ]
+    }
+   ]
+  },
+  {
+   "vendor": "firstpromoter",
+   "listed": false,
+   "applications": [
+    {
+     "repo": "dubinc/dub",
+     "calls": [
+      "host: v2.firstpromoter.com (apps/web/lib/firstpromoter/api.ts:11 -> fetch at apps/web/lib/firstpromoter/api.ts:21)"
+     ]
+    }
+   ]
+  },
+  {
+   "vendor": "geopf",
+   "listed": false,
+   "applications": [
+    {
+     "repo": "twentyhq/twenty",
+     "calls": [
+      "host: data.geopf.fr (packages/twenty-server/src/engine/core-modules/geo-map/drivers/ban/address-autocomplete-ban.driver.ts:20 -> this.httpClient.get at packages/twenty-server/src/engine/core-modules/geo-map/drivers/ban/address-autocomplete-ban.driver.ts:79)"
+     ]
+    }
+   ]
+  },
+  {
+   "vendor": "google-workspace-admin",
+   "listed": false,
+   "applications": [
+    {
+     "repo": "calcom/cal.diy",
+     "calls": [
+      "npm: @googleapis/admin (apps/web/package.json)"
+     ]
+    }
+   ]
+  },
+  {
+   "vendor": "googlecalendar",
+   "listed": true,
+   "applications": [
+    {
+     "repo": "calcom/cal.diy",
+     "calls": [
+      "npm: @googleapis/calendar (apps/web/package.json)",
+      "npm: @googleapis/calendar (packages/app-store/googlecalendar/package.json)",
+      "host: www.googleapis.com (packages/lib/holidays/GoogleCalendarClient.ts:58 -> fetch at packages/lib/holidays/GoogleCalendarClient.ts:60)"
+     ]
+    }
+   ]
+  },
+  {
+   "vendor": "googlecustomsearch",
+   "listed": false,
+   "applications": [
+    {
+     "repo": "LibreChat-AI/LibreChat",
+     "calls": [
+      "env: GOOGLE_SEARCH_API_KEY (.env.example)",
+      "host: www.googleapis.com (api/app/clients/tools/structured/GoogleSearch.js:59 -> fetch at api/app/clients/tools/structured/GoogleSearch.js:58)",
+      "ships: f10b1d91f1ee: Google search tool takes the user’s key/CSE ID (api/app/clients/tools/manifest.json:20-30; api/app/clients/tools/structured/GoogleSearch.js:37-41,59; api/app/clients/tools/util/handleTools.js:151-168,596-604)"
+     ]
+    }
+   ]
+  },
+  {
+   "vendor": "jellyjelly",
+   "listed": false,
+   "applications": [
+    {
+     "repo": "calcom/cal.diy",
+     "calls": [
+      "host: www.jellyjelly.com (packages/app-store/jelly/api/callback.ts:21 -> fetch at packages/app-store/jelly/api/callback.ts:21)",
+      "host: www.jellyjelly.com (packages/app-store/jelly/lib/VideoApiAdapter.ts:16 -> fetch at packages/app-store/jelly/lib/VideoApiAdapter.ts:16)"
+     ]
+    }
+   ]
+  },
+  {
+   "vendor": "jina",
+   "listed": false,
+   "applications": [
+    {
+     "repo": "LibreChat-AI/LibreChat",
+     "calls": [
+      "ships: f10b1d91f1ee: User-key reranker (client/src/components/SidePanel/Agents/Search/ApiKeyDialog.tsx:157-172; @librechat/agents@4.0.1:src/tools/search/rerankers.ts:181-201)"
+     ]
+    }
+   ]
+  },
+  {
+   "vendor": "keenable",
+   "listed": false,
+   "applications": [
+    {
+     "repo": "LibreChat-AI/LibreChat",
+     "calls": [
+      "ships: f10b1d91f1ee: User chooses the offered keyless or own-key search/scraper (client/src/components/SidePanel/Agents/Search/ApiKeyDialog.tsx:132-145,242-255; packages/api/src/web/web.ts:414-431; @librechat/agents@4.0.1:src/tools/search/keenable-search.ts:9-10,82; src/tools/search/keenable-scraper.ts:9-10,60)"
+     ]
+    }
+   ]
+  },
+  {
+   "vendor": "merge",
+   "listed": true,
+   "applications": [
+    {
+     "repo": "open-autonomy-org/open-autonomy",
+     "calls": [
+      "env: MODEL_GATEWAY_API_KEY (apps/platform/world.ts)",
+      "env: MODEL_GATEWAY_URL (apps/platform/wrangler.toml)",
+      "env: MODEL_GATEWAY_URL (apps/self-host/wrangler.toml)",
+      "env: MODEL_GATEWAY_URL (packages/backend/src/proxy.ts)",
+      "env: MODEL_GATEWAY_API_KEY (packages/backend/src/proxy.ts)"
+     ]
+    }
+   ]
+  },
+  {
+   "vendor": "mistral",
+   "listed": true,
+   "applications": [
+    {
+     "repo": "twentyhq/twenty",
+     "calls": [
+      "npm: @ai-sdk/mistral (packages/twenty-server/package.json)"
+     ]
+    }
+   ]
+  },
+  {
+   "vendor": "openweather",
+   "listed": false,
+   "applications": [
+    {
+     "repo": "LibreChat-AI/LibreChat",
+     "calls": [
+      "env: OPENWEATHER_API_KEY (.env.example)",
+      "host: api.openweathermap.org (api/app/clients/tools/structured/OpenWeather.js:135 -> fetch at api/app/clients/tools/structured/OpenWeather.js:138)",
+      "host: api.openweathermap.org (api/app/clients/tools/structured/OpenWeather.js:277 -> fetch at api/app/clients/tools/structured/OpenWeather.js:339)"
+     ]
+    }
+   ]
+  },
+  {
+   "vendor": "partnerstack",
+   "listed": false,
+   "applications": [
+    {
+     "repo": "dubinc/dub",
+     "calls": [
+      "host: api.partnerstack.com (apps/web/lib/partnerstack/api.ts:20 -> fetch at apps/web/lib/partnerstack/api.ts:40)"
+     ]
+    }
+   ]
+  },
+  {
+   "vendor": "pipedrive",
+   "listed": false,
+   "applications": [
+    {
+     "repo": "calcom/cal.diy",
+     "calls": [
+      "host: oauth.pipedrive.com (packages/app-store/pipedrive-crm/api/callback.ts:40 -> fetch at packages/app-store/pipedrive-crm/api/callback.ts:40)",
+      "host: oauth.pipedrive.com (packages/app-store/pipedrive-crm/lib/CrmService.ts:80 -> fetch at packages/app-store/pipedrive-crm/lib/CrmService.ts:80)"
+     ]
+    }
+   ]
+  },
+  {
+   "vendor": "plain",
+   "listed": false,
+   "applications": [
+    {
+     "repo": "dubinc/dub",
+     "calls": [
+      "env: PLAIN_API_KEY (apps/web/.env.example)",
+      "env: PLAIN_WEBHOOK_SECRET (apps/web/.env.example)",
+      "env: PLAIN_WEBHOOK_SECRET (apps/web/app/api/callback/plain/partner/route.ts)",
+      "ships: 7e0101363b2a: Shipped support tickets and uploads (apps/web/lib/ai/create-support-ticket.ts:104; apps/web/app/api/ai/support-chat/upload/route.ts:81)",
+      "npm: @team-plain/typescript-sdk (apps/web/package.json)"
+     ]
+    }
+   ]
+  },
+  {
+   "vendor": "planetscale",
+   "listed": true,
+   "applications": [
+    {
+     "repo": "dubinc/dub",
+     "calls": [
+      "env: PLANETSCALE_DATABASE_URL (apps/web/.env.example)",
+      "env: PLANETSCALE_SERVICE_TOKEN (apps/web/.env.example)",
+      "env: PLANETSCALE_SERVICE_TOKEN (apps/web/app/(ee)/api/cron/trigger-backup/route.ts)",
+      "host: api.planetscale.com (apps/web/app/(ee)/api/cron/trigger-backup/route.ts:20 -> fetch at apps/web/app/(ee)/api/cron/trigger-backup/route.ts:19)",
+      "npm: @planetscale/database (apps/web/package.json)"
+     ]
+    }
+   ]
+  },
+  {
+   "vendor": "plausible",
+   "listed": false,
+   "applications": [
+    {
+     "repo": "dubinc/dub",
+     "calls": [
+      "host: plausible.io (apps/web/app/api/ai/sync-embeddings/fetch-plausible-pageviews.ts:13 -> fetch at apps/web/app/api/ai/sync-embeddings/fetch-plausible-pageviews.ts:13)"
+     ]
+    }
+   ]
+  },
+  {
+   "vendor": "polar",
+   "listed": true,
+   "applications": [
+    {
+     "repo": "open-autonomy-org/open-autonomy",
+     "calls": [
+      "env: POLAR_ACCESS_TOKEN (apps/platform/src/polar.ts)",
+      "env: POLAR_WEBHOOK_SECRET (apps/platform/src/polar.ts)"
+     ]
+    }
+   ]
+  },
+  {
+   "vendor": "rebrandly",
+   "listed": false,
+   "applications": [
+    {
+     "repo": "dubinc/dub",
+     "calls": [
+      "host: api.rebrandly.com (apps/web/app/(ee)/api/cron/import/rebrandly/utils.ts:25 -> fetch at apps/web/app/(ee)/api/cron/import/rebrandly/utils.ts:24)",
+      "host: api.rebrandly.com (apps/web/app/(ee)/api/cron/import/rebrandly/utils.ts:92 -> fetch at apps/web/app/(ee)/api/cron/import/rebrandly/utils.ts:91)",
+      "host: api.rebrandly.com (apps/web/app/api/workspaces/[idOrSlug]/import/rebrandly/route.ts:23 -> fetch at apps/web/app/api/workspaces/[idOrSlug]/import/rebrandly/route.ts:23)",
+      "host: api.rebrandly.com (apps/web/app/api/workspaces/[idOrSlug]/import/rebrandly/route.ts:53 -> fetch at apps/web/app/api/workspaces/[idOrSlug]/import/rebrandly/route.ts:52)",
+      "host: api.rebrandly.com (apps/web/app/api/workspaces/[idOrSlug]/import/rebrandly/route.ts:67 -> fetch at apps/web/app/api/workspaces/[idOrSlug]/import/rebrandly/route.ts:67)"
+     ]
+    }
+   ]
+  },
+  {
+   "vendor": "rewardful",
+   "listed": false,
+   "applications": [
+    {
+     "repo": "dubinc/dub",
+     "calls": [
+      "host: api.getrewardful.com (apps/web/lib/rewardful/api.ts:23 -> this.fetch at apps/web/lib/rewardful/api.ts:49)",
+      "host: api.getrewardful.com (apps/web/lib/rewardful/api.ts:23 -> this.fetch at apps/web/lib/rewardful/api.ts:63)",
+      "host: api.getrewardful.com (apps/web/lib/rewardful/api.ts:23 -> this.fetch at apps/web/lib/rewardful/api.ts:78)",
+      "host: api.getrewardful.com (apps/web/lib/rewardful/api.ts:23 -> this.fetch at apps/web/lib/rewardful/api.ts:96)",
+      "host: api.getrewardful.com (apps/web/lib/rewardful/api.ts:23 -> this.fetch at apps/web/lib/rewardful/api.ts:108)"
+     ]
+    }
+   ]
+  },
+  {
+   "vendor": "scrapecreators",
+   "listed": false,
+   "applications": [
+    {
+     "repo": "dubinc/dub",
+     "calls": [
+      "env: SCRAPECREATORS_API_KEY (apps/web/.env.example)",
+      "env: SCRAPECREATORS_API_KEY (apps/web/app/(ee)/api/cron/partner-platforms/route.ts)",
+      "env: SCRAPECREATORS_API_KEY (apps/web/lib/api/scrape-creators/client.ts)",
+      "ships: 7e0101363b2a: Partner profile statistics cron (apps/web/app/(ee)/api/cron/partner-platforms/route.ts:26; apps/web/lib/api/scrape-creators/client.ts:14); missing API key errors rather than disabling the feature"
+     ]
+    }
+   ]
+  },
+  {
+   "vendor": "serper",
+   "listed": false,
+   "applications": [
+    {
+     "repo": "LibreChat-AI/LibreChat",
+     "calls": [
+      "ships: f10b1d91f1ee: Search and scrape via user key (client/src/components/SidePanel/Agents/Search/ApiKeyDialog.tsx:90-99,214-223; @librechat/agents@4.0.1:src/tools/search/search.ts:245,296; src/tools/search/serper-scraper.ts:45,89)"
+     ]
+    }
+   ]
+  },
+  {
+   "vendor": "shortcm",
+   "listed": false,
+   "applications": [
+    {
+     "repo": "dubinc/dub",
+     "calls": [
+      "host: api-v2.short.cm (apps/web/app/api/workspaces/[idOrSlug]/import/short/route.ts:49 -> fetchWithTimeout at apps/web/app/api/workspaces/[idOrSlug]/import/short/route.ts:48)"
+     ]
+    }
+   ]
+  },
+  {
+   "vendor": "shortio",
+   "listed": false,
+   "applications": [
+    {
+     "repo": "dubinc/dub",
+     "calls": [
+      "host: api.short.io (apps/web/app/(ee)/api/cron/import/short/utils.ts:37 -> fetch at apps/web/app/(ee)/api/cron/import/short/utils.ts:36)",
+      "host: api.short.io (apps/web/app/api/workspaces/[idOrSlug]/import/short/route.ts:23 -> fetch at apps/web/app/api/workspaces/[idOrSlug]/import/short/route.ts:23)"
+     ]
+    }
+   ]
+  },
+  {
+   "vendor": "tandem",
+   "listed": false,
+   "applications": [
+    {
+     "repo": "calcom/cal.diy",
+     "calls": [
+      "host: tandem.chat (packages/app-store/tandemvideo/api/callback.ts:22 -> fetch at packages/app-store/tandemvideo/api/callback.ts:31)"
+     ]
+    }
+   ]
+  },
+  {
+   "vendor": "tavily",
+   "listed": true,
+   "applications": [
+    {
+     "repo": "LibreChat-AI/LibreChat",
+     "calls": [
+      "env: TAVILY_API_KEY (.env.example)",
+      "host: api.tavily.com (api/app/clients/tools/structured/TavilySearch.js:37 -> fetch at api/app/clients/tools/structured/TavilySearch.js:37)",
+      "host: api.tavily.com (api/app/clients/tools/structured/TavilySearchResults.js:130 -> fetch at api/app/clients/tools/structured/TavilySearchResults.js:130)"
+     ]
+    }
+   ]
+  },
+  {
+   "vendor": "tiktok",
+   "listed": true,
+   "applications": [
+    {
+     "repo": "dubinc/dub",
+     "calls": [
+      "env: TIKTOK_CLIENT_ID (apps/web/.env.example)",
+      "env: TIKTOK_CLIENT_SECRET (apps/web/.env.example)",
+      "env: TIKTOK_CLIENT_ID (apps/web/lib/api/partner-profile/partner-platforms-providers.ts)",
+      "env: TIKTOK_CLIENT_SECRET (apps/web/lib/api/partner-profile/partner-platforms-providers.ts)",
+      "host: open.tiktokapis.com (apps/web/lib/tiktok/client.ts:6 -> fetch at apps/web/lib/http/base-client.ts:226)"
+     ]
+    }
+   ]
+  },
+  {
+   "vendor": "tinybird",
+   "listed": true,
+   "applications": [
+    {
+     "repo": "dubinc/dub",
+     "calls": [
+      "env: TINYBIRD_API_KEY (apps/web/.env.example)",
+      "env: TINYBIRD_API_URL (apps/web/.env.example)",
+      "env: TINYBIRD_API_URL (apps/web/app/(ee)/api/cron/framer/backfill-leads-batch/route.ts)",
+      "npm: @chronark/zod-bird (apps/web/package.json)",
+      "host: api.us-east.tinybird.co (apps/web/app/api/og/analytics/route.tsx:92 -> fetch at apps/web/app/api/og/analytics/route.tsx:91)"
+     ]
+    }
+   ]
+  },
+  {
+   "vendor": "tolt",
+   "listed": false,
+   "applications": [
+    {
+     "repo": "dubinc/dub",
+     "calls": [
+      "host: api.tolt.com (apps/web/lib/tolt/api.ts:19 -> this.fetch at apps/web/lib/tolt/api.ts:53)",
+      "host: api.tolt.com (apps/web/lib/tolt/api.ts:19 -> this.fetch at apps/web/lib/tolt/api.ts:89)",
+      "host: api.tolt.com (apps/web/lib/tolt/api.ts:19 -> this.fetch at apps/web/lib/tolt/api.ts:112)",
+      "host: api.tolt.com (apps/web/lib/tolt/api.ts:19 -> this.fetch at apps/web/lib/tolt/api.ts:136)",
+      "host: api.tolt.com (apps/web/lib/tolt/api.ts:19 -> this.fetch at apps/web/lib/tolt/api.ts:161)"
+     ]
+    }
+   ]
+  },
+  {
+   "vendor": "traversaal",
+   "listed": false,
+   "applications": [
+    {
+     "repo": "LibreChat-AI/LibreChat",
+     "calls": [
+      "env: TRAVERSAAL_API_KEY (.env.example)",
+      "host: api-ares.traversaal.ai (api/app/clients/tools/structured/TraversaalSearch.js:55 -> fetch at api/app/clients/tools/structured/TraversaalSearch.js:55)"
+     ]
+    }
+   ]
+  },
+  {
+   "vendor": "tremendous",
+   "listed": true,
+   "applications": [
+    {
+     "repo": "dubinc/dub",
+     "calls": [
+      "env: TREMENDOUS_API_KEY (apps/web/.env.example)",
+      "host: api.tremendous.com (apps/web/app/(ee)/api/cron/disposable-emails/route.ts:15 -> fetch at apps/web/app/(ee)/api/cron/disposable-emails/route.ts:15)",
+      "env: TREMENDOUS_API_KEY (apps/web/lib/tremendous/configuration.ts)",
+      "npm: tremendous (apps/web/package.json)"
+     ]
+    }
+   ]
+  },
+  {
+   "vendor": "triggerdev",
+   "listed": false,
+   "applications": [
+    {
+     "repo": "calcom/cal.diy",
+     "calls": [
+      "host: api.trigger.dev (apps/api/v2/src/vercel-webhook.controller.ts:71 -> fetch at apps/api/v2/src/vercel-webhook.controller.ts:75)"
+     ]
+    }
+   ]
+  },
+  {
+   "vendor": "turbopuffer",
+   "listed": true,
+   "applications": [
+    {
+     "repo": "dubinc/dub",
+     "calls": [
+      "env: TURBOPUFFER_API_KEY (apps/web/.env.example)",
+      "env: TURBOPUFFER_API_KEY (apps/web/lib/api/partners/search/provider.ts)",
+      "env: TURBOPUFFER_API_KEY (apps/web/lib/api/partners/search/providers/turbopuffer.ts)",
+      "npm: @turbopuffer/turbopuffer (apps/web/package.json)"
+     ]
+    }
+   ]
+  },
+  {
+   "vendor": "unsplash",
+   "listed": false,
+   "applications": [
+    {
+     "repo": "dubinc/dub",
+     "calls": [
+      "env: UNSPLASH_ACCESS_KEY (apps/web/.env.example)",
+      "env: UNSPLASH_ACCESS_KEY (apps/web/app/api/unsplash/search/route.ts)",
+      "env: UNSPLASH_ACCESS_KEY (apps/web/app/api/unsplash/utils.ts)",
+      "ships: 7e0101363b2a: Shipped link image search (apps/web/ui/modals/link-builder/unsplash-search.tsx:19; apps/web/app/api/unsplash/search/route.ts:26)"
+     ]
+    }
+   ]
+  },
+  {
+   "vendor": "upstashvector",
+   "listed": false,
+   "applications": [
+    {
+     "repo": "dubinc/dub",
+     "calls": [
+      "npm: @upstash/vector (apps/web/package.json)",
+      "ships: 7e0101363b2a: Shipped support documentation search and emoji search (apps/web/lib/ai/find-relevant-docs.ts:14; apps/web/lib/ai/search-emojis.ts:45)"
+     ]
+    }
+   ]
+  },
+  {
+   "vendor": "veriff",
+   "listed": false,
+   "applications": [
+    {
+     "repo": "dubinc/dub",
+     "calls": [
+      "env: VERIFF_API_KEY (apps/web/.env.example)",
+      "env: VERIFF_SHARED_SECRET (apps/web/.env.example)",
+      "env: VERIFF_SHARED_SECRET (apps/web/app/api/veriff/webhook/route.ts)",
+      "ships: 7e0101363b2a: Shipped partner identity verification (apps/web/lib/actions/partners/start-identity-verification.ts:68; apps/web/lib/veriff/client.ts:23)",
+      "host: stationapi.veriff.com (apps/web/lib/veriff/client.ts:13 -> fetch at apps/web/lib/http/base-client.ts:226)"
+     ]
+    }
+   ]
+  },
+  {
+   "vendor": "volteridentity",
+   "listed": true,
+   "applications": [
+    {
+     "repo": "open-autonomy-org/open-autonomy",
+     "calls": [
+      "npm: @volter/identity (apps/platform/package.json)"
+     ]
+    }
+   ]
+  },
+  {
+   "vendor": "webex",
+   "listed": false,
+   "applications": [
+    {
+     "repo": "calcom/cal.diy",
+     "calls": [
+      "host: webexapis.com (packages/app-store/webex/api/callback.ts:37 -> fetch at packages/app-store/webex/api/callback.ts:37)",
+      "host: webexapis.com (packages/app-store/webex/lib/VideoApiAdapter.ts:65 -> fetch at packages/app-store/webex/lib/VideoApiAdapter.ts:65)",
+      "host: webexapis.com (packages/app-store/webex/lib/VideoApiAdapter.ts:152 -> fetch at packages/app-store/webex/lib/VideoApiAdapter.ts:152)"
+     ]
+    }
+   ]
+  },
+  {
+   "vendor": "wolfram",
+   "listed": false,
+   "applications": [
+    {
+     "repo": "LibreChat-AI/LibreChat",
+     "calls": [
+      "env: WOLFRAM_APP_ID (.env.example)",
+      "env: WOLFRAM_APP_ID (api/app/clients/tools/structured/Wolfram.js)",
+      "ships: f10b1d91f1ee: Wolfram tool takes the user’s AppID (api/app/clients/tools/manifest.json:52-58; api/app/clients/tools/structured/Wolfram.js:38,82-85; api/app/clients/tools/util/handleTools.js:151-168,596-604)"
+     ]
+    }
+   ]
+  },
+  {
+   "vendor": "wsrv",
+   "listed": false,
+   "applications": [
+    {
+     "repo": "dubinc/dub",
+     "calls": [
+      "host: wsrv.nl (apps/web/lib/qr/api.tsx:45 -> fetch at apps/web/lib/qr/api.tsx:44)"
+     ]
+    }
+   ]
+  },
+  {
+   "vendor": "xai",
+   "listed": true,
+   "applications": [
+    {
+     "repo": "twentyhq/twenty",
+     "calls": [
+      "npm: @ai-sdk/xai (packages/twenty-server/package.json)"
+     ]
+    }
+   ]
+  },
+  {
+   "vendor": "youtube",
+   "listed": true,
+   "applications": [
+    {
+     "repo": "dubinc/dub",
+     "calls": [
+      "env: YOUTUBE_API_KEY (apps/web/.env.example)",
+      "host: www.googleapis.com (apps/web/lib/youtube/client.ts:7 -> fetch at apps/web/lib/http/base-client.ts:226)",
+      "ships: 7e0101363b2a: Partner channel statistics (apps/web/app/(ee)/api/cron/partner-platforms/youtube/route.ts:74; apps/web/lib/youtube/client.ts:16)"
+     ]
+    }
+   ]
+  },
+  {
+   "vendor": "zoom",
+   "listed": false,
+   "applications": [
+    {
+     "repo": "lukevella/rallly",
+     "calls": [
+      "env: ZOOM_CLIENT_ID (apps/web/.env.test)",
+      "env: ZOOM_CLIENT_SECRET (apps/web/.env.test)",
+      "env: ZOOM_WEBHOOK_SECRET_TOKEN (apps/web/.env.test)",
+      "env: ZOOM_CLIENT_ID (apps/web/src/app/api/integrations/[...connection]/route.ts)",
+      "host: api.zoom.us (apps/web/src/lib/oauth/providers/zoom.ts:67 -> fetch at apps/web/src/lib/oauth/providers/zoom.ts:67)",
+      "opt-in: 3e63239dbdec: Configuration (1): CONFERENCING_ENABLED=true replaces false (apps/web/src/env.ts:117; apps/web/src/features/conferencing/constants.ts:5,15)."
+     ]
+    },
+    {
+     "repo": "calcom/cal.diy",
+     "calls": [
+      "env: ZOOM_CLIENT_ID (.env.appStore.example)",
+      "env: ZOOM_CLIENT_SECRET (.env.appStore.example)",
+      "host: zoom.us (apps/api/v2/src/modules/conferencing/services/zoom-video.service.ts:66 -> fetch at apps/api/v2/src/modules/conferencing/services/zoom-video.service.ts:65)",
+      "env: ZOOM_REFRESH_TOKEN (example-apps/credential-sync/.env.example)",
+      "env: ZOOM_CLIENT_ID (example-apps/credential-sync/.env.example)",
+      "opt-in: 54343aa685ae: Install (2): add the zoom App Store app; it is non-global and getApps omits it without a user credential (packages/app-store/utils.ts:47-56). Catalog availability is separate from the user installation. The user credential is created on add/callback; Install Zoom with configured app client_id/client_secret; OAuth add and credential callback (packages/app-store/zoomvideo/api/add.ts:24,33; packages/app-store/zoomvideo/api/callback.ts:78) AppCard offers installation (packages/app-store/_components/AppCard.tsx:94,116); calendar onboarding adds calendar connections, not this app (apps/web/modules/onboarding/personal/calendar/personal-calendar-view.tsx:28-34)."
+     ]
+    }
+   ]
+  },
+  {
+   "vendor": "alby",
+   "listed": false,
+   "applications": [
+    {
+     "repo": "calcom/cal.diy",
+     "calls": [
+      "npm: @getalby/sdk (packages/app-store/alby/package.json)",
+      "opt-in: 54343aa685ae: Install (2): add the alby App Store app; it is non-global and getApps omits it without a user credential (packages/app-store/utils.ts:47-56). Catalog availability is separate from the user installation. The user credential is created on add/callback; Install/configure the Alby payment app (packages/app-store/alby/api/add.ts:23,28); absent installation makes no Alby payment calls AppCard offers installation (packages/app-store/_components/AppCard.tsx:94,116); calendar onboarding adds calendar connections, not this app (apps/web/modules/onboarding/personal/calendar/personal-calendar-view.tsx:28-34)."
+     ]
+    }
+   ]
+  },
+  {
+   "vendor": "basecamp",
+   "listed": false,
+   "applications": [
+    {
+     "repo": "calcom/cal.diy",
+     "calls": [
+      "env: BASECAMP3_CLIENT_ID (.env.appStore.example)",
+      "env: BASECAMP3_CLIENT_SECRET (.env.appStore.example)",
+      "host: launchpad.37signals.com (packages/app-store/basecamp3/api/callback.ts:26 -> fetch at packages/app-store/basecamp3/api/callback.ts:25)",
+      "host: launchpad.37signals.com (packages/app-store/basecamp3/api/callback.ts:52 -> fetch at packages/app-store/basecamp3/api/callback.ts:52)",
+      "host: launchpad.37signals.com (packages/app-store/basecamp3/lib/helpers.ts:12 -> fetch at packages/app-store/basecamp3/lib/helpers.ts:11)",
+      "opt-in: 54343aa685ae: Install (2): add the basecamp App Store app; it is non-global and getApps omits it without a user credential (packages/app-store/utils.ts:47-56). Catalog availability is separate from the user installation. The user credential is created on add/callback; Install Basecamp with configured app credentials; add starts OAuth and callback stores credentials (packages/app-store/basecamp3/api/add.ts:21,28; packages/app-store/basecamp3/api/callback.ts:80) AppCard offers installation (packages/app-store/_components/AppCard.tsx:94,116); calendar onboarding adds calendar connections, not this app (apps/web/modules/onboarding/personal/calendar/personal-calendar-view.tsx:28-34)."
+     ]
+    }
+   ]
+  },
+  {
+   "vendor": "close",
+   "listed": false,
+   "applications": [
+    {
+     "repo": "calcom/cal.diy",
+     "calls": [
+      "env: CLOSECOM_CLIENT_ID (.env.example)",
+      "env: CLOSECOM_CLIENT_SECRET (.env.example)",
+      "host: api.close.com (packages/app-store/closecom/api/callback.ts:44 -> fetch at packages/app-store/closecom/api/callback.ts:44)",
+      "host: api.close.com (packages/lib/CloseCom.ts:252 -> fetch at packages/lib/CloseCom.ts:252)",
+      "env: CLOSECOM_CLIENT_ID (packages/lib/CloseCom.ts)",
+      "opt-in: 54343aa685ae: Install (2): add the close App Store app; it is non-global and getApps omits it without a user credential (packages/app-store/utils.ts:47-56). Catalog availability is separate from the user installation. The user credential is created on add/callback; Install Close CRM with configured client_id; add starts OAuth (packages/app-store/closecom/api/_getAdd.ts:14,29), then credential-based CRM adapter (packages/app-store/closecom/lib/CrmService.ts:4) AppCard offers installation (packages/app-store/_components/AppCard.tsx:94,116); calendar onboarding adds calendar connections, not this app (apps/web/modules/onboarding/personal/calendar/personal-calendar-view.tsx:28-34)."
+     ]
+    }
+   ]
+  },
+  {
+   "vendor": "firebase",
+   "listed": false,
+   "applications": [
+    {
+     "repo": "LibreChat-AI/LibreChat",
+     "calls": [
+      "env: FIREBASE_API_KEY (.env.example)",
+      "env: FIREBASE_AUTH_DOMAIN (.env.example)",
+      "env: FIREBASE_APP_ID (.env.example)",
+      "env: FIREBASE_API_KEY (packages/api/src/cdn/firebase.ts)",
+      "env: FIREBASE_AUTH_DOMAIN (packages/api/src/cdn/firebase.ts)",
+      "opt-in: f10b1d91f1ee: Configuration (1): fileStrategy/fileStrategies=firebase replaces local (packages/data-provider/src/config.ts:3203-3204; packages/api/src/app/cdn.ts:16-20,44)."
+     ]
+    }
+   ]
+  },
+  {
+   "vendor": "giphy",
+   "listed": false,
+   "applications": [
+    {
+     "repo": "calcom/cal.diy",
+     "calls": [
+      "env: GIPHY_API_KEY (.env.appStore.example)",
+      "host: api.giphy.com (packages/app-store/giphy/lib/giphyManager.ts:22 -> fetch at packages/app-store/giphy/lib/giphyManager.ts:22)",
+      "host: api.giphy.com (packages/app-store/giphy/lib/giphyManager.ts:41 -> fetch at packages/app-store/giphy/lib/giphyManager.ts:41)",
+      "opt-in: 54343aa685ae: Install (2): add the non-global giphy App Store app; installed metadata describes catalog availability, not a user installation. getApps filters non-global apps without a user credential (packages/app-store/utils.ts:47-56); AppCard offers installation (packages/app-store/_components/AppCard.tsx:94,116); the user credential is created by its install endpoint (packages/app-store/giphy/api/add.ts:27-42). The catalog seed creates App entries, not user credentials (scripts/seed-app-store.ts:65-74); calendar onboarding selects calendar apps, not this app (apps/web/modules/onboarding/personal/calendar/personal-calendar-view.tsx:28-34)."
+     ]
+    }
+   ]
+  },
+  {
+   "vendor": "googleads",
+   "listed": false,
+   "applications": [
+    {
+     "repo": "dubinc/dub",
+     "calls": [
+      "host: googleads.googleapis.com (apps/web/lib/integrations/google-ads/api.ts:60 -> fetch at apps/web/lib/integrations/google-ads/api.ts:59)",
+      "host: datamanager.googleapis.com (apps/web/lib/integrations/google-ads/api.ts:102 -> fetch at apps/web/lib/integrations/google-ads/api.ts:101)",
+      "opt-in: 7e0101363b2a: Install (2): Install the Google Ads workspace integration: installedIntegration is required before conversions are sent (apps/web/lib/integrations/google-ads/upload-conversion.ts:121,133); default is no installedIntegration (apps/web/lib/integrations/google-ads/upload-conversion.ts:121-133)."
+     ]
+    }
+   ]
+  },
+  {
+   "vendor": "googlemaps",
+   "listed": false,
+   "applications": [
+    {
+     "repo": "twentyhq/twenty",
+     "calls": [
+      "host: maps.googleapis.com (packages/twenty-server/src/engine/core-modules/geo-map/drivers/google-places/address-autocomplete-google-places.driver.ts:15 -> this.httpClient.get at packages/twenty-server/src/engine/core-modules/geo-map/drivers/google-places/address-autocomplete-google-places.driver.ts:48)",
+      "host: maps.googleapis.com (packages/twenty-server/src/engine/core-modules/geo-map/drivers/google-places/address-autocomplete-google-places.driver.ts:15 -> this.httpClient.get at packages/twenty-server/src/engine/core-modules/geo-map/drivers/google-places/address-autocomplete-google-places.driver.ts:75)",
+      "opt-in: 1d561b8c73c9: Configuration (1): IS_MAPS_AND_ADDRESS_AUTOCOMPLETE_ENABLED=true replaces false (packages/twenty-server/src/engine/core-modules/twenty-config/config-variables.ts:2285); select GOOGLE_PLACES as ADDRESS_AUTOCOMPLETE_DRIVER (packages/twenty-server/src/engine/core-modules/geo-map/address-autocomplete-driver.factory.ts:50)."
+     ]
+    }
+   ]
+  },
+  {
+   "vendor": "huddle01",
+   "listed": false,
+   "applications": [
+    {
+     "repo": "calcom/cal.diy",
+     "calls": [
+      "env: HUDDLE01_API_TOKEN (.env.appStore.example)",
+      "env: HUDDLE01_API_TOKEN (.env.example)",
+      "env: HUDDLE01_API_TOKEN (packages/app-store/huddle01video/lib/VideoApiAdapter.ts)",
+      "opt-in: 54343aa685ae: Install (2): add the non-global huddle01video App Store app; installed metadata describes catalog availability, not a user installation. getApps filters non-global apps without a user credential (packages/app-store/utils.ts:47-56); AppCard offers installation (packages/app-store/_components/AppCard.tsx:94,116); the OAuth callback stores its user credential (packages/app-store/huddle01video/api/callback.ts:32; packages/app-store/huddle01video/utils/storage.ts:26). The catalog seed creates App entries, not user credentials (scripts/seed-app-store.ts:65-74); calendar onboarding selects calendar apps, not this app (apps/web/modules/onboarding/personal/calendar/personal-calendar-view.tsx:28-34)."
+     ]
+    }
+   ]
+  },
+  {
+   "vendor": "langfuse",
+   "listed": false,
+   "applications": [
+    {
+     "repo": "LibreChat-AI/LibreChat",
+     "calls": [
+      "env: LANGFUSE_PUBLIC_KEY (packages/api/src/langfuse/config.ts)",
+      "env: LANGFUSE_SECRET_KEY (packages/api/src/langfuse/config.ts)",
+      "env: LANGFUSE_BASE_URL (packages/api/src/langfuse/config.ts)",
+      "env: LANGFUSE_HOST (packages/api/src/langfuse/config.ts)",
+      "host: cloud.langfuse.com (packages/api/src/langfuse/destinations.ts:27 -> fetch at packages/api/src/langfuse/destinations.ts:122)",
+      "opt-in: f10b1d91f1ee: Configuration: operator instrumentation is a setting that turns the tracing provider on; operator-only tracing exports activate with Langfuse credentials; default policy returns false without credentials or explicit tracing enablement (packages/api/src/langfuse/policy.ts:22; config.ts:302,318-320)."
+     ]
+    }
+   ]
+  },
+  {
+   "vendor": "lingo.dev",
+   "listed": false,
+   "applications": [
+    {
+     "repo": "calcom/cal.diy",
+     "calls": [
+      "env: LINGO_DOT_DEV_API_KEY (.env.example)",
+      "env: LINGO_DOT_DEV_API_KEY (packages/lib/constants.ts)",
+      "opt-in: 54343aa685ae: Configuration (1): enable autoTranslateDescriptionEnabled over false (packages/features/eventtypes/lib/defaultEvents.ts:132; packages/prisma/schema.prisma:211); the only production caller queues the translation task behind that flag and organization membership (packages/trpc/server/routers/viewer/eventTypes/heavy/update.handler.ts:679-680; packages/features/tasker/tasks/translateEventTypeData.ts:29-30). The instant-title flag has no Lingo caller at this commit."
+     ]
+    }
+   ]
+  },
+  {
+   "vendor": "mailgun",
+   "listed": false,
+   "applications": [
+    {
+     "repo": "LibreChat-AI/LibreChat",
+     "calls": [
+      "env: MAILGUN_API_KEY (api/server/utils/sendEmail.js)",
+      "env: MAILGUN_DOMAIN (api/server/utils/sendEmail.js)",
+      "env: MAILGUN_HOST (api/server/utils/sendEmail.js)",
+      "host: api.mailgun.net (api/server/utils/sendEmail.js:24 -> axios.post at api/server/utils/sendEmail.js:38)",
+      "env: MAILGUN_API_KEY (packages/api/src/utils/email.ts)",
+      "opt-in: f10b1d91f1ee: Configuration (1): select the Mailgun mail transport instead of the shipped SMTP transport; MAILGUN_API_KEY plus MAILGUN_DOMAIN selects that alternative (api/server/utils/sendEmail.js:106-118, whose default is SMTP at line 116)."
+     ]
+    }
+   ]
+  },
+  {
+   "vendor": "meta",
+   "listed": false,
+   "applications": [
+    {
+     "repo": "LibreChat-AI/LibreChat",
+     "calls": [
+      "env: FACEBOOK_CLIENT_ID (.env.example)",
+      "env: FACEBOOK_CLIENT_SECRET (.env.example)",
+      "env: FACEBOOK_CLIENT_ID (api/server/routes/config.js)",
+      "env: FACEBOOK_CLIENT_SECRET (api/server/routes/config.js)",
+      "env: FACEBOOK_CLIENT_ID (api/server/socialLogins.js)",
+      "opt-in: f10b1d91f1ee: Configuration (1): ALLOW_SOCIAL_LOGIN=true replaces false (.env.example:891; api/server/index.js:393-394); provider credentials alone do not enable social login (api/server/socialLogins.js:95,107)."
+     ]
+    }
+   ]
+  },
+  {
+   "vendor": "salesforce",
+   "listed": false,
+   "applications": [
+    {
+     "repo": "calcom/cal.diy",
+     "calls": [
+      "env: SALESFORCE_CONSUMER_KEY (.env.appStore.example)",
+      "env: SALESFORCE_CONSUMER_SECRET (.env.appStore.example)",
+      "host: login.salesforce.com (packages/app-store/salesforce/lib/CrmService.ts:169 -> fetch at packages/app-store/salesforce/lib/CrmService.ts:169)",
+      "opt-in: 54343aa685ae: Install (2): add the salesforce App Store app; it is non-global and getApps omits it without a user credential (packages/app-store/utils.ts:47-56). Catalog availability is separate from the user installation. The user credential is created on add/callback; Install Salesforce with consumer_key/consumer_secret; OAuth add and credential callback (packages/app-store/salesforce/api/add.ts:26; packages/app-store/salesforce/api/callback.ts:53) AppCard offers installation (packages/app-store/_components/AppCard.tsx:94,116); calendar onboarding adds calendar connections, not this app (apps/web/modules/onboarding/personal/calendar/personal-calendar-view.tsx:28-34)."
+     ]
+    }
+   ]
+  },
+  {
+   "vendor": "sendgrid",
+   "listed": false,
+   "applications": [
+    {
+     "repo": "calcom/cal.diy",
+     "calls": [
+      "env: SENDGRID_API_KEY (.env.example)",
+      "env: SENDGRID_SYNC_API_KEY (.env.example)",
+      "npm: @sendgrid/client (packages/app-store/sendgrid/package.json)",
+      "env: SENDGRID_SYNC_API_KEY (packages/lib/Sendgrid.ts)",
+      "npm: @sendgrid/client (packages/lib/package.json)",
+      "opt-in: 54343aa685ae: Install (2): add the sendgrid App Store app; it is non-global and getApps omits it without a user credential (packages/app-store/utils.ts:47-56). Catalog availability is separate from the user installation. The user credential is created on add/callback; Install Sendgrid with an API key (packages/app-store/sendgrid/api/_postAdd.ts:15,34); only its credential-based adapter creates Sendgrid contacts (packages/app-store/sendgrid/lib/CalendarService.ts:35,59). SENDGRID_API_KEY in playwright/lib/testUtils.ts is test setup, not the production email provider AppCard offers installation (packages/app-store/_components/AppCard.tsx:94,116); calendar onboarding adds calendar connections, not this app (apps/web/modules/onboarding/personal/calendar/personal-calendar-view.tsx:28-34)."
+     ]
+    }
+   ]
+  },
+  {
+   "vendor": "vital",
+   "listed": false,
+   "applications": [
+    {
+     "repo": "calcom/cal.diy",
+     "calls": [
+      "env: VITAL_API_KEY (.env.appStore.example)",
+      "env: VITAL_WEBHOOK_SECRET (.env.appStore.example)",
+      "npm: @tryvital/vital-node (packages/app-store/vital/package.json)",
+      "opt-in: 54343aa685ae: Install (2): add the non-global vital App Store app; installed metadata describes catalog availability, not a user installation. getApps filters non-global apps without a user credential (packages/app-store/utils.ts:47-56); AppCard offers installation (packages/app-store/_components/AppCard.tsx:94,116); its connect/token endpoint creates the user credential (packages/app-store/vital/api/token.ts:36-42), and callback marks the user connected (packages/app-store/vital/api/callback.ts:32). The catalog seed creates App entries, not user credentials (scripts/seed-app-store.ts:65-74); calendar onboarding selects calendar apps, not this app (apps/web/modules/onboarding/personal/calendar/personal-calendar-view.tsx:28-34)."
+     ]
+    }
+   ]
+  },
+  {
+   "vendor": "zoho",
+   "listed": false,
+   "applications": [
+    {
+     "repo": "calcom/cal.diy",
+     "calls": [
+      "env: ZOHOCRM_CLIENT_ID (.env.appStore.example)",
+      "env: ZOHOCRM_CLIENT_SECRET (.env.appStore.example)",
+      "host: www.zohoapis.com (packages/app-store/zohocrm/lib/CrmService.ts:77 -> client address url at packages/app-store/zohocrm/lib/CrmService.ts:75)",
+      "host: www.zohoapis.com (packages/app-store/zohocrm/lib/CrmService.ts:103 -> client address url at packages/app-store/zohocrm/lib/CrmService.ts:101)",
+      "host: www.zohoapis.com (packages/app-store/zohocrm/lib/CrmService.ts:148 -> client address url at packages/app-store/zohocrm/lib/CrmService.ts:146)",
+      "opt-in: 54343aa685ae: Install (2): add the zoho App Store app; it is non-global and getApps omits it without a user credential (packages/app-store/utils.ts:47-56). Catalog availability is separate from the user installation. The user credential is created on add/callback; Install Zoho CRM with configured client_id/client_secret; OAuth add dispatch and credential callback (packages/app-store/zohocrm/api/add.ts:4; packages/app-store/zohocrm/api/callback.ts:78) AppCard offers installation (packages/app-store/_components/AppCard.tsx:94,116); calendar onboarding adds calendar connections, not this app (apps/web/modules/onboarding/personal/calendar/personal-calendar-view.tsx:28-34)."
+     ]
+    }
+   ]
+  }
+ ]
+}

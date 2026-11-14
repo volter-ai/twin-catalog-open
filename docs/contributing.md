@@ -49,6 +49,13 @@ reaches when an end user acts in the shipped product is demand. Look the vendor 
 already list implementations, and yours is another one, built from the vendor's spec, never from an earlier
 implementation.
 
+To twin a vendor other applications call, choose it from [`demand.json`](../demand.json): each vendor the public
+applications it names call, read at the commits it records, ranked by the applications that call it, with each
+application's evidence (an SDK in its manifest, an environment name in the file that reads it, a request host with
+the file and line that sends it) and `listed`, whether this catalog lists an implementation. A vendor with
+`listed: false` has none yet. Its evidence is where your reading of each application's calls starts, at the same
+commit.
+
 ## 2. Create the pack
 
 ```sh
