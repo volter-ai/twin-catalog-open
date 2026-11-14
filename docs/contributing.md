@@ -15,6 +15,7 @@ the architecture section it links holds the format.
 ## What you need
 
 - Bun at the catalog policy's version (`policy.json`, `bun`) and Node 22.3 or newer.
+- pnpm at the catalog policy's version (`policy.json`, `pnpm`): a prepared customer app declares it as its installer.
 - In your repository's `package.json`, the public `@volter/world`, `@volter/world-core`, `@volter/world-runtime` and
   `@volter/twin-standard` at the versions `policy.json` names under `tools` (the versions the catalog's admission
   runs), TypeScript and its Node and Bun types as development dependencies. Commit the lockfile.
@@ -221,10 +222,11 @@ the installed package. Keep the archive inventory and lockfile. Prepare a new cu
 
 ```sh
 twin-standard prepare-consumer <installed pack dir> --app <new app dir> --cli <absolute installed volter executable> --integrity <packed SHA-512 integrity> --out prepared-consumer.json
-npm install --prefix <new app dir> --ignore-scripts --no-audit --no-fund
+pnpm --dir <new app dir> install --ignore-scripts
 ```
 
-This preparation writes fixture files only; SDK dependency installation precedes offline execution. Select `--cli` from the installed `@volter/world` package's declared `bin.volter`, rather than the shared
+This preparation writes fixture files only, a pnpm app (its `packageManager` and `pnpm-workspace.yaml`), installed as
+the catalog's admission installs it; SDK dependency installation precedes offline execution. Select `--cli` from the installed `@volter/world` package's declared `bin.volter`, rather than the shared
 `node_modules/.bin/volter`: another package may claim that shortcut. The runner invokes compiled JavaScript
 through Node and records the actual entrypoint, command and Node version. The product CLI must resolve the installed candidate through that app's parent dependency directory. For the final assessment,
 run the released standard through a World:
