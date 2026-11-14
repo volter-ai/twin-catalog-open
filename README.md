@@ -24,7 +24,8 @@ helps identify the component. Reporting a problem does not require a paid Volter
 an AI agent working from public repositories and the released tools alone: the demand, the spec, citations and rate
 limits, the journeys, the contributor's own checks (`twin-standard walk`, `conform`), a kernel proposal when the
 standard lacks a mechanism ([proposals/kernel](proposals/kernel/README.md)), and the registration, publication and
-submission below.
+submission below. Which vendors public applications call, and which have no implementation here yet, is
+[`demand.json`](demand.json), written by Volter's demand scan.
 
 ## Submit a release
 
