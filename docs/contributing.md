@@ -19,6 +19,8 @@ the architecture section it links holds the format.
 - In your repository's `package.json`, the public `@volter/world`, `@volter/world-core`, `@volter/world-runtime` and
   `@volter/twin-standard` at the versions `policy.json` names under `tools` (the versions the catalog's admission
   runs), TypeScript and its Node and Bun types as development dependencies. Commit the lockfile.
+  Run the standard as `./node_modules/.bin/twin-standard`, the version that lockfile installs: without the
+  installation it fails there, where `bunx` or `bun run` would run another version found elsewhere.
 - A public GitHub repository for the pack (npm provenance needs a public source) and an npm scope you publish to.
 - One directory per vendor in that repository, named for the vendor (`<repository>/<vendor>/`); its npm package
   name is independent. Run every command below from the repository's root, naming the vendor's directory.
@@ -60,7 +62,7 @@ commit.
 ## 2. Create the pack
 
 ```sh
-bunx --bun @volter/twin-standard create <vendor> --init <vendor> --package @example/<name>
+./node_modules/.bin/twin-standard create <vendor> --init <vendor> --package @example/<name>
 ```
 
 It writes the fixed files with explicit fill markers (`--lanes a,b` for a vendor of several APIs or hosts:
@@ -137,10 +139,10 @@ and answer a page shows, or a rule it states) go in `spec/doc-examples.json` and
 ## 8. Derive, index and compile the facts
 
 ```sh
-bunx --bun @volter/twin-standard check-sources <vendor>   # records each cited page in spec/sources.json
-bunx --bun @volter/twin-standard derive <vendor>          # writes src/generated/ from the spec; refuses a citation that does not hold
-bunx --bun @volter/twin-standard create <vendor> --index  # the fixed handler map and fetch
-bunx --bun @volter/twin-standard facts <vendor>           # generated/pack-facts.json, from the descriptor
+./node_modules/.bin/twin-standard check-sources <vendor>   # records each cited page in spec/sources.json
+./node_modules/.bin/twin-standard derive <vendor>          # writes src/generated/ from the spec; refuses a citation that does not hold
+./node_modules/.bin/twin-standard create <vendor> --index  # the fixed handler map and fetch
+./node_modules/.bin/twin-standard facts <vendor>           # generated/pack-facts.json, from the descriptor
 ```
 
 Derive before indexing (an index written before the derive maps nothing). During construction, `create <vendor>
@@ -153,10 +155,10 @@ doors, its refusals and what it leaves out.
 While code remains to be written, walk the journeys as often as the work needs and fix what they show:
 
 ```sh
-bunx --bun @volter/twin-standard walk <vendor>           # the life, twice on fresh Worlds, its coverage and the examples
-bunx --bun @volter/twin-standard examples <vendor>       # the published examples replayed
-bunx --bun @volter/twin-standard coverage <vendor>       # the code and state logic the walks reach, and what they miss
-bunx --bun @volter/twin-standard walk-consumer <vendor> --prepared-consumer prepared-consumer.json --out walk.json
+./node_modules/.bin/twin-standard walk <vendor>           # the life, twice on fresh Worlds, its coverage and the examples
+./node_modules/.bin/twin-standard examples <vendor>       # the published examples replayed
+./node_modules/.bin/twin-standard coverage <vendor>       # the code and state logic the walks reach, and what they miss
+./node_modules/.bin/twin-standard walk-consumer <vendor> --prepared-consumer prepared-consumer.json --out walk.json
 ```
 
 `walk` prints each failing check with its step and what was answered, and names the kernel it measured. `walk
@@ -166,14 +168,14 @@ reaches it from ([Coverage](https://world-docs.volter.ai/docs/contributing/archi
 
 With the pack written, these run once:
 
-1. `bunx --bun @volter/twin-standard conform <vendor>`: the one conformance command, the same the catalog runs on
+1. `./node_modules/.bin/twin-standard conform <vendor>`: the one conformance command, the same the catalog runs on
    admission and on re-assessment. It serves the pack on its own as a World runs it and checks the decision table, the
    published files, the citations, refresh and ingest, the registered state system, the rate allowance, the vendor's
    SDK cases, the life over HTTP, sockets and the boot probe, every served operation called plainly and with a
    scenario loaded (no hang, no undeclared 500, no field of the twin's own, the spec's shape), the records and the
    form. Every ✗ names its check and what fails; [Conformance](https://world-docs.volter.ai/docs/contributing/architecture#conformance)
    says what each asks.
-2. A judge that is not among the journeys' authors: `bunx --bun @volter/twin-standard judge-brief <vendor> --authors
+2. A judge that is not among the journeys' authors: `./node_modules/.bin/twin-standard judge-brief <vendor> --authors
    <your session id>` prints its brief. Give it to an agent session of its own; it writes the verdicts beside the
    journeys, and you apply every ruling.
 3. `npm pack` the package and `conform` the tarball: the bytes a release publishes conform as the checkout does.
@@ -221,7 +223,7 @@ first, install that tarball in a fresh directory without development links, and 
 the installed package. Keep the archive inventory and lockfile. Prepare a new customer app beside that installation:
 
 ```sh
-twin-standard prepare-consumer <installed pack dir> --app <new app dir> --cli <absolute installed volter executable> --integrity <packed SHA-512 integrity> --out prepared-consumer.json
+./node_modules/.bin/twin-standard prepare-consumer <installed pack dir> --app <new app dir> --cli <absolute installed volter executable> --integrity <packed SHA-512 integrity> --out prepared-consumer.json
 pnpm --dir <new app dir> install --ignore-scripts
 ```
 
@@ -232,7 +234,7 @@ through Node and records the actual entrypoint, command and Node version. The pr
 run the released standard's assessment, the one the catalog's admission runs:
 
 ```sh
-twin-standard assess <installed pack dir> --prepared-consumer prepared-consumer.json --browser --out assessment.json
+./node_modules/.bin/twin-standard assess <installed pack dir> --prepared-consumer prepared-consumer.json --browser --out assessment.json
 ```
 
 It makes the Worlds it needs: fresh in-memory state for each journey replay, and, through the product CLI, the app
