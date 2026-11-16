@@ -7,7 +7,7 @@
     "twin-catalog": "bin/twin-catalog.mjs"
   },
   "scripts": {
-    "prepare": "git config core.hooksPath .githooks"
+    "prepare": "git rev-parse --git-dir >/dev/null 2>&1 || exit 0; git config core.hooksPath .githooks"
   },
   "exports": {
     "./browse": {
