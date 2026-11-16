@@ -1,0 +1,15 @@
+#!/bin/sh
+# The repository's tree is fixed (README.md, Structure): a commit that adds a path outside it is refused.
+# Names are read NUL-separated; a path the merged branch already holds (MERGE_HEAD) came with that branch.
+git diff --cached --name-only --no-renames --diff-filter=A -z | xargs -0 sh -c '
+  refused=0
+  out() { git cat-file -e "MERGE_HEAD:$1" 2>/dev/null || { printf "%s: outside the structure in README.md (Structure)\n" "$1" >&2; refused=1; }; }
+  for p do
+    case $p in
+      (README.md|LICENSE|package.json|.gitignore|.githooks/pre-commit|bin/twin-catalog.mjs|lib/*|docs/*) ;;
+      (.github/CODEOWNERS|.github/workflows/publish.yml|runner/*) ;;
+      (policy.json|recommendations.json|revocations.json|sources.json|proposals/*|vendors/*|content/*|submissions/*) ;;
+      (*) out "$p" ;;
+    esac
+  done
+  exit $refused' sh || exit 1

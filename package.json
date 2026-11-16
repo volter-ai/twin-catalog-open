@@ -6,6 +6,9 @@
   "bin": {
     "twin-catalog": "bin/twin-catalog.mjs"
   },
+  "scripts": {
+    "prepare": "git config core.hooksPath .githooks"
+  },
   "exports": {
     "./browse": {
       "types": "./lib/browse.d.mts",
