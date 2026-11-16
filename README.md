@@ -24,8 +24,7 @@ helps identify the component. Reporting a problem does not require a paid Volter
 an AI agent working from public repositories and the released tools alone: the demand, the spec, citations and rate
 limits, the journeys, the contributor's own checks (`twin-standard walk`, `conform`), a kernel proposal when the
 standard lacks a mechanism ([proposals/kernel](proposals/kernel/README.md)), and the registration, publication and
-submission below. Which vendors public applications call, and which have no implementation here yet, is
-[`demand.json`](demand.json), written by Volter's demand scan.
+submission below.
 
 ## Submit a release
 
@@ -161,3 +160,22 @@ A publisher that has just completed npm upload can use `submit --confirm-publish
 version metadata before opening a PR. Only HTTP 404 is retried, every 15 seconds for at most ten minutes, based
 on [the registry measurement](docs/measurements/registry-confirmation.json). Other errors and identity mismatches
 fail immediately. This option performs registry reads only; it never uploads or evaluates a package.
+
+## Structure
+
+This repository holds exactly this tree, and grows only by catalog entries for new twins.
+
+```
+README.md  LICENSE  package.json
+.githooks/pre-commit  .gitignore
+bin/twin-catalog.mjs
+lib/
+runner/          the assessment runner
+docs/
+.github/CODEOWNERS  .github/workflows/publish.yml
+policy.json  recommendations.json  revocations.json  sources.json
+proposals/  vendors/  content/  submissions/
+```
+
+The pre-commit hook refuses a commit that adds a path outside it; installing this repository (`npm install`) turns the
+hook on.
