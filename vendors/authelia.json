@@ -1,0 +1,12 @@
+{
+  "vendor": "authelia",
+  "packages": [],
+  "recognition": {
+    "envStems": {
+      "authelia": {
+        "disposition": "demanded",
+        "reason": "vendor authelia"
+      }
+    }
+  }
+}

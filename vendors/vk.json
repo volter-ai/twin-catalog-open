@@ -1,0 +1,20 @@
+{
+  "vendor": "vk",
+  "packages": [],
+  "recognition": {
+    "envStems": {
+      "vk": {
+        "disposition": "demanded",
+        "reason": "vendor vk"
+      }
+    },
+    "hosts": [
+      {
+        "host": "api.vk.com"
+      },
+      {
+        "host": "id.vk.com"
+      }
+    ]
+  }
+}

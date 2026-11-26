@@ -1,0 +1,25 @@
+{
+  "vendor": "triggerdev",
+  "packages": [],
+  "recognition": {
+    "hosts": [
+      {
+        "host": "api.trigger.dev"
+      }
+    ],
+    "sdks": {
+      "@trigger.dev/sdk": {
+        "disposition": "acknowledged",
+        "reason": "acknowledged: self-hostable job orchestration; evaluate hosted-cloud demand separately",
+        "uncovered": true
+      }
+    },
+    "envStems": {
+      "trigger": {
+        "disposition": "acknowledged",
+        "reason": "acknowledged: trigger.dev stem for self-hostable job orchestration",
+        "uncovered": true
+      }
+    }
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "vendor": "kick",
+  "packages": [],
+  "recognition": {
+    "hosts": [
+      {
+        "host": "api.kick.com"
+      },
+      {
+        "host": "id.kick.com"
+      }
+    ]
+  }
+}

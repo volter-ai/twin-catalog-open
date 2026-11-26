@@ -1,0 +1,12 @@
+{
+  "vendor": "wikimedia",
+  "packages": [],
+  "recognition": {
+    "envStems": {
+      "wikimedia": {
+        "disposition": "demanded",
+        "reason": "vendor wikimedia"
+      }
+    }
+  }
+}

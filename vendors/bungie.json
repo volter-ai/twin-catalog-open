@@ -1,0 +1,12 @@
+{
+  "vendor": "bungie",
+  "packages": [],
+  "recognition": {
+    "envStems": {
+      "bungie": {
+        "disposition": "demanded",
+        "reason": "vendor bungie"
+      }
+    }
+  }
+}

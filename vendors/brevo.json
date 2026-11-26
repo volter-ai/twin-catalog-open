@@ -1,0 +1,12 @@
+{
+  "vendor": "brevo",
+  "packages": [],
+  "recognition": {
+    "sdks": {
+      "@getbrevo/brevo": {
+        "disposition": "demanded",
+        "reason": "vendor brevo, well-known service client with no twin pack"
+      }
+    }
+  }
+}

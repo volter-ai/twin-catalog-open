@@ -1,0 +1,12 @@
+{
+  "vendor": "mailchain",
+  "packages": [],
+  "recognition": {
+    "sdks": {
+      "@mailchain/sdk": {
+        "disposition": "demanded",
+        "reason": "vendor mailchain"
+      }
+    }
+  }
+}

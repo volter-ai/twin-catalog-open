@@ -1,0 +1,29 @@
+{
+  "vendor": "twelvelabs",
+  "packages": [],
+  "recognition": {
+    "sdks": {
+      "twelvelabs-js": {
+        "disposition": "demanded",
+        "reason": "vendor twelvelabs"
+      }
+    },
+    "pypi": {
+      "twelvelabs": {
+        "disposition": "demanded",
+        "reason": "vendor twelvelabs"
+      }
+    },
+    "envStems": {
+      "twelvelabs": {
+        "disposition": "demanded",
+        "reason": "vendor twelvelabs"
+      }
+    },
+    "hosts": [
+      {
+        "host": "api.twelvelabs.io"
+      }
+    ]
+  }
+}

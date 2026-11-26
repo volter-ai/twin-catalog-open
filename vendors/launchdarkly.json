@@ -1,0 +1,20 @@
+{
+  "vendor": "launchdarkly",
+  "packages": [],
+  "recognition": {
+    "sdks": {
+      "@launchdarkly/node-server-sdk": {
+        "disposition": "demanded",
+        "reason": "vendor launchdarkly"
+      },
+      "launchdarkly-node-server-sdk": {
+        "disposition": "demanded",
+        "reason": "vendor launchdarkly, well-known service client with no twin pack"
+      },
+      "launchdarkly-react-client-sdk": {
+        "disposition": "demanded",
+        "reason": "vendor launchdarkly"
+      }
+    }
+  }
+}

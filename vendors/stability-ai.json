@@ -1,0 +1,12 @@
+{
+  "vendor": "stability-ai",
+  "packages": [],
+  "recognition": {
+    "envStems": {
+      "stability": {
+        "disposition": "demanded",
+        "reason": "vendor stability-ai"
+      }
+    }
+  }
+}

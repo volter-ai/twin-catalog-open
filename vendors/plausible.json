@@ -1,0 +1,11 @@
+{
+  "vendor": "plausible",
+  "packages": [],
+  "recognition": {
+    "hosts": [
+      {
+        "host": "plausible.io"
+      }
+    ]
+  }
+}

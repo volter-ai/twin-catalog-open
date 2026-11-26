@@ -1,0 +1,23 @@
+{
+  "vendor": "togetherai",
+  "packages": [],
+  "recognition": {
+    "sdks": {
+      "together-ai": {
+        "disposition": "demanded",
+        "reason": "vendor togetherai"
+      }
+    },
+    "envStems": {
+      "together": {
+        "disposition": "demanded",
+        "reason": "vendor togetherai"
+      }
+    },
+    "hosts": [
+      {
+        "host": "api.together.ai"
+      }
+    ]
+  }
+}

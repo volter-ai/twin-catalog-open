@@ -1,0 +1,12 @@
+{
+  "vendor": "lightdash",
+  "packages": [],
+  "recognition": {
+    "sdks": {
+      "@lightdash/sdk": {
+        "disposition": "demanded",
+        "reason": "vendor lightdash"
+      }
+    }
+  }
+}

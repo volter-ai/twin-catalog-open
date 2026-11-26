@@ -1,0 +1,18 @@
+{
+  "vendor": "daytona",
+  "packages": [],
+  "recognition": {
+    "sdks": {
+      "@daytona/sdk": {
+        "disposition": "demanded",
+        "reason": "vendor daytona"
+      }
+    },
+    "envStems": {
+      "daytona": {
+        "disposition": "demanded",
+        "reason": "vendor daytona"
+      }
+    }
+  }
+}

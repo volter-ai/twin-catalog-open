@@ -1,0 +1,12 @@
+{
+  "vendor": "wordpress",
+  "packages": [],
+  "recognition": {
+    "envStems": {
+      "wordpress": {
+        "disposition": "demanded",
+        "reason": "vendor wordpress"
+      }
+    }
+  }
+}

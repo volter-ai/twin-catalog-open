@@ -1,0 +1,17 @@
+{
+  "vendor": "traversaal",
+  "packages": [],
+  "recognition": {
+    "envStems": {
+      "traversaal": {
+        "disposition": "demanded",
+        "reason": "vendor traversaal"
+      }
+    },
+    "hosts": [
+      {
+        "host": "api-ares.traversaal.ai"
+      }
+    ]
+  }
+}

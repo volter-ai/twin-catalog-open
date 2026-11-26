@@ -1,0 +1,18 @@
+{
+  "vendor": "runhuman",
+  "packages": [],
+  "recognition": {
+    "sdks": {
+      "runhuman": {
+        "disposition": "demanded",
+        "reason": "vendor runhuman"
+      }
+    },
+    "hosts": [
+      {
+        "host": "runhuman.com",
+        "pathPattern": "^/api/"
+      }
+    ]
+  }
+}

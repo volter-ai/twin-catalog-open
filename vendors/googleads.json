@@ -1,0 +1,44 @@
+{
+  "vendor": "googleads",
+  "packages": [],
+  "recognition": {
+    "sdks": {
+      "google-ads-api": {
+        "disposition": "demanded",
+        "reason": "vendor googleads"
+      },
+      "google-ads-node": {
+        "disposition": "demanded",
+        "reason": "vendor googleads"
+      },
+      "googleads": {
+        "disposition": "demanded",
+        "reason": "vendor googleads"
+      }
+    },
+    "pypi": {
+      "google-ads": {
+        "disposition": "demanded",
+        "reason": "vendor googleads"
+      }
+    },
+    "envStems": {
+      "googleads": {
+        "disposition": "demanded",
+        "reason": "vendor googleads"
+      },
+      "googleadsdeveloper": {
+        "disposition": "demanded",
+        "reason": "vendor googleads"
+      }
+    },
+    "hosts": [
+      {
+        "host": "datamanager.googleapis.com"
+      },
+      {
+        "host": "googleads.googleapis.com"
+      }
+    ]
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "vendor": "voyageai",
+  "packages": [],
+  "recognition": {
+    "envStems": {
+      "voyage": {
+        "disposition": "demanded",
+        "reason": "vendor voyageai (VOYAGE_API_KEY embeddings)"
+      }
+    }
+  }
+}

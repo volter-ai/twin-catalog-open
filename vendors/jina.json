@@ -1,0 +1,18 @@
+{
+  "vendor": "jina",
+  "packages": [],
+  "recognition": {
+    "envStems": {
+      "jina": {
+        "disposition": "demanded",
+        "reason": "vendor jina"
+      }
+    },
+    "hosts": [
+      {
+        "host": "api.jina.ai",
+        "pathPattern": "^/v1/rerank"
+      }
+    ]
+  }
+}

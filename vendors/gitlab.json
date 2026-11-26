@@ -1,0 +1,16 @@
+{
+  "vendor": "gitlab",
+  "packages": [],
+  "recognition": {
+    "envStems": {
+      "gitlab": {
+        "disposition": "demanded",
+        "reason": "vendor gitlab"
+      },
+      "infappconnectiongitlaboauth": {
+        "disposition": "demanded",
+        "reason": "vendor gitlab"
+      }
+    }
+  }
+}

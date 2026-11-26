@@ -1,0 +1,16 @@
+{
+  "vendor": "mailchimp",
+  "packages": [],
+  "recognition": {
+    "envStems": {
+      "mailchimp": {
+        "disposition": "demanded",
+        "reason": "vendor mailchimp"
+      },
+      "mandrillingress": {
+        "disposition": "demanded",
+        "reason": "vendor mailchimp"
+      }
+    }
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "vendor": "bfl",
+  "packages": [],
+  "recognition": {
+    "envStems": {
+      "flux": {
+        "disposition": "demanded",
+        "reason": "vendor bfl"
+      }
+    },
+    "hosts": [
+      {
+        "host": "api.us1.bfl.ai"
+      }
+    ]
+  }
+}

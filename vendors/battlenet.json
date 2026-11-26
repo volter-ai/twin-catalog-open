@@ -1,0 +1,12 @@
+{
+  "vendor": "battlenet",
+  "packages": [],
+  "recognition": {
+    "envStems": {
+      "battlenet": {
+        "disposition": "demanded",
+        "reason": "vendor battlenet"
+      }
+    }
+  }
+}

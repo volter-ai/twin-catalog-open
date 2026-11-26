@@ -1,0 +1,27 @@
+{
+  "vendor": "plain",
+  "packages": [],
+  "recognition": {
+    "sdks": {
+      "@team-plain/typescript-sdk": {
+        "disposition": "demanded",
+        "reason": "vendor plain"
+      }
+    },
+    "envStems": {
+      "nextprivateplain": {
+        "disposition": "demanded",
+        "reason": "vendor plain"
+      },
+      "plain": {
+        "disposition": "demanded",
+        "reason": "vendor plain"
+      }
+    },
+    "hosts": [
+      {
+        "host": "core-api.uk.plain.com"
+      }
+    ]
+  }
+}

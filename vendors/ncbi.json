@@ -1,0 +1,12 @@
+{
+  "vendor": "ncbi",
+  "packages": [],
+  "recognition": {
+    "envStems": {
+      "ncbi": {
+        "disposition": "demanded",
+        "reason": "vendor ncbi (E-utilities / PubMed)"
+      }
+    }
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "vendor": "novita",
+  "packages": [],
+  "recognition": {
+    "envStems": {
+      "novita": {
+        "disposition": "demanded",
+        "reason": "vendor novita (Novita AI hosted models)"
+      }
+    }
+  }
+}

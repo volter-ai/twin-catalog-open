@@ -1,0 +1,11 @@
+{
+  "vendor": "devto",
+  "packages": [],
+  "recognition": {
+    "hosts": [
+      {
+        "host": "dev.to"
+      }
+    ]
+  }
+}

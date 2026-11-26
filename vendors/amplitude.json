@@ -1,0 +1,12 @@
+{
+  "vendor": "amplitude",
+  "packages": [],
+  "recognition": {
+    "envStems": {
+      "amplitude": {
+        "disposition": "demanded",
+        "reason": "vendor amplitude (NEXT_PUBLIC_AMPLITUDE_API_KEY)"
+      }
+    }
+  }
+}

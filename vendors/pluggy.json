@@ -1,0 +1,12 @@
+{
+  "vendor": "pluggy",
+  "packages": [],
+  "recognition": {
+    "sdks": {
+      "pluggy-sdk": {
+        "disposition": "demanded",
+        "reason": "vendor pluggy"
+      }
+    }
+  }
+}

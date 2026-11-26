@@ -1,0 +1,23 @@
+{
+  "vendor": "crates-registry",
+  "packages": [],
+  "recognition": {
+    "envStems": {
+      "cargoregistry": {
+        "disposition": "demanded",
+        "reason": "vendor crates-registry"
+      }
+    },
+    "hosts": [
+      {
+        "host": "crates.io"
+      },
+      {
+        "host": "index.crates.io"
+      },
+      {
+        "host": "static.crates.io"
+      }
+    ]
+  }
+}

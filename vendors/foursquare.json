@@ -1,0 +1,12 @@
+{
+  "vendor": "foursquare",
+  "packages": [],
+  "recognition": {
+    "envStems": {
+      "foursquare": {
+        "disposition": "demanded",
+        "reason": "vendor foursquare"
+      }
+    }
+  }
+}

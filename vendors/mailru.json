@@ -1,0 +1,12 @@
+{
+  "vendor": "mailru",
+  "packages": [],
+  "recognition": {
+    "envStems": {
+      "mailru": {
+        "disposition": "demanded",
+        "reason": "vendor mailru"
+      }
+    }
+  }
+}

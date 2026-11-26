@@ -1,0 +1,12 @@
+{
+  "vendor": "serpapi",
+  "packages": [],
+  "recognition": {
+    "envStems": {
+      "reworkdplatformserp": {
+        "disposition": "demanded",
+        "reason": "vendor serpapi (REWORKD_PLATFORM_SERP_API_KEY)"
+      }
+    }
+  }
+}

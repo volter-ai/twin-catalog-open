@@ -6,6 +6,14 @@ export type Coverage = {
   missing: string[];
 };
 export type Replay = { equal: boolean; runs: number; firstSha256: string; secondSha256: string };
+export type PublisherReview = {
+  schemaVersion: 1;
+  vendor: string;
+  outline: { path: string; text: string; sha256: string };
+  life: { path: string; text: string; sha256: string };
+  outlineVerdict: { path: string; text: string; sha256: string };
+  lifeVerdict: { path: string; text: string; sha256: string };
+};
 export type Measurements = {
   consumer: null | {
     measured: boolean;
@@ -68,6 +76,7 @@ export type Release = {
   assessedAt?: string;
 };
 export type CatalogRelease = Release & {
+  publisherReview: PublisherReview | null;
   packageMetadata: null | {
     description: string | null;
     license: string | null;

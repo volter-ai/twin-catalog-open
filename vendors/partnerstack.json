@@ -1,0 +1,11 @@
+{
+  "vendor": "partnerstack",
+  "packages": [],
+  "recognition": {
+    "hosts": [
+      {
+        "host": "api.partnerstack.com"
+      }
+    ]
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "vendor": "google-cse",
+  "packages": [],
+  "recognition": {
+    "envStems": {
+      "GOOGLESEARCH": {
+        "disposition": "demanded",
+        "reason": "vendor google-cse (GOOGLE_SEARCH_API_KEY \u2014 the Programmable Search JSON API)"
+      },
+      "GOOGLE_SEARCH": {
+        "disposition": "demanded",
+        "reason": "vendor google-cse (GOOGLE_SEARCH_API_KEY \u2014 the Programmable Search JSON API)"
+      }
+    },
+    "hosts": [
+      {
+        "host": "www.googleapis.com",
+        "pathPattern": "^/customsearch/v1"
+      }
+    ]
+  }
+}

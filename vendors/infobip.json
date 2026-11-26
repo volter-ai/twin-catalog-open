@@ -1,0 +1,12 @@
+{
+  "vendor": "infobip",
+  "packages": [],
+  "recognition": {
+    "sdks": {
+      "@infobip-api/sdk": {
+        "disposition": "demanded",
+        "reason": "vendor infobip"
+      }
+    }
+  }
+}

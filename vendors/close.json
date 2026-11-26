@@ -1,0 +1,17 @@
+{
+  "vendor": "close",
+  "packages": [],
+  "recognition": {
+    "envStems": {
+      "closecom": {
+        "disposition": "demanded",
+        "reason": "vendor close"
+      }
+    },
+    "hosts": [
+      {
+        "host": "api.close.com"
+      }
+    ]
+  }
+}

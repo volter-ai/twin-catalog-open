@@ -1,0 +1,12 @@
+{
+  "vendor": "xquik",
+  "packages": [],
+  "recognition": {
+    "envStems": {
+      "xquik": {
+        "disposition": "demanded",
+        "reason": "vendor xquik (xquik.com \u2014 an X/Twitter search proxy)"
+      }
+    }
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "vendor": "tumblr",
+  "packages": [],
+  "recognition": {
+    "envStems": {
+      "tumblr": {
+        "disposition": "demanded",
+        "reason": "vendor tumblr"
+      }
+    },
+    "hosts": [
+      {
+        "host": "api.tumblr.com"
+      }
+    ]
+  }
+}

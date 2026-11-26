@@ -1,0 +1,44 @@
+{
+  "vendor": "svix",
+  "packages": [],
+  "recognition": {
+    "sdks": {
+      "svix": {
+        "disposition": "demanded",
+        "reason": "vendor svix"
+      }
+    },
+    "pypi": {
+      "svix": {
+        "disposition": "demanded",
+        "reason": "vendor svix"
+      }
+    },
+    "envStems": {
+      "svix": {
+        "disposition": "demanded",
+        "reason": "vendor svix"
+      }
+    },
+    "hosts": [
+      {
+        "host": "api.au.svix.com"
+      },
+      {
+        "host": "api.ca.svix.com"
+      },
+      {
+        "host": "api.eu.svix.com"
+      },
+      {
+        "host": "api.in.svix.com"
+      },
+      {
+        "host": "api.svix.com"
+      },
+      {
+        "host": "api.us.svix.com"
+      }
+    ]
+  }
+}

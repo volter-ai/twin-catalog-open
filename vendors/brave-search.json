@@ -1,0 +1,12 @@
+{
+  "vendor": "brave-search",
+  "packages": [],
+  "recognition": {
+    "envStems": {
+      "brave": {
+        "disposition": "demanded",
+        "reason": "vendor brave-search (Brave Search API)"
+      }
+    }
+  }
+}

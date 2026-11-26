@@ -1,0 +1,12 @@
+{
+  "vendor": "turso",
+  "packages": [],
+  "recognition": {
+    "sdks": {
+      "@libsql/client": {
+        "disposition": "demanded",
+        "reason": "vendor turso, DB data-plane over HTTP; hides behind DATABASE_URL-shaped env that init's infra heuristic claims first, so the dep name is the only escaping signal"
+      }
+    }
+  }
+}

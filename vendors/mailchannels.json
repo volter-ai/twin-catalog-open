@@ -1,0 +1,12 @@
+{
+  "vendor": "mailchannels",
+  "packages": [],
+  "recognition": {
+    "envStems": {
+      "nextprivatemailchannels": {
+        "disposition": "demanded",
+        "reason": "vendor mailchannels"
+      }
+    }
+  }
+}

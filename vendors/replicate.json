@@ -1,0 +1,32 @@
+{
+  "vendor": "replicate",
+  "packages": [],
+  "recognition": {
+    "sdks": {
+      "@ai-sdk/replicate": {
+        "disposition": "demanded",
+        "reason": "vendor replicate"
+      },
+      "replicate": {
+        "disposition": "demanded",
+        "reason": "vendor replicate"
+      }
+    },
+    "pypi": {
+      "replicate": {
+        "disposition": "demanded",
+        "reason": "vendor replicate"
+      }
+    },
+    "envStems": {
+      "replicate": {
+        "disposition": "demanded",
+        "reason": "vendor replicate"
+      },
+      "reworkdplatformreplicate": {
+        "disposition": "demanded",
+        "reason": "vendor replicate"
+      }
+    }
+  }
+}

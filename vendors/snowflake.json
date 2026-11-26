@@ -1,0 +1,50 @@
+{
+  "vendor": "snowflake",
+  "packages": [],
+  "recognition": {
+    "sdks": {
+      "snowflake-sdk": {
+        "disposition": "demanded",
+        "reason": "vendor snowflake"
+      }
+    },
+    "pypi": {
+      "snowflake": {
+        "disposition": "demanded",
+        "reason": "vendor snowflake"
+      },
+      "snowflake-connector-python": {
+        "disposition": "demanded",
+        "reason": "vendor snowflake"
+      },
+      "snowflake-snowpark-python": {
+        "disposition": "demanded",
+        "reason": "vendor snowflake"
+      },
+      "snowflake-sqlalchemy": {
+        "disposition": "demanded",
+        "reason": "vendor snowflake"
+      }
+    },
+    "envStems": {
+      "snowflake": {
+        "disposition": "demanded",
+        "reason": "vendor snowflake"
+      }
+    },
+    "hosts": [
+      {
+        "host": "snowflakecomputing.cn"
+      },
+      {
+        "suffix": ".snowflakecomputing.cn"
+      },
+      {
+        "host": "snowflakecomputing.com"
+      },
+      {
+        "suffix": ".snowflakecomputing.com"
+      }
+    ]
+  }
+}

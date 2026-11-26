@@ -1,0 +1,12 @@
+{
+  "vendor": "yandex",
+  "packages": [],
+  "recognition": {
+    "envStems": {
+      "yandex": {
+        "disposition": "demanded",
+        "reason": "vendor yandex"
+      }
+    }
+  }
+}

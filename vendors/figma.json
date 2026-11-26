@@ -1,0 +1,22 @@
+{
+  "vendor": "figma",
+  "packages": [],
+  "recognition": {
+    "sdks": {
+      "@figma/rest-api-spec": {
+        "disposition": "demanded",
+        "reason": "vendor figma"
+      },
+      "figma-api": {
+        "disposition": "demanded",
+        "reason": "vendor figma"
+      }
+    },
+    "envStems": {
+      "figma": {
+        "disposition": "demanded",
+        "reason": "vendor figma"
+      }
+    }
+  }
+}

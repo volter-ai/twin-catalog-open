@@ -1,9 +1,9 @@
 #!/usr/bin/env node
-import { existsSync, readFileSync } from 'node:fs';
+import { existsSync } from 'node:fs';
 import { basename, dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { loadIndex, defaults, read, write, requireThat, stable, submissionId, validateSubmission } from '../lib/model.mjs';
-import { metadata } from '../lib/registry.mjs';
+import { loadIndex, defaults, read, write, repositoryOf, requireThat, stable, submissionId, validateSubmission } from '../lib/model.mjs';
+import { metadata, packageVisibility, registryFetch } from '../lib/registry.mjs';
 import { GitHub } from '../lib/github.mjs';
 import { assessPullRequest, configure } from '../lib/automation.mjs';
 import { build, builtIndex } from '../lib/publication.mjs';
@@ -12,14 +12,17 @@ import { browse } from '../lib/browse.mjs';
 import { register } from '../lib/register.mjs';
 import { captureContent } from '../lib/content.mjs';
 import { recordAssessment } from '../lib/operator-evidence.mjs';
+import { hydrateEvidence } from '../lib/evidence.mjs';
 import { preparePublication, stagePublication, uploadPrepared, confirmPublication } from '../lib/prepared-publication.mjs';
 
 const [command, ...args] = process.argv.slice(2);
 const arg = (name, fallback) => { const at = args.indexOf(`--${name}`); if (at < 0) return fallback; requireThat(args[at + 1] && !args[at + 1].startsWith('--'), `--${name} needs a value`); return args[at + 1]; };
 const root = resolve(arg('root', process.cwd()));
 const installed = resolve(dirname(fileURLToPath(import.meta.url)), '..');
-const policy = () => read(join(existsSync(join(root, 'policy.json')) ? root : installed, 'policy.json'));
-const github = () => new GitHub(arg('repository', process.env.GITHUB_REPOSITORY ?? 'volter-ai/twin-catalog-open'), process.env.GH_TOKEN ?? process.env.GITHUB_TOKEN);
+const catalogRoot = () => existsSync(join(root, 'policy.json')) ? root : installed;
+const policy = () => read(join(catalogRoot(), 'policy.json'));
+const github = () => new GitHub(arg('repository', process.env.GITHUB_REPOSITORY ??
+  new URL(repositoryOf(read(join(catalogRoot(), 'package.json')))).pathname.slice(1)), process.env.GH_TOKEN ?? process.env.GITHUB_TOKEN);
 try {
   let result;
   switch (command) {
@@ -40,8 +43,12 @@ try {
     case 'submit': {
       const indexRoot = existsSync(join(root, 'sources.json')) ? root : installed;
       const p = policy();
-      const doc = await metadata(arg('package'), arg('version'), p.registry, fetch, args.includes('--confirm-published') ? {} : undefined);
-      const submission = { schemaVersion: 1, source: arg('source'), vendor: arg('vendor'), package: doc.name, version: doc.version, integrity: doc.dist?.integrity };
+      const doc = await metadata(arg('package'), arg('version'), p.registry, registryFetch, args.includes('--confirm-published') ? {} : undefined);
+      const access = await packageVisibility(doc.name, p.registry);
+      const sourceCommit = arg('source-commit', doc.gitHead);
+      requireThat(access !== 'restricted' || /^[a-f0-9]{40}$/.test(sourceCommit), 'restricted package submission needs --source-commit <Git commit>');
+      const submission = { schemaVersion: 1, source: arg('source'), vendor: arg('vendor'), package: doc.name, version: doc.version,
+        integrity: doc.dist?.integrity, ...(sourceCommit === undefined ? {} : { sourceCommit }) };
       validateSubmission(submission, loadIndex(indexRoot).sources);
       const file = resolve(arg('out', join(resolve(arg('out-dir', join(root, args.includes('--reassess') ? 'reassessments' : 'submissions'))), `${submissionId(submission)}.json`)));
       requireThat(basename(file) === `${submissionId(submission)}.json`, 'output must be named for the submission identity');
@@ -69,7 +76,11 @@ try {
       result = await propose(github(), resolve(arg('from', args.includes('--reassess') ? 'reassessments' : 'submissions')), args.includes('--reassess'));
       break;
     }
-    case 'build': result = build(root, resolve(arg('out', 'dist'))); break;
+    case 'build': {
+      const evidence = await hydrateEvidence(builtIndex(root), policy().ecosystem?.catalogReceipts?.receipts ?? {});
+      result = build(root, resolve(arg('out', 'dist')), evidence);
+      break;
+    }
     case 'capture-content': result = await captureContent(root, builtIndex(root), policy().registry); break;
     case 'prepare-publication': {
       const client = github();
@@ -92,7 +103,7 @@ try {
       }
       break;
     }
-    default: throw new Error('usage: twin-catalog register --source <id> --source-repository <owner/repo> --scope <@scope> [--out <sources.json>] | submit --source <id> --vendor <vendor> --package <@scope/name> --version <exact> | browse [--root <installed-index>] [--vendor <vendor>] [--package <@scope/name>] | capture-content | assess-pr --pr <number> | record-assessment --report <file> --send | check | defaults | build --out <new-directory> | prepare-publication --out <new-directory> | stage-publication --from <prepared-directory> --tag prepared-catalog-<version> --sweep <receipt> --send | confirm-publication --receipt <staged-publication.json> [--out <new-confirmation.json>] | configure [--apply] | propose --from <submission-directory> --send');
+    default: throw new Error('usage: twin-catalog register --source <id> --source-repository <owner/repo> --scope <@scope> [--out <sources.json>] | submit --source <id> --vendor <vendor> --package <@scope/name> --version <exact> [--source-commit <Git commit>] | browse [--root <installed-index>] [--vendor <vendor>] [--package <@scope/name>] | capture-content | assess-pr --pr <number> | record-assessment --report <file> --send | check | defaults | build --out <new-directory> | prepare-publication --out <new-directory> | stage-publication --from <prepared-directory> --tag prepared-catalog-<version> --sweep <receipt> --send | confirm-publication --receipt <staged-publication.json> [--out <new-confirmation.json>] | configure [--apply] | propose --from <submission-directory> --send');
   }
   console.log(JSON.stringify(result, null, 2));
 } catch (error) { console.error(`twin-catalog: ${error.message ?? error}`); process.exitCode = 1; }

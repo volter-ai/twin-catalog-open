@@ -1,0 +1,11 @@
+{
+  "vendor": "whop",
+  "packages": [],
+  "recognition": {
+    "hosts": [
+      {
+        "host": "api.whop.com"
+      }
+    ]
+  }
+}

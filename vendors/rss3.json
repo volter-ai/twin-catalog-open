@@ -1,0 +1,12 @@
+{
+  "vendor": "rss3",
+  "packages": [],
+  "recognition": {
+    "sdks": {
+      "@rss3/sdk": {
+        "disposition": "demanded",
+        "reason": "vendor rss3 (api.rss3.io)"
+      }
+    }
+  }
+}

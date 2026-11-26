@@ -1,0 +1,12 @@
+{
+  "vendor": "keycloak",
+  "packages": [],
+  "recognition": {
+    "envStems": {
+      "keycloak": {
+        "disposition": "demanded",
+        "reason": "vendor keycloak"
+      }
+    }
+  }
+}

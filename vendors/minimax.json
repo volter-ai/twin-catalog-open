@@ -1,0 +1,12 @@
+{
+  "vendor": "minimax",
+  "packages": [],
+  "recognition": {
+    "sdks": {
+      "@ai-sdk/minimax": {
+        "disposition": "demanded",
+        "reason": "vendor minimax"
+      }
+    }
+  }
+}

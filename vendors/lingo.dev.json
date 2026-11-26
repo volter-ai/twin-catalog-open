@@ -1,0 +1,16 @@
+{
+  "vendor": "lingo.dev",
+  "packages": [],
+  "recognition": {
+    "envStems": {
+      "lingo": {
+        "disposition": "demanded",
+        "reason": "vendor lingo.dev"
+      },
+      "lingodotdev": {
+        "disposition": "demanded",
+        "reason": "vendor lingo.dev"
+      }
+    }
+  }
+}

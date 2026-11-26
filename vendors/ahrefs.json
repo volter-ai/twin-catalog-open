@@ -1,0 +1,23 @@
+{
+  "vendor": "ahrefs",
+  "packages": [],
+  "recognition": {
+    "sdks": {
+      "@ahrefs/mcp": {
+        "disposition": "demanded",
+        "reason": "vendor ahrefs"
+      }
+    },
+    "envStems": {
+      "ahrefs": {
+        "disposition": "demanded",
+        "reason": "vendor ahrefs"
+      }
+    },
+    "hosts": [
+      {
+        "host": "api.ahrefs.com"
+      }
+    ]
+  }
+}

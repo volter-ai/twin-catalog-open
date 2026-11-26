@@ -1,0 +1,12 @@
+{
+  "vendor": "iframely",
+  "packages": [],
+  "recognition": {
+    "envStems": {
+      "iframely": {
+        "disposition": "demanded",
+        "reason": "vendor iframely"
+      }
+    }
+  }
+}

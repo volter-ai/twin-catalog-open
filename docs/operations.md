@@ -4,7 +4,7 @@ The [process contract](process.md) owns identity and authority; [contributor ins
 construction. Use existing GitHub sign-ins and custody. Qualification, assessment, index preparation and registry
 confirmation are explicit operator commands outside CI. Main never publishes. A publication requires independent
 review, a clean keys sweep over the exact archive and the manager's permission. Publication runs from the separate
-`publish` branch at the exact reviewed source; main integration never advances or dispatches it. The short provenance workflow only
+`publish` branch at the exact reviewed source; main integration never advances or dispatches it. The short publication workflow only
 uploads the prepared bytes. No automatic CI tests or merge gates run.
 
 ## Roles and credentials
@@ -13,7 +13,7 @@ uploads the prepared bytes. No automatic CI tests or merge gates run.
 type. `policy.publicationAuthorities` separately registers prepared-index uploaders. These roles are explicit policy,
 not consequences of contributor trust or package ownership. `policy.trustedAccounts`, `internalRepositories` and
 `reviewBypassUsers` continue to govern moderation paths. Admission checks an authorized merger's current repository
-permission separately from the assessment issuer. Candidate containers receive none of these credentials.
+permission separately from the assessment issuer. Admission never executes candidate code.
 
 For outside contributors, a non-author human moderator approves the current head. Trusted-account and eligible
 internal PRs may use the named maintainer exception. No account may certify an artifact by supplying an unauthenticated
@@ -22,30 +22,35 @@ uploader and checks their registered identity. No new ChatGPT or Claude sign-in 
 
 ## Assess and record a submission
 
-With Docker capable of `linux/amd64` containers, select a clean checkout at the PR's exact current base. Its policy pins the released
-tools; the host controller reads submission data from the exact head through GitHub and never imports the candidate.
-Image builds and all containers explicitly select that platform to match the Linux x64 Bun and native pnpm bytes;
-an ARM64 host needs Docker's supported emulation. SDK fixtures install their declared manager frozen and without
-scripts. A pnpm customer app retains `pnpm-lock.yaml`, including all native YAML documents; older npm apps retain
-`package-lock.json`. The controller binds original bytes, parsed documents, exact format/filename and package
-identities. A native manager mismatch or non-registry dependency fails preparation instead of falling back to npm.
+Select a clean checkout at the PR's exact current base. The controller reads the exact head through GitHub, then
+downloads the immutable artifact under the trusted base policy. Existing npm configuration supplies restricted
+registry credentials, scoped to the configured host/path, with redirects refused. No install, container, World,
+client, browser or replay is part of admission. [ADR 0001](adr/0001-retained-publisher-review.md) defines the boundary.
 
 ```sh
 node bin/twin-catalog.mjs assess-pr --repository <owner/catalog> --pr <number> --out <new-evidence-directory>/report.json
 node bin/twin-catalog.mjs record-assessment --repository <owner/catalog> --report <new-evidence-directory>/report.json --send
 ```
 
-`GH_TOKEN` or `GITHUB_TOKEN` supplies existing authorized GitHub access; never print it. Assessment is credential-free
-inside its preparation and offline containers. The controller retains the container identity, full report, evaluator
-and app-local dependency locks, source/PR/policy bindings and cleanup diagnostics. The recorder executes no candidate.
+`GH_TOKEN` or `GITHUB_TOKEN` supplies existing authorized GitHub access; never print it. The controller recomputes
+archive integrity and reads npm's package visibility. Public packages require verified registered-source Sigstore
+provenance. Restricted packages bind the existing submission's registered source repository and immutable
+`sourceCommit`, exact version/integrity and existing authority checks; the commit must exist in that repository.
+No caller flag selects this rule and no new custody receipt substitutes for it. The controller reads the outline,
+nonempty customer life and
+both independent plausible verdicts. Its schemaVersion 2 envelope retains their exact text, paths and SHA-256,
+artifact facts/metadata, visibility, source commit, required public provenance and source/PR/policy bindings.
+Verdicts stand through later corrections; their
+original judged hash is not a request for another review or run. The recorder executes no candidate.
 It publishes only a complete ready envelope for the still-current head/base to a digest-named durable evidence release.
 A second identical record reuses the same bytes; another issuer or conflicting asset is refused.
 
-A changed head/base needs a fresh assessment. A failed phase retains its exact error and logs. Fix candidate defects
+A changed head/base needs fresh evidence. A failed read retains its error. Fix candidate defects
 in a new immutable npm version. Fix a registry or controller failure at its recorded path, then reassess. Pending,
 failed, cancelled and missing results remain different from ready. Never fabricate success for an old workflow.
 Historical Actions evidence keeps its original envelope, digest and run/attempt, and its original verifier remains
-available for admitted releases. Removing the old workflows does not alter those reports.
+available for admitted releases. SchemaVersion 1 operator evidence keeps its original image, lock bytes and tool
+bindings. New publisher-review records supply no dynamic measurements. Existing pins need no rebuild or review.
 
 The authenticated receipt establishes readiness; a separately authorized maintainer performs the admission merge.
 The repository has no required CI status checks or branch review gates. `configure` displays the intended settings;
@@ -81,9 +86,11 @@ shared by all attempts for that immutable version; another archive, source or is
 It retains byte-bound inputs under a registered publication authority and writes `staged-publication.json` beside
 the prepared inputs. It performs no npm upload. A commit or preparation tag is never the workflow dispatch ref.
 The manual registered workflow validates the exact `publish` ref, workflow/source SHA, expected source, stage tag,
-issuer, sweep, manifest and archive digest, then runs one
-`npm publish <archive> --ignore-scripts --provenance` with its publication credential. It performs no install, build,
-assessment or proposal. Its one-minute job ceiling bounds execution; a timeout is an unresolved upload, not proof of
+issuer, sweep, manifest, archive digest and prepared access, then runs one
+`npm publish <archive> --ignore-scripts --access <prepared-access>` with its publication credential. Public publication
+adds `--provenance`; restricted publication omits the option npm does not support for restricted packages. The workflow
+installs only the reviewed controller dependencies with lifecycle scripts disabled; it performs no candidate install,
+build, assessment or proposal. Its one-minute job ceiling bounds execution; a timeout is an unresolved upload, not proof of
 success within that ceiling. Read the actual completed run duration and outcome before claiming a successful upload.
 
 Registry confirmation runs separately outside CI:
@@ -119,13 +126,11 @@ predates dependency/optional peer fields or pack facts can be enriched from thos
 assessment. Commit the receipts in a maintenance
 change before preparing a new index. Missing documentation or historical measurement stays unavailable.
 
-World's source checkout consumes the catalog through its selected `sources/catalog` Gitlink and
-`source-inputs/catalog` receipt references. After the catalog merge, select its exact main commit and retain the
-durable report URLs and checksums. `hydrateEvidence(builtIndex(source), references)` downloads and validates only
-current defaults' reports for the native compiler; report envelopes are generated build inputs, never committed
-source inputs. `node scripts/build-catalog-source.mjs` owns this source build. Never replace the source checkout
-with an installed registry package or invent installer SRI for source-built output. A registry site's separately
-selected snapshot retains its actual SRI.
+World consumes an installed catalog package selected by its catalog setting. The catalog owns recognition,
+media, released starter requirements and durable report references in `policy.ecosystem`; vendor records supply
+recognition for vendors without releases. Native `build` hydrates and validates only current defaults' reports
+using those references. Report envelopes and per-vendor backing facts are generated package data, never another
+authored inventory. A consumer retains the actual integrity of its installed catalog release.
 
 ## Diagnose publication and website delivery
 

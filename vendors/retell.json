@@ -1,0 +1,22 @@
+{
+  "vendor": "retell",
+  "packages": [],
+  "recognition": {
+    "sdks": {
+      "retell-client-js-sdk": {
+        "disposition": "demanded",
+        "reason": "vendor retell"
+      },
+      "retell-sdk": {
+        "disposition": "demanded",
+        "reason": "vendor retell"
+      }
+    },
+    "envStems": {
+      "retellaitestcal": {
+        "disposition": "demanded",
+        "reason": "vendor retell (RETELL_AI_TEST_CAL_API_KEY; same demand as retell-sdk / retell-client-js-sdk)"
+      }
+    }
+  }
+}

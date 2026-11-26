@@ -1,0 +1,12 @@
+{
+  "vendor": "strava",
+  "packages": [],
+  "recognition": {
+    "envStems": {
+      "strava": {
+        "disposition": "demanded",
+        "reason": "vendor strava"
+      }
+    }
+  }
+}

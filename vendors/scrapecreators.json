@@ -1,0 +1,23 @@
+{
+  "vendor": "scrapecreators",
+  "packages": [],
+  "recognition": {
+    "sdks": {
+      "@scrapecreators/cli": {
+        "disposition": "demanded",
+        "reason": "vendor scrapecreators"
+      }
+    },
+    "envStems": {
+      "scrapecreators": {
+        "disposition": "demanded",
+        "reason": "vendor scrapecreators"
+      }
+    },
+    "hosts": [
+      {
+        "host": "api.scrapecreators.com"
+      }
+    ]
+  }
+}

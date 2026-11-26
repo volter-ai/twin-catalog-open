@@ -1,0 +1,12 @@
+{
+  "vendor": "directus",
+  "packages": [],
+  "recognition": {
+    "sdks": {
+      "@directus/sdk": {
+        "disposition": "demanded",
+        "reason": "vendor directus"
+      }
+    }
+  }
+}

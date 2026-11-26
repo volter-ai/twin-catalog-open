@@ -1,0 +1,12 @@
+{
+  "vendor": "auth0",
+  "packages": [],
+  "recognition": {
+    "envStems": {
+      "auth0": {
+        "disposition": "demanded",
+        "reason": "vendor auth0"
+      }
+    }
+  }
+}

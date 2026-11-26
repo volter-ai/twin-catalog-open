@@ -1,0 +1,12 @@
+{
+  "vendor": "hanko",
+  "packages": [],
+  "recognition": {
+    "envStems": {
+      "hanko": {
+        "disposition": "demanded",
+        "reason": "vendor hanko"
+      }
+    }
+  }
+}

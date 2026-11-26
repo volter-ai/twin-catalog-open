@@ -1,0 +1,24 @@
+{
+  "vendor": "sendblue",
+  "packages": [],
+  "recognition": {
+    "sdks": {
+      "sendblue": {
+        "disposition": "demanded",
+        "reason": "vendor sendblue"
+      }
+    },
+    "pypi": {
+      "sendblue": {
+        "disposition": "demanded",
+        "reason": "vendor sendblue"
+      }
+    },
+    "envStems": {
+      "sendblue": {
+        "disposition": "demanded",
+        "reason": "vendor sendblue"
+      }
+    }
+  }
+}

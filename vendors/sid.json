@@ -1,0 +1,12 @@
+{
+  "vendor": "sid",
+  "packages": [],
+  "recognition": {
+    "envStems": {
+      "reworkdplatformsid": {
+        "disposition": "demanded",
+        "reason": "vendor sid (sid.ai OAuth: REWORKD_PLATFORM_SID_CLIENT_ID/_SECRET)"
+      }
+    }
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "vendor": "geopf",
+  "packages": [],
+  "recognition": {
+    "hosts": [
+      {
+        "host": "data.geopf.fr"
+      }
+    ]
+  }
+}

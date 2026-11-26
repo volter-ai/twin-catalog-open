@@ -1,0 +1,12 @@
+{
+  "vendor": "google-sheets",
+  "packages": [],
+  "recognition": {
+    "sdks": {
+      "@googleapis/sheets": {
+        "disposition": "demanded",
+        "reason": "vendor google-sheets"
+      }
+    }
+  }
+}

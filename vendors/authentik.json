@@ -1,0 +1,12 @@
+{
+  "vendor": "authentik",
+  "packages": [],
+  "recognition": {
+    "envStems": {
+      "authentik": {
+        "disposition": "demanded",
+        "reason": "vendor authentik"
+      }
+    }
+  }
+}

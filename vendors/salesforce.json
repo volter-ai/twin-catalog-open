@@ -1,0 +1,17 @@
+{
+  "vendor": "salesforce",
+  "packages": [],
+  "recognition": {
+    "envStems": {
+      "salesforce": {
+        "disposition": "demanded",
+        "reason": "vendor salesforce"
+      }
+    },
+    "hosts": [
+      {
+        "host": "login.salesforce.com"
+      }
+    ]
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "vendor": "scrapeless",
+  "packages": [],
+  "recognition": {
+    "sdks": {
+      "@scrapeless-ai/sdk": {
+        "disposition": "demanded",
+        "reason": "vendor scrapeless"
+      }
+    }
+  }
+}

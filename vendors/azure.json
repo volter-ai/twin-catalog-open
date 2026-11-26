@@ -1,0 +1,167 @@
+{
+  "vendor": "azure",
+  "packages": [],
+  "recognition": {
+    "sdks": {
+      "@ai-sdk/azure": {
+        "disposition": "demanded",
+        "reason": "vendor azure"
+      },
+      "@azure-rest/ai-inference": {
+        "disposition": "demanded",
+        "reason": "vendor azure"
+      },
+      "@azure/communication-email": {
+        "disposition": "demanded",
+        "reason": "vendor azure (Communication Services area; one family pack)",
+        "uncovered": true
+      },
+      "@azure/communication-sms": {
+        "disposition": "demanded",
+        "reason": "vendor azure (Communication Services area; one family pack)",
+        "uncovered": true
+      },
+      "@azure/keyvault-secrets": {
+        "disposition": "demanded",
+        "reason": "vendor azure (Key Vault area; one family pack)",
+        "uncovered": true
+      },
+      "@azure/msal-browser": {
+        "disposition": "demanded",
+        "reason": "vendor azure (Entra auth area; same class as @azure/msal-node \u2014 the pack deliberately does not claim login.microsoftonline.com)",
+        "uncovered": true
+      },
+      "@azure/msal-node": {
+        "disposition": "demanded",
+        "reason": "vendor azure (Entra auth area; one family pack)",
+        "uncovered": true
+      },
+      "@azure/openai": {
+        "disposition": "demanded",
+        "reason": "vendor azure"
+      },
+      "@azure/playwright": {
+        "disposition": "demanded",
+        "reason": "vendor azure (Playwright Testing area; one family pack)",
+        "uncovered": true
+      },
+      "@azure/search-documents": {
+        "disposition": "demanded",
+        "reason": "vendor azure (AI Search area; one family pack)",
+        "uncovered": true
+      },
+      "@azure/storage-blob": {
+        "disposition": "demanded",
+        "reason": "vendor azure"
+      }
+    },
+    "pypi": {
+      "azure-ai-inference": {
+        "disposition": "demanded",
+        "reason": "vendor azure"
+      },
+      "azure-storage-blob": {
+        "disposition": "demanded",
+        "reason": "vendor azure"
+      }
+    },
+    "envStems": {
+      "authmicrosoft": {
+        "disposition": "demanded",
+        "reason": "vendor azure (Entra auth area; one family pack)",
+        "uncovered": true
+      },
+      "azure": {
+        "disposition": "demanded",
+        "reason": "vendor azure"
+      },
+      "azuread": {
+        "disposition": "demanded",
+        "reason": "vendor azure (Entra auth area); the Azure pack does not claim login.microsoftonline.com, so this stem remains a coverage gap",
+        "uncovered": true
+      },
+      "azureadb2c": {
+        "disposition": "demanded",
+        "reason": "vendor azure (Entra auth area; one family pack)",
+        "uncovered": true
+      },
+      "azureaisearch": {
+        "disposition": "demanded",
+        "reason": "vendor azure (AI Search area; one family pack)",
+        "uncovered": true
+      },
+      "azuregpt4omini": {
+        "disposition": "demanded",
+        "reason": "vendor azure"
+      },
+      "azuregpt5": {
+        "disposition": "demanded",
+        "reason": "vendor azure"
+      },
+      "azuregpt5mini": {
+        "disposition": "demanded",
+        "reason": "vendor azure"
+      },
+      "azuregpt5nano": {
+        "disposition": "demanded",
+        "reason": "vendor azure"
+      },
+      "azureopenai": {
+        "disposition": "demanded",
+        "reason": "vendor azure"
+      },
+      "infappconnectionazureappconfiguration": {
+        "disposition": "demanded",
+        "reason": "vendor azure (App Configuration area; one family pack)",
+        "uncovered": true
+      },
+      "infappconnectionazureclientsecrets": {
+        "disposition": "demanded",
+        "reason": "vendor azure (Entra auth area; one family pack)",
+        "uncovered": true
+      },
+      "infappconnectionazuredevops": {
+        "disposition": "demanded",
+        "reason": "vendor azure (DevOps area; one family pack)",
+        "uncovered": true
+      },
+      "infappconnectionazurekeyvault": {
+        "disposition": "demanded",
+        "reason": "vendor azure (Key Vault area; one family pack)",
+        "uncovered": true
+      },
+      "microsoft": {
+        "disposition": "demanded",
+        "reason": "vendor azure (Entra auth area; one family pack)",
+        "uncovered": true
+      },
+      "nextprivatemicrosoft": {
+        "disposition": "demanded",
+        "reason": "vendor azure (Entra auth area; one family pack)",
+        "uncovered": true
+      }
+    },
+    "hosts": [
+      {
+        "pathPattern": "^/openai/",
+        "host": "cognitiveservices.azure.com"
+      },
+      {
+        "pathPattern": "^/openai/",
+        "suffix": ".cognitiveservices.azure.com"
+      },
+      {
+        "host": "blob.core.windows.net"
+      },
+      {
+        "suffix": ".blob.core.windows.net"
+      },
+      {
+        "host": "openai.azure.com"
+      },
+      {
+        "suffix": ".openai.azure.com"
+      }
+    ]
+  }
+}

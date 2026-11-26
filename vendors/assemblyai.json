@@ -1,0 +1,29 @@
+{
+  "vendor": "assemblyai",
+  "packages": [],
+  "recognition": {
+    "sdks": {
+      "assemblyai": {
+        "disposition": "demanded",
+        "reason": "vendor assemblyai"
+      }
+    },
+    "pypi": {
+      "assemblyai": {
+        "disposition": "demanded",
+        "reason": "vendor assemblyai"
+      }
+    },
+    "envStems": {
+      "assemblyai": {
+        "disposition": "demanded",
+        "reason": "vendor assemblyai"
+      }
+    },
+    "hosts": [
+      {
+        "host": "api.assemblyai.com"
+      }
+    ]
+  }
+}

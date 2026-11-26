@@ -1,0 +1,12 @@
+{
+  "vendor": "reo.dev",
+  "packages": [],
+  "recognition": {
+    "envStems": {
+      "reodev": {
+        "disposition": "demanded",
+        "reason": "vendor reo.dev"
+      }
+    }
+  }
+}

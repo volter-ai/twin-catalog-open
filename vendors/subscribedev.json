@@ -1,0 +1,31 @@
+{
+  "vendor": "subscribedev",
+  "packages": [],
+  "recognition": {
+    "sdks": {
+      "@subscribe.dev/react": {
+        "disposition": "demanded",
+        "reason": "vendor subscribedev"
+      },
+      "@subscribe.dev/sdk": {
+        "disposition": "demanded",
+        "reason": "vendor subscribedev"
+      }
+    },
+    "hosts": [
+      {
+        "host": "subscribe.dev"
+      },
+      {
+        "suffix": ".subscribe.dev"
+      },
+      {
+        "host": "subscribe-dev.com"
+      },
+      {
+        "suffix": ".subscribe-dev.com"
+      }
+    ],
+    "retired": "owner, 2026-09-30: \"that service is discontinued\""
+  }
+}

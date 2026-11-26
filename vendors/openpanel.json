@@ -1,0 +1,18 @@
+{
+  "vendor": "openpanel",
+  "packages": [],
+  "recognition": {
+    "sdks": {
+      "@openpanel/sdk": {
+        "disposition": "demanded",
+        "reason": "vendor openpanel"
+      }
+    },
+    "envStems": {
+      "openpanel": {
+        "disposition": "demanded",
+        "reason": "vendor openpanel"
+      }
+    }
+  }
+}

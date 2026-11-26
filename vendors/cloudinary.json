@@ -1,0 +1,12 @@
+{
+  "vendor": "cloudinary",
+  "packages": [],
+  "recognition": {
+    "envStems": {
+      "cloudinary": {
+        "disposition": "demanded",
+        "reason": "vendor cloudinary"
+      }
+    }
+  }
+}

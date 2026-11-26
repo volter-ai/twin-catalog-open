@@ -1,0 +1,12 @@
+{
+  "vendor": "faceit",
+  "packages": [],
+  "recognition": {
+    "envStems": {
+      "faceit": {
+        "disposition": "demanded",
+        "reason": "vendor faceit"
+      }
+    }
+  }
+}

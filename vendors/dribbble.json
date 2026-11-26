@@ -1,0 +1,20 @@
+{
+  "vendor": "dribbble",
+  "packages": [],
+  "recognition": {
+    "envStems": {
+      "dribbble": {
+        "disposition": "demanded",
+        "reason": "vendor dribbble"
+      }
+    },
+    "hosts": [
+      {
+        "host": "api.dribbble.com"
+      },
+      {
+        "host": "dribbble.com"
+      }
+    ]
+  }
+}

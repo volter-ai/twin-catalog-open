@@ -1,0 +1,12 @@
+{
+  "vendor": "appsumo",
+  "packages": [],
+  "recognition": {
+    "envStems": {
+      "appsumo": {
+        "disposition": "demanded",
+        "reason": "vendor appsumo"
+      }
+    }
+  }
+}

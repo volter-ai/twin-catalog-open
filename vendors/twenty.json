@@ -1,0 +1,16 @@
+{
+  "vendor": "twenty",
+  "packages": [],
+  "recognition": {
+    "sdks": {
+      "twenty-client-sdk": {
+        "disposition": "demanded",
+        "reason": "vendor twenty"
+      },
+      "twenty-sdk": {
+        "disposition": "demanded",
+        "reason": "vendor twenty"
+      }
+    }
+  }
+}

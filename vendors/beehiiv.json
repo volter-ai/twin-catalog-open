@@ -1,0 +1,12 @@
+{
+  "vendor": "beehiiv",
+  "packages": [],
+  "recognition": {
+    "envStems": {
+      "beehiive": {
+        "disposition": "demanded",
+        "reason": "vendor beehiiv"
+      }
+    }
+  }
+}

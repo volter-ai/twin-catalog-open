@@ -1,0 +1,20 @@
+{
+  "vendor": "ghost",
+  "packages": [],
+  "recognition": {
+    "envStems": {
+      "ghostadmin": {
+        "disposition": "demanded",
+        "reason": "vendor ghost (Ghost Admin API key)"
+      },
+      "ghostcontent": {
+        "disposition": "demanded",
+        "reason": "vendor ghost (Ghost Content API key)"
+      },
+      "publicghostcontent": {
+        "disposition": "demanded",
+        "reason": "vendor ghost (VITE_PUBLIC_GHOST_CONTENT_API_KEY \u2014 the browser-side Content API key)"
+      }
+    }
+  }
+}

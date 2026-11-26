@@ -1,0 +1,11 @@
+{
+  "vendor": "tandem",
+  "packages": [],
+  "recognition": {
+    "hosts": [
+      {
+        "host": "tandem.chat"
+      }
+    ]
+  }
+}

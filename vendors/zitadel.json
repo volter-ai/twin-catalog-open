@@ -1,0 +1,12 @@
+{
+  "vendor": "zitadel",
+  "packages": [],
+  "recognition": {
+    "envStems": {
+      "zitadel": {
+        "disposition": "demanded",
+        "reason": "vendor zitadel"
+      }
+    }
+  }
+}

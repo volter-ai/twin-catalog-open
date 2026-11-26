@@ -1,0 +1,36 @@
+{
+  "vendor": "gcs",
+  "packages": [],
+  "recognition": {
+    "sdks": {
+      "@google-cloud/storage": {
+        "disposition": "demanded",
+        "reason": "vendor gcs"
+      }
+    },
+    "pypi": {
+      "google-cloud-storage": {
+        "disposition": "demanded",
+        "reason": "vendor gcs"
+      }
+    },
+    "envStems": {
+      "gcs": {
+        "disposition": "demanded",
+        "reason": "vendor gcs"
+      },
+      "googlecloudstorage": {
+        "disposition": "demanded",
+        "reason": "vendor gcs"
+      }
+    },
+    "hosts": [
+      {
+        "host": "storage.googleapis.com"
+      },
+      {
+        "suffix": ".storage.googleapis.com"
+      }
+    ]
+  }
+}

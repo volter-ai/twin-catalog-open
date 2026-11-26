@@ -1,0 +1,11 @@
+{
+  "vendor": "dicebear",
+  "packages": [],
+  "recognition": {
+    "hosts": [
+      {
+        "host": "api.dicebear.com"
+      }
+    ]
+  }
+}

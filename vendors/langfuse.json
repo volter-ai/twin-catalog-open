@@ -1,0 +1,36 @@
+{
+  "vendor": "langfuse",
+  "packages": [],
+  "recognition": {
+    "sdks": {
+      "langfuse": {
+        "disposition": "demanded",
+        "reason": "vendor langfuse"
+      },
+      "langfuse-node": {
+        "disposition": "demanded",
+        "reason": "vendor langfuse"
+      }
+    },
+    "pypi": {
+      "langfuse": {
+        "disposition": "demanded",
+        "reason": "vendor langfuse"
+      }
+    },
+    "envStems": {
+      "langfuse": {
+        "disposition": "demanded",
+        "reason": "vendor langfuse"
+      }
+    },
+    "hosts": [
+      {
+        "host": "cloud.langfuse.com"
+      },
+      {
+        "host": "us.cloud.langfuse.com"
+      }
+    ]
+  }
+}

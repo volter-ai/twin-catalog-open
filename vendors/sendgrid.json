@@ -1,0 +1,43 @@
+{
+  "vendor": "sendgrid",
+  "packages": [],
+  "recognition": {
+    "sdks": {
+      "@sendgrid/client": {
+        "disposition": "demanded",
+        "reason": "vendor sendgrid"
+      },
+      "@sendgrid/mail": {
+        "disposition": "demanded",
+        "reason": "vendor sendgrid"
+      }
+    },
+    "pypi": {
+      "sendgrid": {
+        "disposition": "demanded",
+        "reason": "vendor sendgrid"
+      }
+    },
+    "envStems": {
+      "sendgrid": {
+        "disposition": "demanded",
+        "reason": "vendor sendgrid"
+      },
+      "sendgridsync": {
+        "disposition": "demanded",
+        "reason": "vendor sendgrid"
+      }
+    },
+    "hosts": [
+      {
+        "host": "api.eu.sendgrid.com"
+      },
+      {
+        "host": "api.sendgrid.com"
+      },
+      {
+        "host": "email.twilio.com"
+      }
+    ]
+  }
+}

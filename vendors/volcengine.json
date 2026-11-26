@@ -1,0 +1,12 @@
+{
+  "vendor": "volcengine",
+  "packages": [],
+  "recognition": {
+    "envStems": {
+      "volcengine": {
+        "disposition": "demanded",
+        "reason": "vendor volcengine (ByteDance Volcengine Ark)"
+      }
+    }
+  }
+}

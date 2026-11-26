@@ -1,0 +1,46 @@
+{
+  "vendor": "azureformrecognizer",
+  "packages": [],
+  "recognition": {
+    "sdks": {
+      "@azure-rest/ai-document-intelligence": {
+        "disposition": "demanded",
+        "reason": "vendor azureformrecognizer"
+      },
+      "@azure/ai-form-recognizer": {
+        "disposition": "demanded",
+        "reason": "vendor azureformrecognizer"
+      }
+    },
+    "pypi": {
+      "azure-ai-documentintelligence": {
+        "disposition": "demanded",
+        "reason": "vendor azureformrecognizer"
+      },
+      "azure-ai-formrecognizer": {
+        "disposition": "demanded",
+        "reason": "vendor azureformrecognizer"
+      }
+    },
+    "envStems": {
+      "azuredocumentintelligence": {
+        "disposition": "demanded",
+        "reason": "vendor azureformrecognizer"
+      },
+      "azureformrecognizer": {
+        "disposition": "demanded",
+        "reason": "vendor azureformrecognizer"
+      }
+    },
+    "hosts": [
+      {
+        "pathPattern": "^/(documentintelligence|formrecognizer)/",
+        "host": "cognitiveservices.azure.com"
+      },
+      {
+        "pathPattern": "^/(documentintelligence|formrecognizer)/",
+        "suffix": ".cognitiveservices.azure.com"
+      }
+    ]
+  }
+}

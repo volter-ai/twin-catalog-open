@@ -1,0 +1,48 @@
+{
+  "vendor": "mixpanel",
+  "packages": [],
+  "recognition": {
+    "sdks": {
+      "mixpanel": {
+        "disposition": "demanded",
+        "reason": "vendor mixpanel"
+      },
+      "mixpanel-browser": {
+        "disposition": "demanded",
+        "reason": "vendor mixpanel"
+      }
+    },
+    "pypi": {
+      "mixpanel": {
+        "disposition": "demanded",
+        "reason": "vendor mixpanel"
+      }
+    },
+    "hosts": [
+      {
+        "host": "api-eu.mixpanel.com"
+      },
+      {
+        "host": "api-in.mixpanel.com"
+      },
+      {
+        "host": "api-js.mixpanel.com"
+      },
+      {
+        "host": "api.mixpanel.com"
+      },
+      {
+        "host": "data-eu.mixpanel.com"
+      },
+      {
+        "host": "data-in.mixpanel.com"
+      },
+      {
+        "host": "data.mixpanel.com"
+      },
+      {
+        "host": "mixpanel.com"
+      }
+    ]
+  }
+}

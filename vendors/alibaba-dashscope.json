@@ -1,0 +1,12 @@
+{
+  "vendor": "alibaba-dashscope",
+  "packages": [],
+  "recognition": {
+    "sdks": {
+      "@ai-sdk/alibaba": {
+        "disposition": "demanded",
+        "reason": "vendor alibaba-dashscope"
+      }
+    }
+  }
+}

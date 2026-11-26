@@ -1,0 +1,12 @@
+{
+  "vendor": "botpress",
+  "packages": [],
+  "recognition": {
+    "sdks": {
+      "@botpress/sdk": {
+        "disposition": "demanded",
+        "reason": "vendor botpress"
+      }
+    }
+  }
+}

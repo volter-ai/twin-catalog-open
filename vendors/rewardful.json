@@ -1,0 +1,11 @@
+{
+  "vendor": "rewardful",
+  "packages": [],
+  "recognition": {
+    "hosts": [
+      {
+        "host": "api.getrewardful.com"
+      }
+    ]
+  }
+}

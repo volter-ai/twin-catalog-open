@@ -22,7 +22,7 @@ helps identify the component. Reporting a problem does not require a paid Volter
 
 [The contributor guide](docs/contributing.md) takes a twin from choosing the vendor to its admission here, written for
 an AI agent working from public repositories and the released tools alone: the demand, the spec, citations and rate
-limits, the journeys, the contributor's own checks (`twin-standard walk`, `conform`), a kernel proposal when the
+limits, the journeys, one final `twin-standard walk`, independent retained plausibility verdicts, a kernel proposal when the
 standard lacks a mechanism ([proposals/kernel](proposals/kernel/README.md)), and the registration, publication and
 submission below. Which vendors public applications call, and which have no implementation here yet, is
 [`demand.json`](demand.json), written by Volter's demand scan.
@@ -45,10 +45,12 @@ It writes `sources.json` only. An installed CLI outside a fork writes `registrat
 another output path. Open a separate source-registration PR before submitting releases. A matching existing source
 is idempotent; conflicting registration data is refused.
 
-After registration merges, publish a package from that public repository with npm provenance. Its package.json names
+After registration merges, publish a package whose package.json names
 the registered repository; its generated pack facts name the vendor it simulates. A package may have any scoped npm
 name. Its artifact includes the source, spec and journeys required by the released Protocol 3 standard. Build against
-the published SDK and standard; no platform checkout is needed by this catalog.
+the published SDK and standard; no platform checkout is needed by this catalog. Admission reads the package's actual
+npm visibility. Public packages require verified registered-source npm provenance; restricted packages bind the
+registered repository and immutable `sourceCommit`, exact version/integrity and existing authority checks.
 
 In a fork of this catalog, create the submission with its released CLI or this identical repository command:
 
@@ -56,7 +58,13 @@ In a fork of this catalog, create the submission with its released CLI or this i
 node bin/twin-catalog.mjs submit --source example-team --vendor stripe --package @example/stripe-simulator --version 1.2.3
 ```
 
-Open a PR adding only the generated `submissions/<sha256>.json`. The CLI writes data only. An operator explicitly assesses the exact artifact outside CI, verifies integrity and provenance, installs dependencies without scripts and runs the released standard in an offline container and a World. An independently registered assessment authority records its complete controller envelope in a durable GitHub evidence release; current defaults' reports also have an index-package copy. No PR event starts assessment. Code fixes require a new published version and updated submission filename. Do not edit the
+For a restricted package, pass `--source-commit <immutable-source-sha>` if registry metadata does not supply it.
+Open a PR adding only the generated `submissions/<sha256>.json`. The CLI writes data only. An operator explicitly reads
+the exact archive outside CI, verifies integrity and source identity, and retains its outline, nonempty customer life
+and two independent plausible verdicts. Admission imports and executes no candidate code. An independently registered
+assessment authority records the complete controller envelope in a durable GitHub evidence release; current defaults'
+reports also have an index-package copy. No PR event starts assessment. Code fixes require a new published version and
+updated submission filename. Do not edit the
 index, policy or source registration as part of a release submission.
 
 An authenticated ready assessment is evidence for a separate maintainer decision. Untrusted-account submissions require moderator review
@@ -67,9 +75,11 @@ in `.github/CODEOWNERS`.
 ## Consume the index
 
 An unassessed historical release may be submitted with `--reassess`; its file belongs in `reassessments/` and goes
-through the same checks and moderation. A version without its original provenance must be followed by a new release.
+through the same checks and moderation. A public version without its required original provenance must be followed by
+a new release.
 
-`@volter/twin-catalog` carries `sources.json`, `vendors/`, `recommendations.json`, `revocations.json` and `catalog.json`.
+`@volter/twin-catalog` carries `sources.json`, `vendors/`, `recommendations.json`, `revocations.json`, `policy.json`,
+generated per-vendor `facts/` and `catalog.json`.
 Vendor and package identities are separate. Multiple implementations remain visible; recommendations select a default
 package when necessary. Stable approved versions are selected within that package. World pins do not move. Historical
 index entries without an assessment are identified as unassessed.
@@ -80,7 +90,9 @@ node bin/twin-catalog.mjs defaults
 node bin/twin-catalog.mjs build --out /tmp/new-catalog-output
 ```
 
-The build requires committed admission records and a new output directory. It generates data without importing packs.
+The build requires committed admission records and a new output directory. It hydrates the selected defaults' retained
+reports from the catalog's receipt references and generates data without importing packs. Existing `GH_TOKEN` or
+`GITHUB_TOKEN` supplies access to restricted durable reports; public reports permit anonymous reads.
 The website and hosted runtime consume this artifact independently; publishing it does not deploy either.
 
 Maintainers use `node bin/twin-catalog.mjs capture-content` to retain the exact artifacts' manifests, READMEs and pack
@@ -103,7 +115,8 @@ const catalog = browse('./node_modules/@volter/twin-catalog');
 
 The reader shows each vendor's current default release. An ambiguous vendor has `selection.state: "choice-required"`
 and no offered release. Filtering a package does not change the vendor's default. Selectability and assessment availability are
-separate fields. Bound report measurements retain their original scope; absent measurements are `null`. The reader
+separate fields. New `publisherReview` records expose exact retained text and hashes, with `measurements: null`.
+Historical measurements retain their original scope; absent measurements are `null`. The reader
 checks snapshot and report digests without importing packs or reading Git history. `snapshot.integrity` is `null`
 unless the caller supplies retained installation evidence; the reader does not verify the package tarball. See
 [the read contract](docs/process.md#read-the-published-catalog).
@@ -112,10 +125,10 @@ unless the caller supplies retained installation evidence; the reader does not v
 
 The [operator procedure](docs/operations.md) covers failed phases, immutable retries, revocation and credential roles.
 
-`policy.json` pins released evaluator versions and the registry. Policy changes are separate moderator-reviewed PRs.
-The evaluator requires Docker on Linux with an x86-64 runner (the pinned Bun binary is linux-x64). Reports record the actual image identity and dependency lock, PR head/base,
-and policy identity. Docker network isolation applies to evaluation; preparation downloads npm packages and
-attestations. No credentials enter either container.
+`policy.json` owns the registry, authority rules and catalog metadata. Policy changes are separate moderator-reviewed
+PRs. Admission reads exact archive data and retained publisher reviews; source/form tools remain publisher
+authoring tools. Existing npm configuration supplies restricted reads without exposing credentials or following
+redirects. Reports bind artifact, registered source, review bytes, PR head/base, controller and policy identities.
 
 Use the explicit operator commands, with existing GitHub authority in `GH_TOKEN` or `GITHUB_TOKEN`:
 
@@ -146,15 +159,17 @@ Run the approved pinned-rule and custody-value keys sweep over that archive and 
 naming its digest and reviewed source. Explicitly advance the separate `publish` branch to that exact source;
 main integration never advances it. A registered `policy.publicationAuthorities` account stages the byte-bound
 archive and receipt at `prepared-catalog-<version>`. The manual registered `publish.yml` runs only from `publish`
-at the prepared SHA and uploads only those bytes with npm provenance within its one-minute job ceiling.
-It installs nothing, runs no qualification and performs no registry propagation wait. Main never publishes.
+at the prepared SHA and uploads only those bytes with the prepared access setting within its one-minute job ceiling.
+Public packages require npm provenance; restricted publication omits that unsupported npm option.
+It installs only the reviewed controller dependencies with lifecycle scripts disabled, runs no candidate qualification
+and performs no registry propagation wait. Main never publishes.
 `confirm-publication` performs the measured bounded registry reads outside CI. A timeout or uncertain result needs
 confirmation without another upload. A durable intent written before npm prevents retries across workflow runs;
 per-attempt outcome receipts retain accepted or uncertain results. The complete commands, sweep receipt format,
 branch bindings and recovery paths are in [operations](docs/operations.md).
 
 Website delivery is independent: it selects a released snapshot and exposes its own source/catalog/deployment receipt.
-Nothing here deploys it or changes an existing World's pins. Source repositories must be public for npm provenance;
+Nothing here deploys it or changes an existing World's pins. Public-package npm provenance needs a public source;
 publication custody and trusted-workflow registration remain explicit operator responsibilities.
 
 A publisher that has just completed npm upload can use `submit --confirm-published` to wait for its exact

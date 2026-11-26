@@ -1,0 +1,12 @@
+{
+  "vendor": "osu",
+  "packages": [],
+  "recognition": {
+    "envStems": {
+      "osu": {
+        "disposition": "demanded",
+        "reason": "vendor osu"
+      }
+    }
+  }
+}

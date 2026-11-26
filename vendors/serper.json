@@ -1,0 +1,20 @@
+{
+  "vendor": "serper",
+  "packages": [],
+  "recognition": {
+    "envStems": {
+      "serper": {
+        "disposition": "demanded",
+        "reason": "vendor serper"
+      }
+    },
+    "hosts": [
+      {
+        "host": "google.serper.dev"
+      },
+      {
+        "host": "scrape.serper.dev"
+      }
+    ]
+  }
+}

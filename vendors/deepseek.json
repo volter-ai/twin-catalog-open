@@ -1,0 +1,23 @@
+{
+  "vendor": "deepseek",
+  "packages": [],
+  "recognition": {
+    "sdks": {
+      "@ai-sdk/deepseek": {
+        "disposition": "demanded",
+        "reason": "vendor deepseek"
+      }
+    },
+    "envStems": {
+      "deepseek": {
+        "disposition": "demanded",
+        "reason": "vendor deepseek"
+      }
+    },
+    "hosts": [
+      {
+        "host": "api.deepseek.com"
+      }
+    ]
+  }
+}

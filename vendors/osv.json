@@ -1,0 +1,12 @@
+{
+  "vendor": "osv",
+  "packages": [],
+  "recognition": {
+    "hosts": [
+      {
+        "host": "api.osv.dev",
+        "pathPattern": "^/v1/(querybatch|vulns/)"
+      }
+    ]
+  }
+}

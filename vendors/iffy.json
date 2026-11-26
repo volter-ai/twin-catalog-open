@@ -1,0 +1,13 @@
+{
+  "vendor": "iffy",
+  "packages": [],
+  "recognition": {
+    "envStems": {
+      "iffy": {
+        "disposition": "acknowledged",
+        "reason": "acknowledged: iffy.com content-moderation SaaS \u2014 pack on demand",
+        "uncovered": true
+      }
+    }
+  }
+}

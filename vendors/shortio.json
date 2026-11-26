@@ -1,0 +1,11 @@
+{
+  "vendor": "shortio",
+  "packages": [],
+  "recognition": {
+    "hosts": [
+      {
+        "host": "api.short.io"
+      }
+    ]
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "vendor": "shopify",
+  "packages": [],
+  "recognition": {
+    "sdks": {
+      "@shopify/shopify-api": {
+        "disposition": "demanded",
+        "reason": "vendor shopify, well-known service client with no twin pack"
+      },
+      "shopify-api-node": {
+        "disposition": "demanded",
+        "reason": "vendor shopify, well-known service client with no twin pack"
+      }
+    }
+  }
+}

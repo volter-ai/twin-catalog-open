@@ -1,0 +1,27 @@
+{
+  "vendor": "deepinfra",
+  "packages": [],
+  "recognition": {
+    "sdks": {
+      "@ai-sdk/deepinfra": {
+        "disposition": "demanded",
+        "reason": "vendor deepinfra"
+      },
+      "deepinfra": {
+        "disposition": "demanded",
+        "reason": "vendor deepinfra"
+      }
+    },
+    "envStems": {
+      "deepinfra": {
+        "disposition": "demanded",
+        "reason": "vendor deepinfra"
+      }
+    },
+    "hosts": [
+      {
+        "host": "api.deepinfra.com"
+      }
+    ]
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "vendor": "algolia",
+  "packages": [],
+  "recognition": {
+    "sdks": {
+      "algoliasearch": {
+        "disposition": "demanded",
+        "reason": "vendor algolia"
+      }
+    },
+    "pypi": {
+      "algoliasearch": {
+        "disposition": "demanded",
+        "reason": "vendor algolia"
+      }
+    },
+    "envStems": {
+      "algolia": {
+        "disposition": "demanded",
+        "reason": "vendor algolia"
+      },
+      "algoliawrite": {
+        "disposition": "demanded",
+        "reason": "vendor algolia"
+      }
+    }
+  }
+}

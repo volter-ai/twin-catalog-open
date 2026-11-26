@@ -1,0 +1,18 @@
+{
+  "vendor": "keenable",
+  "packages": [],
+  "recognition": {
+    "envStems": {
+      "keenable": {
+        "disposition": "demanded",
+        "reason": "vendor keenable"
+      }
+    },
+    "hosts": [
+      {
+        "host": "api.keenable.ai",
+        "pathPattern": "^/v1/(search|fetch)"
+      }
+    ]
+  }
+}

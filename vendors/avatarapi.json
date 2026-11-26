@@ -1,0 +1,11 @@
+{
+  "vendor": "avatarapi",
+  "packages": [],
+  "recognition": {
+    "hosts": [
+      {
+        "host": "avatarapi.com"
+      }
+    ]
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "vendor": "kapa.ai",
+  "packages": [],
+  "recognition": {
+    "sdks": {
+      "@kapaai/react-sdk": {
+        "disposition": "demanded",
+        "reason": "vendor kapa.ai"
+      }
+    }
+  }
+}

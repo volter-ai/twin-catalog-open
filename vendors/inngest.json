@@ -1,0 +1,24 @@
+{
+  "vendor": "inngest",
+  "packages": [],
+  "recognition": {
+    "sdks": {
+      "inngest": {
+        "disposition": "demanded",
+        "reason": "vendor inngest"
+      }
+    },
+    "pypi": {
+      "inngest": {
+        "disposition": "demanded",
+        "reason": "vendor inngest"
+      }
+    },
+    "envStems": {
+      "inngest": {
+        "disposition": "demanded",
+        "reason": "vendor inngest"
+      }
+    }
+  }
+}

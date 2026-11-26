@@ -1,0 +1,16 @@
+{
+  "vendor": "neon",
+  "packages": [],
+  "recognition": {
+    "sdks": {
+      "@neondatabase/serverless": {
+        "disposition": "demanded",
+        "reason": "vendor neon, DB data-plane over HTTP; hides behind DATABASE_URL-shaped env that init's infra heuristic claims first, so the dep name is the only escaping signal"
+      },
+      "@vercel/postgres": {
+        "disposition": "demanded",
+        "reason": "vendor neon, DB data-plane over HTTP; the driver uses DATABASE_URL-shaped environment values, so its dependency name identifies the service"
+      }
+    }
+  }
+}

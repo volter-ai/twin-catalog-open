@@ -1,0 +1,52 @@
+{
+  "vendor": "stigg",
+  "packages": [],
+  "recognition": {
+    "sdks": {
+      "@stigg/api-client-js": {
+        "disposition": "demanded",
+        "reason": "vendor stigg"
+      },
+      "@stigg/js-client-sdk": {
+        "disposition": "demanded",
+        "reason": "vendor stigg"
+      },
+      "@stigg/node-server-sdk": {
+        "disposition": "demanded",
+        "reason": "vendor stigg"
+      },
+      "@stigg/react-sdk": {
+        "disposition": "demanded",
+        "reason": "vendor stigg"
+      }
+    },
+    "pypi": {
+      "stigg": {
+        "disposition": "demanded",
+        "reason": "vendor stigg"
+      },
+      "stigg-api-client": {
+        "disposition": "demanded",
+        "reason": "vendor stigg"
+      }
+    },
+    "envStems": {
+      "stigg": {
+        "disposition": "demanded",
+        "reason": "vendor stigg"
+      },
+      "stiggclient": {
+        "disposition": "demanded",
+        "reason": "vendor stigg"
+      }
+    },
+    "hosts": [
+      {
+        "host": "api.stigg.io"
+      },
+      {
+        "host": "edge.api.stigg.io"
+      }
+    ]
+  }
+}

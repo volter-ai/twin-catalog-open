@@ -1,0 +1,11 @@
+{
+  "vendor": "wsrv",
+  "packages": [],
+  "recognition": {
+    "hosts": [
+      {
+        "host": "wsrv.nl"
+      }
+    ]
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "vendor": "fireworks",
+  "packages": [],
+  "recognition": {
+    "sdks": {
+      "@ai-sdk/fireworks": {
+        "disposition": "demanded",
+        "reason": "vendor fireworks"
+      }
+    },
+    "pypi": {
+      "fireworks-ai": {
+        "disposition": "demanded",
+        "reason": "vendor fireworks"
+      }
+    },
+    "envStems": {
+      "fireworks": {
+        "disposition": "demanded",
+        "reason": "vendor fireworks"
+      }
+    },
+    "hosts": [
+      {
+        "host": "api.fireworks.ai"
+      }
+    ]
+  }
+}

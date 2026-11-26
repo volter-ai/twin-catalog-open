@@ -1,0 +1,12 @@
+{
+  "vendor": "box",
+  "packages": [],
+  "recognition": {
+    "envStems": {
+      "box": {
+        "disposition": "demanded",
+        "reason": "vendor box"
+      }
+    }
+  }
+}

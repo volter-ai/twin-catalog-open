@@ -1,0 +1,17 @@
+{
+  "vendor": "giphy",
+  "packages": [],
+  "recognition": {
+    "envStems": {
+      "giphy": {
+        "disposition": "demanded",
+        "reason": "vendor giphy"
+      }
+    },
+    "hosts": [
+      {
+        "host": "api.giphy.com"
+      }
+    ]
+  }
+}

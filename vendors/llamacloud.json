@@ -1,0 +1,12 @@
+{
+  "vendor": "llamacloud",
+  "packages": [],
+  "recognition": {
+    "envStems": {
+      "llamaparse": {
+        "disposition": "demanded",
+        "reason": "vendor llamacloud"
+      }
+    }
+  }
+}

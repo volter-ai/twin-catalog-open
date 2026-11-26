@@ -1,0 +1,17 @@
+{
+  "vendor": "dub",
+  "packages": [],
+  "recognition": {
+    "envStems": {
+      "dub": {
+        "disposition": "demanded",
+        "reason": "vendor dub"
+      }
+    },
+    "hosts": [
+      {
+        "host": "api.dub.co"
+      }
+    ]
+  }
+}

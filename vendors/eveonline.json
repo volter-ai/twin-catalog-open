@@ -1,0 +1,12 @@
+{
+  "vendor": "eveonline",
+  "packages": [],
+  "recognition": {
+    "envStems": {
+      "eveonline": {
+        "disposition": "demanded",
+        "reason": "vendor eveonline"
+      }
+    }
+  }
+}

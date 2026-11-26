@@ -1,0 +1,24 @@
+{
+  "vendor": "notion",
+  "packages": [],
+  "recognition": {
+    "sdks": {
+      "@notionhq/client": {
+        "disposition": "demanded",
+        "reason": "vendor notion"
+      }
+    },
+    "pypi": {
+      "notion-client": {
+        "disposition": "demanded",
+        "reason": "vendor notion"
+      }
+    },
+    "envStems": {
+      "notion": {
+        "disposition": "demanded",
+        "reason": "vendor notion"
+      }
+    }
+  }
+}

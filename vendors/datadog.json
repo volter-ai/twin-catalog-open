@@ -1,0 +1,68 @@
+{
+  "vendor": "datadog",
+  "packages": [],
+  "recognition": {
+    "sdks": {
+      "@datadog/browser-logs": {
+        "disposition": "demanded",
+        "reason": "vendor datadog"
+      },
+      "@datadog/browser-rum": {
+        "disposition": "demanded",
+        "reason": "vendor datadog"
+      },
+      "@datadog/datadog-api-client": {
+        "disposition": "demanded",
+        "reason": "vendor datadog"
+      },
+      "dd-trace": {
+        "disposition": "demanded",
+        "reason": "vendor datadog"
+      }
+    },
+    "pypi": {
+      "datadog": {
+        "disposition": "demanded",
+        "reason": "vendor datadog"
+      },
+      "datadog-api-client": {
+        "disposition": "demanded",
+        "reason": "vendor datadog"
+      },
+      "ddtrace": {
+        "disposition": "demanded",
+        "reason": "vendor datadog"
+      }
+    },
+    "envStems": {
+      "datadog": {
+        "disposition": "demanded",
+        "reason": "vendor datadog"
+      },
+      "dd": {
+        "disposition": "demanded",
+        "reason": "vendor datadog"
+      }
+    },
+    "hosts": [
+      {
+        "host": "datadoghq.com"
+      },
+      {
+        "host": "datadoghq.eu"
+      },
+      {
+        "host": "ddog-gov.com"
+      },
+      {
+        "suffix": ".datadoghq.com"
+      },
+      {
+        "suffix": ".datadoghq.eu"
+      },
+      {
+        "suffix": ".ddog-gov.com"
+      }
+    ]
+  }
+}

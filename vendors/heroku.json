@@ -1,0 +1,12 @@
+{
+  "vendor": "heroku",
+  "packages": [],
+  "recognition": {
+    "envStems": {
+      "infappconnectionherokuoauth": {
+        "disposition": "demanded",
+        "reason": "vendor heroku"
+      }
+    }
+  }
+}

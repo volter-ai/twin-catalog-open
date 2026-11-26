@@ -1,0 +1,20 @@
+{
+  "vendor": "zoom",
+  "packages": [],
+  "recognition": {
+    "envStems": {
+      "zoom": {
+        "disposition": "demanded",
+        "reason": "vendor zoom"
+      }
+    },
+    "hosts": [
+      {
+        "host": "api.zoom.us"
+      },
+      {
+        "host": "zoom.us"
+      }
+    ]
+  }
+}

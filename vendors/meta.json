@@ -1,0 +1,26 @@
+{
+  "vendor": "meta",
+  "packages": [],
+  "recognition": {
+    "sdks": {
+      "facebook-nodejs-business-sdk": {
+        "disposition": "demanded",
+        "reason": "vendor meta"
+      }
+    },
+    "envStems": {
+      "facebook": {
+        "disposition": "demanded",
+        "reason": "vendor meta"
+      }
+    },
+    "hosts": [
+      {
+        "host": "graph.facebook.com"
+      },
+      {
+        "host": "graph.threads.net"
+      }
+    ]
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "vendor": "jellyjelly",
+  "packages": [],
+  "recognition": {
+    "hosts": [
+      {
+        "host": "www.jellyjelly.com"
+      }
+    ]
+  }
+}

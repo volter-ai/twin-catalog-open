@@ -1,0 +1,12 @@
+{
+  "vendor": "vapi",
+  "packages": [],
+  "recognition": {
+    "sdks": {
+      "@vapi-ai/server-sdk": {
+        "disposition": "demanded",
+        "reason": "vendor vapi"
+      }
+    }
+  }
+}

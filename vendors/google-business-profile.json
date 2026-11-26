@@ -1,0 +1,20 @@
+{
+  "vendor": "google-business-profile",
+  "packages": [],
+  "recognition": {
+    "hosts": [
+      {
+        "host": "mybusinessaccountmanagement.googleapis.com"
+      },
+      {
+        "host": "mybusinessbusinessinformation.googleapis.com"
+      },
+      {
+        "host": "mybusiness.googleapis.com"
+      },
+      {
+        "host": "businessprofileperformance.googleapis.com"
+      }
+    ]
+  }
+}

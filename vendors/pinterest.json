@@ -1,0 +1,20 @@
+{
+  "vendor": "pinterest",
+  "packages": [],
+  "recognition": {
+    "envStems": {
+      "pinterest": {
+        "disposition": "demanded",
+        "reason": "vendor pinterest"
+      }
+    },
+    "hosts": [
+      {
+        "host": "api-sandbox.pinterest.com"
+      },
+      {
+        "host": "api.pinterest.com"
+      }
+    ]
+  }
+}

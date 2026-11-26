@@ -1,0 +1,12 @@
+{
+  "vendor": "crowdin",
+  "packages": [],
+  "recognition": {
+    "envStems": {
+      "crowdin": {
+        "disposition": "demanded",
+        "reason": "vendor crowdin"
+      }
+    }
+  }
+}

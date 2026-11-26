@@ -1,0 +1,12 @@
+{
+  "vendor": "zhipu",
+  "packages": [],
+  "recognition": {
+    "envStems": {
+      "chatglm": {
+        "disposition": "demanded",
+        "reason": "vendor zhipu"
+      }
+    }
+  }
+}

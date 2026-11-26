@@ -1,0 +1,32 @@
+{
+  "vendor": "mailgun",
+  "packages": [],
+  "recognition": {
+    "sdks": {
+      "mailgun.js": {
+        "disposition": "demanded",
+        "reason": "vendor mailgun"
+      }
+    },
+    "pypi": {
+      "mailgun": {
+        "disposition": "demanded",
+        "reason": "vendor mailgun"
+      }
+    },
+    "envStems": {
+      "mailgun": {
+        "disposition": "demanded",
+        "reason": "vendor mailgun"
+      }
+    },
+    "hosts": [
+      {
+        "host": "api.eu.mailgun.net"
+      },
+      {
+        "host": "api.mailgun.net"
+      }
+    ]
+  }
+}

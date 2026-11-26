@@ -1,0 +1,11 @@
+{
+  "vendor": "hashnode",
+  "packages": [],
+  "recognition": {
+    "hosts": [
+      {
+        "host": "gql-beta.hashnode.com"
+      }
+    ]
+  }
+}

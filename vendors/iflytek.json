@@ -1,0 +1,12 @@
+{
+  "vendor": "iflytek",
+  "packages": [],
+  "recognition": {
+    "envStems": {
+      "iflytek": {
+        "disposition": "demanded",
+        "reason": "vendor iflytek"
+      }
+    }
+  }
+}

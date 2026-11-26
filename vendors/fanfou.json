@@ -1,0 +1,12 @@
+{
+  "vendor": "fanfou",
+  "packages": [],
+  "recognition": {
+    "sdks": {
+      "fanfou-sdk": {
+        "disposition": "demanded",
+        "reason": "vendor fanfou (Fanfou microblog API)"
+      }
+    }
+  }
+}

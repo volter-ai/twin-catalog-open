@@ -1,0 +1,12 @@
+{
+  "vendor": "momento",
+  "packages": [],
+  "recognition": {
+    "sdks": {
+      "@gomomento/sdk": {
+        "disposition": "demanded",
+        "reason": "vendor momento"
+      }
+    }
+  }
+}

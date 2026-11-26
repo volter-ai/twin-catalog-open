@@ -1,0 +1,12 @@
+{
+  "vendor": "mastodon",
+  "packages": [],
+  "recognition": {
+    "envStems": {
+      "mastodon": {
+        "disposition": "demanded",
+        "reason": "vendor mastodon"
+      }
+    }
+  }
+}

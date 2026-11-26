@@ -1,0 +1,12 @@
+{
+  "vendor": "patreon",
+  "packages": [],
+  "recognition": {
+    "envStems": {
+      "patreon": {
+        "disposition": "demanded",
+        "reason": "vendor patreon"
+      }
+    }
+  }
+}

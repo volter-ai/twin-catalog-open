@@ -1,0 +1,12 @@
+{
+  "vendor": "baidu",
+  "packages": [],
+  "recognition": {
+    "envStems": {
+      "baidu": {
+        "disposition": "demanded",
+        "reason": "vendor baidu"
+      }
+    }
+  }
+}

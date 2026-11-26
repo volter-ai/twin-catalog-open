@@ -1,0 +1,12 @@
+{
+  "vendor": "onelogin",
+  "packages": [],
+  "recognition": {
+    "envStems": {
+      "onelogin": {
+        "disposition": "demanded",
+        "reason": "vendor onelogin"
+      }
+    }
+  }
+}

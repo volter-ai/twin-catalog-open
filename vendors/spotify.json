@@ -1,0 +1,12 @@
+{
+  "vendor": "spotify",
+  "packages": [],
+  "recognition": {
+    "envStems": {
+      "spotify": {
+        "disposition": "demanded",
+        "reason": "vendor spotify"
+      }
+    }
+  }
+}

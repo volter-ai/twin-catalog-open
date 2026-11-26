@@ -1,0 +1,21 @@
+{
+  "vendor": "appstoreconnect",
+  "packages": [],
+  "recognition": {
+    "envStems": {
+      "asc": {
+        "disposition": "demanded",
+        "reason": "vendor appstoreconnect"
+      },
+      "appstoreconnect": {
+        "disposition": "demanded",
+        "reason": "vendor appstoreconnect"
+      }
+    },
+    "hosts": [
+      {
+        "host": "api.appstoreconnect.apple.com"
+      }
+    ]
+  }
+}

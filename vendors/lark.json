@@ -1,0 +1,12 @@
+{
+  "vendor": "lark",
+  "packages": [],
+  "recognition": {
+    "sdks": {
+      "@larksuiteoapi/node-sdk": {
+        "disposition": "demanded",
+        "reason": "vendor lark"
+      }
+    }
+  }
+}

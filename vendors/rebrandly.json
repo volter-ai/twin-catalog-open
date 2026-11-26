@@ -1,0 +1,11 @@
+{
+  "vendor": "rebrandly",
+  "packages": [],
+  "recognition": {
+    "hosts": [
+      {
+        "host": "api.rebrandly.com"
+      }
+    ]
+  }
+}

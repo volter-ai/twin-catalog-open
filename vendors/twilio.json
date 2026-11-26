@@ -1,0 +1,24 @@
+{
+  "vendor": "twilio",
+  "packages": [],
+  "recognition": {
+    "sdks": {
+      "twilio": {
+        "disposition": "demanded",
+        "reason": "vendor twilio"
+      }
+    },
+    "pypi": {
+      "twilio": {
+        "disposition": "demanded",
+        "reason": "vendor twilio"
+      }
+    },
+    "envStems": {
+      "twilio": {
+        "disposition": "demanded",
+        "reason": "vendor twilio"
+      }
+    }
+  }
+}

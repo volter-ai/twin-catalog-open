@@ -1,0 +1,12 @@
+{
+  "vendor": "302ai",
+  "packages": [],
+  "recognition": {
+    "envStems": {
+      "ai302": {
+        "disposition": "demanded",
+        "reason": "vendor 302ai"
+      }
+    }
+  }
+}

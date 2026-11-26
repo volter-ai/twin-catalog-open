@@ -1,0 +1,11 @@
+{
+  "vendor": "tolt",
+  "packages": [],
+  "recognition": {
+    "hosts": [
+      {
+        "host": "api.tolt.com"
+      }
+    ]
+  }
+}

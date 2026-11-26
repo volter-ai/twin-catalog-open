@@ -1,0 +1,12 @@
+{
+  "vendor": "naver",
+  "packages": [],
+  "recognition": {
+    "envStems": {
+      "naver": {
+        "disposition": "demanded",
+        "reason": "vendor naver"
+      }
+    }
+  }
+}

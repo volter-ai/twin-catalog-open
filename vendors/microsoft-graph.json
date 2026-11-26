@@ -1,0 +1,20 @@
+{
+  "vendor": "microsoft-graph",
+  "packages": [],
+  "recognition": {
+    "envStems": {
+      "msgraph": {
+        "disposition": "demanded",
+        "reason": "vendor microsoft-graph"
+      }
+    },
+    "hosts": [
+      {
+        "host": "graph.microsoft.com"
+      },
+      {
+        "host": "login.microsoftonline.com"
+      }
+    ]
+  }
+}

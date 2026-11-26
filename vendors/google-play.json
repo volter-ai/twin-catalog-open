@@ -1,0 +1,12 @@
+{
+  "vendor": "google-play",
+  "packages": [],
+  "recognition": {
+    "sdks": {
+      "@googleapis/androidpublisher": {
+        "disposition": "demanded",
+        "reason": "vendor google-play (Play Developer API)"
+      }
+    }
+  }
+}

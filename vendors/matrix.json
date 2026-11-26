@@ -1,0 +1,12 @@
+{
+  "vendor": "matrix",
+  "packages": [],
+  "recognition": {
+    "sdks": {
+      "matrix-js-sdk": {
+        "disposition": "demanded",
+        "reason": "vendor matrix"
+      }
+    }
+  }
+}

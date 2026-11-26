@@ -1,0 +1,17 @@
+{
+  "vendor": "pipedrive",
+  "packages": [],
+  "recognition": {
+    "envStems": {
+      "pipedrive": {
+        "disposition": "demanded",
+        "reason": "vendor pipedrive"
+      }
+    },
+    "hosts": [
+      {
+        "host": "oauth.pipedrive.com"
+      }
+    ]
+  }
+}

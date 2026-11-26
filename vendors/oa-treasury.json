@@ -1,0 +1,36 @@
+{
+  "vendor": "oa-treasury",
+  "packages": [],
+  "recognition": {
+    "envStems": {
+      "agentproxy": {
+        "disposition": "demanded",
+        "reason": "vendor oa-treasury"
+      },
+      "agentproxyadmin": {
+        "disposition": "demanded",
+        "reason": "vendor oa-treasury"
+      },
+      "agentproxyhmac": {
+        "disposition": "demanded",
+        "reason": "vendor oa-treasury"
+      },
+      "modelproxy": {
+        "disposition": "demanded",
+        "reason": "vendor oa-treasury"
+      },
+      "modelproxyadmin": {
+        "disposition": "demanded",
+        "reason": "vendor oa-treasury"
+      }
+    },
+    "hosts": [
+      {
+        "host": "open-autonomy.org"
+      },
+      {
+        "host": "www.open-autonomy.org"
+      }
+    ]
+  }
+}

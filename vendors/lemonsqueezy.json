@@ -1,0 +1,12 @@
+{
+  "vendor": "lemonsqueezy",
+  "packages": [],
+  "recognition": {
+    "envStems": {
+      "lemonsqueezy": {
+        "disposition": "demanded",
+        "reason": "vendor lemonsqueezy"
+      }
+    }
+  }
+}

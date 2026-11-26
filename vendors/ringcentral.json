@@ -1,0 +1,12 @@
+{
+  "vendor": "ringcentral",
+  "packages": [],
+  "recognition": {
+    "sdks": {
+      "@ringcentral/sdk": {
+        "disposition": "demanded",
+        "reason": "vendor ringcentral"
+      }
+    }
+  }
+}

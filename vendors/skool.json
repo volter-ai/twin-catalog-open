@@ -1,0 +1,11 @@
+{
+  "vendor": "skool",
+  "packages": [],
+  "recognition": {
+    "hosts": [
+      {
+        "host": "api2.skool.com"
+      }
+    ]
+  }
+}

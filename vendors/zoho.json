@@ -1,0 +1,21 @@
+{
+  "vendor": "zoho",
+  "packages": [],
+  "recognition": {
+    "envStems": {
+      "zoho": {
+        "disposition": "demanded",
+        "reason": "vendor zoho"
+      },
+      "zohocrm": {
+        "disposition": "demanded",
+        "reason": "vendor zoho"
+      }
+    },
+    "hosts": [
+      {
+        "host": "www.zohoapis.com"
+      }
+    ]
+  }
+}

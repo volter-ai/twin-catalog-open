@@ -1,0 +1,12 @@
+{
+  "vendor": "scrapingbee",
+  "packages": [],
+  "recognition": {
+    "envStems": {
+      "scrapingbee": {
+        "disposition": "demanded",
+        "reason": "vendor scrapingbee"
+      }
+    }
+  }
+}

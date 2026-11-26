@@ -1,0 +1,28 @@
+{
+  "vendor": "pinecone",
+  "packages": [],
+  "recognition": {
+    "sdks": {
+      "@pinecone-database/pinecone": {
+        "disposition": "demanded",
+        "reason": "vendor pinecone"
+      }
+    },
+    "pypi": {
+      "pinecone": {
+        "disposition": "demanded",
+        "reason": "vendor pinecone"
+      },
+      "pinecone-client": {
+        "disposition": "demanded",
+        "reason": "vendor pinecone"
+      }
+    },
+    "envStems": {
+      "pinecone": {
+        "disposition": "demanded",
+        "reason": "vendor pinecone"
+      }
+    }
+  }
+}

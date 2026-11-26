@@ -1,0 +1,12 @@
+{
+  "vendor": "groundroute",
+  "packages": [],
+  "recognition": {
+    "envStems": {
+      "groundroute": {
+        "disposition": "demanded",
+        "reason": "vendor groundroute (api.groundroute.ai)"
+      }
+    }
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "vendor": "coinbase",
+  "packages": [],
+  "recognition": {
+    "envStems": {
+      "coinbase": {
+        "disposition": "demanded",
+        "reason": "vendor coinbase"
+      }
+    }
+  }
+}

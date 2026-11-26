@@ -1,0 +1,12 @@
+{
+  "vendor": "grafana-faro",
+  "packages": [],
+  "recognition": {
+    "sdks": {
+      "@grafana/faro-web-sdk": {
+        "disposition": "demanded",
+        "reason": "vendor grafana-faro (Faro frontend-observability collector); its @grafana/aws-sdk and @grafana/azure-sdk siblings are datasource-plugin helper libraries and stay not-external"
+      }
+    }
+  }
+}

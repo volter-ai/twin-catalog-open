@@ -1,0 +1,26 @@
+{
+  "vendor": "veriff",
+  "packages": [],
+  "recognition": {
+    "sdks": {
+      "@veriff/js-sdk": {
+        "disposition": "demanded",
+        "reason": "vendor veriff"
+      }
+    },
+    "envStems": {
+      "veriff": {
+        "disposition": "demanded",
+        "reason": "vendor veriff"
+      }
+    },
+    "hosts": [
+      {
+        "host": "api.veriff.me"
+      },
+      {
+        "host": "stationapi.veriff.com"
+      }
+    ]
+  }
+}

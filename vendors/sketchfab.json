@@ -1,0 +1,21 @@
+{
+  "vendor": "sketchfab",
+  "packages": [],
+  "recognition": {
+    "envStems": {
+      "sketchfab": {
+        "disposition": "demanded",
+        "reason": "vendor sketchfab"
+      }
+    },
+    "hosts": [
+      {
+        "host": "api.sketchfab.com"
+      },
+      {
+        "host": "sketchfab.com",
+        "pathPattern": "^/(oauth2|i)/"
+      }
+    ]
+  }
+}

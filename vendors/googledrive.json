@@ -1,0 +1,12 @@
+{
+  "vendor": "googledrive",
+  "packages": [],
+  "recognition": {
+    "hosts": [
+      {
+        "host": "www.googleapis.com",
+        "pathPattern": "^/(drive|upload/drive)/"
+      }
+    ]
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "vendor": "paypal",
+  "packages": [],
+  "recognition": {
+    "sdks": {
+      "paypal": {
+        "disposition": "demanded",
+        "reason": "vendor paypal \u2014 the twin (@volter/twin-paypal) serves this consumer's payouts, webhooks and Log-in-with-PayPal traffic through the api(-m).(sandbox.)paypal.com and www.(sandbox.)paypal.com injector entries. The bare `paypal` npm name stays listed here rather than in the pack's adoption.sdks because it is NOT a PayPal-published client (PayPal's own npm clients are `paypal-rest-sdk`, which the pack DOES claim, and the @paypal/* checkout SDKs, which model Orders/Payments/Vault \u2014 surface this twin does not serve), and adoption.sdks is for official clients of the surface the pack can honor.",
+        "uncovered": true
+      },
+      "paypal-rest-sdk": {
+        "disposition": "demanded",
+        "reason": "vendor paypal"
+      }
+    },
+    "pypi": {
+      "paypalrestsdk": {
+        "disposition": "demanded",
+        "reason": "vendor paypal"
+      }
+    },
+    "envStems": {
+      "paypal": {
+        "disposition": "demanded",
+        "reason": "vendor paypal"
+      }
+    },
+    "hosts": [
+      {
+        "host": "api-m.paypal.com",
+        "pathPattern": "^/v1/(?:oauth2/token/?$|identity/openidconnect/|payments/payouts(?:-item)?(?:/|$)|notifications/)|^/v2/checkout/orders(?:/|$)|^/_twin/",
+        "demandPathPattern": "^/?$|^/v1/(?:oauth2/token/?$|identity/openidconnect/|payments/payouts(?:-item)?(?:/|$)|notifications/)|^/v2/checkout/orders(?:/|$)|^/_twin/"
+      },
+      {
+        "host": "api-m.sandbox.paypal.com",
+        "pathPattern": "^/v1/(?:oauth2/token/?$|identity/openidconnect/|payments/payouts(?:-item)?(?:/|$)|notifications/)|^/v2/checkout/orders(?:/|$)|^/_twin/",
+        "demandPathPattern": "^/?$|^/v1/(?:oauth2/token/?$|identity/openidconnect/|payments/payouts(?:-item)?(?:/|$)|notifications/)|^/v2/checkout/orders(?:/|$)|^/_twin/"
+      },
+      {
+        "host": "api.paypal.com",
+        "pathPattern": "^/v1/(?:oauth2/token/?$|identity/openidconnect/|payments/payouts(?:-item)?(?:/|$)|notifications/)|^/v2/checkout/orders(?:/|$)|^/_twin/",
+        "demandPathPattern": "^/?$|^/v1/(?:oauth2/token/?$|identity/openidconnect/|payments/payouts(?:-item)?(?:/|$)|notifications/)|^/v2/checkout/orders(?:/|$)|^/_twin/"
+      },
+      {
+        "host": "api.sandbox.paypal.com",
+        "pathPattern": "^/v1/(?:oauth2/token/?$|identity/openidconnect/|payments/payouts(?:-item)?(?:/|$)|notifications/)|^/v2/checkout/orders(?:/|$)|^/_twin/",
+        "demandPathPattern": "^/?$|^/v1/(?:oauth2/token/?$|identity/openidconnect/|payments/payouts(?:-item)?(?:/|$)|notifications/)|^/v2/checkout/orders(?:/|$)|^/_twin/"
+      },
+      {
+        "host": "www.paypal.com",
+        "pathPattern": "^/signin/authorize/?$|^/connect/?$|^/webapps/auth/protocol/openidconnect/|^/_twin/"
+      },
+      {
+        "host": "www.sandbox.paypal.com",
+        "pathPattern": "^/signin/authorize/?$|^/connect/?$|^/webapps/auth/protocol/openidconnect/|^/_twin/"
+      }
+    ]
+  }
+}

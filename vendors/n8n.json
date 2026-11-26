@@ -1,0 +1,18 @@
+{
+  "vendor": "n8n",
+  "packages": [],
+  "recognition": {
+    "sdks": {
+      "@n8n_io/ai-assistant-sdk": {
+        "disposition": "acknowledged",
+        "reason": "acknowledged: n8n's own hosted AI-assistant service",
+        "uncovered": true
+      },
+      "@n8n_io/license-sdk": {
+        "disposition": "acknowledged",
+        "reason": "acknowledged: n8n's own hosted license server",
+        "uncovered": true
+      }
+    }
+  }
+}

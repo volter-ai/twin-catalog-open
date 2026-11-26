@@ -1,0 +1,29 @@
+{
+  "vendor": "upstashvector",
+  "packages": [],
+  "recognition": {
+    "sdks": {
+      "@upstash/vector": {
+        "disposition": "demanded",
+        "reason": "vendor upstashvector"
+      }
+    },
+    "pypi": {
+      "upstash-vector": {
+        "disposition": "demanded",
+        "reason": "vendor upstashvector"
+      }
+    },
+    "envStems": {
+      "upstashvector": {
+        "disposition": "demanded",
+        "reason": "vendor upstashvector"
+      }
+    },
+    "hosts": [
+      {
+        "suffix": "-vector.upstash.io"
+      }
+    ]
+  }
+}

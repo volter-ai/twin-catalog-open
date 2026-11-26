@@ -1,0 +1,42 @@
+{
+  "vendor": "googlecloud",
+  "packages": [],
+  "recognition": {
+    "sdks": {
+      "@google-cloud/bigtable": {
+        "disposition": "demanded",
+        "reason": "vendor googlecloud (Bigtable area; one family pack)"
+      },
+      "@google-cloud/logging-winston": {
+        "disposition": "demanded",
+        "reason": "vendor googlecloud (Cloud Logging area; one family pack)"
+      },
+      "@google-cloud/opentelemetry-cloud-trace-exporter": {
+        "disposition": "demanded",
+        "reason": "vendor googlecloud (Cloud Trace area \u2014 the EXPORTER ships spans to cloudtrace.googleapis.com; its sibling @google-cloud/opentelemetry-resource-util is a local helper and stays not-external)"
+      },
+      "@google-cloud/pubsub": {
+        "disposition": "demanded",
+        "reason": "vendor googlecloud (Pub/Sub area; one family pack)"
+      },
+      "@google-cloud/resource-manager": {
+        "disposition": "demanded",
+        "reason": "vendor googlecloud (Resource Manager area; one family pack)"
+      },
+      "@google-cloud/secret-manager": {
+        "disposition": "demanded",
+        "reason": "vendor googlecloud (Secret Manager area; one family pack)"
+      },
+      "@google-cloud/spanner": {
+        "disposition": "demanded",
+        "reason": "vendor googlecloud (Spanner area; one family pack)"
+      }
+    },
+    "envStems": {
+      "googlecloud": {
+        "disposition": "demanded",
+        "reason": "vendor googlecloud (GOOGLE_CLOUD_API_KEY; the Web Fonts Developer API at www.googleapis.com/webfonts/v1 uses a Google Cloud API key rather than a googleoauth credential)"
+      }
+    }
+  }
+}

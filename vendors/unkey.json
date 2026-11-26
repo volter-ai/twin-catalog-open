@@ -1,0 +1,12 @@
+{
+  "vendor": "unkey",
+  "packages": [],
+  "recognition": {
+    "envStems": {
+      "playgroundunkey": {
+        "disposition": "demanded",
+        "reason": "vendor unkey"
+      }
+    }
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "vendor": "neynar",
+  "packages": [],
+  "recognition": {
+    "sdks": {
+      "@neynar/nodejs-sdk": {
+        "disposition": "demanded",
+        "reason": "vendor neynar"
+      }
+    }
+  }
+}

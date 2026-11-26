@@ -1,0 +1,11 @@
+{
+  "vendor": "dockerhub",
+  "packages": [],
+  "recognition": {
+    "hosts": [
+      {
+        "host": "hub.docker.com"
+      }
+    ]
+  }
+}

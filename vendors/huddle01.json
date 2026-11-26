@@ -1,0 +1,12 @@
+{
+  "vendor": "huddle01",
+  "packages": [],
+  "recognition": {
+    "envStems": {
+      "huddle01": {
+        "disposition": "demanded",
+        "reason": "vendor huddle01"
+      }
+    }
+  }
+}

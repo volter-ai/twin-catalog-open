@@ -1,0 +1,18 @@
+{
+  "vendor": "wolfram",
+  "packages": [],
+  "recognition": {
+    "envStems": {
+      "wolfram": {
+        "disposition": "demanded",
+        "reason": "vendor wolfram"
+      }
+    },
+    "hosts": [
+      {
+        "host": "www.wolframalpha.com",
+        "pathPattern": "^/api/v1/llm-api"
+      }
+    ]
+  }
+}

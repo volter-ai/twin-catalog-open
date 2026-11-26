@@ -1,0 +1,11 @@
+{
+  "vendor": "shortcm",
+  "packages": [],
+  "recognition": {
+    "hosts": [
+      {
+        "host": "api-v2.short.cm"
+      }
+    ]
+  }
+}

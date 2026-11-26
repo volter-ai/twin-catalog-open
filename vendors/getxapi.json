@@ -1,0 +1,12 @@
+{
+  "vendor": "getxapi",
+  "packages": [],
+  "recognition": {
+    "envStems": {
+      "getxapi": {
+        "disposition": "demanded",
+        "reason": "vendor getxapi (api.getxapi.com \u2014 an X/Twitter search proxy)"
+      }
+    }
+  }
+}

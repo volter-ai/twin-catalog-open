@@ -1,0 +1,12 @@
+{
+  "vendor": "bitwarden",
+  "packages": [],
+  "recognition": {
+    "envStems": {
+      "skyvernauthbitwarden": {
+        "disposition": "demanded",
+        "reason": "vendor bitwarden (SKYVERN_AUTH_BITWARDEN_CLIENT_ID/_SECRET)"
+      }
+    }
+  }
+}

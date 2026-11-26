@@ -1,0 +1,12 @@
+{
+  "vendor": "okta",
+  "packages": [],
+  "recognition": {
+    "envStems": {
+      "okta": {
+        "disposition": "demanded",
+        "reason": "vendor okta"
+      }
+    }
+  }
+}

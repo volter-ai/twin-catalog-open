@@ -1,0 +1,12 @@
+{
+  "vendor": "unsplash",
+  "packages": [],
+  "recognition": {
+    "envStems": {
+      "unsplash": {
+        "disposition": "demanded",
+        "reason": "vendor unsplash"
+      }
+    }
+  }
+}

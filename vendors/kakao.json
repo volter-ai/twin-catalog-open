@@ -1,0 +1,12 @@
+{
+  "vendor": "kakao",
+  "packages": [],
+  "recognition": {
+    "envStems": {
+      "kakao": {
+        "disposition": "demanded",
+        "reason": "vendor kakao"
+      }
+    }
+  }
+}

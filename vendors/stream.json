@@ -1,0 +1,33 @@
+{
+  "vendor": "stream",
+  "packages": [],
+  "recognition": {
+    "sdks": {
+      "stream-chat": {
+        "disposition": "demanded",
+        "reason": "vendor stream"
+      }
+    },
+    "pypi": {
+      "stream-chat": {
+        "disposition": "demanded",
+        "reason": "vendor stream"
+      }
+    },
+    "envStems": {
+      "getstream": {
+        "disposition": "demanded",
+        "reason": "vendor stream"
+      },
+      "stream": {
+        "disposition": "demanded",
+        "reason": "vendor stream"
+      }
+    },
+    "hosts": [
+      {
+        "host": "chat.stream-io-api.com"
+      }
+    ]
+  }
+}

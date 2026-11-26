@@ -1,0 +1,13 @@
+{
+  "vendor": "unitedeffects",
+  "packages": [],
+  "recognition": {
+    "envStems": {
+      "unitedeffects": {
+        "disposition": "acknowledged",
+        "reason": "acknowledged: United Effects OIDC SaaS; requires application-specific attribution",
+        "uncovered": true
+      }
+    }
+  }
+}

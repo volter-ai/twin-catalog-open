@@ -1,0 +1,30 @@
+{
+  "vendor": "plaid",
+  "packages": [],
+  "recognition": {
+    "sdks": {
+      "plaid": {
+        "disposition": "demanded",
+        "reason": "vendor plaid"
+      },
+      "react-plaid-link": {
+        "disposition": "demanded",
+        "reason": "vendor plaid"
+      }
+    },
+    "envStems": {
+      "plaid": {
+        "disposition": "demanded",
+        "reason": "vendor plaid"
+      }
+    },
+    "hosts": [
+      {
+        "host": "plaid.com"
+      },
+      {
+        "suffix": ".plaid.com"
+      }
+    ]
+  }
+}

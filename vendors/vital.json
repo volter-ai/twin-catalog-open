@@ -1,0 +1,32 @@
+{
+  "vendor": "vital",
+  "packages": [],
+  "recognition": {
+    "sdks": {
+      "@tryvital/vital-node": {
+        "disposition": "demanded",
+        "reason": "vendor vital"
+      }
+    },
+    "pypi": {
+      "vital": {
+        "disposition": "demanded",
+        "reason": "vendor vital"
+      }
+    },
+    "envStems": {
+      "vital": {
+        "disposition": "demanded",
+        "reason": "vendor vital"
+      }
+    },
+    "hosts": [
+      {
+        "host": "api.sandbox.tryvital.io"
+      },
+      {
+        "host": "api.tryvital.io"
+      }
+    ]
+  }
+}

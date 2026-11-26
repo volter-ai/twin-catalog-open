@@ -1,0 +1,12 @@
+{
+  "vendor": "firebase",
+  "packages": [],
+  "recognition": {
+    "envStems": {
+      "firebase": {
+        "disposition": "demanded",
+        "reason": "vendor firebase"
+      }
+    }
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "vendor": "line",
+  "packages": [],
+  "recognition": {
+    "sdks": {
+      "@line/bot-sdk": {
+        "disposition": "demanded",
+        "reason": "vendor line"
+      }
+    },
+    "envStems": {
+      "line": {
+        "disposition": "demanded",
+        "reason": "vendor line"
+      }
+    }
+  }
+}

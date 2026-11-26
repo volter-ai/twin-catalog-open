@@ -1,0 +1,12 @@
+{
+  "vendor": "loops",
+  "packages": [],
+  "recognition": {
+    "envStems": {
+      "loops": {
+        "disposition": "demanded",
+        "reason": "vendor loops"
+      }
+    }
+  }
+}

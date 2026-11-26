@@ -1,0 +1,12 @@
+{
+  "vendor": "workos",
+  "packages": [],
+  "recognition": {
+    "envStems": {
+      "workos": {
+        "disposition": "demanded",
+        "reason": "vendor workos"
+      }
+    }
+  }
+}

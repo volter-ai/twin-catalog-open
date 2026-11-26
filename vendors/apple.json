@@ -1,0 +1,21 @@
+{
+  "vendor": "apple",
+  "packages": [],
+  "recognition": {
+    "envStems": {
+      "apple": {
+        "disposition": "demanded",
+        "reason": "vendor apple"
+      },
+      "appleloginweb": {
+        "disposition": "demanded",
+        "reason": "vendor apple"
+      }
+    },
+    "hosts": [
+      {
+        "host": "appleid.apple.com"
+      }
+    ]
+  }
+}

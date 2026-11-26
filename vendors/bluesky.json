@@ -1,0 +1,44 @@
+{
+  "vendor": "bluesky",
+  "packages": [],
+  "recognition": {
+    "sdks": {
+      "@atproto/api": {
+        "disposition": "demanded",
+        "reason": "vendor bluesky"
+      }
+    },
+    "envStems": {
+      "bluesky": {
+        "disposition": "demanded",
+        "reason": "vendor bluesky"
+      },
+      "bsky": {
+        "disposition": "demanded",
+        "reason": "vendor bluesky"
+      }
+    },
+    "hosts": [
+      {
+        "host": "api.bsky.app",
+        "pathPattern": "^/xrpc/app\\.bsky\\.(actor|feed)\\."
+      },
+      {
+        "host": "bsky.social",
+        "pathPattern": "^/xrpc/(com\\.atproto|app\\.bsky)\\."
+      },
+      {
+        "host": "cdn.bsky.app",
+        "pathPattern": "^/img/"
+      },
+      {
+        "host": "public.api.bsky.app",
+        "pathPattern": "^/xrpc/app\\.bsky\\.(actor|feed)\\."
+      },
+      {
+        "host": "video.bsky.app",
+        "pathPattern": "^/(xrpc/app\\.bsky\\.video\\.|watch/)"
+      }
+    ]
+  }
+}

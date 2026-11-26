@@ -1,0 +1,12 @@
+{
+  "vendor": "openalex",
+  "packages": [],
+  "recognition": {
+    "envStems": {
+      "openalex": {
+        "disposition": "demanded",
+        "reason": "vendor openalex (scholarly works API)"
+      }
+    }
+  }
+}

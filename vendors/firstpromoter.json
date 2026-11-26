@@ -1,0 +1,11 @@
+{
+  "vendor": "firstpromoter",
+  "packages": [],
+  "recognition": {
+    "hosts": [
+      {
+        "host": "v2.firstpromoter.com"
+      }
+    ]
+  }
+}

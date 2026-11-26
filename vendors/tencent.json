@@ -1,0 +1,12 @@
+{
+  "vendor": "tencent",
+  "packages": [],
+  "recognition": {
+    "envStems": {
+      "tencent": {
+        "disposition": "demanded",
+        "reason": "vendor tencent"
+      }
+    }
+  }
+}

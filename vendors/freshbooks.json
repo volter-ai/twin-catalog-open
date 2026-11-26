@@ -1,0 +1,12 @@
+{
+  "vendor": "freshbooks",
+  "packages": [],
+  "recognition": {
+    "envStems": {
+      "freshbooks": {
+        "disposition": "demanded",
+        "reason": "vendor freshbooks"
+      }
+    }
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "vendor": "googlemaps",
+  "packages": [],
+  "recognition": {
+    "sdks": {
+      "@googlemaps/google-maps-services-js": {
+        "disposition": "demanded",
+        "reason": "vendor googlemaps"
+      }
+    },
+    "pypi": {
+      "googlemaps": {
+        "disposition": "demanded",
+        "reason": "vendor googlemaps"
+      }
+    },
+    "envStems": {
+      "googlemaps": {
+        "disposition": "demanded",
+        "reason": "vendor googlemaps"
+      }
+    },
+    "hosts": [
+      {
+        "host": "maps.googleapis.com"
+      }
+    ]
+  }
+}

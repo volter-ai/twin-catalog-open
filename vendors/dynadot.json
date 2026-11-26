@@ -1,0 +1,17 @@
+{
+  "vendor": "dynadot",
+  "packages": [],
+  "recognition": {
+    "envStems": {
+      "dynadot": {
+        "disposition": "demanded",
+        "reason": "vendor dynadot"
+      }
+    },
+    "hosts": [
+      {
+        "host": "api.dynadot.com"
+      }
+    ]
+  }
+}

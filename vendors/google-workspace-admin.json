@@ -1,0 +1,12 @@
+{
+  "vendor": "google-workspace-admin",
+  "packages": [],
+  "recognition": {
+    "sdks": {
+      "@googleapis/admin": {
+        "disposition": "demanded",
+        "reason": "vendor google-workspace-admin (Admin SDK Directory/Reports)"
+      }
+    }
+  }
+}

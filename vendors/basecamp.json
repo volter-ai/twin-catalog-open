@@ -1,0 +1,20 @@
+{
+  "vendor": "basecamp",
+  "packages": [],
+  "recognition": {
+    "envStems": {
+      "basecamp3": {
+        "disposition": "demanded",
+        "reason": "vendor basecamp"
+      }
+    },
+    "hosts": [
+      {
+        "host": "3.basecampapi.com"
+      },
+      {
+        "host": "launchpad.37signals.com"
+      }
+    ]
+  }
+}

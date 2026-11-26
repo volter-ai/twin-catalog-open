@@ -1,0 +1,11 @@
+{
+  "vendor": "webex",
+  "packages": [],
+  "recognition": {
+    "hosts": [
+      {
+        "host": "webexapis.com"
+      }
+    ]
+  }
+}

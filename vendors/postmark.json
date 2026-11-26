@@ -1,0 +1,29 @@
+{
+  "vendor": "postmark",
+  "packages": [],
+  "recognition": {
+    "sdks": {
+      "postmark": {
+        "disposition": "demanded",
+        "reason": "vendor postmark"
+      }
+    },
+    "pypi": {
+      "postmarker": {
+        "disposition": "demanded",
+        "reason": "vendor postmark"
+      }
+    },
+    "envStems": {
+      "postmark": {
+        "disposition": "demanded",
+        "reason": "vendor postmark"
+      }
+    },
+    "hosts": [
+      {
+        "host": "api.postmarkapp.com"
+      }
+    ]
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "vendor": "yutori",
+  "packages": [],
+  "recognition": {
+    "envStems": {
+      "yutori": {
+        "disposition": "demanded",
+        "reason": "vendor yutori (YUTORI_API_KEY; the repo also declares the `yutori` PyPI SDK)"
+      }
+    }
+  }
+}

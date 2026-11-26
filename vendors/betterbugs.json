@@ -1,0 +1,12 @@
+{
+  "vendor": "betterbugs",
+  "packages": [],
+  "recognition": {
+    "sdks": {
+      "@betterbugs/web-sdk": {
+        "disposition": "demanded",
+        "reason": "vendor betterbugs (betterbugs.io session/bug capture)"
+      }
+    }
+  }
+}

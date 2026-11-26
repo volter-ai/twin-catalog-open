@@ -1,0 +1,29 @@
+{
+  "vendor": "mapbox",
+  "packages": [],
+  "recognition": {
+    "sdks": {
+      "@mapbox/mapbox-sdk": {
+        "disposition": "demanded",
+        "reason": "vendor mapbox"
+      }
+    },
+    "pypi": {
+      "mapbox": {
+        "disposition": "demanded",
+        "reason": "vendor mapbox"
+      }
+    },
+    "envStems": {
+      "mapbox": {
+        "disposition": "demanded",
+        "reason": "vendor mapbox"
+      }
+    },
+    "hosts": [
+      {
+        "host": "api.mapbox.com"
+      }
+    ]
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "vendor": "prelude",
+  "packages": [],
+  "recognition": {
+    "sdks": {
+      "@prelude.so/js-sdk": {
+        "disposition": "demanded",
+        "reason": "vendor prelude (prelude.so phone verification)"
+      }
+    }
+  }
+}

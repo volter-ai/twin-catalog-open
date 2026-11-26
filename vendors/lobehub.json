@@ -1,0 +1,13 @@
+{
+  "vendor": "lobehub",
+  "packages": [],
+  "recognition": {
+    "sdks": {
+      "@lobehub/market-sdk": {
+        "disposition": "acknowledged",
+        "reason": "acknowledged: LobeHub's own marketplace client; first-party-adjacent surface judged per repository",
+        "uncovered": true
+      }
+    }
+  }
+}

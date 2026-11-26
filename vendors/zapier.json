@@ -1,0 +1,12 @@
+{
+  "vendor": "zapier",
+  "packages": [],
+  "recognition": {
+    "envStems": {
+      "zapiernla": {
+        "disposition": "demanded",
+        "reason": "vendor zapier"
+      }
+    }
+  }
+}

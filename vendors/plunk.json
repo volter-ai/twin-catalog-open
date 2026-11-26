@@ -1,0 +1,12 @@
+{
+  "vendor": "plunk",
+  "packages": [],
+  "recognition": {
+    "envStems": {
+      "plunk": {
+        "disposition": "demanded",
+        "reason": "vendor plunk"
+      }
+    }
+  }
+}

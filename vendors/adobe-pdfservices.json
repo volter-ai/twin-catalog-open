@@ -1,0 +1,12 @@
+{
+  "vendor": "adobe-pdfservices",
+  "packages": [],
+  "recognition": {
+    "envStems": {
+      "pdfservices": {
+        "disposition": "demanded",
+        "reason": "vendor adobe-pdfservices (PDF_SERVICES_CLIENT_ID/_SECRET)"
+      }
+    }
+  }
+}

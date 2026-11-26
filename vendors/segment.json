@@ -1,0 +1,47 @@
+{
+  "vendor": "segment",
+  "packages": [],
+  "recognition": {
+    "sdks": {
+      "@segment/analytics-next": {
+        "disposition": "demanded",
+        "reason": "vendor segment (Analytics.js browser area \u2014 the browser build boots from a cdn.segment.com settings fetch the tracking-API twin does not serve; the pack declines the claim deliberately)",
+        "uncovered": true
+      },
+      "@segment/analytics-node": {
+        "disposition": "demanded",
+        "reason": "vendor segment"
+      }
+    },
+    "pypi": {
+      "analytics-python": {
+        "disposition": "demanded",
+        "reason": "vendor segment"
+      },
+      "segment-analytics-python": {
+        "disposition": "demanded",
+        "reason": "vendor segment"
+      }
+    },
+    "envStems": {
+      "segment": {
+        "disposition": "demanded",
+        "reason": "vendor segment"
+      }
+    },
+    "hosts": [
+      {
+        "host": "api.segment.io"
+      },
+      {
+        "host": "events.eu1.segmentapis.com"
+      },
+      {
+        "host": "oauth2.eu1.segmentapis.com"
+      },
+      {
+        "host": "oauth2.segment.io"
+      }
+    ]
+  }
+}

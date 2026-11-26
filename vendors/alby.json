@@ -1,0 +1,12 @@
+{
+  "vendor": "alby",
+  "packages": [],
+  "recognition": {
+    "sdks": {
+      "@getalby/sdk": {
+        "disposition": "demanded",
+        "reason": "vendor alby"
+      }
+    }
+  }
+}

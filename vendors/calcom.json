@@ -1,0 +1,21 @@
+{
+  "vendor": "calcom",
+  "packages": [],
+  "recognition": {
+    "envStems": {
+      "cal": {
+        "disposition": "demanded",
+        "reason": "vendor calcom"
+      },
+      "calcom": {
+        "disposition": "demanded",
+        "reason": "vendor calcom"
+      }
+    },
+    "hosts": [
+      {
+        "host": "api.cal.com"
+      }
+    ]
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "vendor": "base44",
+  "packages": [],
+  "recognition": {
+    "sdks": {
+      "@base44/sdk": {
+        "disposition": "demanded",
+        "reason": "vendor base44"
+      }
+    }
+  }
+}

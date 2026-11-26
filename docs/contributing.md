@@ -14,11 +14,11 @@ the architecture section it links holds the format.
 
 ## What you need
 
-- Bun at the catalog policy's version (`policy.json`, `bun`) and Node 22.3 or newer.
-- pnpm at the catalog policy's version (`policy.json`, `pnpm`): a prepared customer app declares it as its installer.
-- In your repository's `package.json`, the public `@volter/world`, `@volter/world-core`, `@volter/world-runtime` and
-  `@volter/twin-standard` at the versions `policy.json` names under `tools` (the versions the catalog's admission
-  runs), TypeScript and its Node and Bun types as development dependencies. Commit the lockfile.
+- Node 22.9 or newer for the catalog CLI, and the Bun/pnpm versions required by the SDK you develop against.
+- In your repository's `package.json`, compatible `@volter/world`, `@volter/world-core`, `@volter/world-runtime`,
+  `@volter/twin-standard`, TypeScript and Node/Bun types as development dependencies. Commit the dependency lock.
+  Development may link sibling source and needs no release. Admission reads artifact data without installing an
+  evaluator cohort or candidate dependencies.
   Run the standard as `./node_modules/.bin/twin-standard`, the version that lockfile installs: without the
   installation it fails there, where `bunx` or `bun run` would run another version found elsewhere.
 - A public GitHub repository for the pack (npm provenance needs a public source) and an npm scope you publish to.
@@ -75,7 +75,7 @@ Put the vendor's published spec (OpenAPI, Smithy, protobuf, Discovery, GraphQL S
 naming the file on a `**File:**` line, its upstream URL and commit, its version, the sha256 of the vendor's bytes,
 and who read it. Each correction is a patch in `spec/patches.json` with its reason and source. A vendor with no
 published spec gets one written from its reference pages: read them with `twin-standard read-page <url> --raw`, keep
-the page's bytes beside the script that writes the spec, and cite the page for every fact it supplies
+the page's bytes in `spec/originals/`, and cite the page for every fact it supplies
 ([Evidence that holds](https://world-docs.volter.ai/docs/contributing/architecture#evidence-that-holds)). Read a page's
 text, as the citation check reads it, with `twin-standard read-page <url>`. Never call the vendor's live API to learn
 its behaviour.
@@ -86,10 +86,9 @@ its behaviour.
 vendor quickstart and the pinned SDK's ordinary default requests, the app's environment and its issued identity. Name
 each act's prerequisites and the earlier call, issued credential or documented input that supplies them.
 
-At this stage write the executable customer entry, `journeys/first-use.json` (its format is under "Customer entry and
-release qualification" below), before implementing resource semantics, and walk it through `twin-standard
-walk-consumer` while building, with a new prepared app for each walk. When an ordinary SDK call fails, fix the pack or
-the shared mechanism; keep the SDK request unchanged.
+At this stage document the customer entry in `journeys/first-use.json`, before implementing resource semantics.
+Preserve its pinned client's ordinary request shape. Construct the whole life before its one final walk; no client
+qualification or replay runs during construction.
 
 ## 5. Manifest, states and the decision table
 
@@ -110,7 +109,7 @@ Write each family top to bottom from the table, in the order the customer's acts
 one exported `async function <operationId>(ctx: HandlerContext)` per operation. Store state through the vendor's own
 operations, ids from `ctx.mint`, bytes in `ctx.blobs`, secrets from `ctx.secret`; a stored row is shown to a client
 through `ctx.get`, `ctx.rows` or `ctx.own(row)`, never raw. Seed through the vendor's API; a `/_twin/` door makes only
-what no operation can, except the descriptor's `credentialDoor`, the account's sign-up.
+what no operation can. Credentials follow the vendor's documented issuance and lifecycle.
 
 Every vendor fact a manifest, a handler or a spec patch rests on carries its citation on the line above it, in one of
 three forms: `// source: <url> "<quote>"` for a page, `// source: spec:<ref> "<quote>"` for the vendored spec (an
@@ -130,11 +129,10 @@ every call a World makes to the real vendor. A budget that admits more calls a m
 ## 7. The life
 
 `journeys/customer-life.json` walks the outline: the demanded applications' real calls, in their real shapes, one
-customer's acts in time order, with its `author` naming the session that wrote it
+customer's acts in time order, with its `author` naming the author or author role
 ([Writing a life](https://world-docs.volter.ai/docs/contributing/architecture#writing-a-life)). A step is never added to
-reach a line of code or to justify serving an operation nothing demands. The vendor's published examples (a request
-and answer a page shows, or a rule it states) go in `spec/doc-examples.json` and are replayed
-([Published examples](https://world-docs.volter.ai/docs/contributing/architecture#published-examples)).
+reach a line of code or to justify serving an operation nothing demands. Vendor examples and reference pages inform
+the pinned contract and expectations; admission does not replay a second example suite.
 
 ## 8. Derive, index and compile the facts
 
@@ -146,40 +144,30 @@ and answer a page shows, or a rule it states) go in `spec/doc-examples.json` and
 ```
 
 Derive before indexing (an index written before the derive maps nothing). During construction, `create <vendor>
---index --building` keeps unfinished operations as gaps, so the first loadable act can be walked before later families
+--index --building` keeps unfinished operations as gaps, so the first entry can load before later families
 exist; the plain `--index` requires the complete scope. The package README says what the pack serves, for whom, its
 doors, its refusals and what it leaves out.
 
-## Your checks
+## Finish the life and retain its review
 
-While code remains to be written, walk the journeys as often as the work needs and fix what they show:
+Static source/form checks, derivation and package construction remain authoring tools. Once the pack is complete,
+run its one customer life once, through the installed standard:
 
 ```sh
-./node_modules/.bin/twin-standard walk <vendor>           # the life, twice on fresh Worlds, its coverage and the examples
-./node_modules/.bin/twin-standard examples <vendor>       # the published examples replayed
-./node_modules/.bin/twin-standard coverage <vendor>       # the code and state logic the walks reach, and what they miss
-./node_modules/.bin/twin-standard walk-consumer <vendor> --prepared-consumer prepared-consumer.json --out walk.json
+./node_modules/.bin/twin-standard walk <vendor>
 ```
 
-`walk` prints each failing check with its step and what was answered, and names the kernel it measured. `walk
---write` keeps `journeys/score.json` and `journeys/coverage.json` with the pass. A line no walk reaches is reached by
-a real call, replayed as a published example, or recorded in `journeys/unreachable.json` with the `world` no World
-reaches it from ([Coverage](https://world-docs.volter.ai/docs/contributing/architecture#coverage)).
+Never put the walk in CI or a hook. An independent judge reads the outline, scenario and cited vendor contract.
+Print its brief with author names, never execution identifiers:
 
-With the pack written, these run once:
+```sh
+./node_modules/.bin/twin-standard judge-brief <vendor> --authors <author-name>[,<author-name>...]
+```
 
-1. `./node_modules/.bin/twin-standard conform <vendor>`: the one conformance command, the same the catalog runs on
-   admission and on re-assessment. It serves the pack on its own as a World runs it and checks the decision table, the
-   published files, the citations, refresh and ingest, the registered state system, the rate allowance, the vendor's
-   SDK cases, the life over HTTP, sockets and the boot probe, every served operation called plainly and with a
-   scenario loaded (no hang, no undeclared 500, no field of the twin's own, the spec's shape), the records and the
-   form. Every ✗ names its check and what fails; [Conformance](https://world-docs.volter.ai/docs/contributing/architecture#conformance)
-   says what each asks.
-2. A judge that is not among the journeys' authors: `./node_modules/.bin/twin-standard judge-brief <vendor> --authors
-   <your session id>` prints its brief. Give it to an agent session of its own; it writes the verdicts beside the
-   journeys, and you apply every ruling.
-3. `npm pack` the package and `conform` the tarball: the bytes a release publishes conform as the checkout does.
-4. The installed assessment below.
+The judge retains `journeys/customer-life.outline.verdict.json` and `journeys/customer-life.verdict.json`, naming
+`judge.agent`, reviewer role/name and all authors. The judge is outside the authors. Apply its rulings. This one
+judging stands through corrections; later changes keep the verdict and its originally judged hash. Admission
+reads the retained result and adds no client, browser, replay or baseline execution.
 
 ## When the standard lacks a mechanism
 
@@ -193,63 +181,26 @@ screen behaviour), do not write it into the pack. Propose it:
    (`proposals/kernel/<mechanism>.patch`). Look at open proposals first and build on one that already proposes it.
 2. Build your pack on the patched package while you work (`bun patch @volter/world-core`, the patch committed in your
    repository), so your checks run against it.
-3. The catalog's automation reads the proposal as maintenance and runs nothing of it. A maintainer carries the
-   mechanism into the kernel and releases it, or answers the proposal with why not. Then pin the release, drop your
-   patch and submit. An admission never rests on an unreleased kernel; the grade's kernel-contract criterion refuses a
-   pack file that imports anything but the pack contract.
+3. The catalog reads the proposal as maintenance and runs nothing of it. A maintainer carries the mechanism into
+   the kernel or answers why not. Development continues against source; release follows its separate authorized
+   schedule. The grade's kernel-contract criterion refuses pack files that import outside the pack contract.
 
 ## Build the package
 
-The generated facts belong in the package artifact; keep source, spec, journeys and required fixtures there too.
+Use `./node_modules/.bin/twin-standard pack <vendor>` as the canonical procedure specifies. Its generated facts
+belong in the artifact; keep source, spec, decision table, outline, life and both independent verdicts there too.
 Publish compiled JavaScript for Node consumers while retaining the TypeScript source the pinned standard reads. Use
 TypeScript's `rewriteRelativeImportExtensions`, copy generated JSON alongside emitted modules, and point the package
 export and bin at their compiled entrypoints. A `files` list includes `src`, `dist`, `generated`, `spec`, `journeys`,
 README and LICENSE. A build and `npm pack --dry-run` must show those paths; no platform-specific prepack script is
 required.
 
-## Customer entry and release qualification
+## Customer entry
 
-Author the customer entry with the outline, then package it in `journeys/first-use.json`. It has `schemaVersion: 1`, the upstream `source`, an
-`about` describing its scope, and a `files` map of relative paths to text. Include `package.json` with exact registry
-SDK dependencies, `.env.example` with the names the app reads, and its unchanged client script with result
-assertions. `run` is an argument array such as `["node", "workflow.mjs"]`. For stored workflows,
-`retention: { "readback": ["node", "readback.mjs"] }` inspects prior state without creating it again. A stateless
-workflow instead declares `retention: { "none": "<why no stored vendor resource is created>" }`. Use SDKs to create
-stored data and existing vendor doors for synthetic setup; do not use scenario success in place of a stored write.
-The standard owns CLI lifecycle and teardown, so the scripts do not start or stop infrastructure themselves. For a timed workflow, `clock: { "at": "<ISO instant>", "advanceAfterRun": "10s" }` freezes time before the client runs, then advances and inspects the due result before retention is measured. The duration is the journey’s chosen synthetic wait, not a vendor timing guarantee.
-
-Walk the life's journeys and this first-use journey while implementing. For final qualification, build and pack
-first, install that tarball in a fresh directory without development links, and run the released standard against
-the installed package. Keep the archive inventory and lockfile. Prepare a new customer app beside that installation:
-
-```sh
-./node_modules/.bin/twin-standard prepare-consumer <installed pack dir> --app <new app dir> --cli <absolute installed volter executable> --integrity <packed SHA-512 integrity> --out prepared-consumer.json
-pnpm --dir <new app dir> install --ignore-scripts
-```
-
-This preparation writes fixture files only, a pnpm app (its `packageManager` and `pnpm-workspace.yaml`), installed as
-the catalog's admission installs it; SDK dependency installation precedes offline execution. Select `--cli` from the installed `@volter/world` package's declared `bin.volter`, rather than the shared
-`node_modules/.bin/volter`: another package may claim that shortcut. The runner invokes compiled JavaScript
-through Node and records the actual entrypoint, command and Node version. The product CLI must resolve the installed candidate through that app's parent dependency directory. For the final assessment,
-run the released standard's assessment, the one the catalog's admission runs:
-
-```sh
-./node_modules/.bin/twin-standard assess <installed pack dir> --prepared-consumer prepared-consumer.json --browser --out assessment.json
-```
-
-It makes the Worlds it needs: fresh in-memory state for each journey replay, and, through the product CLI, the app
-World of the installed customer workflow, which routes the app's vendor calls to the candidate. In the catalog it runs
-in a container with no network; run here, it has that World's routing and no enforced network boundary.
-For an HTTP browser target, use Linux, install Playwright at the catalog policy version and its Chromium binary,
-and install `libfaketime` (Debian/Ubuntu: `sudo apt-get install libfaketime`). The browser process uses the World
-clock for native cookie expiry, at one-second precision; JavaScript time retains millisecond precision. Authors on
-other platforms can omit `--browser` for in-process assessment; the explicit catalog operator assessment supplies the browser target. The report
-separates declared served/gap counts, operations actually exercised, deterministic replay, conformance, installed customer workflow and Chromium
-results. It does not measure DOM interactions, line coverage, real-vendor parity or every possible state transition.
-
-Local assessment helps authors; it does not replace the independent catalog assessment of the published tarball.
-Linux catalog preparation disables installation scripts. A dependency that requires a build cannot depend on its
-postinstall having run there: distribute the needed portable build or choose supported dependencies.
+Package the documented first-use entry in `journeys/first-use.json` as the platform procedure specifies. It names
+the pinned client, setup and ordinary vendor calls, with supported workflow and limits in the README. The one
+customer life supplies the executable scenario. Admission reads its nonempty steps and retained independent
+plausibility verdicts; it never installs a second client fixture or executes candidate code.
 
 ## Register and publish
 
@@ -263,7 +214,10 @@ twin-catalog register --source example-team --source-repository example/twins --
 The command prepares data only and refuses conflicting registrations. Outside a fork it writes `registration/sources.json`;
 copy that file into your fork and open the separate PR. Registration does not authorize a release or grant maintainer status.
 
-Pin your dependencies and commit the lock. Build, qualify, independently review and keys-sweep your exact archive outside CI. Your manually dispatched registered provenance workflow runs on GitHub-hosted Linux with `id-token: write`, accepts only that prepared archive and uses npm trusted publishing or your scoped npm credential. It performs no install, build or qualification and finishes within 60 seconds:
+Pin dependencies and commit the lock. Complete the pack, its one final life walk and independent review, then
+keys-sweep the exact archive outside CI. Publication follows its separate authorized schedule. Your manually
+dispatched registered workflow accepts only that prepared archive and uses existing scoped custody. Public npm
+publication requires provenance from the registered public source:
 
 ```sh
 npm publish <exact-reviewed-archive.tgz> --ignore-scripts --access public --provenance
@@ -279,7 +233,13 @@ Publishing does not admit a release. After source registration has merged, use t
 twin-catalog submit --source example-team --vendor stripe --package @example/payments --version 1.2.3
 ```
 
-Open a PR adding only its generated submission. An explicit catalog operator assessment outside CI checks the immutable registry artifact using the trusted base policy and released tools: conformance, journey replay, installed first use and browser target. A separately registered assessment authority records its checksum-bound controller envelope in a durable authenticated GitHub evidence release. No PR event starts qualification, and a publisher-supplied JSON file grants no readiness. Untrusted accounts need moderator review;
+Open a PR adding only its generated submission. Outside CI a catalog operator checks the immutable artifact's
+identity, integrity, source binding, nonempty life and retained independent plausible verdicts as data. A separate
+registered assessment authority records the checksum-bound envelope in a durable authenticated release. npm's
+visibility API chooses the source rule: public packages require Sigstore provenance; restricted packages require
+their registered source repository and immutable `sourceCommit` (use `--source-commit` when registry metadata has
+no `gitHead`), exact version/integrity and existing authority checks. No PR event executes candidate code and
+publisher-supplied JSON grants no readiness. Untrusted accounts need moderator review;
 directly trusted accounts need no separate review. The [process contract](process.md) defines account trust and
 maintainer authority. Fixes need a new immutable release; infrastructure failures can be retried. Authorized
 maintainers merge; the publisher and catalog workflows do not. Once merged, publication lists the release in the

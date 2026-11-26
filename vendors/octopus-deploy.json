@@ -1,0 +1,12 @@
+{
+  "vendor": "octopus-deploy",
+  "packages": [],
+  "recognition": {
+    "sdks": {
+      "@octopusdeploy/api-client": {
+        "disposition": "demanded",
+        "reason": "vendor octopus-deploy"
+      }
+    }
+  }
+}

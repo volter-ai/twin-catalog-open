@@ -54,5 +54,1392 @@
       "login": "portable-one",
       "type": "User"
     }
-  ]
+  ],
+  "ecosystem": {
+    "recognition": {
+      "unattributed": {
+        "sdks": {
+          "@ai-sdk/openai-compatible": {
+            "disposition": "acknowledged",
+            "reason": "acknowledged: config-time OpenAI-compatible adapter, no vendor of its own — coverage is judged per repo by the provider host it is configured against; mapping it to one vendor would be the googleapis-umbrella lie",
+            "uncovered": true
+          },
+          "googleapis": {
+            "disposition": "demanded",
+            "reason": "Umbrella client for Drive, Sheets, Calendar, Gmail and YouTube. It cannot map to one vendor or auto-acknowledge coverage. Focused @googleapis/* siblings map through SDK_TWINS.",
+            "uncovered": true
+          }
+        },
+        "envStems": {
+          "alibaba": {
+            "disposition": "acknowledged",
+            "reason": "acknowledged: ambiguous Alibaba stem (Alibaba Cloud, DashScope or OAuth login); requires application-specific attribution",
+            "uncovered": true
+          },
+          "bytedance": {
+            "disposition": "acknowledged",
+            "reason": "acknowledged: ambiguous ByteDance stem (TikTok, Douyin or Volcengine); requires application-specific attribution",
+            "uncovered": true
+          }
+        }
+      },
+      "notExternal": {
+        "@chat-adapter/state-memory": "Chat SDK local in-memory state adapter, no external connection: @chat-adapter/state-memory 4.39.0 dist/index.js stores subscriptions in Set and locks, cache and queues in Map; https://chat-sdk.dev/adapters/official/memory",
+        "@agentclientprotocol/sdk": "Agent Client Protocol library, not a vendor",
+        "@ai-sdk/devtools": "local dev-tools UI for the AI SDK",
+        "@ai-sdk/langchain": "LangChain interop adapter, not a service",
+        "@ai-sdk/mcp": "MCP protocol client library, not a vendor surface",
+        "@ai-sdk/otel": "OpenTelemetry glue for the AI SDK",
+        "@ai-sdk/provider": "AI SDK provider/UI helper library, no service surface of its own",
+        "@ai-sdk/provider-utils": "AI SDK provider/UI helper library, no service surface of its own",
+        "@ai-sdk/react": "AI SDK provider/UI helper library, no service surface of its own",
+        "@ai-sdk/rsc": "AI SDK provider/UI helper library, no service surface of its own",
+        "@ai-sdk/svelte": "AI SDK provider/UI helper library, no service surface of its own",
+        "@ai-sdk/ui-utils": "AI SDK provider/UI helper library, no service surface of its own",
+        "@ai-sdk/vue": "AI SDK provider/UI helper library, no service surface of its own",
+        "@aws-sdk/cloudfront-signer": "local URL signing, no API call",
+        "@aws-sdk/node-http-handler": "HTTP transport plumbing for the SDK, not a service",
+        "@aws-sdk/rds-signer": "local IAM auth-token generation, no API call",
+        "@aws-sdk/s3-presigned-post": "local presign computation, no API call",
+        "@aws-sdk/signature-v4-crt": "local SigV4 signing helper, no API call",
+        "@aws-sdk/types": "type-only package, no runtime call",
+        "@azure/abort-controller": "Azure SDK core/auth plumbing, no service surface of its own",
+        "@azure/core-asynciterator-polyfill": "async-iterator polyfill, no service",
+        "@azure/core-auth": "Azure SDK core/auth plumbing, no service surface of its own",
+        "@azure/core-rest-pipeline": "Azure SDK core/auth plumbing, no service surface of its own",
+        "@azure/identity": "Azure SDK core/auth plumbing, no service surface of its own",
+        "@azure/logger": "Azure SDK core/auth plumbing, no service surface of its own",
+        "@directus/extensions-sdk": "extension authoring/build tooling, not a client",
+        "@google-cloud/opentelemetry-resource-util": "OTel resource-attribute helper, no service call",
+        "@google-cloud/precise-date": "timestamp utility library, no service",
+        "@immich/plugin-sdk": "plugin authoring API for a self-hosted app, not a client",
+        "@immich/sdk": "self-instance client; targets the app's own self-hosted deployment, which is local in a keyless world",
+        "@karakeep/sdk": "self-instance client; targets the app's own self-hosted deployment, which is local in a keyless world",
+        "@langchain/langgraph-sdk": "self-instance client; targets the app's own self-hosted deployment, which is local in a keyless world",
+        "@medusajs/admin-sdk": "Medusa framework internals, not an external API",
+        "@medusajs/js-sdk": "self-instance client; targets the app's own self-hosted deployment, which is local in a keyless world",
+        "@medusajs/modules-sdk": "Medusa framework internals, not an external API",
+        "@medusajs/workflows-sdk": "Medusa framework internals, not an external API",
+        "@modelcontextprotocol/sdk": "protocol library, no service",
+        "@n8n/ai-node-sdk": "n8n's own monorepo package, not an external service",
+        "@n8n/extension-sdk": "n8n's own monorepo package, not an external service",
+        "@n8n/frontend-module-sdk": "n8n's own monorepo package, not an external service",
+        "@n8n/rest-api-client": "n8n's own monorepo package, not an external service",
+        "@n8n/workflow-sdk": "n8n's own monorepo package, not an external service",
+        "@nocobase/sdk": "self-instance client; targets the app's own self-hosted deployment, which is local in a keyless world",
+        "@opentelemetry/instrumentation-aws-sdk": "OpenTelemetry instrumentation wrapper, not a service client",
+        "@payloadcms/sdk": "self-instance client; targets the app's own self-hosted deployment, which is local in a keyless world",
+        "@prisma/client": "the Prisma ORM client, not a service: its database is a connection, judged by the schema's datasource",
+        "@restatedev/restate-sdk": "self-instance client; targets the app's own self-hosted deployment, which is local in a keyless world",
+        "@rocket.chat/api-client": "Rocket.Chat monorepo internal package, not an external service",
+        "@rocket.chat/federation-sdk": "Rocket.Chat monorepo internal package, not an external service",
+        "@saintno/comfyui-sdk": "client for a locally-run ComfyUI instance, not a SaaS surface",
+        "@segment/action-destinations": "Segment destination authoring framework, not a client",
+        "@segment/actions-core": "Segment destination authoring framework, not a client",
+        "@teable/sdk": "self-instance client; targets the app's own self-hosted deployment, which is local in a keyless world",
+        "@types/facebook-nodejs-business-sdk": "type-only package, no runtime call",
+        "@types/snowflake-sdk": "type-only package, no runtime call",
+        "@vercel/config": "Vercel build/dev tooling, no service call",
+        "@vercel/functions": "Vercel function runtime helpers (geo, waitUntil), no external API",
+        "@vercel/git-hooks": "Vercel build/dev tooling, no service call",
+        "@vercel/ncc": "bundler, no service call",
+        "@vercel/node": "Vercel framework adapter, no service call",
+        "@vercel/og": "local image generation at the edge, no API call",
+        "@vercel/otel": "OpenTelemetry setup helper, no service call",
+        "@vercel/react-router": "Vercel framework adapter, no service call",
+        "@vercel/remix": "Vercel framework adapter, no service call",
+        "@vercel/stega": "Vercel build tooling, no service call",
+        "@vercel/toolbar": "Vercel dev tooling, no service call",
+        "@vercel/webpack-asset-relocator-loader": "Vercel build tooling, no service call",
+        "@webstudio-is/react-sdk": "Webstudio's own monorepo package, not an external service",
+        "@webstudio-is/sdk": "Webstudio's own monorepo package, not an external service",
+        "ai": "AI SDK core library, no vendor of its own",
+        "ap": "generic app-internal env stem, names no vendor",
+        "appcache": "generic app-internal env stem, names no vendor",
+        "assistants": "generic app-internal env stem, names no vendor",
+        "backendoidc": "generic OAuth2/OIDC protocol stem, names no vendor",
+        "betterauth": "local auth library (Better Auth), not a service",
+        "bookerembedoauth": "repo-local stem; env-stem extraction firing on an app-internal name, no vendor exists",
+        "cms": "generic app-internal env stem, names no vendor",
+        "cron": "generic app-internal env stem, names no vendor",
+        "ctrl": "generic app-internal env stem, names no vendor",
+        "cubejs": "self-instance client; targets the app's own self-hosted deployment, which is local in a keyless world",
+        "duendeids6": "self-instance client; targets the app's own self-hosted deployment, which is local in a keyless world",
+        "ee-embed-sdk": "repo-local stem; env-stem extraction firing on an app-internal name, no vendor exists",
+        "enterpriseadmin": "generic app-internal env stem, names no vendor",
+        "fortytwo": "repo-local stem; env-stem extraction firing on an app-internal name, no vendor exists",
+        "google-auth-library": "auth library, no service surface of its own",
+        "hdauthoidcmyoidc": "generic OAuth2/OIDC protocol stem, names no vendor",
+        "hideuser": "generic app-internal env stem, names no vendor",
+        "hub": "generic app-internal env stem, names no vendor",
+        "ids4": "self-instance client; targets the app's own self-hosted deployment, which is local in a keyless world",
+        "karakeep": "self-instance client; targets the app's own self-hosted deployment, which is local in a keyless world",
+        "listmonk": "self-instance client; targets the app's own self-hosted deployment, which is local in a keyless world",
+        "llm": "generic app-internal env stem, names no vendor",
+        "nextprivateoidc": "generic OAuth2/OIDC protocol stem, names no vendor",
+        "nextprivatesigningcscoauth": "repo-local stem; env-stem extraction firing on an app-internal name, no vendor exists",
+        "nocodb-sdk": "self-instance client; targets the app's own self-hosted deployment, which is local in a keyless world",
+        "oauth2": "generic OAuth2/OIDC protocol stem, names no vendor",
+        "openid": "generic OAuth2/OIDC protocol stem, names no vendor",
+        "organizationlicense": "generic app-internal env stem, names no vendor",
+        "osso": "defunct SAML SaaS (Osso), no live vendor surface",
+        "postgrest": "self-instance client; targets the app's own self-hosted deployment, which is local in a keyless world",
+        "seedoauth2": "repo-local stem; env-stem extraction firing on an app-internal name, no vendor exists",
+        "seedplatformoauth": "repo-local stem; env-stem extraction firing on an app-internal name, no vendor exists",
+        "sink": "repo-local stem; env-stem extraction firing on an app-internal name, no vendor exists",
+        "ssogitoauth2": "repo-local stem; env-stem extraction firing on an app-internal name, no vendor exists",
+        "stt": "generic app-internal env stem, names no vendor",
+        "synology": "self-instance client; targets the app's own self-hosted deployment, which is local in a keyless world",
+        "synth": "repo-local stem; env-stem extraction firing on an app-internal name, no vendor exists",
+        "tandem": "repo-local stem; env-stem extraction firing on an app-internal name, no vendor exists",
+        "trpcserver": "generic app-internal env stem, names no vendor",
+        "tts": "generic app-internal env stem, names no vendor",
+        "wizardcloudrunoauth": "repo-local stem; env-stem extraction firing on an app-internal name, no vendor exists",
+        "@vercel/edge": "Vercel edge request helpers (geolocation, ipAddress, rewrite), no external API",
+        "@vercel/nft": "Node File Trace — build-time dependency tracer, no service call",
+        "@grafana/aws-sdk": "Grafana datasource-plugin helper library (credential editors, temporary-credential types), not a service client",
+        "@grafana/azure-sdk": "Grafana datasource-plugin helper library (Azure credential editors), not a service client",
+        "@openfeature/react-sdk": "vendor-neutral feature-flag spec library; the configured provider, not this SDK, names a service",
+        "@openfeature/web-sdk": "vendor-neutral feature-flag spec library; the configured provider, not this SDK, names a service",
+        "@posthog/brand": "PostHog's own brand-asset package, not an external service",
+        "@posthog/hedgehog-mode": "PostHog's own mascot animation library, no service call",
+        "@posthog/icons": "PostHog's own icon library, not an external service",
+        "@posthog/lemon-ui": "PostHog's own monorepo UI package, not an external service",
+        "@posthog/react-native-plugin": "React Native / Expo build-config plugin for posthog-react-native, no service call",
+        "@posthog/rollup-plugin": "bundler plugin, no service call",
+        "@posthog/siphash": "SipHash implementation, no service",
+        "@sendgrid/eventwebhook": "local ECDSA verification of inbound SendGrid event webhooks, no API call",
+        "@stripe/ui-extension-sdk": "Stripe Apps UI-extension authoring API, runs inside the Stripe dashboard; not a client of the Stripe API",
+        "@follow-app/client-sdk": "Folo's own first-party client for the app's own backend, not a third-party vendor surface",
+        "frappe-react-sdk": "self-instance client; targets the app's own self-hosted Frappe deployment, which is local in a keyless world",
+        "calcomadmin": "repo-local stem; CALCOM_ADMIN_API_KEY authenticates against the app's OWN cal.com instance (the credential-sync example calls http://localhost:3002), not api.cal.com",
+        "graphrag": "library-named credential; Microsoft GraphRAG runs locally and GRAPHRAG_API_KEY holds the configured model provider's key, which that provider's stem detects",
+        "infinity": "self-instance client; Infinity is a locally-run rerank/embedding server and INFINITY_API_BASE is required, so the key names no hosted vendor",
+        "langflow": "repo-local stem; the app's own configuration, names no vendor",
+        "openaioauth": "repo-local stem; OPENAI_OAUTH_CLIENT_ID is the client id the app's OWN MCP OAuth server accepts from the ChatGPT connector — inbound, no api.openai.com call",
+        "skyvern": "repo-local stem; the app's own API key, names no vendor",
+        "twentypartners": "repo-local stem; Twenty's own partners-marketplace API (TWENTY_PARTNERS_API_URL is app-configured), no third-party vendor",
+        "widget": "generic app-internal env stem, names no vendor",
+        "@hubspot/cli": "HubSpot CLI (a dev tool), not a service",
+        "@volter/world-core": "our own twin package — the platform, not an external service",
+        "@volter/world-runtime": "our own twin package — the platform, not an external service",
+        "@volter/twin-anthropic": "our own twin package — the platform, not an external service",
+        "@volter/twin-assemblyai": "our own twin package — the platform, not an external service",
+        "@volter/twin-deepgram": "our own twin package — the platform, not an external service",
+        "@volter/twin-figma": "our own twin package — the platform, not an external service",
+        "@volter/twin-gcs": "our own twin package — the platform, not an external service",
+        "@volter/twin-gemini": "our own twin package — the platform, not an external service",
+        "@volter/twin-stripe": "our own twin package — the platform, not an external service"
+      },
+      "patterns": [
+        {
+          "pattern": "^@aws-sdk\\/",
+          "reason": "unmapped client from a multi-service cloud scope (AWS)"
+        },
+        {
+          "pattern": "^@azure(-rest)?\\/",
+          "reason": "unmapped client from a multi-service cloud scope (Azure)"
+        },
+        {
+          "pattern": "^@google-cloud\\/",
+          "reason": "unmapped client from a multi-service cloud scope (Google Cloud)"
+        },
+        {
+          "pattern": "^@ai-sdk\\/",
+          "reason": "unmapped AI SDK provider adapter; each names a hosted model vendor"
+        },
+        {
+          "pattern": "(^|[-.])sdk$",
+          "reason": "generic client shape"
+        },
+        {
+          "pattern": "^@[^/]+\\/(sdk|api-client)$",
+          "reason": "generic client shape (scoped sdk/api-client package)"
+        },
+        {
+          "pattern": "-api-client$",
+          "reason": "generic client shape (api-client suffix)"
+        }
+      ],
+      "ignoreHosts": {
+        "api.fontshare.com": "Public asset, font or embed destination: https://api.fontshare.com/",
+        "api.qrserver.com": "Public asset, font or embed destination: https://api.qrserver.com/",
+        "app.firstpromoter.com": "Human-facing navigation, documentation or account UI: https://app.firstpromoter.com/",
+        "app.getrewardful.com": "Human-facing navigation, documentation or account UI: https://app.getrewardful.com/",
+        "app.lemonsqueezy.com": "Human-facing navigation, documentation or account UI: https://app.lemonsqueezy.com/",
+        "app.partnerstack.com": "Human-facing navigation, documentation or account UI: https://app.partnerstack.com/",
+        "app.sendgrid.com": "Human-facing navigation, documentation or account UI: https://app.sendgrid.com/",
+        "app.slack.com": "Human-facing navigation, documentation or account UI: https://app.slack.com/",
+        "app.tolt.io": "Human-facing navigation, documentation or account UI: https://app.tolt.io/",
+        "astro.build": "Human-facing navigation, documentation or account UI: https://astro.build/",
+        "avatars.githubusercontent.com": "Public asset, font or embed destination: https://avatars.githubusercontent.com/",
+        "bit.ly": "Human-facing navigation, documentation or account UI: https://bit.ly/",
+        "buffer.com": "Human-facing navigation, documentation or account UI: https://buffer.com/",
+        "bun.sh": "Human-facing navigation, documentation or account UI: https://bun.sh/",
+        "calendly.com": "Human-facing navigation, documentation or account UI: https://calendly.com/",
+        "chatgpt.com": "Human-facing navigation, documentation or account UI: https://chatgpt.com/",
+        "chromewebstore.google.com": "Human-facing navigation, documentation or account UI: https://chromewebstore.google.com/",
+        "claude.ai": "Human-facing navigation, documentation or account UI: https://claude.ai/",
+        "cloudflare-dns.com": "Human-facing navigation, documentation or account UI: https://cloudflare-dns.com/",
+        "connect.facebook.net": "Public asset, font or embed destination: https://connect.facebook.net/",
+        "console.cloud.google.com": "Human-facing navigation, documentation or account UI: https://console.cloud.google.com/",
+        "dashboard.stripe.com": "Human-facing navigation, documentation or account UI: https://dashboard.stripe.com/",
+        "developer.apple.com": "Human-facing navigation, documentation or account UI: https://developer.apple.com/",
+        "developer.paypal.com": "Human-facing navigation, documentation or account UI: https://developer.paypal.com/",
+        "developers.google.com": "Human-facing navigation, documentation or account UI: https://developers.google.com/",
+        "discord.com": "Human-facing navigation, documentation or account UI: https://discord.com/",
+        "discord.gg": "Human-facing navigation, documentation or account UI: https://discord.gg/",
+        "dns.google": "Human-facing navigation, documentation or account UI: https://dns.google/",
+        "docs.google.com": "Human-facing navigation, documentation or account UI: https://docs.google.com/",
+        "docs.stripe.com": "Human-facing navigation, documentation or account UI: https://docs.stripe.com/",
+        "drive.google.com": "Human-facing navigation, documentation or account UI: https://drive.google.com/",
+        "esm.sh": "Public asset, font or embed destination: https://esm.sh/",
+        "flag.vercel.app": "Public asset, font or embed destination: https://flag.vercel.app/",
+        "getalby.com": "Human-facing navigation, documentation or account UI: https://getalby.com/",
+        "github.com": "Human-facing navigation, documentation or account UI: https://github.com/",
+        "hatscripts.github.io": "Public asset, font or embed destination: https://hatscripts.github.io/",
+        "kenney.nl": "Public asset, font or embed destination: https://kenney.nl/",
+        "mail.google.com": "Human-facing navigation, documentation or account UI: https://mail.google.com/",
+        "makersuite.google.com": "Human-facing navigation, documentation or account UI: https://makersuite.google.com/",
+        "maps.apple.com": "Human-facing navigation, documentation or account UI: https://maps.apple.com/",
+        "mathiasbynens.be": "Public asset, font or embed destination: https://mathiasbynens.be/",
+        "modelcontextprotocol.io": "Human-facing navigation, documentation or account UI: https://modelcontextprotocol.io/",
+        "myaccount.google.com": "Human-facing navigation, documentation or account UI: https://myaccount.google.com/",
+        "myapps.microsoft.com": "Human-facing navigation, documentation or account UI: https://myapps.microsoft.com/",
+        "news.ycombinator.com": "Human-facing navigation, documentation or account UI: https://news.ycombinator.com/",
+        "outlook.live.com": "Human-facing navigation, documentation or account UI: https://outlook.live.com/",
+        "platform.twitter.com": "Public asset, font or embed destination: https://platform.twitter.com/",
+        "playwright.dev": "Human-facing navigation, documentation or account UI: https://playwright.dev/",
+        "segment.com": "Human-facing navigation, documentation or account UI: https://segment.com/",
+        "snippet.meticulous.ai": "Public asset, font or embed destination: https://snippet.meticulous.ai/",
+        "support.tapfiliate.com": "Human-facing navigation, documentation or account UI: https://support.tapfiliate.com/",
+        "vite.dev": "Human-facing navigation, documentation or account UI: https://vite.dev/",
+        "www.apple.com": "Human-facing navigation, documentation or account UI: https://www.apple.com/",
+        "www.dynadot.com": "Human-facing navigation, documentation or account UI: https://www.dynadot.com/",
+        "www.ecma-international.org": "Human-facing navigation, documentation or account UI: https://www.ecma-international.org/",
+        "www.facebook.com": "Human-facing navigation, documentation or account UI: https://www.facebook.com/",
+        "www.google.com": "Human-facing navigation, documentation or account UI: https://www.google.com/",
+        "www.googletagmanager.com": "Public asset, font or embed destination: https://www.googletagmanager.com/",
+        "www.instagram.com": "Human-facing navigation, documentation or account UI: https://www.instagram.com/",
+        "www.linkedin.com": "Human-facing navigation, documentation or account UI: https://www.linkedin.com/",
+        "www.markdownguide.org": "Human-facing navigation, documentation or account UI: https://www.markdownguide.org/",
+        "www.tiktok.com": "Human-facing navigation, documentation or account UI: https://www.tiktok.com/",
+        "www.youtube.com": "Human-facing navigation, documentation or account UI: https://www.youtube.com/"
+      }
+    },
+    "media": {
+      "@volter/twin-cloudflare@3.0.13": {
+        "integrity": "sha512-WOLsPnAhQu3QVspEVsAS8EK8YogxAfpHUNf9+p7VZspQ5IwUPCgb2Q0Y9F7yURTupbtm1We49ZM7fj0uHzgyhA==",
+        "environment": {
+          "mode": "colocated local World",
+          "data": "synthetic",
+          "tools": {
+            "@volter/world": "3.0.147",
+            "@volter/world-core": "3.0.147",
+            "@volter/world-runtime": "3.0.147",
+            "@volter/world-console": "3.0.142"
+          },
+          "clock": "2026-01-15T12:00:00.000Z; frozen before showcase records were created",
+          "sceneManifest": "launch-catalog-shop/package.json",
+          "sceneLock": "launch-catalog-shop/bun.lock"
+        },
+        "screenshots": [
+          {
+            "path": "catalog/previews/cloudflare-3.0.13-workers-pages-9b3e2fe3ab33.png",
+            "label": "Workers & Pages",
+            "alt": "Cloudflare twin Workers and Pages showing the synthetic Acme showcase account and acme-web Worker.",
+            "width": 1280,
+            "height": 800,
+            "sha256": "9b3e2fe3ab33013ce1c48e23b65eb45a6813c388bf4f465b41e46e56a4edf11e",
+            "capturedAt": "2026-10-08T23:19:42.494994+00:00",
+            "sourceUrl": "http://catalog-launch-shop--catalog-launch-shop--pages.localhost:51129/catalog-launch-shop/catalog-launch-shop/cloudflare/_screen/dash.cloudflare.com/0ba443776ea22d385a6bfc18a72078e3/workers-and-pages"
+          }
+        ]
+      },
+      "@volter/twin-openai@3.0.3": {
+        "integrity": "sha512-mESE509bpr3Ecpur+NEq/7s78qUa8aI4W0DV/M3EGkWNBKBNi6cH7CZ/+/rY9OmAtG9dsReAzVOww9uXxeqkKQ==",
+        "environment": {
+          "mode": "colocated local World",
+          "data": "synthetic",
+          "tools": {
+            "@volter/world": "3.0.147",
+            "@volter/world-core": "3.0.147",
+            "@volter/world-runtime": "3.0.147",
+            "@volter/world-console": "3.0.142"
+          },
+          "clock": "2026-01-15T12:00:00.000Z; frozen before showcase records were created",
+          "sceneManifest": "launch-catalog-shop/package.json",
+          "sceneLock": "launch-catalog-shop/bun.lock"
+        },
+        "screenshots": [
+          {
+            "path": "catalog/previews/openai-3.0.3-project-api-keys-e2d6f40bfbdb.png",
+            "label": "Project API keys",
+            "alt": "OpenAI twin project settings showing the Default project and its masked application key.",
+            "width": 1280,
+            "height": 800,
+            "sha256": "e2d6f40bfbdb453968d5eeaa19cbee81c48f317e01e9e613c7fa1e619357869f",
+            "capturedAt": "2026-10-08T23:37:48.453Z",
+            "sourceUrl": "http://buyer--platform-openai-com.catalog-launch-shop--catalog-launch-shop.localhost:51129/settings/proj_38IDslDHDnuRmVW8WLMNYhRJ/api-keys"
+          }
+        ]
+      },
+      "@volter/twin-anthropic@1.0.5": {
+        "integrity": "sha512-eJjLOjbI7eTYrGCOGyKr+ppqLt+2SSvPBkCLhYP2OAy5Y9vz2lXjeWysPRLaeEFfjrlKQ6AwQ/sJD+mEJ3/V8A==",
+        "environment": {
+          "mode": "Fresh colocated local World; original live vendor iframe in the World board",
+          "data": "Synthetic World organization and existing runtime-issued workspace key; local mirror sign-in only.",
+          "tools": {
+            "@volter/world": "3.0.165",
+            "@volter/world-core": "3.0.155",
+            "@volter/world-runtime": "3.0.163",
+            "@volter/world-console": "3.0.151",
+            "@volter/world-ui": "1.0.155"
+          },
+          "clock": "Frozen at 2026-01-15T12:00:00.000Z before scene SDK writes, then advanced once by five seconds to 2026-01-15T12:00:05.000Z. The Anthropic runtime-issued key existed before freeze and retains its visible 2026-10-13 creation date.",
+          "source": "Published npm artifact from b828301d8954cedd90491525860fa03090897081; capture binds only @volter/twin-anthropic@1.0.5 and the recorded integrity.",
+          "toolSource": "Published carrier source 6092e7bcb87514eb0cc4973072baaab6d7ad7b18",
+          "installedCatalog": "@volter/twin-catalog@0.2.65; later catalog admissions are outside this capture cohort.",
+          "manifestSha256": "042def548e00cdc4a5f508e2e851bc95947539c8653893b607d67477aba27acf",
+          "lockSha256": "808fa30bb3f09958139fc2f75564b5cb3852a7025138f2e2503e7b312720b92f",
+          "browser": "Existing normal Chrome; native full iframe-element screenshots at DPR2. Offered Board Zoom Out once after normal navigation places the whole vendor rail beyond the host panel ending at CSS x247. Original PNG bytes are unedited.",
+          "captureGeometryCssPixels": {
+            "x": 332.1493835449219,
+            "y": 169.2001953125,
+            "width": 1063.7012023925781,
+            "height": 640.8840942382812
+          },
+          "captureScope": "Visible full vendor-pane viewport at the recorded scroll position; content below it is not implied visible.",
+          "workflowScope": "Existing masked active key table only; no key-management mutation or model call. Admin SDK readback remains unavailable because the current app key is workspace-scoped."
+        },
+        "screenshots": [
+          {
+            "path": "catalog/previews/anthropic-1.0.5-api-keys-full-pane-13136b123d17.png",
+            "label": "API keys",
+            "alt": "Anthropic twin API keys screen showing a masked active key in the World organization.",
+            "width": 2128,
+            "height": 1284,
+            "sha256": "13136b123d179b1261ef310a43c8b2b2ab096f837704483b6ad5c8fe0da0eb7e",
+            "capturedAt": "2026-10-13T23:20:48.296Z",
+            "sourceUrl": "http://mg13--mg13--pages.localhost:60480/mg13/mg13/anthropic/_screen/platform.claude.com/settings/keys"
+          }
+        ]
+      },
+      "@volter/twin-clerk@1.0.4": {
+        "integrity": "sha512-+FvpxOyeVbJCIr2j5U4OnPNOEqKpBgSfzgWKwvHktDt9Dl9B/fNJzLAi4CaOJEBIZ27NpuryzdpFwTD23YAAUA==",
+        "environment": {
+          "mode": "Fresh colocated local World; original live vendor iframe in the World board",
+          "data": "Synthetic user and session created through unchanged @clerk/backend 2.33.3; one saved profile change and one session revocation through offered mirror controls.",
+          "tools": {
+            "@volter/world": "3.0.165",
+            "@volter/world-core": "3.0.155",
+            "@volter/world-runtime": "3.0.163",
+            "@volter/world-console": "3.0.151",
+            "@volter/world-ui": "1.0.155"
+          },
+          "clock": "Frozen at 2026-01-15T12:00:00.000Z before scene SDK writes, then advanced once by five seconds to 2026-01-15T12:00:05.000Z. The Anthropic runtime-issued key existed before freeze and retains its visible 2026-10-13 creation date.",
+          "source": "Published npm artifact from b828301d8954cedd90491525860fa03090897081; capture binds only @volter/twin-clerk@1.0.4 and the recorded integrity.",
+          "toolSource": "Published carrier source 6092e7bcb87514eb0cc4973072baaab6d7ad7b18",
+          "installedCatalog": "@volter/twin-catalog@0.2.65; later catalog admissions are outside this capture cohort.",
+          "manifestSha256": "042def548e00cdc4a5f508e2e851bc95947539c8653893b607d67477aba27acf",
+          "lockSha256": "808fa30bb3f09958139fc2f75564b5cb3852a7025138f2e2503e7b312720b92f",
+          "browser": "Existing normal Chrome; native full iframe-element screenshots at DPR2. Offered Board Zoom Out once after normal navigation places the whole vendor rail beyond the host panel ending at CSS x247. Original PNG bytes are unedited.",
+          "captureGeometryCssPixels": {
+            "x": 332.1493835449219,
+            "y": 170.033447265625,
+            "width": 1063.7012023925781,
+            "height": 640.8841552734375
+          },
+          "captureScope": "Visible full vendor-pane viewport at the recorded scroll position; content below it is not implied visible.",
+          "workflowScope": "Users, saved profile and revoked session in the same fresh World; Sessions still retains its actual scrolled position."
+        },
+        "screenshots": [
+          {
+            "path": "catalog/previews/clerk-1.0.4-users-full-pane-zoom-9dd1b253b26f.png",
+            "label": "Users",
+            "alt": "Clerk twin Users showing Grace Murray Hopper and the stored user ID.",
+            "width": 2128,
+            "height": 1282,
+            "sha256": "9dd1b253b26fa8ae7b264230507dd019861e8c09b388323d98c1771b315cc203",
+            "capturedAt": "2026-10-13T23:19:53.120Z",
+            "sourceUrl": "http://mg13--mg13--pages.localhost:60480/mg13/mg13/clerk/_screen/dashboard.clerk.com/users"
+          },
+          {
+            "path": "catalog/previews/clerk-1.0.4-saved-profile-full-pane-54f3c4e04cf9.png",
+            "label": "User profile",
+            "alt": "Clerk twin user profile showing Grace Murray Hopper’s saved personal information.",
+            "width": 2128,
+            "height": 1282,
+            "sha256": "54f3c4e04cf91342280a34d6658ef4d1de5995e90fec8e354dd2a24c7d71b891",
+            "capturedAt": "2026-10-13T23:20:12.807Z",
+            "sourceUrl": "http://mg13--mg13--pages.localhost:60480/mg13/mg13/clerk/_screen/dashboard.clerk.com/users/user_38IDslDHDnvPwNKpXuSrXKJXmhI"
+          },
+          {
+            "path": "catalog/previews/clerk-1.0.4-revoked-session-full-pane-66f3afbf7522.png",
+            "label": "Revoked session",
+            "alt": "Clerk twin Sessions section showing the revoked session.",
+            "width": 2128,
+            "height": 1282,
+            "sha256": "66f3afbf752217304f81b8e8f554f71cd0acbced50a443e6d5157830e42526e8",
+            "capturedAt": "2026-10-13T23:22:39.955Z",
+            "sourceUrl": "http://mg13--mg13--pages.localhost:60480/mg13/mg13/clerk/_screen/dashboard.clerk.com/users/user_38IDslDHDnvPwNKpXuSrXKJXmhI#sessions"
+          }
+        ]
+      },
+      "@volter/twin-linear@3.0.6": {
+        "integrity": "sha512-WdtzjVAV7LmVl0z6+vZ8lNzPhCk+/JPKUvNbFP8MCHEn8CgtvW9oWBo0TlQF5mwUpy3v+D3e3MifjWdhgZst3g==",
+        "environment": {
+          "mode": "Fresh colocated local World; original live vendor iframe in the World board",
+          "data": "Synthetic team, owner and MIR-1 issue created and read through unchanged @linear/sdk 86.0.0.",
+          "tools": {
+            "@volter/world": "3.0.165",
+            "@volter/world-core": "3.0.155",
+            "@volter/world-runtime": "3.0.163",
+            "@volter/world-console": "3.0.151",
+            "@volter/world-ui": "1.0.155"
+          },
+          "clock": "Frozen at 2026-01-15T12:00:00.000Z before scene SDK writes, then advanced once by five seconds to 2026-01-15T12:00:05.000Z. The Anthropic runtime-issued key existed before freeze and retains its visible 2026-10-13 creation date.",
+          "source": "Published npm artifact from 665cc64954a7f9f95ea8feef24b978e5d9504e8f; capture binds only @volter/twin-linear@3.0.6 and the recorded integrity.",
+          "toolSource": "Published carrier source 6092e7bcb87514eb0cc4973072baaab6d7ad7b18",
+          "installedCatalog": "@volter/twin-catalog@0.2.65; later catalog admissions are outside this capture cohort.",
+          "manifestSha256": "042def548e00cdc4a5f508e2e851bc95947539c8653893b607d67477aba27acf",
+          "lockSha256": "808fa30bb3f09958139fc2f75564b5cb3852a7025138f2e2503e7b312720b92f",
+          "browser": "Existing normal Chrome; native full iframe-element screenshots at DPR2. Offered Board Zoom Out once after normal navigation places the whole vendor rail beyond the host panel ending at CSS x247. Original PNG bytes are unedited.",
+          "captureGeometryCssPixels": {
+            "x": 332.1493835449219,
+            "y": 170.033447265625,
+            "width": 1063.7012023925781,
+            "height": 640.88427734375
+          },
+          "captureScope": "Visible full vendor-pane viewport at the recorded scroll position; content below it is not implied visible.",
+          "workflowScope": "Existing MIR-1 issue with description, Backlog status, High priority and World Owner assignee; no issue edit was repeated for capture."
+        },
+        "screenshots": [
+          {
+            "path": "catalog/previews/linear-3.0.6-issue-full-pane-3962c89df669.png",
+            "label": "Issue",
+            "alt": "Linear twin MIR-1 showing the billing-confirmation issue and its properties.",
+            "width": 2128,
+            "height": 1282,
+            "sha256": "3962c89df6696a194cd682ea3a55898783259d3b5baa6ab43be1ad1a36125807",
+            "capturedAt": "2026-10-13T23:21:15.819Z",
+            "sourceUrl": "http://mg13--mg13--pages.localhost:60480/mg13/mg13/linear/_screen/linear.app/world-linear/issue/MIR-1"
+          }
+        ]
+      },
+      "@volter/twin-resend@1.0.3": {
+        "integrity": "sha512-eg8FaZSPZ41/Aq/ew6bYV0YSIgmZ2YYsoR+yn8H7wrX+g3A3PJDHgPBpeIAII9Z1IANFvaeRgsfbApqWhXffRw==",
+        "environment": {
+          "mode": "Fresh colocated local World; original live vendor iframe in the World board",
+          "data": "Synthetic receipt email sent and read through unchanged resend 6.6.0; World clock advanced five seconds before delivered readback.",
+          "tools": {
+            "@volter/world": "3.0.165",
+            "@volter/world-core": "3.0.155",
+            "@volter/world-runtime": "3.0.163",
+            "@volter/world-console": "3.0.151",
+            "@volter/world-ui": "1.0.155"
+          },
+          "clock": "Frozen at 2026-01-15T12:00:00.000Z before scene SDK writes, then advanced once by five seconds to 2026-01-15T12:00:05.000Z. The Anthropic runtime-issued key existed before freeze and retains its visible 2026-10-13 creation date.",
+          "source": "Published npm artifact from b828301d8954cedd90491525860fa03090897081; capture binds only @volter/twin-resend@1.0.3 and the recorded integrity.",
+          "toolSource": "Published carrier source 6092e7bcb87514eb0cc4973072baaab6d7ad7b18",
+          "installedCatalog": "@volter/twin-catalog@0.2.65; later catalog admissions are outside this capture cohort.",
+          "manifestSha256": "042def548e00cdc4a5f508e2e851bc95947539c8653893b607d67477aba27acf",
+          "lockSha256": "808fa30bb3f09958139fc2f75564b5cb3852a7025138f2e2503e7b312720b92f",
+          "browser": "Existing normal Chrome; native full iframe-element screenshots at DPR2. Offered Board Zoom Out once after normal navigation places the whole vendor rail beyond the host panel ending at CSS x247. Original PNG bytes are unedited.",
+          "captureGeometryCssPixels": {
+            "x": 332.1493835449219,
+            "y": 170.03369140625,
+            "width": 1063.7012023925781,
+            "height": 640.8837890625
+          },
+          "captureScope": "Visible full vendor-pane viewport at the recorded scroll position; content below it is not implied visible.",
+          "workflowScope": "Existing stored email detail, queued/sent/delivered events and visible HTML preview; no second send for capture."
+        },
+        "screenshots": [
+          {
+            "path": "catalog/previews/resend-1.0.3-email-and-events-full-pane-c85a360f3bc1.png",
+            "label": "Email and events",
+            "alt": "Resend twin email details showing the receipt message and delivery events.",
+            "width": 2128,
+            "height": 1282,
+            "sha256": "c85a360f3bc13cfcf3bc2a75de0bd0f0cc2bad764a349fc7e3c78fd1262782b2",
+            "capturedAt": "2026-10-13T23:19:11.624Z",
+            "sourceUrl": "http://mg13--mg13--pages.localhost:60480/mg13/mg13/resend/_screen/resend.com/emails/d2f4b7b9-5748-4cad-9854-8fd3f0bd4185?team=World&view=preview"
+          }
+        ]
+      },
+      "@volter/twin-slack@3.0.9": {
+        "integrity": "sha512-m7LWrT6yU4cBdrzzSOaKaH4z+sdZehf6GlDng0YN5+v03xP3UTdkRLXzrWizsh6SNzs844v4RhfJGowH4bNcmQ==",
+        "environment": {
+          "mode": "Fresh colocated local World; original live vendor iframe in the World board",
+          "data": "Synthetic channel and notification created through unchanged @slack/web-api 7.19.0; offered mirror controls saved one reply by World Owner in the same thread.",
+          "tools": {
+            "@volter/world": "3.0.165",
+            "@volter/world-core": "3.0.155",
+            "@volter/world-runtime": "3.0.163",
+            "@volter/world-console": "3.0.151",
+            "@volter/world-ui": "1.0.155"
+          },
+          "clock": "Frozen at 2026-01-15T12:00:00.000Z before scene SDK writes, then advanced once by five seconds to 2026-01-15T12:00:05.000Z. The Anthropic runtime-issued key existed before freeze and retains its visible 2026-10-13 creation date.",
+          "source": "Published npm artifact from b828301d8954cedd90491525860fa03090897081; capture binds only @volter/twin-slack@3.0.9 and the recorded integrity.",
+          "toolSource": "Published carrier source 6092e7bcb87514eb0cc4973072baaab6d7ad7b18",
+          "installedCatalog": "@volter/twin-catalog@0.2.65; later catalog admissions are outside this capture cohort.",
+          "manifestSha256": "042def548e00cdc4a5f508e2e851bc95947539c8653893b607d67477aba27acf",
+          "lockSha256": "808fa30bb3f09958139fc2f75564b5cb3852a7025138f2e2503e7b312720b92f",
+          "browser": "Existing normal Chrome; native full iframe-element screenshots at DPR2. Offered Board Zoom Out once after normal navigation places the whole vendor rail beyond the host panel ending at CSS x247. Original PNG bytes are unedited.",
+          "captureGeometryCssPixels": {
+            "x": 332.1493835449219,
+            "y": 170.033203125,
+            "width": 1063.7012023925781,
+            "height": 640.88427734375
+          },
+          "captureScope": "Visible full vendor-pane viewport at the recorded scroll position; content below it is not implied visible.",
+          "workflowScope": "Existing receipt-rollout channel, notification parent and saved human reply; no second reply for capture. The initial pre-sign-in preview 401 remains original evidence."
+        },
+        "screenshots": [
+          {
+            "path": "catalog/previews/slack-3.0.9-channel-with-existing-reply-complete-pane-c4f1504c2d43.png",
+            "label": "Channel and thread",
+            "alt": "Slack twin receipt-rollout channel and notification thread showing World Owner’s reply.",
+            "width": 2128,
+            "height": 1282,
+            "sha256": "c4f1504c2d4313882095781fea63dfe15cbad7b407fb91a0ace9eb751a3ec7b1",
+            "capturedAt": "2026-10-13T23:22:14.248Z",
+            "sourceUrl": "http://mg13--mg13--pages.localhost:60480/mg13/mg13/slack/_screen/app.slack.com/client/T0VOLTER01/C02?thread_ts=1768478405.000002"
+          }
+        ]
+      },
+      "@volter/twin-stripe@3.0.5": {
+        "integrity": "sha512-U4ZR5HgTWuyA6/25CasCHrPsu7v95+meu2FFoo2xtTvDoBRiXdZBeIfQwqm+FHwAw7j8167ltaE/LbQs3rHm/A==",
+        "environment": {
+          "mode": "Fresh colocated local World; original live vendor iframe in the World board",
+          "data": "Synthetic cus_twin_1 created, retrieved and listed through unchanged stripe 17.7.0.",
+          "tools": {
+            "@volter/world": "3.0.165",
+            "@volter/world-core": "3.0.155",
+            "@volter/world-runtime": "3.0.163",
+            "@volter/world-console": "3.0.151",
+            "@volter/world-ui": "1.0.155"
+          },
+          "clock": "Frozen at 2026-01-15T12:00:00.000Z before scene SDK writes, then advanced once by five seconds to 2026-01-15T12:00:05.000Z. The Anthropic runtime-issued key existed before freeze and retains its visible 2026-10-13 creation date.",
+          "source": "Published npm artifact from b828301d8954cedd90491525860fa03090897081; capture binds only @volter/twin-stripe@3.0.5 and the recorded integrity.",
+          "toolSource": "Published carrier source 6092e7bcb87514eb0cc4973072baaab6d7ad7b18",
+          "installedCatalog": "@volter/twin-catalog@0.2.65; later catalog admissions are outside this capture cohort.",
+          "manifestSha256": "042def548e00cdc4a5f508e2e851bc95947539c8653893b607d67477aba27acf",
+          "lockSha256": "808fa30bb3f09958139fc2f75564b5cb3852a7025138f2e2503e7b312720b92f",
+          "browser": "Existing normal Chrome; native full iframe-element screenshots at DPR2. Offered Board Zoom Out once after normal navigation places the whole vendor rail beyond the host panel ending at CSS x247. Original PNG bytes are unedited.",
+          "captureGeometryCssPixels": {
+            "x": 332.1493835449219,
+            "y": 170.033203125,
+            "width": 1063.7012023925781,
+            "height": 640.88427734375
+          },
+          "captureScope": "Visible full vendor-pane viewport at the recorded scroll position; content below it is not implied visible.",
+          "workflowScope": "Customers profile and visible contact details/empty activity sections only. Lower metadata is outside this still’s viewport. No Checkout, portal, payment or subscription action."
+        },
+        "screenshots": [
+          {
+            "path": "catalog/previews/stripe-3.0.5-customer-profile-full-pane-f6103047bd8e.png",
+            "label": "Customer profile",
+            "alt": "Stripe twin customer profile showing Ada Lovelace and empty activity sections.",
+            "width": 2128,
+            "height": 1282,
+            "sha256": "f6103047bd8ea3877a6bd899840a0c578e7c8df38b4cade4ed0f41989c01ec1f",
+            "capturedAt": "2026-10-13T23:21:56.176Z",
+            "sourceUrl": "http://mg13--mg13--pages.localhost:60480/mg13/mg13/stripe/_screen/dashboard.stripe.com/customers/cus_twin_1"
+          }
+        ]
+      },
+      "@volter/twin-github@3.0.11": {
+        "integrity": "sha512-GZ5PdC7MRd9BfeJbAF+t0xaDoCeiooQicivs8Z12cfWnx5zsi5qTdjRr7HSnqb/ZxpKgraRkFrQrix0Kj0GHtg==",
+        "environment": {
+          "mode": "Fresh colocated local World; original normal Chrome Board viewport",
+          "data": "Synthetic repository, issue, branch, file and pull created through unchanged @octokit/rest 22.0.1.",
+          "tools": {
+            "@volter/world": "3.0.169",
+            "@volter/world-core": "3.0.156",
+            "@volter/world-runtime": "3.0.166",
+            "@volter/world-console": "3.0.152",
+            "@volter/world-ui": "1.0.156"
+          },
+          "toolIntegrities": {
+            "@volter/world": "sha512-KaaILTRXmzwmQB6u+SAYhLspwlU9BwKJbkywhRnNVoUBM4AGmsADHZMSWbzib7b8ZgocaBq3vq1qOp1bGLTltg==",
+            "@volter/world-core": "sha512-FeLnK6E60xVRm7lPPqDxa1EVw10Pcqf5MrVnZoaG1iu/GkUrespNTfeLIjF/o/1Yf4/MHFAHoVXKpEcQNVDr1w==",
+            "@volter/world-runtime": "sha512-jI5NqsViiLBkEYC+GOXxByIs5NawekLaK/A9yua3Nl5pX57fJrROsHisra1vmBicG+Ca/5kR8O/P/Un/XBBFgg==",
+            "@volter/world-console": "sha512-nmrJqLbYvuC/+sUVdRPbwe5JSnBjxvCjNJGc7n5SGTHA9IpC5FpwK2G3QFtvn26zy806ZgzzwkIO5wsDnDC+Ig==",
+            "@volter/world-ui": "sha512-/0j8tHw94CTo+1eGw8fGqnNGEbu5aicBDHH7v7WBm3BOEYpYpkKFyhjQsCtCWPkkJBV8Up9xNCT5oLvXXdVGng=="
+          },
+          "SDK": {
+            "@octokit/rest": "22.0.1"
+          },
+          "clock": "Frozen at 2026-01-15T12:00:05.000Z before the scene SDK writes; capture wall time is 2026-10-14T07:54:04.752Z.",
+          "source": "Published @volter/twin-github 3.0.11 from 7a378b4e8e81ed1ec064a1e1866ee2683c1661a7; normal release 38528984551 attempt 1.",
+          "toolSource": {
+            "checkout": "96d60f197f3293433a144da94cc2943cb080bc16",
+            "carrier": "2df611f0f6a4d281a28c304c7666e377d0202489"
+          },
+          "manifestSha256": "abf9b7e159398fea0c06388e9aa3b62ba5b27f6656bf6ae001027a55aa6c0a61",
+          "lockSha256": "c2756ef24a695c9b4f218c9c297789f18d10c16edc48316196bb5e1d2d3ef561",
+          "worldEpoch": {
+            "name": "application",
+            "branch": "application",
+            "instanceUUID": "70b8822a-c1c5-4268-9cff-d16fd903b4d5",
+            "createdAt": "2026-10-14T07:51:42.024Z"
+          },
+          "browser": "Existing normal Chrome; original viewport PNG 3456×1882 pixels. No crop, resampling or full-iframe-only capture.",
+          "captureScope": "Whole World Board viewport including the actual GitHub vendor pane; a resized tool display is not original geometry.",
+          "workflowScope": "Stored pull 2, feature/welcome → main, added src/welcome.mjs; unchanged Octokit pulls.listFiles reads the same filename/status/patch in this fresh World.",
+          "provenance": "catalog/previews/github-3.0.11-files-5b8a695a7a21c0326b1c50514d57b10d7c807ec68bc8f08d2553addd44276b53.provenance.json",
+          "privateLiveSourceUrlOmitted": true
+        },
+        "screenshots": [
+          {
+            "path": "catalog/previews/github-3.0.11-files-5b8a695a7a21c0326b1c50514d57b10d7c807ec68bc8f08d2553addd44276b53.png",
+            "label": "Files changed",
+            "alt": "GitHub twin pull request 2 showing the src/welcome.mjs patch within the World Board.",
+            "width": 3456,
+            "height": 1882,
+            "sha256": "5b8a695a7a21c0326b1c50514d57b10d7c807ec68bc8f08d2553addd44276b53",
+            "capturedAt": "2026-10-14T07:54:04.752Z"
+          }
+        ]
+      }
+    },
+    "starters": {
+      "tools": {
+        "@volter/world": "3.0.221",
+        "@volter/world-core": "3.0.190",
+        "@volter/world-runtime": "3.0.219",
+        "@volter/world-console": "3.0.177",
+        "@volter/world-ui": "1.0.189",
+        "@volter/world-host": "3.0.217",
+        "@volter/world-access": "3.0.4"
+      },
+      "supportingPackages": {
+        "react": "19.2.7",
+        "react-dom": "19.2.7"
+      },
+      "nodeRequirements": {
+        "@volter/world": null,
+        "@volter/world-core": "^22.21.0 || >=24.5.0",
+        "@volter/world-runtime": "^22.21.0 || >=24.5.0",
+        "@volter/world-console": null,
+        "@volter/world-ui": "^22.21.0 || >=24.5.0",
+        "@volter/world-host": null,
+        "@volter/world-access": null,
+        "react": ">=0.10.0",
+        "react-dom": null
+      },
+      "requirements": {
+        "@volter/world": {
+          "version": "3.0.221",
+          "engines": {},
+          "dependencies": {
+            "zod": "^4.6.5",
+            "react": "^19.2.7",
+            "react-dom": "^19.2.7",
+            "@volter/world-ui": "1.0.189",
+            "@volter/world-core": "3.0.190",
+            "@volter/world-runtime": "3.0.219",
+            "@modelcontextprotocol/sdk": "^1.30.1"
+          },
+          "peerDependencies": {
+            "playwright": "^1.63.0",
+            "@volter/world-console": "3.0.177"
+          },
+          "peerDependenciesMeta": {
+            "playwright": {
+              "optional": true
+            },
+            "@volter/world-console": {
+              "optional": true
+            }
+          },
+          "integrity": "sha512-2kaAqKyAI+txRpOIcWWbcxMS1AVUDRF55O7IpG0cXj2WG/NHsMdK2iMxBA1yuUm3za3/0TbA62Nui/5/fEm1Qw=="
+        },
+        "@volter/world-core": {
+          "version": "3.0.190",
+          "engines": {
+            "node": "^22.21.0 || >=24.5.0"
+          },
+          "dependencies": {
+            "ws": "^8.18.0"
+          },
+          "peerDependencies": {},
+          "peerDependenciesMeta": {},
+          "integrity": "sha512-Qf3xpyskwDj/N1GZ0F1Y4yIo19lqL5930IKJFHIIaIrXXulpklRfFr+ilW+IhoU6UhWIzlNXGNllP2gWpYv68g=="
+        },
+        "@volter/world-runtime": {
+          "version": "3.0.219",
+          "engines": {
+            "node": "^22.21.0 || >=24.5.0"
+          },
+          "dependencies": {
+            "yaml": "2.9.0",
+            "smol-toml": "^1.8.0",
+            "modern-screenshot": "4.7.0",
+            "@volter/world-core": "3.0.190",
+            "@volter/world-access": "3.0.4"
+          },
+          "peerDependencies": {
+            "@volter/world-core": "3.0.190",
+            "@volter/world-console": "3.0.177"
+          },
+          "peerDependenciesMeta": {
+            "@volter/world-console": {
+              "optional": true
+            }
+          },
+          "integrity": "sha512-W8pJvhRZVIgStceQ7DZW4xvKSOIzbRcbyL8ZYhVHOiPL+FsaTKSuqPF/2j4laT50Ci5Biov6L+SV1AqF/6Z0wA=="
+        },
+        "@volter/world-console": {
+          "version": "3.0.177",
+          "engines": {},
+          "dependencies": {
+            "react": "^19.2.7",
+            "react-dom": "^19.2.7",
+            "@xyflow/react": "^12.12.0"
+          },
+          "peerDependencies": {},
+          "peerDependenciesMeta": {},
+          "integrity": "sha512-TJ4yDZS1eMnAIxZFaGWF/sRgY2Mp3TnQQoZtRfmfWziw4AAW9K7POV1fTQl1SjUTJtpwnLwnzMsvqpkBGarVQg=="
+        },
+        "@volter/world-ui": {
+          "version": "1.0.189",
+          "engines": {
+            "node": "^22.21.0 || >=24.5.0"
+          },
+          "dependencies": {
+            "micromark": "4.0.3",
+            "micromark-extension-gfm": "3.0.0"
+          },
+          "peerDependencies": {
+            "react": "^19.2.7",
+            "react-dom": "^19.2.7",
+            "@volter/world-core": "3.0.190"
+          },
+          "peerDependenciesMeta": {},
+          "integrity": "sha512-8Kf2hs6M0wD984l0BEwFCPV//qodVO7Qmr9C84ytKT+sLOdxVv424cmpSWOKMiCO7fsWA3vK5Ruqm3DpVrl7yw=="
+        },
+        "@volter/world-host": {
+          "version": "3.0.217",
+          "engines": {},
+          "dependencies": {
+            "@volter/world-core": "3.0.190",
+            "@volter/world-access": "3.0.4",
+            "@volter/world-runtime": "3.0.219"
+          },
+          "peerDependencies": {
+            "@volter/world-console": "3.0.177"
+          },
+          "peerDependenciesMeta": {
+            "@volter/world-console": {
+              "optional": true
+            }
+          },
+          "integrity": "sha512-U/5ecvUXsOB6youHwc1eS4nn1v7N+dvbCvtojq0HwLSxFWPw1wAd6pyF6CX77PqjR2EJdNOXgLs37AZbDglSHQ=="
+        },
+        "@volter/world-access": {
+          "version": "3.0.4",
+          "engines": {},
+          "dependencies": {},
+          "peerDependencies": {},
+          "peerDependenciesMeta": {},
+          "integrity": "sha512-xBdnaMivHlVb72kq2AhlF3+dEfO0DZzMXZAqaqRSG5OoOQYT1odXjFEd9jMhrozM2IRaOmfKq0FawYF7PSQpfQ=="
+        },
+        "react": {
+          "version": "19.2.7",
+          "engines": {
+            "node": ">=0.10.0"
+          },
+          "dependencies": {},
+          "peerDependencies": {},
+          "peerDependenciesMeta": {},
+          "integrity": "sha512-HNe9WslTbXmFK8o8cmwgAeJFSBvt1bPdHCVKtaaV+WlAN36mpT4hcRpwbf3fY56ar2oIXzsBpOAiIRHAdY0OlQ=="
+        },
+        "react-dom": {
+          "version": "19.2.7",
+          "engines": {},
+          "dependencies": {
+            "scheduler": "^0.27.0"
+          },
+          "peerDependencies": {
+            "react": "^19.2.7"
+          },
+          "peerDependenciesMeta": {},
+          "integrity": "sha512-t0BRVXvbiE/o20Hfw669rLbMCDWtYZLvmJigy2f0MxsXF+71pxhR3xOkspmsO8h3ZlNzyibAmtCa3l4lYKk6gQ=="
+        }
+      },
+      "twins": {
+        "@volter/twin-stripe": "3.0.2",
+        "@volter/twin-openai": "3.0.2",
+        "@volter/twin-github": "3.0.6",
+        "@volter/twin-linear": "3.0.4",
+        "@volter/twin-slack": "3.0.5",
+        "@volter/twin-resend": "1.0.1"
+      }
+    },
+    "catalogReceipts": {
+      "package": "@volter/twin-catalog",
+      "version": "0.2.82",
+      "sourceCommit": "8afe26ae76979942e7470f8cab3bdac345c3daa5",
+      "digest": "e43161a44f2a54276230f7c829b01c5bbd0e5c9b2997132668fb0053aef661ed",
+      "retainedFrom": {
+        "package": "@volter/twin-catalog",
+        "version": "0.2.80",
+        "integrity": "sha512-V74ZBB2B6blqOPzk/nUXFF0QH3JvHjYbBVcjQMSFjzi6mFRDm07WBn2asgnSPynzPzCeuWOksdIYSj11BP09Ow==",
+        "archiveSha256": "2f28d4e759a311e793e0d1095900207d21dd3d22458bea9dcd8853e8916eb2bf",
+        "sourceCommit": "e46c3e95be7b254907f3fdaf801a06b6b8f2c5ae",
+        "digest": "0bfa2b657422685696994fb8a5a63daeb812bf1376acca6084f686d5c814f98f",
+        "retainedEvidenceCount": 44
+      },
+      "receipts": {
+        "00c790be7e1c5d989f28fbd81c6a9219551c664c02bacef04c25b095320ff20b": {
+          "pullRequest": 51,
+          "url": "https://github.com/volter-ai/twin-catalog-open/releases/tag/evidence-00c790be7e1c5d989f28fbd81c6a9219551c664c02bacef04c25b095320ff20b-3dc74d0f3960bd08605c8aeb57040dfbcdd4af7c8beeb3e1a04b8f9a0e058e82",
+          "reportSha256": "3dc74d0f3960bd08605c8aeb57040dfbcdd4af7c8beeb3e1a04b8f9a0e058e82",
+          "reportPath": "evidence/00c790be7e1c5d989f28fbd81c6a9219551c664c02bacef04c25b095320ff20b.json",
+          "moderation": {
+            "mode": "internal-maintainer-merge",
+            "mergedBy": "yueranyuan"
+          }
+        },
+        "4edaec8cd2e55c04f66245309742a63c36f102320ef221927ff93d97b3b268b9": {
+          "pullRequest": 5,
+          "url": "https://github.com/volter-ai/twin-catalog-open/releases/tag/evidence-4edaec8cd2e55c04f66245309742a63c36f102320ef221927ff93d97b3b268b9-3b4ef68f9e657633c942de3e61a99af6bf6121a6b391c21e16589e38d93d7cf2",
+          "reportSha256": "3b4ef68f9e657633c942de3e61a99af6bf6121a6b391c21e16589e38d93d7cf2",
+          "reportPath": "evidence/4edaec8cd2e55c04f66245309742a63c36f102320ef221927ff93d97b3b268b9.json",
+          "moderation": {
+            "mode": "internal-maintainer-merge",
+            "mergedBy": "yueranyuan"
+          }
+        },
+        "5aaa0746a312e948a943c75b21dab46a692005ded7bc025b5b1765922c5f0f19": {
+          "pullRequest": 72,
+          "url": "https://github.com/volter-ai/twin-catalog-open/releases/tag/evidence-5aaa0746a312e948a943c75b21dab46a692005ded7bc025b5b1765922c5f0f19-260795c9c83a23b7bf666d3d55f28cb1a03e0a92d5f8e53ef1e9337814174390",
+          "reportSha256": "260795c9c83a23b7bf666d3d55f28cb1a03e0a92d5f8e53ef1e9337814174390",
+          "reportPath": "evidence/5aaa0746a312e948a943c75b21dab46a692005ded7bc025b5b1765922c5f0f19.json",
+          "moderation": {
+            "mode": "internal-maintainer-merge",
+            "mergedBy": "yueranyuan"
+          }
+        },
+        "66285aa1b8bccb8fe943294975108f303bc51ee310c33633d7454afa631e913b": {
+          "pullRequest": 39,
+          "url": "https://github.com/volter-ai/twin-catalog-open/releases/tag/evidence-66285aa1b8bccb8fe943294975108f303bc51ee310c33633d7454afa631e913b-1a36ec4e52b1665477950da2fc5a6c10b8469f9db502e1d35ee9a2d454ff5949",
+          "reportSha256": "1a36ec4e52b1665477950da2fc5a6c10b8469f9db502e1d35ee9a2d454ff5949",
+          "reportPath": "evidence/66285aa1b8bccb8fe943294975108f303bc51ee310c33633d7454afa631e913b.json",
+          "moderation": {
+            "mode": "internal-maintainer-merge",
+            "mergedBy": "yueranyuan"
+          }
+        },
+        "7290aee0f43e36243ba117268ec083f4551f4a34681e8a4a6198ea5a730331b9": {
+          "pullRequest": 69,
+          "url": "https://github.com/volter-ai/twin-catalog-open/releases/tag/evidence-7290aee0f43e36243ba117268ec083f4551f4a34681e8a4a6198ea5a730331b9-af8c37e05e5c72adaac1fdd481b9971c0ea2694e93cb05c4e2ae307c760d89a3",
+          "reportSha256": "af8c37e05e5c72adaac1fdd481b9971c0ea2694e93cb05c4e2ae307c760d89a3",
+          "reportPath": "evidence/7290aee0f43e36243ba117268ec083f4551f4a34681e8a4a6198ea5a730331b9.json",
+          "moderation": {
+            "mode": "internal-maintainer-merge",
+            "mergedBy": "yueranyuan"
+          }
+        },
+        "7cd84d65991ca5379b06b293f471c74026165ce3b1a8f224097d277c4ba155e7": {
+          "pullRequest": 61,
+          "url": "https://github.com/volter-ai/twin-catalog-open/releases/tag/evidence-7cd84d65991ca5379b06b293f471c74026165ce3b1a8f224097d277c4ba155e7-0e1e3099c557816622b140f19a8ca3bb89550e38b14760dfe74706cdcab2a68e",
+          "reportSha256": "0e1e3099c557816622b140f19a8ca3bb89550e38b14760dfe74706cdcab2a68e",
+          "reportPath": "evidence/7cd84d65991ca5379b06b293f471c74026165ce3b1a8f224097d277c4ba155e7.json",
+          "moderation": {
+            "mode": "internal-maintainer-merge",
+            "mergedBy": "yueranyuan"
+          }
+        },
+        "edbe5c44e97c60eff20080f3e978b554252f1e630a6e4554058e2220df9b4e5a": {
+          "pullRequest": 60,
+          "url": "https://github.com/volter-ai/twin-catalog-open/releases/tag/evidence-edbe5c44e97c60eff20080f3e978b554252f1e630a6e4554058e2220df9b4e5a-93995bf407ae567f971e369bd699bf575f920b367d578b61fcb1b36207042b84",
+          "reportSha256": "93995bf407ae567f971e369bd699bf575f920b367d578b61fcb1b36207042b84",
+          "reportPath": "evidence/edbe5c44e97c60eff20080f3e978b554252f1e630a6e4554058e2220df9b4e5a.json",
+          "moderation": {
+            "mode": "internal-maintainer-merge",
+            "mergedBy": "yueranyuan"
+          }
+        },
+        "0706c60862e33b88c9d545243cfbdef9989db62dc7b8831621b244c1e14ae69e": {
+          "pullRequest": 68,
+          "url": "https://github.com/volter-ai/twin-catalog-open/releases/tag/evidence-0706c60862e33b88c9d545243cfbdef9989db62dc7b8831621b244c1e14ae69e-6905f7e9c5fb654e5916eec8efb1e0f62fee901d8c31667ff887f2f3c7d9b033",
+          "reportSha256": "6905f7e9c5fb654e5916eec8efb1e0f62fee901d8c31667ff887f2f3c7d9b033",
+          "reportPath": "evidence/0706c60862e33b88c9d545243cfbdef9989db62dc7b8831621b244c1e14ae69e.json",
+          "moderation": {
+            "mode": "internal-maintainer-merge",
+            "mergedBy": "yueranyuan"
+          }
+        },
+        "a37094107a6552d8cb5b49011973a76330b48d392f66a21ec957923c3c0641fd": {
+          "pullRequest": 14,
+          "url": "https://github.com/volter-ai/twin-catalog-open/releases/tag/evidence-a37094107a6552d8cb5b49011973a76330b48d392f66a21ec957923c3c0641fd-27aa89fe5f4cea06c03741b75c83e21202aeb595e4e413a140efb174703c9b74",
+          "reportSha256": "27aa89fe5f4cea06c03741b75c83e21202aeb595e4e413a140efb174703c9b74",
+          "reportPath": "evidence/a37094107a6552d8cb5b49011973a76330b48d392f66a21ec957923c3c0641fd.json",
+          "moderation": {
+            "mode": "internal-maintainer-merge",
+            "mergedBy": "yueranyuan"
+          }
+        },
+        "d276d7a6db82d9f0254868dfee356277c6d9485ac88327b6c1e8ce0fab19aa0d": {
+          "pullRequest": 48,
+          "url": "https://github.com/volter-ai/twin-catalog-open/releases/tag/evidence-d276d7a6db82d9f0254868dfee356277c6d9485ac88327b6c1e8ce0fab19aa0d-bfe1e1d4360d66a11a69eb61bff6ca5bebbf5482005d1bf5c056b4deb88709c9",
+          "reportSha256": "bfe1e1d4360d66a11a69eb61bff6ca5bebbf5482005d1bf5c056b4deb88709c9",
+          "reportPath": "evidence/d276d7a6db82d9f0254868dfee356277c6d9485ac88327b6c1e8ce0fab19aa0d.json",
+          "moderation": {
+            "mode": "internal-maintainer-merge",
+            "mergedBy": "yueranyuan"
+          }
+        },
+        "088225253fd629c00b24f5bcf01079c3f8ed21057a2a8ffdb882376b85758600": {
+          "pullRequest": 58,
+          "url": "https://github.com/volter-ai/twin-catalog-open/releases/tag/evidence-088225253fd629c00b24f5bcf01079c3f8ed21057a2a8ffdb882376b85758600-b7affd7b67244f58a7afdd6f6e6cc64a3ee7b4585ab54168a681c229a1a54063",
+          "reportSha256": "b7affd7b67244f58a7afdd6f6e6cc64a3ee7b4585ab54168a681c229a1a54063",
+          "reportPath": "evidence/088225253fd629c00b24f5bcf01079c3f8ed21057a2a8ffdb882376b85758600.json",
+          "moderation": {
+            "mode": "internal-maintainer-merge",
+            "mergedBy": "yueranyuan"
+          }
+        },
+        "1fa7500b80e0c420b91e602419e1185bb2b2871c338e74eb7d5d20845e167e3c": {
+          "pullRequest": 40,
+          "url": "https://github.com/volter-ai/twin-catalog-open/releases/tag/evidence-1fa7500b80e0c420b91e602419e1185bb2b2871c338e74eb7d5d20845e167e3c-d94ccd13d2b147887bb72c3b4bddc2c05917582a2be3e2b7d29908ec264fb0ec",
+          "reportSha256": "d94ccd13d2b147887bb72c3b4bddc2c05917582a2be3e2b7d29908ec264fb0ec",
+          "reportPath": "evidence/1fa7500b80e0c420b91e602419e1185bb2b2871c338e74eb7d5d20845e167e3c.json",
+          "moderation": {
+            "mode": "internal-maintainer-merge",
+            "mergedBy": "yueranyuan"
+          }
+        },
+        "298a3364ab17a8b5c8b07b21d7ff83c9402108bccabc6287ced0431890c7eda9": {
+          "pullRequest": 18,
+          "url": "https://github.com/volter-ai/twin-catalog-open/releases/tag/evidence-298a3364ab17a8b5c8b07b21d7ff83c9402108bccabc6287ced0431890c7eda9-30bc1e6188634193dddfefb3e49eb29cea5c6d1a2b50208471b089d4430a1df7",
+          "reportSha256": "30bc1e6188634193dddfefb3e49eb29cea5c6d1a2b50208471b089d4430a1df7",
+          "reportPath": "evidence/298a3364ab17a8b5c8b07b21d7ff83c9402108bccabc6287ced0431890c7eda9.json",
+          "moderation": {
+            "mode": "internal-maintainer-merge",
+            "mergedBy": "yueranyuan"
+          }
+        },
+        "307f50b6ab50f839166597fb8cefe25410e8ba33d330a7f8469e6cfc8e60cf5f": {
+          "pullRequest": 64,
+          "url": "https://github.com/volter-ai/twin-catalog-open/releases/tag/evidence-307f50b6ab50f839166597fb8cefe25410e8ba33d330a7f8469e6cfc8e60cf5f-8d756005996485bc432aa5b71339fc5e1b1d3dd991ae0a225e4fb3185e5698fd",
+          "reportSha256": "8d756005996485bc432aa5b71339fc5e1b1d3dd991ae0a225e4fb3185e5698fd",
+          "reportPath": "evidence/307f50b6ab50f839166597fb8cefe25410e8ba33d330a7f8469e6cfc8e60cf5f.json",
+          "moderation": {
+            "mode": "internal-maintainer-merge",
+            "mergedBy": "yueranyuan"
+          }
+        },
+        "32255ffe1d7c2e67218d1a05799128096033136f9d4963b0d55fcb8b71c09e89": {
+          "pullRequest": 16,
+          "url": "https://github.com/volter-ai/twin-catalog-open/releases/tag/evidence-32255ffe1d7c2e67218d1a05799128096033136f9d4963b0d55fcb8b71c09e89-cdaef55a6ae5c1bf9adf87f40678ccc1a73cc5208fbea1583910d4cc3a20c62e",
+          "reportSha256": "cdaef55a6ae5c1bf9adf87f40678ccc1a73cc5208fbea1583910d4cc3a20c62e",
+          "reportPath": "evidence/32255ffe1d7c2e67218d1a05799128096033136f9d4963b0d55fcb8b71c09e89.json",
+          "moderation": {
+            "mode": "internal-maintainer-merge",
+            "mergedBy": "yueranyuan"
+          }
+        },
+        "4b8516f36226bcd66ad89128d3ad119336903b0e9c86ec53cf114544ba9553a2": {
+          "pullRequest": 59,
+          "url": "https://github.com/volter-ai/twin-catalog-open/releases/tag/evidence-4b8516f36226bcd66ad89128d3ad119336903b0e9c86ec53cf114544ba9553a2-44e47276da62a9ffd8b5a82d3f9fd17b1fc5fe12ef41f1ce52e1267a76db2b2b",
+          "reportSha256": "44e47276da62a9ffd8b5a82d3f9fd17b1fc5fe12ef41f1ce52e1267a76db2b2b",
+          "reportPath": "evidence/4b8516f36226bcd66ad89128d3ad119336903b0e9c86ec53cf114544ba9553a2.json",
+          "moderation": {
+            "mode": "internal-maintainer-merge",
+            "mergedBy": "yueranyuan"
+          }
+        },
+        "796302d34309b8899e4c257a3267a93555901e8bdbaeee98b7897ab68c4a47ee": {
+          "pullRequest": 47,
+          "url": "https://github.com/volter-ai/twin-catalog-open/releases/tag/evidence-796302d34309b8899e4c257a3267a93555901e8bdbaeee98b7897ab68c4a47ee-3ff6f84546664b9043ea948c122ecf751a17305f9a99db88fddc960d32a5f9d1",
+          "reportSha256": "3ff6f84546664b9043ea948c122ecf751a17305f9a99db88fddc960d32a5f9d1",
+          "reportPath": "evidence/796302d34309b8899e4c257a3267a93555901e8bdbaeee98b7897ab68c4a47ee.json",
+          "moderation": {
+            "mode": "internal-maintainer-merge",
+            "mergedBy": "yueranyuan"
+          }
+        },
+        "100cf4069352dee18bcb1f8ef9198c637ce1842d42f66477a6a62702c24f9f13": {
+          "pullRequest": 2,
+          "url": "https://github.com/volter-ai/twin-catalog-open/releases/tag/evidence-100cf4069352dee18bcb1f8ef9198c637ce1842d42f66477a6a62702c24f9f13-f2a1ea58f699b0de53ac6a96195f50b1faf2ef17468b7999c4454fff12f4df3e",
+          "reportSha256": "f2a1ea58f699b0de53ac6a96195f50b1faf2ef17468b7999c4454fff12f4df3e",
+          "reportPath": "evidence/100cf4069352dee18bcb1f8ef9198c637ce1842d42f66477a6a62702c24f9f13.json",
+          "moderation": {
+            "mode": "internal-maintainer-merge",
+            "mergedBy": "yueranyuan"
+          }
+        },
+        "51095753a00c5dfbb71ae78ea25fc54e6de3e37f1ac52f52bf7c61a6ebca1bca": {
+          "pullRequest": 50,
+          "url": "https://github.com/volter-ai/twin-catalog-open/releases/tag/evidence-51095753a00c5dfbb71ae78ea25fc54e6de3e37f1ac52f52bf7c61a6ebca1bca-d83de295526825ad5fbccb6c811d17b2ea470ef96f3e511df860fded3dac1c1c",
+          "reportSha256": "d83de295526825ad5fbccb6c811d17b2ea470ef96f3e511df860fded3dac1c1c",
+          "reportPath": "evidence/51095753a00c5dfbb71ae78ea25fc54e6de3e37f1ac52f52bf7c61a6ebca1bca.json",
+          "moderation": {
+            "mode": "internal-maintainer-merge",
+            "mergedBy": "yueranyuan"
+          }
+        },
+        "1075ed655d870273183216bff0712fbdfe78f06299fd6994debdc8b5eb1f2634": {
+          "pullRequest": 66,
+          "url": "https://github.com/volter-ai/twin-catalog-open/releases/tag/evidence-1075ed655d870273183216bff0712fbdfe78f06299fd6994debdc8b5eb1f2634-137e275d74eadd0e7ce9ee2fe1cd30dcd6f45b0ebb953b3e372e8a04e48c6c97",
+          "reportSha256": "137e275d74eadd0e7ce9ee2fe1cd30dcd6f45b0ebb953b3e372e8a04e48c6c97",
+          "reportPath": "evidence/1075ed655d870273183216bff0712fbdfe78f06299fd6994debdc8b5eb1f2634.json",
+          "moderation": {
+            "mode": "internal-maintainer-merge",
+            "mergedBy": "yueranyuan"
+          }
+        },
+        "871d902e2c0d3e14a5a9c90fca585f47f5e0989442abe099ec185b5541c54e14": {
+          "pullRequest": 9,
+          "url": "https://github.com/volter-ai/twin-catalog-open/releases/tag/evidence-871d902e2c0d3e14a5a9c90fca585f47f5e0989442abe099ec185b5541c54e14-661f3b9c21f9f5159bc3fa9b18516e162f694b8112c221421500593d5f5f0a24",
+          "reportSha256": "661f3b9c21f9f5159bc3fa9b18516e162f694b8112c221421500593d5f5f0a24",
+          "reportPath": "evidence/871d902e2c0d3e14a5a9c90fca585f47f5e0989442abe099ec185b5541c54e14.json",
+          "moderation": {
+            "mode": "internal-maintainer-merge",
+            "mergedBy": "yueranyuan"
+          }
+        },
+        "dab06d99c9a20741a606c0d2b9f143e1fa6cc828645c40baf9303bd38a99d224": {
+          "pullRequest": 49,
+          "url": "https://github.com/volter-ai/twin-catalog-open/releases/tag/evidence-dab06d99c9a20741a606c0d2b9f143e1fa6cc828645c40baf9303bd38a99d224-e1fb6126b060ef93c4503c479997b203d854a4c54e8207905381481d75fc7c57",
+          "reportSha256": "e1fb6126b060ef93c4503c479997b203d854a4c54e8207905381481d75fc7c57",
+          "reportPath": "evidence/dab06d99c9a20741a606c0d2b9f143e1fa6cc828645c40baf9303bd38a99d224.json",
+          "moderation": {
+            "mode": "internal-maintainer-merge",
+            "mergedBy": "yueranyuan"
+          }
+        },
+        "1f197a74b85508b9af3089c0a8807580b479c90f5ad38d1cb0413d7ef4b06861": {
+          "pullRequest": 8,
+          "url": "https://github.com/volter-ai/twin-catalog-open/releases/tag/evidence-1f197a74b85508b9af3089c0a8807580b479c90f5ad38d1cb0413d7ef4b06861-a84e12edf3cab3b3b513369854561783c62991c5cc02ff0f84f9ece13b0a0a74",
+          "reportSha256": "a84e12edf3cab3b3b513369854561783c62991c5cc02ff0f84f9ece13b0a0a74",
+          "reportPath": "evidence/1f197a74b85508b9af3089c0a8807580b479c90f5ad38d1cb0413d7ef4b06861.json",
+          "moderation": {
+            "mode": "internal-maintainer-merge",
+            "mergedBy": "yueranyuan"
+          }
+        },
+        "3f887df61a96f8640232efaee068b5154df83e01259fd30b917775c3bdae2c08": {
+          "pullRequest": 65,
+          "url": "https://github.com/volter-ai/twin-catalog-open/releases/tag/evidence-3f887df61a96f8640232efaee068b5154df83e01259fd30b917775c3bdae2c08-6474539048cb2ea9ea99e74bba2bbb42d2180ceff24a680d748e995ca4169afc",
+          "reportSha256": "6474539048cb2ea9ea99e74bba2bbb42d2180ceff24a680d748e995ca4169afc",
+          "reportPath": "evidence/3f887df61a96f8640232efaee068b5154df83e01259fd30b917775c3bdae2c08.json",
+          "moderation": {
+            "mode": "internal-maintainer-merge",
+            "mergedBy": "yueranyuan"
+          }
+        },
+        "c7c1bc28f3dab171515654fa77e2c761c8da82aedd1b4aa8fcb06d0a30f4a16f": {
+          "pullRequest": 55,
+          "url": "https://github.com/volter-ai/twin-catalog-open/releases/tag/evidence-c7c1bc28f3dab171515654fa77e2c761c8da82aedd1b4aa8fcb06d0a30f4a16f-cde4a31e1393b9943e90508ac09c868f2b117454fbdf96cc05a9a324f4ba7e23",
+          "reportSha256": "cde4a31e1393b9943e90508ac09c868f2b117454fbdf96cc05a9a324f4ba7e23",
+          "reportPath": "evidence/c7c1bc28f3dab171515654fa77e2c761c8da82aedd1b4aa8fcb06d0a30f4a16f.json",
+          "moderation": {
+            "mode": "internal-maintainer-merge",
+            "mergedBy": "yueranyuan"
+          }
+        },
+        "d785f07948149acf7be5b98ca27f71c3c2c6a7e9edcd031dd58be68c8d5d56a6": {
+          "pullRequest": 62,
+          "url": "https://github.com/volter-ai/twin-catalog-open/releases/tag/evidence-d785f07948149acf7be5b98ca27f71c3c2c6a7e9edcd031dd58be68c8d5d56a6-c733d7d0ad39a59b1f0ad1321ab9b958c4563353aed27b152cb63ae5a56d322f",
+          "reportSha256": "c733d7d0ad39a59b1f0ad1321ab9b958c4563353aed27b152cb63ae5a56d322f",
+          "reportPath": "evidence/d785f07948149acf7be5b98ca27f71c3c2c6a7e9edcd031dd58be68c8d5d56a6.json",
+          "moderation": {
+            "mode": "internal-maintainer-merge",
+            "mergedBy": "yueranyuan"
+          }
+        },
+        "238118e225cfd76eb8b9b1a692dc0dd5c4ec1b1c93744392d1c5377879a3cb55": {
+          "pullRequest": 54,
+          "url": "https://github.com/volter-ai/twin-catalog-open/releases/tag/evidence-238118e225cfd76eb8b9b1a692dc0dd5c4ec1b1c93744392d1c5377879a3cb55-794fd081c4d04370f73d0f0935f0797dc505d723907d93ae1c33ff8e4b08d14a",
+          "reportSha256": "794fd081c4d04370f73d0f0935f0797dc505d723907d93ae1c33ff8e4b08d14a",
+          "reportPath": "evidence/238118e225cfd76eb8b9b1a692dc0dd5c4ec1b1c93744392d1c5377879a3cb55.json",
+          "moderation": {
+            "mode": "internal-maintainer-merge",
+            "mergedBy": "yueranyuan"
+          }
+        },
+        "2c123aa480c3d787e21218b005870509fe48379ba534df5a2eed8d2db5956596": {
+          "pullRequest": 7,
+          "url": "https://github.com/volter-ai/twin-catalog-open/releases/tag/evidence-2c123aa480c3d787e21218b005870509fe48379ba534df5a2eed8d2db5956596-fc77a7369b6b8e65d382044b8820f06077a86eed6786a6097a10adae84c7c6df",
+          "reportSha256": "fc77a7369b6b8e65d382044b8820f06077a86eed6786a6097a10adae84c7c6df",
+          "reportPath": "evidence/2c123aa480c3d787e21218b005870509fe48379ba534df5a2eed8d2db5956596.json",
+          "moderation": {
+            "mode": "internal-maintainer-merge",
+            "mergedBy": "yueranyuan"
+          }
+        },
+        "7f08fcfbc48f45e6dbef3b3b84519eefe1a06aecb3437000e07569845a57b0a7": {
+          "pullRequest": 70,
+          "url": "https://github.com/volter-ai/twin-catalog-open/releases/tag/evidence-7f08fcfbc48f45e6dbef3b3b84519eefe1a06aecb3437000e07569845a57b0a7-e4dfc4ddaddabbb1e486b70ad803029746bff0e643c6187e9f698e3dfd7d6010",
+          "reportSha256": "e4dfc4ddaddabbb1e486b70ad803029746bff0e643c6187e9f698e3dfd7d6010",
+          "reportPath": "evidence/7f08fcfbc48f45e6dbef3b3b84519eefe1a06aecb3437000e07569845a57b0a7.json",
+          "moderation": {
+            "mode": "internal-maintainer-merge",
+            "mergedBy": "yueranyuan"
+          }
+        },
+        "2f905a18997aea40b709c4d4ea7adce45d4b080cf2216353d09b0cb6a910c3f7": {
+          "pullRequest": 24,
+          "url": "https://github.com/volter-ai/twin-catalog-open/releases/tag/evidence-2f905a18997aea40b709c4d4ea7adce45d4b080cf2216353d09b0cb6a910c3f7-2cffb5314eb131212571999479fff7c31d9cd5bc4677a2bc93dd024645e29444",
+          "reportSha256": "2cffb5314eb131212571999479fff7c31d9cd5bc4677a2bc93dd024645e29444",
+          "reportPath": "evidence/2f905a18997aea40b709c4d4ea7adce45d4b080cf2216353d09b0cb6a910c3f7.json",
+          "moderation": {
+            "mode": "internal-maintainer-merge",
+            "mergedBy": "yueranyuan"
+          }
+        },
+        "62ed6fad736d6dc871153a1387691fc38c02f3532722017e4c0039edf32281d1": {
+          "pullRequest": 52,
+          "url": "https://github.com/volter-ai/twin-catalog-open/releases/tag/evidence-62ed6fad736d6dc871153a1387691fc38c02f3532722017e4c0039edf32281d1-0f1580fafb2328e9c5a142b5566e137a3620309e42df4af9c9ab469f90dfd961",
+          "reportSha256": "0f1580fafb2328e9c5a142b5566e137a3620309e42df4af9c9ab469f90dfd961",
+          "reportPath": "evidence/62ed6fad736d6dc871153a1387691fc38c02f3532722017e4c0039edf32281d1.json",
+          "moderation": {
+            "mode": "internal-maintainer-merge",
+            "mergedBy": "yueranyuan"
+          }
+        },
+        "5eeaa5e7c2a08c8c0818489c40e7b818c114bd74f5c1b8186e0de69f8792049c": {
+          "pullRequest": 33,
+          "url": "https://github.com/volter-ai/twin-catalog-open/releases/tag/evidence-5eeaa5e7c2a08c8c0818489c40e7b818c114bd74f5c1b8186e0de69f8792049c-152efe3a9b34320e1f091209316028794e3d9641da763e7cc68c4f32301d6ed2",
+          "reportSha256": "152efe3a9b34320e1f091209316028794e3d9641da763e7cc68c4f32301d6ed2",
+          "reportPath": "evidence/5eeaa5e7c2a08c8c0818489c40e7b818c114bd74f5c1b8186e0de69f8792049c.json",
+          "moderation": {
+            "mode": "internal-maintainer-merge",
+            "mergedBy": "yueranyuan"
+          }
+        },
+        "7e15a439c79457e6060fa46a0e9c5bbfc235b0259d2cdb8d0b2b7f4883624310": {
+          "pullRequest": 56,
+          "url": "https://github.com/volter-ai/twin-catalog-open/releases/tag/evidence-7e15a439c79457e6060fa46a0e9c5bbfc235b0259d2cdb8d0b2b7f4883624310-f34dda9a70f49e5cb00fb368d8e884ff8d821e3fdb3b04829489ce5ea820ffbf",
+          "reportSha256": "f34dda9a70f49e5cb00fb368d8e884ff8d821e3fdb3b04829489ce5ea820ffbf",
+          "reportPath": "evidence/7e15a439c79457e6060fa46a0e9c5bbfc235b0259d2cdb8d0b2b7f4883624310.json",
+          "moderation": {
+            "mode": "internal-maintainer-merge",
+            "mergedBy": "yueranyuan"
+          }
+        },
+        "d66776b9b0d4c8b19b09a012f455f5b6697b39fc2205b2bb64e7a3855e734e84": {
+          "pullRequest": 36,
+          "url": "https://github.com/volter-ai/twin-catalog-open/releases/tag/evidence-d66776b9b0d4c8b19b09a012f455f5b6697b39fc2205b2bb64e7a3855e734e84-36f65e99118b957e6eaac46c659462cbf11e7bd3163e5fff4ef21c4d6689a62a",
+          "reportSha256": "36f65e99118b957e6eaac46c659462cbf11e7bd3163e5fff4ef21c4d6689a62a",
+          "reportPath": "evidence/d66776b9b0d4c8b19b09a012f455f5b6697b39fc2205b2bb64e7a3855e734e84.json",
+          "moderation": {
+            "mode": "internal-maintainer-merge",
+            "mergedBy": "yueranyuan"
+          }
+        },
+        "f1b4f61717bcf785081f5aa941e288fb45d8cec01606b476229954bcea597b08": {
+          "pullRequest": 71,
+          "url": "https://github.com/volter-ai/twin-catalog-open/releases/tag/evidence-f1b4f61717bcf785081f5aa941e288fb45d8cec01606b476229954bcea597b08-8211306d6b82ef925e31ce44ebfe6ccacc53fbfde0c9750dc2da2da347521013",
+          "reportSha256": "8211306d6b82ef925e31ce44ebfe6ccacc53fbfde0c9750dc2da2da347521013",
+          "reportPath": "evidence/f1b4f61717bcf785081f5aa941e288fb45d8cec01606b476229954bcea597b08.json",
+          "moderation": {
+            "mode": "internal-maintainer-merge",
+            "mergedBy": "yueranyuan"
+          }
+        },
+        "6f9f4c4659dc8d86e42363050c0ee444e4f1e05409866bf4ee3b54d12a3c2cc2": {
+          "pullRequest": 21,
+          "url": "https://github.com/volter-ai/twin-catalog-open/releases/tag/evidence-6f9f4c4659dc8d86e42363050c0ee444e4f1e05409866bf4ee3b54d12a3c2cc2-161e7962073a902b21d196f0a692c50951a4de632fafeb1cc2995cd64ad1e3d8",
+          "reportSha256": "161e7962073a902b21d196f0a692c50951a4de632fafeb1cc2995cd64ad1e3d8",
+          "reportPath": "evidence/6f9f4c4659dc8d86e42363050c0ee444e4f1e05409866bf4ee3b54d12a3c2cc2.json",
+          "moderation": {
+            "mode": "internal-maintainer-merge",
+            "mergedBy": "yueranyuan"
+          }
+        },
+        "906ec992de0dcaa0ba4af14e927e9a7416b8e4e0e331c2a10eec60e3b325c540": {
+          "pullRequest": 57,
+          "url": "https://github.com/volter-ai/twin-catalog-open/releases/tag/evidence-906ec992de0dcaa0ba4af14e927e9a7416b8e4e0e331c2a10eec60e3b325c540-7e43b84795b8aacd97fab58eb8b1470ae6f1ca4cae4e29c8dfb71563f05604c5",
+          "reportSha256": "7e43b84795b8aacd97fab58eb8b1470ae6f1ca4cae4e29c8dfb71563f05604c5",
+          "reportPath": "evidence/906ec992de0dcaa0ba4af14e927e9a7416b8e4e0e331c2a10eec60e3b325c540.json",
+          "moderation": {
+            "mode": "internal-maintainer-merge",
+            "mergedBy": "yueranyuan"
+          }
+        },
+        "8c35ee3b7e5272a335eccc4e2527b8135eebaeee75c1aab1f874f520fe97de71": {
+          "pullRequest": 6,
+          "url": "https://github.com/volter-ai/twin-catalog-open/releases/tag/evidence-8c35ee3b7e5272a335eccc4e2527b8135eebaeee75c1aab1f874f520fe97de71-c5d2ffaadef140deb5d4b9468a1e9f3345da0e36521e04a488bf99af36bbd912",
+          "reportSha256": "c5d2ffaadef140deb5d4b9468a1e9f3345da0e36521e04a488bf99af36bbd912",
+          "reportPath": "evidence/8c35ee3b7e5272a335eccc4e2527b8135eebaeee75c1aab1f874f520fe97de71.json",
+          "moderation": {
+            "mode": "internal-maintainer-merge",
+            "mergedBy": "yueranyuan"
+          }
+        },
+        "9e9c97635fe691c46dd144f9b053a5e25bc336f0885310450c5fdd39c2ae07d6": {
+          "pullRequest": 46,
+          "url": "https://github.com/volter-ai/twin-catalog-open/releases/tag/evidence-9e9c97635fe691c46dd144f9b053a5e25bc336f0885310450c5fdd39c2ae07d6-10ec737813516f141faa45202915093bbd72ef801623d0606f2567e517c0e13e",
+          "reportSha256": "10ec737813516f141faa45202915093bbd72ef801623d0606f2567e517c0e13e",
+          "reportPath": "evidence/9e9c97635fe691c46dd144f9b053a5e25bc336f0885310450c5fdd39c2ae07d6.json",
+          "moderation": {
+            "mode": "internal-maintainer-merge",
+            "mergedBy": "yueranyuan"
+          }
+        },
+        "c69d11b71d17292f9c1542aed123f120e43fa6bdffde0debdef658b4bcffe191": {
+          "pullRequest": 67,
+          "url": "https://github.com/volter-ai/twin-catalog-open/releases/tag/evidence-c69d11b71d17292f9c1542aed123f120e43fa6bdffde0debdef658b4bcffe191-672bc765d066a79d3f54d18ca8365689c09cca0b30161f4b0a2046d761ebcb95",
+          "reportSha256": "672bc765d066a79d3f54d18ca8365689c09cca0b30161f4b0a2046d761ebcb95",
+          "reportPath": "evidence/c69d11b71d17292f9c1542aed123f120e43fa6bdffde0debdef658b4bcffe191.json",
+          "moderation": {
+            "mode": "internal-maintainer-merge",
+            "mergedBy": "yueranyuan"
+          }
+        },
+        "e268716826a62fdb3e613b747587168cbcee2f5cd1980cfa024bad9d8e2cfbbe": {
+          "pullRequest": 53,
+          "url": "https://github.com/volter-ai/twin-catalog-open/releases/tag/evidence-e268716826a62fdb3e613b747587168cbcee2f5cd1980cfa024bad9d8e2cfbbe-acd97341c01a293287a8c4fb1e8406fecedc5a0a712006245d772ba8bad50ab4",
+          "reportSha256": "acd97341c01a293287a8c4fb1e8406fecedc5a0a712006245d772ba8bad50ab4",
+          "reportPath": "evidence/e268716826a62fdb3e613b747587168cbcee2f5cd1980cfa024bad9d8e2cfbbe.json",
+          "moderation": {
+            "mode": "internal-maintainer-merge",
+            "mergedBy": "yueranyuan"
+          }
+        },
+        "fa756dfc21662a70679a660dd88fcb2b4f8bad30f408f1134cd87b0668289fc6": {
+          "pullRequest": 28,
+          "url": "https://github.com/volter-ai/twin-catalog-open/releases/tag/evidence-fa756dfc21662a70679a660dd88fcb2b4f8bad30f408f1134cd87b0668289fc6-cd5755deacce791572d05cc565236be080a93fe68598e1f59401b40af2ffc4f8",
+          "reportSha256": "cd5755deacce791572d05cc565236be080a93fe68598e1f59401b40af2ffc4f8",
+          "reportPath": "evidence/fa756dfc21662a70679a660dd88fcb2b4f8bad30f408f1134cd87b0668289fc6.json",
+          "moderation": {
+            "mode": "internal-maintainer-merge",
+            "mergedBy": "yueranyuan"
+          }
+        },
+        "8e4c26468e027201bddc0406359526d235ba733d95f024a6b28179edb5283b7a": {
+          "kind": "operator",
+          "authority": {
+            "id": 253602084,
+            "login": "portable-one",
+            "type": "User"
+          },
+          "pullRequest": 78,
+          "url": "https://github.com/volter-ai/twin-catalog-open/releases/tag/evidence-8e4c26468e027201bddc0406359526d235ba733d95f024a6b28179edb5283b7a-02f5742395f2ac48ae030bb8d04018fc06c712958adcc86dc3e9c754caa0caf0",
+          "reportSha256": "02f5742395f2ac48ae030bb8d04018fc06c712958adcc86dc3e9c754caa0caf0",
+          "reportPath": "evidence/8e4c26468e027201bddc0406359526d235ba733d95f024a6b28179edb5283b7a.json",
+          "moderation": {
+            "mode": "trusted-account-merge",
+            "mergedBy": "yueranyuan",
+            "account": {
+              "id": 2255943,
+              "login": "yueranyuan",
+              "type": "User"
+            }
+          }
+        },
+        "ce0e119edf083883e58244b94453f512ad168914aa216c9d093f8ce89b5c74fa": {
+          "kind": "operator",
+          "authority": {
+            "id": 253602084,
+            "login": "portable-one",
+            "type": "User"
+          },
+          "pullRequest": 79,
+          "url": "https://github.com/volter-ai/twin-catalog-open/releases/tag/evidence-ce0e119edf083883e58244b94453f512ad168914aa216c9d093f8ce89b5c74fa-c46b00654a2ee5e88e057e5bf49cc3136b561d898681d4dc2031915079ff6da8",
+          "reportSha256": "c46b00654a2ee5e88e057e5bf49cc3136b561d898681d4dc2031915079ff6da8",
+          "reportPath": "evidence/ce0e119edf083883e58244b94453f512ad168914aa216c9d093f8ce89b5c74fa.json",
+          "moderation": {
+            "mode": "trusted-account-merge",
+            "mergedBy": "yueranyuan",
+            "account": {
+              "id": 2255943,
+              "login": "yueranyuan",
+              "type": "User"
+            }
+          }
+        }
+      }
+    }
+  },
+  "packs": {
+    "livekit": {
+      "serverBacking": {
+        "command": "livekit-server"
+      },
+      "adoption": {
+        "sdks": [
+          "livekit-client",
+          "livekit-server-sdk",
+          "@livekit/rtc-node",
+          "@livekit/react-native",
+          "@livekit/react-native-expo-plugin",
+          "@livekit/react-native-webrtc"
+        ],
+        "pypi": [
+          "livekit",
+          "livekit-agents",
+          "livekit-api"
+        ],
+        "envStems": [
+          "LIVEKIT"
+        ]
+      },
+      "hostsNone": "The World runs the vendor server on its declared endpoint; SDKs read LIVEKIT_URL.",
+      "endpointEnv": {
+        "name": "LIVEKIT_URL",
+        "templates": {
+          "LIVEKIT_URL": "ws://${host}:${port}"
+        },
+        "note": "The native server uses a private key; its twin front accepts only keys issued for retained World accounts."
+      },
+      "credentialDoor": {
+        "path": "/_twin/app-credentials",
+        "body": {},
+        "account": {
+          "field": "account"
+        },
+        "fill": {
+          "LIVEKIT_API_KEY": "api_key",
+          "LIVEKIT_API_SECRET": "api_secret"
+        }
+      },
+      "sidePorts": [
+        {
+          "name": "rtc-tcp",
+          "option": "rtcTcpPort",
+          "flag": "--rtc-tcp-port",
+          "scheme": "tcp",
+          "note": "ICE/TCP media advertised on loopback at this port; the vendor binds all interfaces. Forward beside signaling for a browser on another machine."
+        }
+      ]
+    },
+    "temporal": {
+      "serverBacking": {
+        "command": "temporal"
+      },
+      "adoption": {
+        "sdks": [
+          "@temporalio/client",
+          "@temporalio/worker",
+          "@temporalio/workflow",
+          "nestjs-temporal-core"
+        ],
+        "pypi": [
+          "temporalio"
+        ],
+        "envStems": [
+          "TEMPORAL"
+        ]
+      },
+      "hostsNone": "The World runs the vendor development server at its declared loopback gRPC endpoint.",
+      "endpointEnv": {
+        "name": "TEMPORAL_ADDRESS",
+        "templates": {
+          "TEMPORAL_ADDRESS": "${host}:${port}",
+          "TEMPORAL_NAMESPACE": "default",
+          "TEMPORAL_TLS": "false",
+          "TEMPORAL_API_KEY": ""
+        },
+        "note": "The local development server creates default; no TLS or Cloud API key."
+      }
+    }
+  }
 }

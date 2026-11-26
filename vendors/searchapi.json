@@ -1,0 +1,12 @@
+{
+  "vendor": "searchapi",
+  "packages": [],
+  "recognition": {
+    "envStems": {
+      "searchapi": {
+        "disposition": "demanded",
+        "reason": "vendor searchapi"
+      }
+    }
+  }
+}

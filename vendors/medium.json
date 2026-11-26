@@ -1,0 +1,11 @@
+{
+  "vendor": "medium",
+  "packages": [],
+  "recognition": {
+    "hosts": [
+      {
+        "host": "api.medium.com"
+      }
+    ]
+  }
+}

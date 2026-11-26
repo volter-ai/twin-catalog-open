@@ -1,0 +1,29 @@
+{
+  "vendor": "supermemory",
+  "packages": [],
+  "recognition": {
+    "sdks": {
+      "supermemory": {
+        "disposition": "demanded",
+        "reason": "vendor supermemory"
+      }
+    },
+    "pypi": {
+      "supermemory": {
+        "disposition": "demanded",
+        "reason": "vendor supermemory"
+      }
+    },
+    "envStems": {
+      "supermemory": {
+        "disposition": "demanded",
+        "reason": "vendor supermemory"
+      }
+    },
+    "hosts": [
+      {
+        "host": "api.supermemory.ai"
+      }
+    ]
+  }
+}

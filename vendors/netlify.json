@@ -1,0 +1,12 @@
+{
+  "vendor": "netlify",
+  "packages": [],
+  "recognition": {
+    "envStems": {
+      "netlify": {
+        "disposition": "demanded",
+        "reason": "vendor netlify"
+      }
+    }
+  }
+}

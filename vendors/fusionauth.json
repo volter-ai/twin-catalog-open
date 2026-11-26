@@ -1,0 +1,12 @@
+{
+  "vendor": "fusionauth",
+  "packages": [],
+  "recognition": {
+    "envStems": {
+      "fusionauth": {
+        "disposition": "demanded",
+        "reason": "vendor fusionauth"
+      }
+    }
+  }
+}

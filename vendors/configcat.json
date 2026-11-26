@@ -1,0 +1,12 @@
+{
+  "vendor": "configcat",
+  "packages": [],
+  "recognition": {
+    "sdks": {
+      "@configcat/sdk": {
+        "disposition": "demanded",
+        "reason": "vendor configcat"
+      }
+    }
+  }
+}

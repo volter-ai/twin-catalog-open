@@ -1,0 +1,12 @@
+{
+  "vendor": "dropbox",
+  "packages": [],
+  "recognition": {
+    "envStems": {
+      "dropbox": {
+        "disposition": "demanded",
+        "reason": "vendor dropbox"
+      }
+    }
+  }
+}

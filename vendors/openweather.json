@@ -1,0 +1,33 @@
+{
+  "vendor": "openweather",
+  "packages": [],
+  "recognition": {
+    "sdks": {
+      "openweather-api-node": {
+        "disposition": "demanded",
+        "reason": "vendor openweather"
+      }
+    },
+    "pypi": {
+      "pyowm": {
+        "disposition": "demanded",
+        "reason": "vendor openweather"
+      }
+    },
+    "envStems": {
+      "openweather": {
+        "disposition": "demanded",
+        "reason": "vendor openweather"
+      },
+      "openweathermap": {
+        "disposition": "demanded",
+        "reason": "vendor openweather"
+      }
+    },
+    "hosts": [
+      {
+        "host": "api.openweathermap.org"
+      }
+    ]
+  }
+}

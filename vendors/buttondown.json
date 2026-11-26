@@ -1,0 +1,12 @@
+{
+  "vendor": "buttondown",
+  "packages": [],
+  "recognition": {
+    "envStems": {
+      "buttondown": {
+        "disposition": "demanded",
+        "reason": "vendor buttondown"
+      }
+    }
+  }
+}

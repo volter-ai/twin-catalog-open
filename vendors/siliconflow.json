@@ -1,0 +1,12 @@
+{
+  "vendor": "siliconflow",
+  "packages": [],
+  "recognition": {
+    "envStems": {
+      "siliconflow": {
+        "disposition": "demanded",
+        "reason": "vendor siliconflow"
+      }
+    }
+  }
+}

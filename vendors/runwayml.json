@@ -1,0 +1,12 @@
+{
+  "vendor": "runwayml",
+  "packages": [],
+  "recognition": {
+    "sdks": {
+      "@runwayml/sdk": {
+        "disposition": "demanded",
+        "reason": "vendor runwayml"
+      }
+    }
+  }
+}

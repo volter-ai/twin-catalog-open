@@ -1,0 +1,12 @@
+{
+  "vendor": "vonage",
+  "packages": [],
+  "recognition": {
+    "sdks": {
+      "@vonage/server-sdk": {
+        "disposition": "demanded",
+        "reason": "vendor vonage"
+      }
+    }
+  }
+}

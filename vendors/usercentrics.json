@@ -1,0 +1,12 @@
+{
+  "vendor": "usercentrics",
+  "packages": [],
+  "recognition": {
+    "sdks": {
+      "@usercentrics/cmp-browser-sdk": {
+        "disposition": "demanded",
+        "reason": "vendor usercentrics"
+      }
+    }
+  }
+}

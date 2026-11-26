@@ -1,0 +1,33 @@
+{
+  "vendor": "airtable",
+  "packages": [],
+  "recognition": {
+    "sdks": {
+      "airtable": {
+        "disposition": "demanded",
+        "reason": "vendor airtable"
+      }
+    },
+    "pypi": {
+      "airtable-python-wrapper": {
+        "disposition": "demanded",
+        "reason": "vendor airtable"
+      },
+      "pyairtable": {
+        "disposition": "demanded",
+        "reason": "vendor airtable"
+      }
+    },
+    "envStems": {
+      "airtable": {
+        "disposition": "demanded",
+        "reason": "vendor airtable"
+      }
+    },
+    "hosts": [
+      {
+        "host": "api.airtable.com"
+      }
+    ]
+  }
+}
